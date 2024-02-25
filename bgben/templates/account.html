@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper">
+  <h1>{{ _('用户简介编辑') }}</h1>
+  <h2>{{ _('您眼中的您，是怎样的您？') }}</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="alert">
+    <span class=" alert-{{ category }}">{{ message }}</span>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+</div>
+<!-- Profile Detail -->
+<div class="account-status">
+  <div class="user-profile-wrapper account-page">
+    <div class="profile-img">
+      {% if current_user.image_file == 'default.png' %}
+      <span class="profile-img-phrase"><small>{{ _('换上您自己的图像吧！') }}</small></span>
+      {% endif %}
+      <img src="{{ image_file }}" alt="">
+    </div>
+    <div class="profile-data">
+      <div class="profile-name">
+        <h1>{{ current_user.username }}</h1>
+        {% if current_user.zodiac_sign %}
+        <img src="{{ zodiac_file }}" alt="">
+        {% else %}
+        {% endif %}
+      </div>
+      <div class="profile-follow-status text-color-orange">
+        <span>{{ current_user.followers_count() }}</span><a
+          href="{{url_for('main.followers', username=current_user.username)}}">{{ _('粉丝') }}</a>
+        <span>{{ current_user.following_count() }} </span><a
+          href="{{url_for('main.following_list', username=current_user.username)}}">{{
+          _('关注') }}</a>
+      </div>
+      <br>
+      <div class="profile-start-date text-color-darkgrey">
+        {{ moment(current_user.account_created).fromNow() }} {{ _('加入') }}
+      </div>
+      <div class="latest-seen text-color-darkgrey">
+        {% if current_user.last_seen %}
+        {{ _('最新上线：') }} {{ moment(current_user.last_seen).fromNow() }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="profile-intro account">
+      <p class="text-color-darkgrey">
+        {% if current_user.about_me %}
+        {{ current_user.about_me }}
+        {% else %}
+        {{ _('关于') }}{{ current_user.username }}{{ _('的故事...随便写点什么吧！') }}
+        {% endif %}
+      </p>
+      {% if not current_user.get_task_in_progress('export_posts') %}
+
+      <a class="export-link" href="{{ url_for('main.export_posts') }}">
+        <span></span>
+        {{ _('下载笔记文本档案(json文件)') }}
+      </a>
+
+      <span class="export-note"><small>
+          {{_('主题+副主题+内容(含html标签)，不含图像')}}
+        </small>
+      </span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- / Profile Detail -->
+
+<!-- / Main Theme -->
+<!-- Notebook Paper -->
+<main>
+  <div class="edit-form-container account">
+    <!-- Contact Form -->
+    <form class="form-inputs" action="" method="post" enctype="multipart/form-data" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="form-item">
+        <!-- label 1 -->
+        <label class="form-title">
+          <img src="static/images/feather_pen1.png" alt="">
+          <span>{{form.username.label}}</span>
+        </label>
+        <!-- input line 1 -->
+        <div class="form-input single-line">
+          {% if form.username.errors %}
+          {{form.username(class="text-input is-invalid")}}
+          {% for error in form.username.errors %}
+          <small><span class="error-message">{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{form.username(class="text-input")}}
+          {% endif %}
+        </div>
+      </div>
+      <div class="form-item">
+        <!-- label 2 -->
+        <label class="form-title">
+          <img src="static/images/feather_pen2.png" alt="">
+          <span>{{form.email.label}}</span>
+        </label>
+        <!-- input line 2 -->
+        <div class="form-input single-line">
+          {% if form.email.errors %}
+          {{form.email(class="text-input is-invalid", type="email", placeholder="{{ _('邮箱') }}")}}
+          {% for error in form.email.errors %}
+          <small><span class="error-message">{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{form.email(class="text-input", type="email", placeholder="{{ _('邮箱') }}")}}
+          {% endif %}
+        </div>
+      </div>
+      <!-- label 3 -->
+      <div class=" form-item">
+        <div class="form-title">
+          <img src="static/images/feather_pen3.png" alt="" style="align-self: start;">
+          <span>{{form.picture.label()}}<small> ({{ _('格式：') }} jpg, jpeg, png, {{ _('请尽量将图像比例调整为1:1')
+              }})</small></span>
+        </div>
+        <!-- input line 3 -->
+        <div class="form-input single-line">
+          {% if form.picture.errors %}
+          {{form.picture(class="text-input")}}
+          {% for error in form.picture.errors %}
+          <small><span class="error-message">{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{form.picture(class="text-input")}}
+          {% endif %}
+        </div>
+      </div>
+      <!-- label 4 -->
+      <div class="form-item">
+        <div class="form-title">
+          <img src="{{ url_for('static', filename='images/feather_pen2.png') }}" alt="">
+          <span>{{ _('星座') }}</span>
+        </div>
+        <table class="zodiac-table">
+          <tr>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/aries.png') }}" alt="" title="{{ _('白羊座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/taurus.png') }}" alt="" title="{{ _('金牛座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/gemini.png') }}" alt="" title="{{ _('双子座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/cancer.png') }}" alt="" title="{{ _('巨蟹座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/leo.png') }}" alt="" title="{{ _('狮子座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/virgo.png') }}" alt="" title="{{ _('处女座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/libra.png') }}" alt="" title="{{ _('天秤座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/scorpio.png') }}" alt="" title="{{ _('天蝎座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/sagittarius.png') }}" alt="" title="{{ _('射手座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/capricorn.png') }}" alt="" title="{{ _('摩羯座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/aquarius.png') }}" alt="" title="{{ _('水瓶座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/pisces.png') }}" alt="" title="{{ _('双鱼座') }}">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='zodiac_signs/unknown.png') }}" alt="" title="{{ _('未知') }}">
+            </td>
+          </tr>
+          <tr>
+            {% if form.zodiac_sign.errors %}
+            {% for subfield in form.zodiac_sign %}
+            <td>
+              <label class="radio">{{ subfield }}
+                <span class="checkmark"></span>
+              </label>
+            </td>
+            {% endfor %}
+            {% for error in form.zodiac_sign.errors %}
+            <small><span class="error-message">{{ error }}</span></small>
+            {% endfor %}
+            {% else %}
+            {% for subfield in form.zodiac_sign %}
+            <td>
+              <label class="radio">{{ subfield }}
+                <span class="checkmark"></span>
+              </label>
+            </td>
+            {% endfor %}
+            {% endif %}
+          </tr>
+        </table>
+        <!-- input line 3 -->
+      </div>
+      <!-- label 5 -->
+      <div class="form-item">
+        <div class="form-title">
+          <img src="{{ url_for('static', filename='images/feather_pen1.png')}}" alt="">
+          <span>{{ form.about_me.label}}</span>
+        </div>
+        <!-- input line 5 -->
+        <div class="form-input multi-line my-feed">
+          {% if form.about_me.errors %}
+          {{ form.about_me(class="text-input is-invalid", rows="10", cols="50")}}
+          {% for error in form.about_me.errors %}
+          <small><span class="error-message">{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{ form.about_me(class="text-input", rows="10", cols="50")}}
+          {% endif %}
+        </div>
+      </div>
+      <div class="form-item button-div account">
+        {{ form.submit_field(class="submit-btn") }}
+      </div>
+  </div>
+  </form>
+  <!-- / Contact Form -->
+  </div>
+  <script>
+    $(document).ready(function () {
+      $(".is-invalid").on("focus", function () {
+        $(this).removeClass('is-invalid')
+      })
+    })
+  </script>
+
+</main>
+<!-- / Notebook Paper -->
+
+{% endblock content %}

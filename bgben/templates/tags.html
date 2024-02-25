@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper tags">
+  <h1>BGben</h1>
+  <h2 id="tag_label">{{ _('标签：') }}<strong>{{name}}</strong></h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <div class="result-page-wrapper">
+    <!-- Tag Related Posts Contents -->
+    <!-- Post Heading -->
+
+    {% for tag in tags %}
+    {% for post in tag.posts %}
+    <div class="post-card tags">
+      <!-- Description -->
+      <div class="post-heading">
+        <a class="post-link" href="{{ url_for('posts.post', post_id=post.id) }}">
+          <!-- Post Heading -->
+          <h2>
+            {{ post.title }}
+          </h2>
+          <!-- Image -->
+          <img class="post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}" alt="">
+          <!-- / Image -->
+          <h3>{{ post.subtitle }}</h3>
+        </a>
+        <div class="post-author">
+          <a class="post-author-link" href="{{ url_for('users.user_page', username=post.author.username) }}">
+            <img class="post-author-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}"
+              alt="">
+            <h4>{{ post.author.username }}</h4>
+          </a>
+          <div class="post-time">{{ moment(post.date_posted).format('LLL') }}</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    <!-- / Tag Related Posts Contents -->
+  </div>
+  <!-- Pagination -->
+  <div class="pagination tags">
+    {% if prev_url %}
+    <div class="prev-page tags">
+      <div class="pagination-text"><a href="{{ prev_url }}">{{ _('前一页') }}</a></div>
+      <div class="pagination-imgbox">
+        <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="">
+      </div>
+    </div>
+    {% endif %}
+
+    {% if next_url %}
+    <div class="next-page tags">
+      <div class="pagination-imgbox">
+        <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="">
+      </div>
+      <div class="pagination-text"><a href="{{ next_url }}">{{ _('下一页') }}</a></div>
+    </div>
+    {% endif %}
+
+  </div>
+
+
+
+
+
+</main>
+<!-- / Notebook Paper -->
+{% endblock %}

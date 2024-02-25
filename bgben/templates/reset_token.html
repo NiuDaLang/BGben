@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper">
+  <h1 class="text-color-orange">{{ _('重置密码') }}</h1>
+  <h2>{{ _('请保管好密码信息哦！') }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <div class="register-form-container" id="register-form-container">
+    <!-- Register Section -->
+    <div class="register-form" id="register-form">
+      <!-- Register Form -->
+      <form class="form-inputs" action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <!-- label 1 -->
+        <div class=" form-item">
+          <div class="form-title">
+            <img src="{{ url_for('static', filename='images/feather_pen2.png') }}" alt="">
+            <span>{{form.password.label}}</span>
+          </div>
+          <!-- input line 1 -->
+          <div class="form-input single-line">
+            {% if form.password.errors%}
+            {{form.password(class="text-input is-invalid", type="password", autocomplete='false')}}
+            {% for error in form.password.errors %}
+            <small class="error-message"><span>{{ error }}</span></small>
+            {% endfor %}
+            {% else %}
+            {{form.password(class="text-input", type="password", autocomplete='false')}}
+            {% endif %}
+          </div>
+        </div>
+        <!-- label 2 -->
+        <div class=" form-item">
+          <div class="form-title">
+            <img src="{{ url_for('static', filename='images/feather_pen2.png') }}" alt="">
+            <span>{{form.confirm_password.label}}</span>
+          </div>
+          <!-- input line 2 -->
+          <div class="form-input single-line">
+            {% if form.confirm_password.errors %}
+            {{form.confirm_password(class="text-input is-invalid", type="password", autocomplete='false')}}
+            {% for error in form.confirm_password.errors %}
+            <small><span class="error-message">{{ error }}</span></small>
+            {% endfor %}
+            {% else %}
+            {{form.confirm_password(class="text-input", type="password", autocomplete='false')}}
+            {% endif %}
+          </div>
+        </div>
+        <!-- label 3 -->
+        <div class="form-item button-div">
+          {{form.submit_field(class="submit-btn")}}
+        </div>
+      </form>
+      <!-- / Register Form -->
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $(".is-invalid").on("focus", function () {
+        $(this).removeClass('is-invalid')
+      })
+    })
+  </script>
+</main>
+<!-- / Notebook Paper -->
+
+{% endblock content %}

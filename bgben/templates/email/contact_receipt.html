@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+<body style="background-color: #ffffb0">
+  <p>{{ _('您好，%(username)s 女士/先生！', username=user.username) }}</p>
+  <br>
+  <p>{{ _('以下是您的咨询内容：') }}</p>
+  <table style="color:#c51605; font-weight: 600; font-size: 1.15rem;">
+    <tr>
+      <td>{{ _('关于： ') }}</td>
+      <td>{{ category }}</td>
+    </tr>
+    <tr>
+      <td>{{ _('内容： ') }}</td>
+      <td>{{ content }}</td>
+    </tr>
+  </table>
+  <br>
+  <p>{{ _('我们将尽快进行回复，谢谢！') }}</p>
+  <p>{{ _('BGben管理人') }}</p>
+  <img src="cid:BgbenLogo" style="width: 190px; height: 64px" />
+  <br>
+  <p><small>{{ _('此邮件由系统自动发出,请勿直接回复') }}</small></p>
+</body>
+
+</html>

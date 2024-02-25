@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper">
+  <h1>BGben</h1>
+  <h2>{{ _('%(username)s的月度笔记： %(month)s (共 %(total)s 篇)', username=user.username, month=month, total=count[0][1]) }}
+  </h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <div class="monthly-posts-wrapper">
+    {% for post in monthly_posts %}
+    <div class="card">
+      <div class="card-imgbox">
+        <img class="post-card-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
+          alt="post main image">
+      </div>
+      <div class="content">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.subtitle }}</p>
+        <a href="{{ url_for('posts.post', post_id=post.id) }}">{{ _('阅 读')}}</a>
+      </div>
+      <img class="key-img" src="{{ url_for('static', filename='images/key.png') }}" alt="key image">
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination monthly-posts">
+    {% if prev_url %}
+    <div class="prev-page monthly-posts">
+      <div class="pagination-text"><a href="{{ prev_url }}">{{ _('前一页') }}</a></div>
+      <div class="pagination-imgbox">
+        <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="">
+      </div>
+    </div>
+    {% endif %}
+
+    {% if next_url %}
+    <div class="next-page monthly-posts">
+      <div class="pagination-imgbox">
+        <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="">
+      </div>
+      <div class="pagination-text"><a href="{{ next_url }}">{{ _('下一页') }}</a></div>
+    </div>
+    {% endif %}
+
+  </div>
+</main>
+<!-- / Notebook Paper -->
+{% endblock %}

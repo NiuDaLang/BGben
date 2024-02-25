@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<body class="message-email">
+  <div class="message-contents">
+    <br>
+    <p>BGben 信息提示🔔</p>
+    <p>{{ _('您好，%(recipient)s！', recipient=recipient_username) }}</p>
+    <br>
+    <img class="message-sender-pic" src="cid:AuthorPic" />
+    <p>{{ _('%(sender)s 刚才发送了以下信息给您：', sender=sender_username) }}</p>
+    <br>
+    <p class="message-content">{{ content }}</p>
+    <br><br>
+    <a href="{{ link }}" class="reply-btn">{{ _('查询 & 回信') }}</a>
+    <br>
+    <br>
+    <br>
+    <p>{{ _('祝您每天愉快🎈') }}</p>
+    <p>{{ _('BGben管理人') }}</p>
+    <img src="cid:BgbenLogo" style="width: 190px; height: 64px" />
+    <br>
+    <p><small>{{ _('此邮件由系统自动发出,请勿直接回复') }}</small></p>
+    <br>
+  </div>
+
+
+  <style>
+    .message-email {
+      background-color: #ffffb0;
+      margin: 20px auto;
+    }
+
+    .message-contents {
+      text-align: center;
+      max-width: 768px;
+      margin: 0 auto;
+    }
+
+    .message-sender-pic {
+      margin: 0 auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: fill;
+    }
+
+    .message-content {
+      color: #c51605;
+      font-weight: 600;
+      font-size: 1.15rem;
+      width: 60%;
+      margin: auto;
+    }
+
+    .message-content {
+      background-color: #fd8c14b0;
+      padding: 20px;
+    }
+
+    .message-contents a,
+    .message-contents a:hover,
+    .message-contents a:visited {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .reply-btn {
+      width: 200px;
+      background-color: #cece5a;
+      padding: 10px 20px;
+      border-radius: 30px;
+      box-shadow: 6px 6px 6px #a8a859, -6px -6px 6px #f9f995;
+      transition: 0.5s;
+    }
+
+    .reply-btn:hover {
+      box-shadow: none;
+    }
+  </style>
+
+</body>
+
+</html>

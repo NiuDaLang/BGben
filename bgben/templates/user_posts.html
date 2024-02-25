@@ -1,0 +1,1148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="main-theme-wrapper"></div>
+<!-- Profile Detail -->
+<div class="account-status" style="padding: 50px 0;">
+  <div class="user-profile-wrapper account-page">
+    <div class="profile-img">
+      <img src="{{ url_for('static', filename='profile_pics/' + user.image_file ) }}" alt="">
+    </div>
+    <div class="profile-data">
+      <div class="profile-name">
+        <h1>{{ user.username }}</h1>
+        {% if user.zodiac_sign %}
+        <img src="{{ url_for('static', filename='zodiac_signs/' + user.zodiac_sign + '.png') }}" alt="">
+        {% else %}
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        {% if user != current_user %}
+        {% if current_user.is_following(user) %}
+        <a href="{{ url_for('main.send_message', recipient=user.username) }}"><img
+            src="{{url_for('static', filename='images/email_logo.png')}}" alt="">
+        </a>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+      </div>
+      <div class="total-posts">({{ _('总共自创') }}{{ posts_count }}{{ _('条笔记') }})</div>
+      <div class="profile-follow-status text-color-orange">
+        <span>{{ user.followers_count()}} </span>
+        <a href="{{url_for('main.followers', username=user.username)}}">{{ _('粉丝') }}</a>
+        <span>{{ user.following_count()}} </span>
+        <a href="{{url_for('main.following_list', username=user.username)}}">{{ _('关注') }}</a>
+      </div>
+      {% if current_user.is_authenticated %}
+      {% if user.is_following(current_user) %}
+      <div><small><span style="background-color: #c515052a;">{{ _('TA正在关注您!') }}</span></small></div>
+      {% endif %}
+      {% endif %}
+      <div class="profile-start-date text-color-darkgrey">
+        {{ _(' ') }} {{ moment(user.account_created).fromNow() }} {{ _('加入') }}
+      </div>
+      <div class="latest-seen text-color-darkgrey">
+        {% if user.last_seen %}
+        {{ _('最新上线：') }} {{ moment(user.last_seen).fromNow() }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="profile-intro my-feed">
+      <p class="text-color-darkgrey">
+        {% if user.about_me %}
+        {{ user.about_me }}
+        {% else %}
+        {{ user.username }}{{ _('非常神秘，还没有透露TA的故事呢！') }}
+        {% endif %}
+      </p>
+      {% if current_user.is_authenticated %}
+      {% if user == current_user %}
+      <a href="{{ url_for('users.account') }}" class="profile-edit my-feed">{{ _('编辑简介') }}</a>
+      {% elif not current_user.is_following(user) %}
+      <form action="{{ url_for('users.follow', username=user.username) }}" method="POST" class="follow-unfollow-form">
+        {{ followform.hidden_tag() }}
+        {{ followform.submit(class="follow-btn")}}
+      </form>
+      {% else %}
+      <form action="{{ url_for('users.unfollow', username=user.username) }}" method="POST" class="follow-unfollow-form">
+        {{ unfollowform.hidden_tag() }}
+        {{ unfollowform.submit(class="unfollow-btn")}}
+      </form>
+      {% endif %}
+      {% elif not current_user.is_authenticated %}
+      <div class="lets-login">
+        <a href="{{ url_for('users.login') }}" class="follow-btn">{{ _('注册·登陆后可关注这位用户！') }}</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- style="margin: 150px auto 50px auto" -->
+<!-- / Profile Detail -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Grid -->
+<main>
+  <div class="user-contents-wrapper">
+    <div class="notebook-grid my-feed">
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 20rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 40rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 50rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 60rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 70rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 80rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 90rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 100rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 110rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 120rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <!-- 130rows -->
+      <div class="row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+      <div class="row last-row">
+        <div class="row-left"></div>
+        <div class="row-middle">
+          <div class="row-middle-left"></div>
+          <div class="row-middle-right"></div>
+        </div>
+        <div class="row-right"></div>
+      </div>
+    </div>
+    <div class="user-page-contents my-feed">
+      <aside class="post-left">
+        <!-- Latest Posts -->
+        <div class="aside-section">
+          <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="">
+          {% if user == current_user %}
+          <p class="text-color-orange side-title">{{ _('我的最新投稿') }}</p>
+          {% else %}
+          <p class="text-color-orange side-title">{{ _('笔者最新投稿') }}</p>
+          {% endif %}
+        </div>
+        <ul class="aside-list">
+          {% for post in ten_posts %}
+          <li class="aside-list-item">
+            <a href="{{ url_for('posts.post', post_id=post.id) }}" class="text-color-orange aside-title-orange">
+              <span>{{ post.title}}</span>
+              <img class="sidebar-post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
+                alt="post image">
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <!-- Past Posts -->
+        <div class="aside-section">
+          <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="">
+          {% if user == current_user %}
+          <p class="text-color-red side-title">{{ _('我的过去投稿') }}</p>
+          {% else %}
+          <p class="text-color-red side-title">{{ _('笔者过去投稿') }}</p>
+          {% endif %}
+        </div>
+        <ul class="aside-list">
+          {% for count in monthly_posts_count %}
+          <li class="aside-list-item">
+            <a
+              href="{{ url_for('posts.monthly_posts', user_id=user.id, month='-'.join([count[0].split('-')[0], count[0].split('-')[1]])) }}">
+              {{ count[0].split('-')[0] }}{{ _('年') }}{{ count[0].split('-')[1] }}{{ _('月') }} {{ count[1] }}{{
+              _('篇')
+              }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <!-- Hottest Topics -->
+        <div class="aside-section">
+          <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="">
+          {% if user == current_user %}
+          <p class="text-color-green side-title">{{ _('我的最新论点') }}</p>
+          {% else %}
+          <p class="text-color-green side-title">{{ _('笔者最新论点') }}</p>
+          {% endif %}
+        </div>
+        <ul class="aside-list">
+          {% for tag in user_tags %}
+          <li class="aside-list-item">
+            <a href="{{ url_for('posts.tag', name=tag[0]) }}" class="text-color-green">
+              <img class="tag-img" src="{{url_for('static', filename='images/tag3.png')}}" alt="">
+              {{ tag[0] }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+
+      </aside>
+      <div class="post-right user-post-right my-feed">
+
+        <!-- Post Headings -->
+        <div class="post-headings-wrapper">
+
+          {% for post in posts %}
+          <div class="post-card">
+            <!-- Description -->
+            <div class="post-heading">
+              <a class="post-link" href="{{ url_for('posts.post', post_id=post.id) }}">
+                <!-- Post Heading -->
+                <h2>
+                  {{ post.title }}
+                </h2>
+                <!-- Image -->
+                <img class="post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}" alt="">
+                <!-- / Image -->
+                <h3>{{ post.subtitle }}</h3>
+              </a>
+              <div class="post-author">
+                <a class="post-author-link" href="{{ url_for('users.user_page', username=post.author.username) }}">
+                  <img class="post-author-img"
+                    src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}" alt="">
+                  <h4>{{ post.author.username }}</h4>
+                </a>
+                <div class="post-time">{{ moment(post.date_posted).format('LLL') }}</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+        <!-- Pagination -->
+        <div class="pagination">
+          {% if prev_url %}
+          <div class="prev-page">
+            <div class="pagination-text"><a href="{{ prev_url }}">{{ _('前一页') }}</a></div>
+            <div class="pagination-imgbox">
+              <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="">
+            </div>
+          </div>
+          {% endif %}
+
+          {% if next_url %}
+          <div class="next-page">
+            <div class="pagination-imgbox">
+              <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="">
+            </div>
+            <div class="pagination-text"><a href="{{ next_url }}">{{ _('下一页') }}</a></div>
+          </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+
+{% endblock%}

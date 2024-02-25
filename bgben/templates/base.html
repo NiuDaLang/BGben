@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh,ja,en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% if title %}
+  <title>BGben - {{ title }}</title>
+  {% else %}
+  <title>BGben</title>
+  {% endif %}
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="bgben" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FF813F"
+    data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+  {{ moment.include_moment() }}
+  {% if g.locale == "zh" %}
+  {{ moment.lang('zh_CN') }}
+  {% else %}
+  {{ moment.lang(g.locale) }}
+  {% endif %}
+
+</head>
+
+<body>
+  <div id="loading"></div>
+  <header>
+
+    <!-- Navigation -->
+    <div class="navbar">
+      <div id="nav-bg"></div>
+      <div id="menu-label-wrapper">
+        <div id="menu-items">
+          <div class="menu-left">
+            <a class="nav-brand" href="{{ url_for( 'main.home' )}}" title="home">
+              <span class="sr-only">{{ _('主页') }}</span>
+              <img id="nav-brand-img1" class="nav-brand-img"
+                src="{{ url_for('static', filename='images/BGben_logo1.png') }}" alt="">
+              <img id="nav-brand-img2" class="nav-brand-img"
+                src="{{ url_for('static', filename='images/BGben_logo2.png') }}" alt="">
+            </a>
+            <div class="menu-search">
+              {% if g.search_form %}
+              <form action="{{ url_for('main.search') }}" method="GET">
+                {{ g.search_form.q(size=20, class="text-input", placeholder=g.search_form.q.label.text) }}
+              </form>
+              {% endif %}
+            </div>
+          </div>
+          <nav class="menu-right" id="navigation" data-visible="false">
+            <div class="mobile-border-box"></div>
+            <div id="my-menu-items" class="menu-items">
+              <!-- 我的主页链接 -->
+              {% if current_user.is_authenticated %}
+              {% if request.path=="/user/" + current_user.username %}
+              <div class="menu-item active username">
+                <a class="text-color-green" href="{{ url_for('users.user_page', username=current_user.username) }}">{{
+                  _('Hello') }}👋 <br>
+                  <strong>{{current_user.username}}</strong>
+                </a>
+              </div>
+              {% else %}
+              <div class="menu-item username">
+                <a class="text-color-green" href="{{ url_for('users.user_page', username=current_user.username) }}">{{
+                  _('Hello') }}👋 <br>
+                  <strong>{{current_user.username}}</strong>
+                </a>
+              </div>
+              {% endif %}
+              {% endif %}
+
+              <!-- 私信链接 -->
+              <div class="menu-item message-wrapper">
+                {% if current_user.is_authenticated %}
+                <!-- 私信链接logo -->
+                {% if request.path=="/messages/" + current_user.username + "/in" %}
+                <a href="{{ url_for('main.messages', username=current_user.username, tab='in') }}">
+                  <img class="message-logo" src="{{ url_for('static', filename='images/email_inbox_logo_shadow.png') }}"
+                    alt="">
+                </a>
+                {% elif request.path=="/messages/" + current_user.username + "/out" %}
+                <a href="{{ url_for('main.messages', username=current_user.username, tab='out') }}">
+                  <img class="message-logo" src="{{ url_for('static', filename='images/email_inbox_logo_shadow.png') }}"
+                    alt="">
+                </a>
+
+                {% else %}
+                <a href="{{ url_for('main.messages', username=current_user.username, tab='in') }}">
+                  <img class="message-logo" src="{{ url_for('static', filename='images/email_inbox_logo.png') }}"
+                    alt="">
+                </a>
+                {% endif %}
+                <!-- 私信数量 -->
+                {% set unread_message_count = current_user.unread_message_count() %}
+                <span id="message_count" class="message-count"
+                  style="visibility: {% if unread_message_count %} visible {% else %} hidden {% endif %};">
+                  {{ unread_message_count }}
+                </span>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- 笔记集link -->
+            {% if request.path==url_for('posts.all_posts') %}
+            <div class="menu-item active"><a href="{{ url_for( 'posts.all_posts' )}}">{{ _('广场') }}</a></div>
+            {% else %}
+            <div class="menu-item"><a href="{{ url_for( 'posts.all_posts' )}}">{{ _('广场') }}</a></div>
+            {% endif %}
+
+            {% if current_user.is_authenticated %}
+            <!-- 投稿Link -->
+            {% if request.path==url_for('posts.new_post') %}
+            <div class="menu-item active"><a href="{{ url_for( 'posts.new_post' )}}">{{ _('投稿') }}</a></div>
+            {% elif re.search(".+\/update$", request.path) %}
+            <div class="menu-item"><a href="{{ url_for( 'posts.new_post' )}}">{{ _('投稿') }}</a></div>
+            <div class="menu-item active"><a href="{{ url_for( 'posts.new_post' )}}">{{ _('编辑') }}</a></div>
+            {% else %}
+            <div class="menu-item"><a href="{{ url_for( 'posts.new_post' )}}">{{ _('投稿') }}</a></div>
+            {% endif%}
+
+            <!-- 设置link -->
+            {% if request.path==url_for('users.account') %}
+            <div class="menu-item active"><a href="{{ url_for( 'users.account' )}}">{{ _('账户')}}</a></div>
+            {% else %}
+            <div class="menu-item"><a href="{{ url_for( 'users.account' )}}">{{ _('账户')}}</a></div>
+            {% endif %}
+
+            <!-- 管理link -->
+            {% if current_user.is_authenticated %}
+            {% if current_user.email in config['ADMINS'] %}
+            <div class="menu-item"><a href="/admin">{{ _('管理')}}</a></div>
+            {% endif %}
+            {% endif %}
+
+            <!-- 退出link -->
+            <div class="menu-item"><a href="{{ url_for( 'users.logout' )}}">{{ _('退出') }}</a></div>
+
+            {% else %}
+
+            <!-- 注册link -->
+            {% if request.path==url_for('users.register_test') or request.path==url_for('users.register') %}
+            <div class="menu-item active"><a href="{{ url_for( 'users.register_test' )}}">{{ _('注册') }}</a>
+            </div>
+            {% else %}
+            <div class="menu-item"><a href="{{ url_for( 'users.register_test' )}}">{{ _('注册') }}</a></div>
+            {% endif %}
+
+            <!-- 登陆link -->
+            {% if request.path==url_for('users.login') %}
+            <div class="menu-item active"><a href="{{ url_for( 'users.login' )}}">{{ _('登陆') }}</a></div>
+            {% else %}
+            <div class="menu-item"><a href="{{ url_for( 'users.login' )}}">{{ _('登陆') }}</a></div>
+            {% endif %}
+
+            {% endif %}
+
+          </nav>
+          <div id="mobile-btn" class="mobile-menu-button" aria-controls="navigation" aria-expanded="false">
+            <span class="sr-only">{{ _('下拉菜单') }}</span>
+            <img id="mobile-menu-button-open" data-open_btn_visible="true"
+              src="{{url_for('static', filename='images/mobile_open.png')}}" alt="">
+            <img id="mobile-menu-button-close" data-close_btn_visible="false"
+              src="{{url_for('static', filename='images/mobile_close.png')}}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / Navigation -->
+
+  </header>
+
+
+  <!-- Export Posts Progress -->
+  {% if current_user.is_authenticated %}
+  {% with tasks = current_user.get_tasks_in_progress() %}
+  {% if tasks %}
+  {% for task in tasks %}
+  <div class="progress">
+    <p class="alert-success">
+      <span>{{task.description }} </span>
+      <span id="{{task.id}}-progress">{{task.get_progress()}}</span>%
+    </p>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  {% endif %}
+
+  <script>
+    function set_task_progress(task_id, progress) {
+      const progressElement = document.getElementById(task_id + '-progress');
+      if (progressElement) {
+        progressElement.innerText = progress;
+      }
+    }
+  </script>
+  <!-- / Export Posts Progress -->
+
+
+  {% block content %} {% endblock %}
+  <!-- footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="sns">
+        <a href="https://twitter.com/Bgben_net"><img src="{{ url_for('static', filename='images/X_logo1.png')}}"
+            alt=""><span class="sr-only">{{
+            _('X社交账号') }}</span></a>
+        <a href="https://t.me/bgbennet"><img src="{{ url_for('static', filename='images/Telegram_logo1.png')}}"
+            alt=""><span class="sr-only">{{ _('电报社交账号') }}</span></a>
+      </div>
+      <ul class="footer-menu-wrapper">
+        <!-- About -->
+        {% if request.path==url_for('main.about') %}
+        <li><a class="footer-menu footer-active" href="{{ url_for('main.about') }}">{{ _('关于BGben') }}</a></li>
+        {% else %}
+        <li><a class="footer-menu" href="{{ url_for('main.about') }}">{{ _('关于BGben') }}</a></li>
+        {% endif %}
+        <!-- User Policy -->
+        {% if request.path==url_for('main.user_policy') %}
+        <li><a class="footer-menu footer-active" href="{{ url_for('main.user_policy') }}">{{ _('利用规则') }}</a></li>
+        {% else %}
+        <li><a class="footer-menu" href="{{ url_for('main.user_policy') }}">{{ _('利用规则') }}</a></li>
+        {% endif %}
+        <!-- Privacy Policy -->
+        {% if request.path==url_for('main.privacy_policy') %}
+        <li><a class="footer-menu footer-active" href="{{ url_for('main.privacy_policy') }}">{{ _('隐私政策') }}</a></li>
+        {% else %}
+        <li><a class="footer-menu" href="{{ url_for('main.privacy_policy') }}">{{ _('隐私政策') }}</a></li>
+        {% endif %}
+        <!-- FAQ -->
+        {% if request.path==url_for('main.faq') %}
+        <li><a class="footer-menu footer-active" href="{{ url_for('main.faq') }}">{{ _('常见问题') }}</a></li>
+        {% else %}
+        <li><a class="footer-menu" href="{{ url_for('main.faq') }}">{{ _('常见问题') }}</a></li>
+        {% endif %}
+        <!-- Contact -->
+        {% if request.path==url_for('main.contact') %}
+        <li><a class="footer-menu footer-active" href="{{ url_for('main.contact') }}">{{ _('联系管理人') }}</a></li>
+        {% else %}
+        <li><a class="footer-menu" href="{{ url_for('main.contact') }}">{{ _('联系管理人') }}</a></li>
+        {% endif %}
+      </ul>
+      <div class="copyright">
+        &#169; Copyright 2024 BGben All rights reserved.
+      </div>
+    </div>
+  </footer>
+  <!-- / footer -->
+  <script>
+    // loading
+    function hideLoader() {
+      $('#loading').hide();
+    }
+
+    $(window).ready(hideLoader);
+
+    setTimeout(hideLoader, 20 * 1000);
+
+    // header
+    $(window).on("scroll", function () {
+      if ($(this).scrollTop() > 90) {
+        $(".navbar #nav-bg").css({ "background-color": "#ffe07b6e", "transition": "1s" });
+      } else {
+        $(".navbar #nav-bg").css({ "background-color": "#ffe17b", "transition": "1s" });
+      }
+    });
+
+    function set_message_count(n) {
+      $('#message_count').text(n);
+      $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+    }
+
+    {% if current_user.is_authenticated %}
+
+    $(function () {
+      let since = 0;
+      setInterval(function () {
+        $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
+          function (notifications) {
+            for (let i = 0; i < notifications.length; i++) {
+              switch (notifications[i].name) {
+                case 'unread_message_count':
+                  set_message_count(notifications[i].data);
+                  break;
+                case 'task_progress':
+                  set_task_progress(notifications[i].data.task_id, notifications[i].data.progress);
+                  break
+              }
+              since = notifications[i].timestamp;
+            }
+
+
+          }
+        )
+      }, 10000)
+    })
+
+
+    {% endif %}
+
+    // mobile menu
+    const mobile_menu_btn = document.querySelector("#mobile-btn")
+    const navigation = document.querySelector("#navigation")
+    const mobile_menu_open = document.querySelector("#mobile-menu-button-open")
+    const mobile_menu_close = document.querySelector("#mobile-menu-button-close")
+
+    mobile_menu_btn.addEventListener('click', () => {
+      const nav_visibility = navigation.getAttribute('data-visible')
+      const open_btn_visibility = mobile_menu_open.getAttribute('data-open_btn_visible')
+      console.log('open_btn_visibility: ' + open_btn_visibility)
+      const close_btn_visibility = mobile_menu_close.getAttribute('data-close_btn_visible')
+
+      // nav items toggle
+      if (nav_visibility === "false") {
+        navigation.setAttribute("data-visible", true);
+      } else if (nav_visibility === "true") {
+        navigation.setAttribute("data-visible", false);
+      }
+      // open button toggle
+      if (open_btn_visibility === "false") {
+        mobile_menu_open.setAttribute("data-open_btn_visible", true);
+      } else if (open_btn_visibility === "true") {
+        mobile_menu_open.setAttribute("data-open_btn_visible", false);
+      }
+      // close button toggle
+      if (close_btn_visibility === "false") {
+        mobile_menu_close.setAttribute("data-close_btn_visible", true);
+      } else if (close_btn_visibility === "true") {
+        mobile_menu_close.setAttribute("data-close_btn_visible", false);
+      }
+    })
+
+    // avoid resize glitch
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      document.body.classList.add("resize-animation-stopper");
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        document.body.classList.remove("resize-animation-stopper");
+      }, 400);
+    });
+
+  </script>
+</body>
+
+</html>

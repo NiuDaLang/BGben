@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Main Theme -->
+<div class="main-theme-wrapper">
+  <h1>BGben</h1>
+  <h2>{{user.username}}{{ _(' 正在关注') }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <div class="following-list">
+
+    {% if user.following_count() > 0 %}
+    {% for following in followings %}
+    <div class="follow-status-wrapper following">
+      <a href="{{ url_for('users.user_page', username=following.username) }}">
+        <!-- Profile Image -->
+        <div class="search-profile-img following">
+          <img src="{{ url_for('static', filename='profile_pics/' + following.image_file ) }}" alt="">
+        </div>
+      </a>
+
+      <div class="name-and-dates">
+        <!-- User Name -->
+        <div class="search-profile-data following">
+          <a class="search-profile-user-link" href="{{ url_for('users.user_page', username=following.username) }}">
+            <div class="search-profile-name following">
+              <h3>{{ following.username }}</h3>
+            </div>
+          </a>
+          {% if current_user.is_authenticated%}
+          {% if following.is_following(current_user) %}
+          <div class="is-following"><small><span style="background-color: #c515052a;">{{ _('TA正在关注您!') }}</span></small>
+          </div>
+          {% endif %}
+          {% endif %}
+        </div>
+
+        <!-- Dates -->
+        <div class="search-profile-dates following">
+          <div class="profile-start-date following text-color-darkgrey">
+            <small>{{ moment(following.account_created).fromNow() }} {{ _('加入') }}</small>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Action Button -->
+      <div class="search-profile-action following">
+        <!-- 编辑简介Button -->
+        {% if current_user.is_authenticated %}
+        {% if following == current_user %}
+        <div class="search-profile-button">
+          <a href="{{ url_for('users.account') }}" class="search-profile-edit">{{ _('编辑简介') }}</a>
+        </div>
+        {% elif not current_user.is_following(following) %}
+        <!-- 关注Button -->
+        <form class="search-profile-button" action="{{ url_for('users.follow', username=following.username) }}"
+          method="POST" class="follow-unfollow-form">
+          {{ followform.hidden_tag() }}
+          {{ followform.submit(class="search-profile-follow-btn following")}}
+        </form>
+        {% else %}
+        <!-- 取消关注Button -->
+        <form class="search-profile-button" action="{{ url_for('users.unfollow', username=following.username) }}"
+          method="POST" class="follow-unfollow-form">
+          {{ unfollowform.hidden_tag() }}
+          {{ unfollowform.submit(class="search-profile-unfollow-btn following")}}
+        </form>
+        {% endif %}
+        {% elif not current_user.is_authenticated %}
+        <!-- 登陆关注吧Button -->
+        <div class="search-profile-button">
+          <a href="{{ url_for('users.login') }}" class="search-profile-follow-btn following">{{ _('注册·登陆后<br>可关注这位用户！')
+            }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="search-no-result">{{ user.username }}{{ _('还没有关注任何笔者，写一篇有趣的文章来吸引TA吧！') }}</div>
+    {% endif %}
+
+  </div>
+</main>
+{% endblock %}

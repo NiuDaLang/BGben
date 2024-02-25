@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper policy">
+  <h1>{{ _('BGben隐私政策') }}</h1>
+  <h2>{{ _('信任的基础') }}</h2>
+</div>
+<!-- / Main Theme -->
+<!-- Notebook Paper -->
+<main>
+  <div class="policy-wrapper privacy-policy text-color-darkgrey">
+    <!-- Policy Contents -->
+    <div class="policy-contents">
+      <p>
+        {{ _('BGben非常重视您的隐私和您对我们的信任。本隐私政策介绍了我们如何收集、使用和披露您的个人信息。') }}
+        <u><strong>{{ _('如果您不同意我们的隐私政策，请不要使用我们的网站。') }}</strong></u>
+      </p>
+      <!-- <br> -->
+      <p>
+        {{ _('第一条 个人信息及其使用目的') }}
+      </p>
+      <table class="text-thin">
+        <tr>
+          <td>（1）</td>
+          <td>{{ _('当您在本网站上进行投稿、评论、与其他用户互动、进行咨询等时，本网站将要求您提供包括但不限于：电子邮件、注册名（昵称）等各类个人信息。') }}</td>
+        </tr>
+        <tr>
+          <td>（2）</td>
+          <td>{{ _('该个人信息将用于防止欺诈、为回答问题以及通过电子邮件等方式与您联系以提供必要的信息，并且不会用于任何其他目的。') }}</td>
+        </tr>
+        <tr>
+          <td>（3）</td>
+          <td>{{ _('本网站妥善管理个人信息，除以下情况外不会向第三方公开。') }}
+            <ol type="a" style="margin:0">
+              <li>{{ _('征得用户本人(自然人，不含AI)同意时') }}</li>
+              <li>{{ _('为配合法律法规等需要披露时') }}</li>
+              <li>{{ _('如果您希望披露、更正或删除您的个人数据，我们将在确认您的身份后及时回复。') }}</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <p>
+        {{ _('第二条 网站内私信功能数据') }}
+      </p>
+      <p class="text-thin">
+        {{ _('本网站可能提供用户之间在本网站内进行私信沟通的功能。请注意保护好您的隐私信息。') }}
+      </p>
+      <p class="text-thin" style="margin-bottom: 0;">
+        {{ _('该信息功能的数据被存档于本网站数据库，本网站妥善管理数据，除以下情况外不会向第三方公开。') }}
+      </p>
+      <ol type="a" style="margin:0; font-weight: 200;">
+        <li>{{ _('征得本人同意时') }}</li>
+        <li>{{ _('为配合法律法规等需要披露时') }}</li>
+        <li>{{ _('如果您希望披露、更正或删除您的个人数据，我们将在确认您的身份后及时回复') }}</li>
+      </ol>
+      <br>
+      <p>
+        {{ _('第三条 关于本网站的广告') }}
+      </p>
+      <p class="text-thin">
+        {{ _('本网站可能会使用第三方分发的广告服务。为了显示符合用户兴趣的产品及服务的广告，这些广告分发公司有可能会使用“cookies”功能收集与访问本网站和其他网站相关的信息。') }}
+      </p>
+      <p class="text-thin">
+        {{ _('本网站可能会通过联属计划介绍产品。本网站不销售这些产品，因此请通过链接页面获取有关产品的最新信息以及购买条款和条件。') }}
+      </p>
+      <br>
+      <p>
+        {{ _('第四条 本网站使用的访问分析工具') }}
+      </p>
+      <p class="text-thin">
+        {{ _('本网站使用Google的访问分析工具“Google Analytics”。') }}<br>
+        {{ _('此 Google Analytics 使用 cookies 来收集流量数据。') }}<br>
+        {{ _('该流量数据是匿名收集的，不会识别您的个人身份。') }}<br>
+        {{ _('您可以通过禁用cookie来拒绝该功能的收集，因此请检查您的浏览器设置。') }}<br>
+        {{ _('请点击') }}<a class="text-color-red" href="https://marketingplatform.google.com/about/analytics/terms/us/"
+          target="_blank">{{
+          _('此处') }}</a>{{ _('了解相关的更多信息。') }}
+      </p>
+      <br>
+      <p>
+        {{ _('第五条 免责声明') }}
+      </p>
+      <table class="text-thin">
+        <tr>
+          <td>（1）</td>
+          <td>{{ _('因用户将账号密码告知他人或与他人共用注册帐户、或因用户自身的疏忽造成账号或密码泄露，由此导致的任何个人资料泄露及相关损失，本网站不负任何责任。') }}</td>
+        </tr>
+        <tr>
+          <td>（2）</td>
+          <td>{{ _('因黑客/骇客攻击、电子病毒、服务器损坏、不可抗力事件等非本网站原因造成用户密码等重要信息泄露或遗失，由此给用户造成相关损失，本网站不负任何责任。') }}</td>
+        </tr>
+      </table>
+      <a class="contact-button policy" href="{{ url_for('main.contact') }}">
+        <span class="button-name">{{ _('询问表格') }}</span><br>
+        <span class="button-subtext">{{ _('或请邮件联系') }} admin@bgben.net</span>
+      </a>
+
+
+    </div>
+    <!-- / Policy Contents -->
+  </div>
+</main>
+<!-- / Notebook Paper -->
+
+{% endblock %}

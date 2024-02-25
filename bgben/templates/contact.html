@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper contact">
+  <h1>{{_('联系BGben')}}</h1>
+  <h2>{{ _("咨询·建议·合作·++") }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+<div class="edit-form-container contact-form">
+  <form class="form-inputs" action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <legend class="text-color-orange" style="width:100%; text-align: center; font-size: 1.5rem;">
+      {{ _('联系表格') }}
+    </legend>
+
+    <!-- Name -->
+    <div class="form-item">
+      <label class="form-title">
+        <img src="static/images/feather_pen1.png" alt="">
+        <span>{{ form.name.label }}</span>
+      </label>
+      <div class="form-input">
+        {% if form.name.errors %}
+        {{form.name(class="text-input is-invalid")}}
+        {% for error in form.name.errors %}
+        <small><span class="error-message">{{ error }}</span></small>
+        {% endfor %}
+        {% else %}
+        {{form.name(class="text-input")}}
+        {% endif %}
+      </div>
+    </div>
+    <!-- Email -->
+    <div class="form-item">
+      <label class="form-title">
+        <img src="static/images/feather_pen1.png" alt="">
+        <span>{{ form.email.label }}</span>
+      </label>
+      <div class="form-input">
+        {% if form.email.errors %}
+        {{form.email(class="text-input is-invalid")}}
+        {% for error in form.email.errors %}
+        <small><span class="error-message">{{ error }}</span></small>
+        {% endfor %}
+        {% else %}
+        {{form.email(class="text-input")}}
+        {% endif %}
+      </div>
+    </div>
+    <!-- Category -->
+    <div class="form-item">
+      <label class="form-title">
+        <img src="static/images/feather_pen1.png" alt="">
+        <span>{{ form.category.label }}</span>
+      </label>
+      <div class="form-input">
+        {% if form.category.errors %}
+        {{form.category(class="text-input is-invalid")}}
+        {% for error in form.category.errors %}
+        <small><span class="error-message">{{ error }}</span></small>
+        {% endfor %}
+        {% else %}
+        {{form.category(class="text-input select-input")}}
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="form-item">
+      <label class="form-title">
+        <img src="static/images/feather_pen1.png" alt="">
+        <span>{{ form.content.label }}</span>
+      </label>
+      <div class="form-input">
+        {% if form.content.errors %}
+        {{form.content(class="text-input is-invalid")}}
+        {% for error in form.content.errors %}
+        <small><span class="error-message">{{ error }}</span></small>
+        {% endfor %}
+        {% else %}
+        {{form.content(class="text-input multi-line")}}
+        {% endif %}
+      </div>
+
+      <div class="form-item button-div login-btn" style="margin-bottom: 10px !important">
+        {{ form.submit_field(class="submit-btn") }}
+      </div>
+    </div>
+  </form>
+
+</div>
+{% endblock %}

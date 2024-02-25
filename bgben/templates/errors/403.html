@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="error-block">
+  <img class="error-img" src="{{url_for('static', filename='images/403.png')}}" alt="">
+  <h1 class="text-color-darkgrey">{{_('访问被婉拒了。。。')}}</h1>
+  <a class="return-btn" href="{{ url_for('main.home') }}">
+    {{ _('返 回') }}
+  </a>
+</div>
+
+{% endblock content %}

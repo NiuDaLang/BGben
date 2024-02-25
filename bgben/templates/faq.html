@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper">
+  <h1>BGben</h1>
+  <h2>{{ _('常见问题') }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<main class="faq-wrapper">
+  <!-- Q2 -->
+  <div class="faq">
+    <div class="question">
+      <span class="qa">Q</span>
+      <div class="q text-color-darkgrey">
+        {{ _('撰写投稿文章的具体方法是？') }}
+        <br>
+        {{ _('可以上传多少图像？') }}
+      </div>
+    </div>
+    <div class="answer">
+      <span class="a text-color-darkgrey">
+        {{ _('请点击「投稿」并按照下述方式进行撰写。') }}
+        <br><br>
+        {{
+        _('可上传的主题图片是1张，请用jpeg/jpg/png格式的文件。文中也可上传图片，虽然没有图片数量上限，但含图片信息的总文章文字数量有限。文中插入图片也可使用链接外部网络资源的方式，具体请看gif演示（若是使用其他网页资源，烦请尽量注明信息来源）👇')
+        }}
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a1.gif') }}" alt="">
+      </span>
+      <span class="qa">A</span>
+    </div>
+  </div>
+  <!-- Q2 -->
+  <div class="faq">
+    <div class="question">
+      <span class="qa">Q</span>
+      <div class="q text-color-darkgrey">
+        {{ _('BGben博客的设置目的是什么？') }}
+        <br>
+        {{ _('这些内容都属实吗？') }}
+      </div>
+    </div>
+    <div class="answer">
+      <span class="a text-color-darkgrey">
+        {{ _('在这么一个充满不确定性的时代中，“权力”当局正在试图垄断“真理判定者”之角色。遵法的言论也屡屡被当局以“抵制传谣”、“维护公共安全”等理由进行各种审查及压制。') }}
+        <br><br>
+        {{ _('科学的进步一直以来就是不断地质疑与推翻而演变过来。每一个人类个体都必须拥有探索真相的权利，并且拥有一个发声的平台。') }}
+        <br><br>
+        {{ _('BGben的宗旨很简单，如果您渴望这样的言论自由的，它就会成为您的匿名网络笔记本，把您看到的，知道的，想到的，统统都记录进去，并与更多的灵魂进行分享。') }}
+        <br><br>
+        {{ _('每一位BGben笔记者/用户所记录的内容都是TA认为的事实。而每个人的「真相」都互相有着千丝万缕的联系。如果发言的前提是“绝对属实”，那么世界上就不可能再有新的声音了。') }}
+        <br><br>
+        {{ _('请不要相信任何人，也不要停止质疑，而是不断挖掘，继续探索，永远推敲下去吧！') }}
+      </span>
+      <span class="qa">A</span>
+    </div>
+  </div>
+  <!-- Q3 -->
+  <div class="faq">
+    <div class="question">
+      <span class="qa">Q</span>
+      <div class="q text-color-darkgrey">
+        {{ _('我想在不删除已发布文章的前提下修改内容，不知道该怎么做？') }}
+      </div>
+    </div>
+    <div class="answer">
+      <span class="a text-color-darkgrey">
+        {{ _('请点击您的文章进入文章页面之后，点击主题右边的第一个图案按钮，如下👇') }}
+        <br>
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a3a.png') }}" alt="">
+        {{ _('🖱️点击后转移至下面页面👇请直接修改内容并按「更新」上传') }}
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a3b.png') }}" alt="">
+      </span>
+      <span class="qa">A</span>
+    </div>
+  </div>
+  <!-- Q4 -->
+  <div class="faq">
+    <div class="question">
+      <span class="qa">Q</span>
+      <div class="q text-color-darkgrey">
+        {{ _('注册后怎么上传喜欢的头像图像？') }}
+      </div>
+    </div>
+    <div class="answer">
+      <span class="a text-color-darkgrey">
+        {{ _('请点击导航栏中的「账户」按钮，在编辑表格中上传。') }}
+        <br>
+        {{ _('请使用jpeg/jpg/png格式。👇') }}
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a4.png') }}" alt="">
+      </span>
+      <span class="qa">A</span>
+    </div>
+  </div>
+  <!-- Q5 -->
+  <div class="faq">
+    <div class="question">
+      <span class="qa">Q</span>
+      <div class="q text-color-darkgrey">
+        {{ _('我想设置自己专用的VIP定制页面或独立网站，有没有相应的排版或制作服务？') }}
+      </div>
+    </div>
+    <div class="answer">
+      <span class="a text-color-darkgrey">
+        {{ _('可以的，本网站管理人提供有偿网站制作服务。请点击网页页脚处的「联系管理人」👇') }}
+        <br>
+      </span>
+      <span class="qa">A</span>
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

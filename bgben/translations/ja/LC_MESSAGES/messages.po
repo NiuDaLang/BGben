@@ -1,0 +1,2112 @@
+# Japanese translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-02-24 17:15+1100\n"
+"PO-Revision-Date: 2024-02-24 17:22+1100\n"
+"Last-Translator: \n"
+"Language-Team: ja <LL@li.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.14.0\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: bgben/__init__.py:30
+msgid "请先进行登陆，再阅览您所要求的网页！"
+msgstr "ログインしてから閲覧可能となります！"
+
+#: bgben/main/forms.py:12
+msgid " ✏️ 搜索"
+msgstr "🔍検索"
+
+#: bgben/main/forms.py:23
+msgid "Message"
+msgstr "メッセージ"
+
+#: bgben/main/forms.py:23
+msgid "140字以内"
+msgstr "140文字以内"
+
+#: bgben/main/forms.py:24 bgben/main/forms.py:37
+msgid "发 送"
+msgstr "送 信"
+
+#: bgben/main/forms.py:27
+msgid "请从以下选择"
+msgstr "リストより選んで下さい"
+
+#: bgben/main/forms.py:27
+msgid "咨询"
+msgstr "ご質問"
+
+#: bgben/main/forms.py:27
+msgid "网页·网站制作"
+msgstr "ウェブ制作関連"
+
+#: bgben/main/forms.py:27
+msgid "建议"
+msgstr "ご意見"
+
+#: bgben/main/forms.py:27
+msgid "合作"
+msgstr "業務提携"
+
+#: bgben/main/forms.py:27
+msgid "其他"
+msgstr "その他"
+
+#: bgben/main/forms.py:30
+msgid "名字"
+msgstr "お名前"
+
+#: bgben/main/forms.py:30
+msgid "请输入名字"
+msgstr "お名前をご記入ください"
+
+#: bgben/main/forms.py:30
+msgid "姓名（或昵称）"
+msgstr "お名前またはハンドルネーム"
+
+#: bgben/main/forms.py:31 bgben/main/forms.py:45 bgben/users/forms.py:19 bgben/users/forms.py:42 bgben/users/forms.py:52 bgben/users/forms.py:87
+msgid "邮箱"
+msgstr "メールアドレス"
+
+#: bgben/main/forms.py:32 bgben/main/forms.py:45
+msgid "请输入邮箱地址"
+msgstr "メールアドレスをご記入ください"
+
+#: bgben/main/forms.py:32 bgben/main/forms.py:46 bgben/users/forms.py:20 bgben/users/forms.py:43 bgben/users/forms.py:53 bgben/users/forms.py:88
+msgid "邮箱地址格式不正确，请确认再输入一遍"
+msgstr "メールアドレスのフォーマットをご確認ください"
+
+#: bgben/main/forms.py:34 bgben/templates/account.html:60
+msgid "关于"
+msgstr ""
+
+#: bgben/main/forms.py:36 bgben/posts/forms.py:13
+msgid "内容"
+msgstr "内容"
+
+#: bgben/main/forms.py:36
+msgid "请输入联系内容"
+msgstr "お問い合わせ内容をご記入ください"
+
+#: bgben/main/forms.py:36
+msgid "500字以内"
+msgstr "500文字以内"
+
+#: bgben/main/forms.py:41 bgben/templates/messages.html:63 bgben/templates/messages.html:140 bgben/templates/post.html:24 bgben/templates/post.html:219
+#: bgben/templates/post.html:279
+msgid "删除"
+msgstr "削除"
+
+#: bgben/main/forms.py:46
+msgid "请输入邮箱地址！"
+msgstr "メールアドレスをご記入ください！"
+
+#: bgben/main/forms.py:46
+msgid "邮箱地址字数最少6个字，最多120字。"
+msgstr "メールアドレスは6〜120文字以内となります。"
+
+#: bgben/main/forms.py:47 bgben/templates/home.html:2089
+msgid "订 阅"
+msgstr "登 録"
+
+#: bgben/main/forms.py:52 bgben/users/forms.py:39 bgben/users/forms.py:83
+msgid "此邮箱已被使用，请选用其他邮箱！"
+msgstr "このアドレスはすでに登録されています！"
+
+#: bgben/main/routes.py:108 bgben/templates/base.html:45
+msgid "主页"
+msgstr "ホーム"
+
+#: bgben/main/routes.py:164 bgben/main/routes.py:173
+msgid "搜索结果"
+msgstr "検索結果"
+
+#: bgben/main/routes.py:212
+#, python-format
+msgid "%(user)s的关注名单"
+msgstr "%(user)sのフォロー先一覧"
+
+#: bgben/main/routes.py:223
+#, python-format
+msgid "%(user)s的粉丝名单"
+msgstr "%(user)sのフォロワー一覧"
+
+#: bgben/main/routes.py:240
+msgid "您的信息已发出！"
+msgstr "メッセージが送信されました！"
+
+#: bgben/main/routes.py:243
+msgid "发信息"
+msgstr "メッセージを送る"
+
+#: bgben/main/routes.py:274
+msgid "私信邮箱"
+msgstr "メッセージボックス"
+
+#: bgben/main/routes.py:294 bgben/templates/about.html:7 bgben/templates/base.html:223 bgben/templates/base.html:225
+msgid "关于BGben"
+msgstr "BGbenについて"
+
+#: bgben/main/routes.py:299 bgben/templates/base.html:229 bgben/templates/base.html:231
+msgid "利用规则"
+msgstr "利用規約"
+
+#: bgben/main/routes.py:304 bgben/templates/base.html:235 bgben/templates/base.html:237 bgben/templates/home.html:29 bgben/templates/register.html:113
+#: bgben/templates/send_message.html:35
+msgid "隐私政策"
+msgstr "プライバシーポリシー"
+
+#: bgben/main/routes.py:321
+msgid "谢谢您发出的信号，我们将尽快回复！"
+msgstr "お問い合わせありがとうございます！"
+
+#: bgben/main/routes.py:322
+msgid "BGben联系内容确认"
+msgstr "BGbenへのお問い合わせ内容"
+
+#: bgben/main/routes.py:324 bgben/templates/base.html:247 bgben/templates/base.html:249 bgben/templates/home.html:2073 bgben/templates/home.html:2100
+msgid "联系管理人"
+msgstr "お問い合わせ"
+
+#: bgben/main/routes.py:329 bgben/templates/base.html:241 bgben/templates/base.html:243 bgben/templates/faq.html:6
+msgid "常见问题"
+msgstr "よくあるご質問"
+
+#: bgben/main/routes.py:380 bgben/users/routes.py:109 bgben/users/routes.py:239
+msgid "此密码链接无效或已失效，请再次尝试！"
+msgstr "こちらのURLは無効または有効期限が過ぎました。お手数ですが、再度お申し込み下さい。"
+
+#: bgben/main/routes.py:385
+#, python-format
+msgid "恭喜！您成功订阅啦📧📧📧 📮：%(email)s"
+msgstr "メール配信にご登録いただきありがとうございます！📧📧📧 📮：%(email)s"
+
+#: bgben/main/routes.py:393
+msgid "有一项导出任务正在进行中。。。"
+msgstr "先行のダウンロードタスクを実行中です・・・"
+
+#: bgben/main/routes.py:395
+msgid "数据输出完成度..."
+msgstr "ダウンロード中…"
+
+#: bgben/main/utils.py:23
+#, python-format
+msgid "[BGben]用户%(sender)s 刚刚向您发送了一条信息！"
+msgstr "[BGben]ユーザーの户%(sender)s さんよりメッセージが届いています！"
+
+#: bgben/main/utils.py:43
+msgid "[BGben] 收到了您发出的信号✉️，会尽快回复的🫡"
+msgstr "[BGben] へのお問い合わせを承りました✉️早急に対応いたします🫡"
+
+#: bgben/main/utils.py:66
+msgid "欢迎申请[BGben]通讯，请在30分钟之内打开本邮件中的链接并完成确认✅"
+msgstr "[BGben]メールマガジンへお申し込みいただきありがとうございます。30分以内に下の確認リンクより本登録を完了させて下さい✅"
+
+#: bgben/posts/forms.py:10
+msgid "标题"
+msgstr "タイトル"
+
+#: bgben/posts/forms.py:10
+msgid "请输入标题"
+msgstr "タイトルを入力して下さい"
+
+#: bgben/posts/forms.py:10
+msgid "字数规定：1～30字"
+msgstr "文字数：1〜30文字"
+
+#: bgben/posts/forms.py:10
+msgid "30字以内"
+msgstr "30文字以内"
+
+#: bgben/posts/forms.py:11
+msgid "副标题"
+msgstr "サブタイトル"
+
+#: bgben/posts/forms.py:11
+msgid "请输入副标题"
+msgstr "サブタイトルをご記入ください"
+
+#: bgben/posts/forms.py:11
+msgid "字数规定：1～100字"
+msgstr "文字数：1〜100文字"
+
+#: bgben/posts/forms.py:11
+msgid "100字以内"
+msgstr "100文字以内"
+
+#: bgben/posts/forms.py:12
+msgid "主题图像"
+msgstr "メイン画像"
+
+#: bgben/posts/forms.py:12
+msgid "可上传的图像文件格式：jpg、jpeg、png"
+msgstr "画像ファイル形式：jpg、jpeg、png"
+
+#: bgben/posts/forms.py:13
+msgid "请输入内容"
+msgstr "内容をご記入ください"
+
+#: bgben/posts/forms.py:13
+msgid "字数规定：1～3000字"
+msgstr "文字数：1〜3000文字"
+
+#: bgben/posts/forms.py:13
+msgid "3000字以内"
+msgstr "3000文字以内"
+
+#: bgben/posts/forms.py:15
+msgid "投 稿"
+msgstr "投 稿"
+
+#: bgben/posts/forms.py:19
+msgid "评论"
+msgstr "コメント"
+
+#: bgben/posts/forms.py:19
+msgid "请输入评论内容"
+msgstr "コメント内容をご記入ください"
+
+#: bgben/posts/forms.py:20
+msgid "字数规定：2～200字"
+msgstr "文字数：2〜200文字"
+
+#: bgben/posts/forms.py:20
+msgid "200字以内"
+msgstr "200文字以内"
+
+#: bgben/posts/forms.py:21
+msgid "提 交"
+msgstr "送 信"
+
+#: bgben/posts/routes.py:44
+msgid "投稿发布成功！"
+msgstr "記事が投稿されました！"
+
+#: bgben/posts/routes.py:70 bgben/posts/routes.py:71 bgben/templates/base.html:122 bgben/templates/base.html:124 bgben/templates/base.html:127
+msgid "投稿"
+msgstr "投稿"
+
+#: bgben/posts/routes.py:71
+msgid "新稿子"
+msgstr "新しい記事"
+
+#: bgben/posts/routes.py:98 bgben/templates/base.html:114 bgben/templates/base.html:116
+msgid "广场"
+msgstr "広場"
+
+#: bgben/posts/routes.py:155
+msgid "评论发布成功！"
+msgstr "コメントが送信されました！"
+
+#: bgben/posts/routes.py:212
+#, python-format
+msgid "与%(name)s有关的笔记. "
+msgstr "%(name)sに関する記事"
+
+#: bgben/posts/routes.py:231
+#, python-format
+msgid "%(username)s的月度笔记: %(month)s"
+msgstr "%(username)sの月度記事: %(month)s"
+
+#: bgben/posts/routes.py:241
+msgid "这篇笔记不存在！"
+msgstr "この記事は存在しません！"
+
+#: bgben/posts/routes.py:270
+msgid "这条评论不存在！"
+msgstr "このコメントは存在しません！"
+
+#: bgben/posts/routes.py:347
+msgid "您的笔记已被更新!"
+msgstr "記事が更新されました！"
+
+#: bgben/posts/routes.py:371 bgben/templates/post.html:209 bgben/templates/post.html:269 bgben/users/forms.py:71
+msgid "更 新"
+msgstr "更新する"
+
+#: bgben/posts/routes.py:372
+msgid "编辑笔记"
+msgstr "記事の編集"
+
+#: bgben/posts/routes.py:374 bgben/templates/base.html:125 bgben/templates/post.html:22
+msgid "编辑"
+msgstr "編集"
+
+#: bgben/posts/routes.py:400
+msgid "您的笔记已被删除!"
+msgstr "この記事は削除されました！"
+
+#: bgben/templates/about.html:10
+msgid "兔洞探索手记"
+msgstr "ウサギの巣穴探検記"
+
+#: bgben/templates/about.html:133
+msgid "BGben欢迎您的飘来。"
+msgstr "BGbenへようこそ！"
+
+#: bgben/templates/about.html:134
+msgid "这是一个网络海洋的随笔驿站。"
+msgstr "ここはネットに漂流しているメモ帳のようなサイト"
+
+#: bgben/templates/about.html:136
+msgid "主旨在于与有缘的灵魂一起探讨天地万物的真实面貌"
+msgstr "主に、ご縁のある魂たちと、天地万物の真の姿を探求するのが目的です。"
+
+#: bgben/templates/about.html:138
+msgid "以及我们每一个存在的过去、现在、未来…即，永恒。"
+msgstr "そして、一人ひとりの存在の過去、現在、未来…すなわち永遠を…永遠に尋ねる。"
+
+#: bgben/templates/about.html:140
+msgid "目前的世界 — 集体意识，仍处于昏昏欲睡的状态中。"
+msgstr "現在の地球にいる我々の集合意識は、依然として無気力な状態にあります。"
+
+#: bgben/templates/about.html:141
+msgid ""
+"直到每一双眼睛睁开之前，我们都无法将\n"
+"        过去亿万年一直都捆在盖亚母亲身上的这把枷锁给她卸下。"
+msgstr "すべての目覚めが完了するまで、私たちは何億万年もの間母なるガイアを縛り付けてきた鎖を取り外すことはできません。"
+
+#: bgben/templates/about.html:144
+msgid "真相是，我们拥有无限的能力与能量，即永恒的生命。"
+msgstr "真実とは…私たちが無限のエネルギー、乃ち永遠の生命体であるということ。"
+
+#: bgben/templates/about.html:145
+msgid "如果您愿意睁开您的智慧眼，这个答案也一定将成为您的答案。"
+msgstr "あなたにも心の目を開く用意があるのなら、自然とこの答えに辿り着くことが出来るでしょう。"
+
+#: bgben/templates/about.html:150
+msgid "档案"
+msgstr "基本情報"
+
+#: bgben/templates/about.html:154
+msgid "主旨："
+msgstr "サイト主旨："
+
+#: bgben/templates/about.html:155
+msgid "把第三眼打开，多看看！"
+msgstr "サードアイを開けて、よ〜く見てみよう！"
+
+#: bgben/templates/about.html:158
+msgid "BGben笔记内容："
+msgstr "BGben記事の役割:"
+
+#: bgben/templates/about.html:159
+msgid "深度思考的材料"
+msgstr "深く考えるための材料"
+
+#: bgben/templates/about.html:162
+msgid "主要领域："
+msgstr "主な領域："
+
+#: bgben/templates/about.html:164
+msgid "人类起源、意识&高我的探索、多维度现实、形而上学、"
+msgstr "人間の起源、意識とハイヤーセルフの探求、多次元現実、形而上学、"
+
+#: bgben/templates/about.html:165
+msgid "获取能量与健康、宇宙大家庭、基因密码、灵修、"
+msgstr "エネルギーと健康、宇宙大家族、遺伝コード、スピリチュアルの実践、"
+
+#: bgben/templates/about.html:166
+msgid "自然智能、古代智慧、古迹探索、华夏古典、平行宇宙、"
+msgstr "自然知能、古代文明、史跡の探索、中国の古典、平行宇宙、"
+
+#: bgben/templates/about.html:167
+msgid "神秘学揭秘、自由能源、地下世界、科技展望......"
+msgstr "神秘学、フリーエネルギー、地底文明、科学技術的展望…"
+
+#: bgben/templates/about.html:171
+msgid "运营者揭秘兔简介："
+msgstr "運営者 - 掲秘兎："
+
+#: bgben/templates/about.html:173
+msgid ""
+"自2020年刚刚开幕之际，揭秘兔掉入了一个看不见尽头的无底洞。起初的探索过程充满了恐惧，但是随 着与未知真相的邂逅，恐怖已被希望替代。同时，动物 的本能也让"
+"这只懒惰的兔子无法再继续沉睡。"
+msgstr ""
+"2020年年頭を皮切りに底なし沼のラビットホールに転落。初期の探索は恐怖で溢れていたが、未知の真実との遭遇でいつのまにか恐怖感が希望とすり替えられているこ"
+"とに気づく。魂の底で眠っていた動物的本能が目覚めてしまい、さすがの怠け者ウサギもこれ以上は穴の中に篭ってはいられなくなったのである。"
+
+#: bgben/templates/about.html:174
+msgid "揭秘兔东凑西凑找到了许多学校、电视不会告诉您的秘密，偷偷将它们写入了这本BGben中。"
+msgstr "掲秘兎は、学校やテレビでは教えてくれないたくさんの秘密を調べて見つけ、このBGbenにこっそり書き溜めることにしたのです。"
+
+#: bgben/templates/about.html:178
+msgid "参与BGben："
+msgstr "BGbenに参画する:"
+
+#: bgben/templates/about.html:180
+msgid "BGben欢迎同样在兔洞中忙碌的兔子们来一起记录大家所知道的秘密。参加条件："
+msgstr "BGbenは、同じような体験を持つウサギさんたちがここで一緒に秘密を書き溜めることを目的としたサイトです。参加条件："
+
+#: bgben/templates/about.html:182
+msgid "答对您最感兴趣的话题领域的提问。一旦成为BGben笔记者，基本功能可作为您的个人博客一律免费使用。"
+msgstr ""
+"興味のあるトピック分野に関する質問に答え、10問中８問以上正解すればOK。 BGbenユーザーとして登録すると、基本のブログ機能を無料でご利用いただけます。"
+
+#: bgben/templates/about.html:184
+msgid "同意本网站的适用规则以及隐私政策。敬请注册之前仔细阅读内容，如果您对任何条框不同意，请不要使用本网站。"
+msgstr ""
+"このウェブサイトに適用される利用規則とプライバシーポリシーに同意していただきます。ご登録前に内容をよくお読みいただき、ご同意いただけない場合はご利用を"
+"お控えください。"
+
+#: bgben/templates/account.html:7
+msgid "用户简介编辑"
+msgstr "プロフィールの編集"
+
+#: bgben/templates/account.html:8
+msgid "您眼中的您，是怎样的您？"
+msgstr "あなたはどんなキャラの魂をお持ち？"
+
+#: bgben/templates/account.html:26
+msgid "换上您自己的图像吧！"
+msgstr "ご自分の画像に変更しましょう！"
+
+#: bgben/templates/account.html:40 bgben/templates/create_post.html:26 bgben/templates/user_posts.html:32
+msgid "粉丝"
+msgstr "フォロワー"
+
+#: bgben/templates/account.html:43 bgben/templates/create_post.html:28 bgben/templates/user_posts.html:34
+msgid "关注"
+msgstr "フォロー中"
+
+#: bgben/templates/account.html:47 bgben/templates/create_post.html:32 bgben/templates/followers.html:56 bgben/templates/following.html:56
+#: bgben/templates/search.html:118 bgben/templates/user_posts.html:42
+msgid "加入"
+msgstr "に登録"
+
+#: bgben/templates/account.html:51 bgben/templates/create_post.html:36 bgben/templates/user_posts.html:46
+msgid "最新上线："
+msgstr "最終ログイン："
+
+#: bgben/templates/account.html:60
+msgid "的故事...随便写点什么吧！"
+msgstr "についてのストーリー…何か書き込んでみませんか？"
+
+#: bgben/templates/account.html:67
+msgid "下载笔记文本档案(json文件)"
+msgstr "記事本文ダウンロード(json)"
+
+#: bgben/templates/account.html:71
+msgid "主题+副主题+内容(含html标签)，不含图像"
+msgstr "タイトル+副タイトル+html本文 (图像含まず)"
+
+#: bgben/templates/account.html:127
+msgid "格式："
+msgstr "ファイル形式:"
+
+#: bgben/templates/account.html:127
+msgid "请尽量将图像比例调整为1:1"
+msgstr "おすすめ縦横比率: 1:1"
+
+#: bgben/templates/account.html:146 bgben/users/forms.py:55
+msgid "星座"
+msgstr "星座"
+
+#: bgben/templates/account.html:151 bgben/users/forms.py:56
+msgid "白羊座"
+msgstr "牡羊座"
+
+#: bgben/templates/account.html:154 bgben/users/forms.py:57
+msgid "金牛座"
+msgstr "牡牛座"
+
+#: bgben/templates/account.html:157 bgben/users/forms.py:58
+msgid "双子座"
+msgstr "双子座"
+
+#: bgben/templates/account.html:160 bgben/users/forms.py:59
+msgid "巨蟹座"
+msgstr "蟹座"
+
+#: bgben/templates/account.html:163 bgben/users/forms.py:60
+msgid "狮子座"
+msgstr "獅子座"
+
+#: bgben/templates/account.html:166 bgben/users/forms.py:61
+msgid "处女座"
+msgstr "乙女座"
+
+#: bgben/templates/account.html:169 bgben/users/forms.py:62
+msgid "天秤座"
+msgstr "天秤座"
+
+#: bgben/templates/account.html:172 bgben/users/forms.py:63
+msgid "天蝎座"
+msgstr "蠍座"
+
+#: bgben/templates/account.html:175 bgben/users/forms.py:64
+msgid "射手座"
+msgstr "射手座"
+
+#: bgben/templates/account.html:178 bgben/users/forms.py:65
+msgid "摩羯座"
+msgstr "山羊座"
+
+#: bgben/templates/account.html:181 bgben/users/forms.py:66
+msgid "水瓶座"
+msgstr "水瓶座"
+
+#: bgben/templates/account.html:184 bgben/users/forms.py:67
+msgid "双鱼座"
+msgstr "魚座"
+
+#: bgben/templates/account.html:187 bgben/users/forms.py:68
+msgid "未知"
+msgstr "不明"
+
+#: bgben/templates/base.html:67 bgben/templates/base.html:74
+msgid "Hello"
+msgstr "Hello"
+
+#: bgben/templates/base.html:132 bgben/templates/base.html:134
+msgid "账户"
+msgstr "アカウント"
+
+#: bgben/templates/base.html:140
+msgid "管理"
+msgstr "管理"
+
+#: bgben/templates/base.html:145
+msgid "退出"
+msgstr "ログアウト"
+
+#: bgben/templates/base.html:151 bgben/templates/base.html:154 bgben/templates/login.html:82 bgben/templates/post.html:173 bgben/templates/post.html:294
+#: bgben/templates/post.html:328 bgben/users/routes.py:100
+msgid "注册"
+msgstr "ユーザー登録"
+
+#: bgben/templates/base.html:159 bgben/templates/base.html:161 bgben/templates/post.html:326 bgben/users/routes.py:139
+msgid "登陆"
+msgstr "ログイン"
+
+#: bgben/templates/base.html:168
+msgid "下拉菜单"
+msgstr "ドロップダウンメニュー"
+
+#: bgben/templates/base.html:216
+msgid "X社交账号"
+msgstr "Xアカウント"
+
+#: bgben/templates/base.html:218
+msgid "电报社交账号"
+msgstr "Telegram Account"
+
+#: bgben/templates/contact.html:5
+msgid "联系BGben"
+msgstr "BGbenへお問い合わせ"
+
+#: bgben/templates/contact.html:6
+msgid "咨询·建议·合作·++"
+msgstr "ご質問・ご意見・業務提携・プラスα"
+
+#: bgben/templates/contact.html:25
+msgid "联系表格"
+msgstr "お問い合わせフォーム"
+
+#: bgben/templates/create_post.html:9
+msgid "标签最多可以设置6个！"
+msgstr "タグは6個まで設定可能！"
+
+#: bgben/templates/create_post.html:10 bgben/templates/register-test.html:33
+msgid "关闭"
+msgstr "閉じる"
+
+#: bgben/templates/create_post.html:45 bgben/templates/user_posts.html:55
+msgid "非常神秘，还没有透露TA的故事呢！"
+msgstr "はとてもミステリアス！"
+
+#: bgben/templates/create_post.html:48 bgben/templates/followers.html:68 bgben/templates/following.html:68 bgben/templates/search.html:129
+#: bgben/templates/user_posts.html:60
+msgid "编辑简介"
+msgstr "プロフィールを編集する"
+
+#: bgben/templates/create_post.html:1289 bgben/templates/post.html:52 bgben/templates/user_posts.html:1029
+msgid "我的最新投稿"
+msgstr "自分の最新記事"
+
+#: bgben/templates/create_post.html:1306 bgben/templates/post.html:74 bgben/templates/user_posts.html:1050
+msgid "我的过去投稿"
+msgstr "自分の過去記事"
+
+#: bgben/templates/create_post.html:1313 bgben/templates/post.html:84 bgben/templates/user_posts.html:1060
+msgid "年"
+msgstr "年"
+
+#: bgben/templates/create_post.html:1313 bgben/templates/post.html:84 bgben/templates/user_posts.html:1060
+msgid "月"
+msgstr "月"
+
+#: bgben/templates/create_post.html:1313 bgben/templates/post.html:84 bgben/templates/posts.html:62 bgben/templates/user_posts.html:1061
+msgid "篇"
+msgstr "本"
+
+#: bgben/templates/create_post.html:1323 bgben/templates/post.html:95 bgben/templates/user_posts.html:1072
+msgid "我的最新论点"
+msgstr "自分の最新タグ"
+
+#: bgben/templates/create_post.html:1427
+msgid "标签(最多6个)"
+msgstr "タグ(6個まで)"
+
+#: bgben/templates/create_post.html:1428
+msgid "添加"
+msgstr "追加"
+
+#: bgben/templates/create_post.html:1559 bgben/templates/messages.html:96 bgben/templates/messages.html:170 bgben/templates/monthly_posts.html:47
+#: bgben/templates/search.html:63 bgben/templates/search.html:161 bgben/templates/tags.html:62 bgben/templates/user_posts.html:1124
+msgid "前一页"
+msgstr "前へ"
+
+#: bgben/templates/create_post.html:1571 bgben/templates/messages.html:108 bgben/templates/messages.html:182 bgben/templates/monthly_posts.html:59
+#: bgben/templates/search.html:77 bgben/templates/search.html:175 bgben/templates/tags.html:74 bgben/templates/user_posts.html:1136
+msgid "下一页"
+msgstr "次へ"
+
+#: bgben/templates/faq.html:16
+msgid "撰写投稿文章的具体方法是？"
+msgstr "記事の記入方法が分からない！"
+
+#: bgben/templates/faq.html:18
+msgid "可以上传多少图像？"
+msgstr "何枚まで画像ファイルをアップロードできるの？"
+
+#: bgben/templates/faq.html:23
+msgid "请点击「投稿」并按照下述方式进行撰写。"
+msgstr "「投稿」ページにアクセスして下記の方法に沿って記事を作成して下さい。"
+
+#: bgben/templates/faq.html:26
+msgid ""
+"可上传的主题图片是1张，请用jpeg/jpg/png格式的文件。文中也可上传图片，虽然没有图片数量上限，但含图片信息的总文章文字数量有限。文中插入图片也可使用链接"
+"外部网络资源的方式，具体请看gif演示（若是使用其他网页资源，烦请尽量注明信息来源）👇"
+msgstr ""
+"メイン画像(サムネイル)は1枚のみ(jpeg/jpg/png)、本文内の画像枚数(jpeg/jpg/png/gif)は制限なしですが、画像データは文字数制限にカウントされます。外部URLに"
+"リンクすることで画像を挿入することもできます。詳細については、下記gifデモをご参照ください (外部URLの場合、出来る限り参照先をご記入ください) 👇"
+
+#: bgben/templates/faq.html:38
+msgid "BGben博客的设置目的是什么？"
+msgstr "BGbenのブログ機能は何の為にあるの？"
+
+#: bgben/templates/faq.html:40
+msgid "这些内容都属实吗？"
+msgstr "記事の内容は本当なの？"
+
+#: bgben/templates/faq.html:45
+msgid ""
+"在这么一个充满不确定性的时代中，“权力”当局正在试图垄断“真理判定者”之角色。遵法的言论也屡屡被当局以“抵制传谣”、“维护公共安全”等理由进行各种审查及压制。"
+msgstr ""
+"今ほど不確実性に満ちた時代はありません。権力を掌握する者たちは「ファクトチェッカー」の役割を独占しようとしています。法を遵守する言論でさえも、「風評被"
+"害の恐れ」、「ヘイトスピーチ」や「公共の安全の維持」などのポリコレを理由に当局によって繰り返し検閲や弾圧を受けています。"
+
+#: bgben/templates/faq.html:47
+msgid "科学的进步一直以来就是不断地质疑与推翻而演变过来。每一个人类个体都必须拥有探索真相的权利，并且拥有一个发声的平台。"
+msgstr ""
+"科学は、常に既存の常識を根底より覆すことで今日まで進化を遂げることができました。すべての人には、真実を追求し、善意に基づく発言の権利と場所が与えられる"
+"べきです。"
+
+#: bgben/templates/faq.html:49
+msgid ""
+"BGben的宗旨很简单，如果您渴望这样的言论自由的，它就会成为您的匿名网络笔记本，把您看到的，知道的，想到的，统统都记录进去，并与更多的灵魂进行分享。"
+msgstr ""
+"BGbenのモットーは、言論の自由を求めるあなたのオンラインメモ帳として、あなたの頭の中で起きていることを記録し、より多くの魂たちと共有する場所として存在"
+"するということです。"
+
+#: bgben/templates/faq.html:51
+msgid ""
+"每一位BGben笔记者/用户所记录的内容都是TA认为的事实。而每个人的「真相」都互相有着千丝万缕的联系。如果发言的前提是“绝对属实”，那么世界上就不可能再有新的"
+"声音了。"
+msgstr ""
+"各BGbenのユーザーが記したことは、彼または彼女が真実であると信じていることです。それぞれの「真実」はまた、それぞれが何かの形で密接に結びついているはず"
+"です。「絶対的事実」が言論を発することの必須条件ならば、世の中に新しい声が生まれてくることは決して不可能となるでしょう。"
+
+#: bgben/templates/faq.html:53
+msgid "请不要相信任何人，也不要停止质疑，而是不断挖掘，继续探索，永远推敲下去吧！"
+msgstr "誰の言うことも鵜呑みにせず、疑問を投げ続けて下さい。そして、とことん真実を求めて掘り下げ、ご自分なりの推敲を進行形として楽しんで下さい。"
+
+#: bgben/templates/faq.html:63
+msgid "我想在不删除已发布文章的前提下修改内容，不知道该怎么做？"
+msgstr "記事を削除せずに内容を編集するにはどうすれば良いのでしょう？"
+
+#: bgben/templates/faq.html:68
+msgid "请点击您的文章进入文章页面之后，点击主题右边的第一个图案按钮，如下👇"
+msgstr "ご自分の記事ページにはタイトル下方に編集ボタンがあります👇"
+
+#: bgben/templates/faq.html:71
+msgid "🖱️点击后转移至下面页面👇请直接修改内容并按「更新」上传"
+msgstr "クリックし、編集ページで操作を終えたら「更新」ボタンを押して完了させて下さい。"
+
+#: bgben/templates/faq.html:82
+msgid "注册后怎么上传喜欢的头像图像？"
+msgstr "ユーザー登録後、プロフィール画像を変えるには？"
+
+#: bgben/templates/faq.html:87
+msgid "请点击导航栏中的「账户」按钮，在编辑表格中上传。"
+msgstr "トップメニューの「アカウント」からプロフィール編集ページに入り、アップロードを行ってください。"
+
+#: bgben/templates/faq.html:89
+msgid "请使用jpeg/jpg/png格式。👇"
+msgstr "ファイル形式はjpeg/jpg/pngです。"
+
+#: bgben/templates/faq.html:100
+msgid "我想设置自己专用的VIP定制页面或独立网站，有没有相应的排版或制作服务？"
+msgstr "自分用のカスタムページまたはウェブサイトを作ってくれるサービスはありますか？"
+
+#: bgben/templates/faq.html:105
+msgid "可以的，本网站管理人提供有偿网站制作服务。请点击网页页脚处的「联系管理人」👇"
+msgstr "はい、本サイトでは管理人による有償サービスでウェブ制作業務を承っております。お問い合わせページ👇よりお気軽にご連絡ください。"
+
+#: bgben/templates/followers.html:7
+msgid "的粉丝"
+msgstr "のフォロワー"
+
+#: bgben/templates/followers.html:47 bgben/templates/following.html:47 bgben/templates/search.html:110 bgben/templates/user_posts.html:38
+msgid "TA正在关注您!"
+msgstr "あなたをフォロー中"
+
+#: bgben/templates/followers.html:88 bgben/templates/following.html:88 bgben/templates/search.html:149
+msgid "注册·登陆后<br>可关注这位用户！"
+msgstr "登録·ログインして<br>フォローする！"
+
+#: bgben/templates/followers.html:96
+msgid "还没有粉丝，快来坐沙发吧！"
+msgstr "さんにはフォロワーはまだいません。フォローしてあげましょう！"
+
+#: bgben/templates/following.html:7
+msgid " 正在关注"
+msgstr "さんがフォロー中のユーザー"
+
+#: bgben/templates/following.html:96
+msgid "还没有关注任何笔者，写一篇有趣的文章来吸引TA吧！"
+msgstr "さんは誰もフォローしていません！"
+
+#: bgben/templates/home.html:15
+msgid "不定期与您分享"
+msgstr "不定期に配信します"
+
+#: bgben/templates/home.html:15
+msgid "宇宙传来的风信✉️"
+msgstr "宇宙からの便り✉️"
+
+#: bgben/templates/home.html:16
+msgid "+BGben的随想"
+msgstr "+BGbenの呟き"
+
+#: bgben/templates/home.html:17
+msgid "哪怕言论自由遭迫害"
+msgstr "言論の自由が絶滅の危機に！"
+
+#: bgben/templates/home.html:17
+msgid "我们也不失联"
+msgstr "交信は持続します"
+
+#: bgben/templates/home.html:28
+msgid "订阅即表示您同意接收我们向您发出的电子邮件。若您不希望继续订阅，请使用邮件中的链接随时取消。欲了解更多信息，请查看我们的"
+msgstr ""
+"お申し込みすると、当サイトからの電子メールの受信に同意したものとみなされます。配信の中止をご希望の場合は、電子メール内のリンクでいつでもキャンセルでき"
+"ます。詳細については、こちらをご覧ください。"
+
+#: bgben/templates/home.html:29
+msgid "。"
+msgstr "。"
+
+#: bgben/templates/home.html:94
+msgid "灵魂的笔记本"
+msgstr "魂のメモ帳"
+
+#: bgben/templates/home.html:96
+msgid "欢迎一起追溯...一切存在的根源✨"
+msgstr "全ての存在の源を求めて✨"
+
+#: bgben/templates/home.html:2003 bgben/templates/posts.html:36
+msgid "最新投稿"
+msgstr "最新記事"
+
+#: bgben/templates/home.html:2023
+msgid "最热主题"
+msgstr "トレンド"
+
+#: bgben/templates/home.html:2040
+msgid "最鲜笔者"
+msgstr "ルーキーズ"
+
+#: bgben/templates/home.html:2061
+msgid "请我喝杯咖啡"
+msgstr "Buy me a coffee"
+
+#: bgben/templates/home.html:2064
+msgid "买杯☕️支持BGben运营"
+msgstr "BGbenに☕️を一杯奢る"
+
+#: bgben/templates/home.html:2082
+msgid "BGben通讯"
+msgstr "BGbenメルマガ"
+
+#: bgben/templates/home.html:2084
+msgid "不定期宇宙新闻"
+msgstr "不定期の宇宙ニュース"
+
+#: bgben/templates/home.html:2085
+msgid "中文ONLY"
+msgstr "中国語限定"
+
+#: bgben/templates/home.html:2086
+msgid "不需注册!"
+msgstr "登録不要！"
+
+#: bgben/templates/home.html:2206
+msgid "星际种子测试"
+msgstr "スターシードテスト"
+
+#: bgben/templates/home.html:2587
+msgid "您还尚未回答第"
+msgstr "まだ第"
+
+#: bgben/templates/home.html:2587
+msgid "道题，答案将在全部答题完毕后揭晓！"
+msgstr "問目が未回答です。テスト結果は全問解答後に発表！"
+
+#: bgben/templates/home.html:2591
+msgid "您的星际种子指数是..."
+msgstr "あなたのスターシード指数は…"
+
+#: bgben/templates/home.html:2593
+msgid "您的星际种子指数"
+msgstr "あなたのスターシード指数"
+
+#: bgben/templates/home.html:2616
+msgid "再测试一遍！"
+msgstr "もう一度トライ！"
+
+#: bgben/templates/home.html:2620
+msgid "如果您的灵魂也想分享秘密的话，就一起来记录BGben吧！"
+msgstr "あなたにもBGbenでシェアできる秘密はありませんか？"
+
+#: bgben/templates/home.html:2621
+msgid "注意事项：请遵守不伤害他人的原则，保护个人隐私，容纳不同观点，言论自由的同时遵守自然法。"
+msgstr "注意事項: 宇宙の自然法に則り、他人を尊重し、プライバシーを守った上での合法的な言論の自由を遵守してください。"
+
+#: bgben/templates/home.html:2623 bgben/templates/home.html:2626
+msgid "开始记录"
+msgstr "メモ<br>スタート"
+
+#: bgben/templates/login.html:6
+msgid "用户登陆"
+msgstr "ユーザーログイン"
+
+#: bgben/templates/login.html:7
+msgid "欢迎回来记录新的一章！"
+msgstr "おかえりなさい、新たな一章が楽しみです！"
+
+#: bgben/templates/login.html:66
+msgid "忘记密码了吗？"
+msgstr "パスワードをお忘れですか？"
+
+#: bgben/templates/login.html:72 bgben/users/forms.py:46
+msgid "记住我"
+msgstr "ログイン状態を保存"
+
+#: bgben/templates/login.html:81
+msgid "还不是BGben用户吗？来"
+msgstr "BGbenユーザー未登録ですか？ぜひ"
+
+#: bgben/templates/login.html:82
+msgid "吧！"
+msgstr "を！"
+
+#: bgben/templates/messages.html:7
+#, python-format
+msgid "%(username)s的私信邮箱📮"
+msgstr "%(username)sのメッセージボックス📮"
+
+#: bgben/templates/messages.html:27
+msgid "收件箱"
+msgstr "受信"
+
+#: bgben/templates/messages.html:29
+msgid "发件箱"
+msgstr "送信"
+
+#: bgben/templates/messages.html:58
+msgid "发送信息"
+msgstr "送信する"
+
+#: bgben/templates/messages.html:70 bgben/templates/messages.html:147
+msgid "您确定要删除这条信息吗？"
+msgstr "このメッセージを削除してもよろしいですか？"
+
+#: bgben/templates/messages.html:72 bgben/templates/messages.html:149 bgben/templates/post.html:134
+msgid "取 消"
+msgstr "キャンセル"
+
+#: bgben/templates/messages.html:74 bgben/templates/messages.html:150
+msgid "确 定"
+msgstr "O K"
+
+#: bgben/templates/monthly_posts.html:7
+#, python-format
+msgid "%(username)s的月度笔记： %(month)s (共 %(total)s 篇)"
+msgstr "%(username)sの月度記事アーカイブ： %(month)s （合計 %(total)s 本)"
+
+#: bgben/templates/monthly_posts.html:36
+msgid "阅 读"
+msgstr "記事を読む"
+
+#: bgben/templates/post.html:54 bgben/templates/user_posts.html:1031
+msgid "笔者最新投稿"
+msgstr "作者の最新記事"
+
+#: bgben/templates/post.html:76 bgben/templates/user_posts.html:1052
+msgid "笔者过去投稿"
+msgstr "作者の過去記事"
+
+#: bgben/templates/post.html:97 bgben/templates/user_posts.html:1074
+msgid "笔者最新论点"
+msgstr "作者の最新タグ"
+
+#: bgben/templates/post.html:132
+msgid "您确定要删除这篇笔记吗？"
+msgstr "この記事を削除してもよろしいですか？"
+
+#: bgben/templates/post.html:168 bgben/templates/post.html:289
+msgid "请先登陆后再点赞！"
+msgstr "いいねボタンを押すにはログインが必要です！"
+
+#: bgben/templates/post.html:170 bgben/templates/post.html:291 bgben/users/forms.py:47
+msgid "登 陆"
+msgstr "ログイン"
+
+#: bgben/templates/post.html:172 bgben/templates/post.html:293
+msgid "还不是用户吗？请先"
+msgstr "ユーザー登録がまだの場合は、こちらから"
+
+#: bgben/templates/post.html:179
+msgid "赞"
+msgstr "いいね"
+
+#: bgben/templates/post.html:196
+msgid "分享"
+msgstr "シェア"
+
+#: bgben/templates/post.html:207 bgben/templates/post.html:218 bgben/templates/post.html:267 bgben/templates/post.html:278
+msgid "取消"
+msgstr "キャンセル"
+
+#: bgben/templates/post.html:217 bgben/templates/post.html:277
+msgid "您确定要删除这条评论吗？"
+msgstr "このコメントを削除してもよろしいですか？"
+
+#: bgben/templates/post.html:327
+msgid "或"
+msgstr "又は"
+
+#: bgben/templates/post.html:329
+msgid "后可以写评论！"
+msgstr "してからコメントすることが出来ます！"
+
+#: bgben/templates/posts.html:12
+msgid "BGben的笔记广场"
+msgstr "BGben広場"
+
+#: bgben/templates/posts.html:13
+msgid "此时此刻的BGben阿卡西记录"
+msgstr "BGbenのアカシックレコード"
+
+#: bgben/templates/posts.html:54
+msgid "多产笔者"
+msgstr "多産な作者"
+
+#: bgben/templates/posts.html:72
+msgid "热议标签"
+msgstr "トレンドタグ"
+
+#: bgben/templates/privacy_policy.html:6
+msgid "BGben隐私政策"
+msgstr "BGben プライバシーポリシー"
+
+#: bgben/templates/privacy_policy.html:7
+msgid "信任的基础"
+msgstr "信頼の土台"
+
+#: bgben/templates/privacy_policy.html:16
+msgid "BGben非常重视您的隐私和您对我们的信任。本隐私政策介绍了我们如何收集、使用和披露您的个人信息。"
+msgstr ""
+"BGben は、皆様のプライバシーと当サイトに対する信頼を非常に重視しています。このプライバシーポリシーでは、当サイトが皆様の個人情報を収集、使用、開示する"
+"方法について説明します。"
+
+#: bgben/templates/privacy_policy.html:17
+msgid "如果您不同意我们的隐私政策，请不要使用我们的网站。"
+msgstr "当サイトのプライバシーポリシーにご同意できない場合は、当サイトの使用をお控え下さい。"
+
+#: bgben/templates/privacy_policy.html:21
+msgid "第一条 个人信息及其使用目的"
+msgstr "第1条 個人情報とその利用目的"
+
+#: bgben/templates/privacy_policy.html:26
+msgid "当您在本网站上进行投稿、评论、与其他用户互动、进行咨询等时，本网站将要求您提供包括但不限于：电子邮件、注册名（昵称）等各类个人信息。"
+msgstr ""
+"当ウェブサイトでは、皆様が投稿、コメント、他のユーザーとの交流、お問い合わせ等をされる際に、メールアドレス、ご登録名（ニックネーム）等の様々な個人情報"
+"のご提供をお願いしております。"
+
+#: bgben/templates/privacy_policy.html:30
+msgid "该个人信息将用于防止欺诈、为回答问题以及通过电子邮件等方式与您联系以提供必要的信息，并且不会用于任何其他目的。"
+msgstr "これらの個人情報は、不正行為の防止、ご質問への回答やメールでのご連絡等に必要な情報を提供するために利用し、それ以外の目的では利用いたしません。"
+
+#: bgben/templates/privacy_policy.html:34
+msgid "本网站妥善管理个人信息，除以下情况外不会向第三方公开。"
+msgstr "当サイトは、個人情報を適切に管理し、以下の場合を除き第三者に開示することはございません。"
+
+#: bgben/templates/privacy_policy.html:36
+msgid "征得用户本人(自然人，不含AI)同意时"
+msgstr "ユーザー（AIを除く自然人）の同意を得た場合"
+
+#: bgben/templates/privacy_policy.html:37 bgben/templates/privacy_policy.html:55
+msgid "为配合法律法规等需要披露时"
+msgstr "法令遵守等などで開示が必要となった場合"
+
+#: bgben/templates/privacy_policy.html:38
+msgid "如果您希望披露、更正或删除您的个人数据，我们将在确认您的身份后及时回复。"
+msgstr "ご本人が個人データの開示・訂正・削除をご希望の場合には、ご本人であることを確認させていただいた上で、速やかに対応させていただきます"
+
+#: bgben/templates/privacy_policy.html:45
+msgid "第二条 网站内私信功能数据"
+msgstr "第2条 サイト内でのメッセージデータ"
+
+#: bgben/templates/privacy_policy.html:48
+msgid "本网站可能提供用户之间在本网站内进行私信沟通的功能。请注意保护好您的隐私信息。"
+msgstr "当サイトは、サイト内でのユーザー間のプライベートメッセージ通信を行う機能を提供する場合があります。個人情報と取り扱いには十分ご注意ください。"
+
+#: bgben/templates/privacy_policy.html:51
+msgid "该信息功能的数据被存档于本网站数据库，本网站妥善管理数据，除以下情况外不会向第三方公开。"
+msgstr ""
+"当該メッセージ機能のデータは、当サイトのデータベースに保管され、当サイトでは適切にそれを管理し、以下の場合を除いて第三者に開示することはありません。"
+
+#: bgben/templates/privacy_policy.html:54
+msgid "征得本人同意时"
+msgstr "ユーザーの同意を得た場合"
+
+#: bgben/templates/privacy_policy.html:56
+msgid "如果您希望披露、更正或删除您的个人数据，我们将在确认您的身份后及时回复"
+msgstr "ご本人が個人データの開示・訂正・削除をご希望の場合には、ご本人であることを確認させていただいた上で、速やかに対応させていただきます"
+
+#: bgben/templates/privacy_policy.html:60
+msgid "第三条 关于本网站的广告"
+msgstr "第3条 本サイト上での広告について"
+
+#: bgben/templates/privacy_policy.html:63
+msgid ""
+"本网站可能会使用第三方分发的广告服务。为了显示符合用户兴趣的产品及服务的广告，这些广告分发公司有可能会使用“cookies”功能收集与访问本网站和其他网站相关"
+"的信息。"
+msgstr ""
+"当サイトでは、第三者が配信する広告サービスを利用する場合がございます。これらの広告会社は、ユーザーの興味に応じた商品やサービスの広告を表示するため、"
+"「Cookie」の機能を使用して、当サイトや他のサイトへの訪問に関する情報を収集する場合があります。"
+
+#: bgben/templates/privacy_policy.html:66
+msgid "本网站可能会通过联属计划介绍产品。本网站不销售这些产品，因此请通过链接页面获取有关产品的最新信息以及购买条款和条件。"
+msgstr ""
+"当サイトでは、アフィリエイトプログラムを通じて商品を紹介する場合があります。これらの製品は当ウェブサイトでは販売しておりませんので、製品に関する最新情"
+"報や購入条件についてはリンク先のページをご覧ください。"
+
+#: bgben/templates/privacy_policy.html:70
+msgid "第四条 本网站使用的访问分析工具"
+msgstr "第4条 当サイトで使用するアクセス解析ツール"
+
+#: bgben/templates/privacy_policy.html:73
+msgid "本网站使用Google的访问分析工具“Google Analytics”。"
+msgstr "当サイトでは、Googleによるアクセス解析ツール「Google Analytics」を利用しています。"
+
+#: bgben/templates/privacy_policy.html:74
+msgid "此 Google Analytics 使用 cookies 来收集流量数据。"
+msgstr "このGoogle AnalyticsはCookieを使用してトラフィックデータを収集します。"
+
+#: bgben/templates/privacy_policy.html:75
+msgid "该流量数据是匿名收集的，不会识别您的个人身份。"
+msgstr "このトラフィックデータは匿名で収集されますので、利用者を個人的に特定するものではありません。"
+
+#: bgben/templates/privacy_policy.html:76
+msgid "您可以通过禁用cookie来拒绝该功能的收集，因此请检查您的浏览器设置。"
+msgstr "この機能はCookiesの設定を無効にすることで収集を拒否することができますので、お使いのブラウザの設定をご確認ください。"
+
+#: bgben/templates/privacy_policy.html:77
+msgid "请点击"
+msgstr "詳しくは"
+
+#: bgben/templates/privacy_policy.html:79
+msgid "此处"
+msgstr "こちら"
+
+#: bgben/templates/privacy_policy.html:79
+msgid "了解相关的更多信息。"
+msgstr "から"
+
+#: bgben/templates/privacy_policy.html:83
+msgid "第五条 免责声明"
+msgstr "第5条 免責事項"
+
+#: bgben/templates/privacy_policy.html:88
+msgid "因用户将账号密码告知他人或与他人共用注册帐户、或因用户自身的疏忽造成账号或密码泄露，由此导致的任何个人资料泄露及相关损失，本网站不负任何责任。"
+msgstr ""
+"当サイトは、ユーザーがアカウントおよびパスワードを他人に教えたり、登録したアカウントを他人に共有したり、ユーザー自身の過失によりアカウントやパスワード"
+"が漏洩したことにより生じた個人情報の漏洩およびそれに伴う損失については、一切責任を負いません。"
+
+#: bgben/templates/privacy_policy.html:92
+msgid "因黑客/骇客攻击、电子病毒、服务器损坏、不可抗力事件等非本网站原因造成用户密码等重要信息泄露或遗失，由此给用户造成相关损失，本网站不负任何责任。"
+msgstr ""
+"当サイトは、ハッカー等の攻撃、電子ウイルス、サーバーの損傷、不可抗力やその他の当サイトの責によらない事由により、ユーザーのパスワード等の重要な情報が漏"
+"洩、紛失し、これに伴うユーザーの損失については一切責任を負いません。"
+
+#: bgben/templates/privacy_policy.html:96 bgben/templates/user_policy.html:292
+msgid "询问表格"
+msgstr "お問い合わせ"
+
+#: bgben/templates/privacy_policy.html:97 bgben/templates/user_policy.html:293
+msgid "或请邮件联系"
+msgstr "又はEメール"
+
+#: bgben/templates/register-test.html:6 bgben/templates/register.html:6
+msgid "用户注册"
+msgstr "ユーザー登録"
+
+#: bgben/templates/register-test.html:7 bgben/templates/register.html:7
+msgid "欢迎一起来记录您所知道的秘密！"
+msgstr "一緒に宇宙の秘密をシェアしませんか？"
+
+#: bgben/templates/register-test.html:32
+msgid "请先选择测试主题！"
+msgstr "テーマを選択"
+
+#: bgben/templates/register-test.html:40
+msgid "感谢您申请注册成为BGben用户（以下简称‘BGben记录者’）！"
+msgstr "BGbenユーザー登録ページにお越しいただきありがとうございます！"
+
+#: bgben/templates/register-test.html:42
+msgid "因本网站皆在分享及探索关于人类觉醒的话题内容，BGben记录者仅限于对相关话题领域已具有基本认识的小伙伴们。请回答以下任选话题相关的10道题目。"
+msgstr ""
+"このウェブサイトは、人類の目覚めに関するトピックを共有することを目的としているため、記事の作者としてユーザー登録するには関連トピック分野のテスト問題を"
+"８問以上正解することが条件となっています。いずれかのテーマを選択し、質問にお答えください。"
+
+#: bgben/templates/register-test.html:44
+msgid "免责声明：本网站所有内容仅供娱乐参考，不能做为任何投资、医疗、信仰等行为的依据。"
+msgstr "免責事項: 本サイト上のすべてのコンテンツはあくまで娯楽を目的としており、投資、医療、信仰などの根拠として使用することはできません。"
+
+#: bgben/templates/register-test.html:46
+msgid "答对8道题以上的小伙伴方可成为BGben记录者注册本网站并进行分享。"
+msgstr "８問正解された方はBGbenユーザーとして記事を発表することが出来ます。"
+
+#: bgben/templates/register-test.html:53
+msgid "主题选项"
+msgstr "トピック"
+
+#: bgben/templates/register-test.html:56
+msgid "请点击并选择"
+msgstr "クリックして選択する"
+
+#: bgben/templates/register-test.html:57
+msgid "人类起源"
+msgstr "人類の起源"
+
+#: bgben/templates/register-test.html:58
+msgid "地下世界"
+msgstr "地下ワールド"
+
+#: bgben/templates/register-test.html:59
+msgid "UFO不明飞行物"
+msgstr "UFO"
+
+#: bgben/templates/register-test.html:60
+msgid "针相"
+msgstr "ワクチンの真相"
+
+#: bgben/templates/register-test.html:61
+msgid "AI人工智能"
+msgstr "AI人工知能"
+
+#: bgben/templates/register-test.html:62
+msgid "非人类智能存在"
+msgstr "非人間知的生命体"
+
+#: bgben/templates/register-test.html:63
+msgid "灵性·前世今生"
+msgstr "スピチュアル・前世"
+
+#: bgben/templates/register-test.html:64
+msgid "替代疗法"
+msgstr "代替治療"
+
+#: bgben/templates/register-test.html:65
+msgid "山海经"
+msgstr "『山海経』"
+
+#: bgben/templates/register-test.html:66
+msgid "金字塔"
+msgstr "ピラミッド"
+
+#: bgben/templates/register-test.html:67
+msgid "时空"
+msgstr "時間と空間"
+
+#: bgben/templates/register-test.html:68
+msgid "月球"
+msgstr "月"
+
+#: bgben/templates/register-test.html:74
+msgid "开 始 测 试"
+msgstr "スタート"
+
+#: bgben/templates/register.html:72
+msgid "含英大、小字母、数字、特殊字符"
+msgstr "アルファベット大・小文字、数字、特殊文字"
+
+#: bgben/templates/register.html:74
+msgid "各至少1字"
+msgstr "それぞれ1文字以上"
+
+#: bgben/templates/register.html:108
+msgid "我同意各项BGben利用规则"
+msgstr "利用上の各規約やポリシーに同意します。"
+
+#: bgben/templates/register.html:111
+msgid "BGben博客功能使用规则"
+msgstr "BGbenブログ利用規約"
+
+#: bgben/templates/register.html:133
+msgid "已经是BGben笔记员了嘛？"
+msgstr "既にユーザー登録はお済みですか？"
+
+#: bgben/templates/register.html:133
+msgid "登陆!"
+msgstr "ログイン！"
+
+#: bgben/templates/request_reset.html:6
+msgid "申请密码重置！"
+msgstr "リセット"
+
+#: bgben/templates/request_reset.html:7
+msgid "请输入您的用户邮箱地址，并点击‘我要重置密码’按钮。"
+msgstr "メールアドレスをご記入の上、「リセット申請」を押して下さい。"
+
+#: bgben/templates/request_reset.html:7
+msgid "我们将发送确认邮件给您！"
+msgstr "確認メールを送ります！"
+
+#: bgben/templates/reset_token.html:6 bgben/users/forms.py:107 bgben/users/routes.py:247
+msgid "重置密码"
+msgstr "パスワード変更"
+
+#: bgben/templates/reset_token.html:7
+msgid "请保管好密码信息哦！"
+msgstr "パスワードは大切に保管して下さいね！"
+
+#: bgben/templates/search.html:7
+msgid "搜索结果🔍"
+msgstr "検索結果🔍"
+
+#: bgben/templates/search.html:27
+msgid "笔记"
+msgstr "記事"
+
+#: bgben/templates/search.html:28
+msgid "笔者"
+msgstr "筆者"
+
+#: bgben/templates/search.html:84
+msgid "没有找到相关的内容！"
+msgstr "一致する記事が見つかりません！"
+
+#: bgben/templates/search.html:181
+msgid "没有找到相关的用户！"
+msgstr "一致するユーザーが見つかりません！"
+
+#: bgben/templates/send_message.html:6
+#, python-format
+msgid "写私信给%(recipient)s"
+msgstr "%(recipient)sさんへメッセージを送る"
+
+#: bgben/templates/send_message.html:34
+msgid "请注意保护好您的隐私！"
+msgstr "個人情報の取扱いには十分ご注意ください！"
+
+#: bgben/templates/tags.html:7
+msgid "标签："
+msgstr "タグ："
+
+#: bgben/templates/user_policy.html:5
+msgid "BGben博客功能使用条款"
+msgstr "BGbenブログ利用規約"
+
+#: bgben/templates/user_policy.html:6
+msgid "笔记员必须遵守的规定"
+msgstr "ユーザーとして遵守すべきルール"
+
+#: bgben/templates/user_policy.html:15
+msgid "本使用条款（以下简称“本条款”）内容涉及到BGben.net（以下简称“本网站”）以及相关网站所提供的服务"
+msgstr "本利用規約（以下「本規約」）の内容は、BGben.net（以下「当サイト」）および関連ウェブサイトが提供するサービスに関する"
+
+#: bgben/templates/user_policy.html:16
+msgid "（以下简称“本服务”）利用约定。所有注册用户（以下简称“用户”）必须按照本条款使用本服务。"
+msgstr "（以下「本サービス」）利用規約となります。すべての登録ユーザー（以下「ユーザー」）は、本規約に従って本サービスを利用しなければなりません。"
+
+#: bgben/templates/user_policy.html:20
+msgid "第一条 适用范围"
+msgstr "第1条 適用範囲"
+
+#: bgben/templates/user_policy.html:25
+msgid "本条款适用于用户与网站之间有关使用本服务的所有关系。"
+msgstr "本規約は、本サービスの利用に関するユーザーと当サイトとの間のすべての関係に適用されます。"
+
+#: bgben/templates/user_policy.html:29
+msgid "除本条款外，本网站还可以制定使用规则等有关本服务的各种规定（以下简称“个别规定”）。这些单独的规定应构成这些条款的一部分，无论其名称如何。"
+msgstr ""
+"また、当サイトは、本規約のほか、本サービスに関する利用規定その他の各種規定（以下「個別規定」）を定める場合があります。これらの個別規定は、どのような名"
+"称であっても、本規約の一部を形成するものとします。"
+
+#: bgben/templates/user_policy.html:33
+msgid "本条款的规定与前条单项规定相冲突的，以单项规定为准，单项条款另有规定的除外。"
+msgstr "本条の規定が前条の個別規定と矛盾する場合には、個別規定に別段の定めがない限り、個別規定が優先するものとします。"
+
+#: bgben/templates/user_policy.html:38
+msgid "第二条 用户注册"
+msgstr "第2条 ユーザー登録"
+
+#: bgben/templates/user_policy.html:43
+msgid "对于本服务的申请人必须同意本条款全部内容，并按照本网站指定的方法申请注册，本网站将随后通知申请人是否注册成功，并完成注册手续。"
+msgstr ""
+"本サービスの利用希望者は、本規約の全内容に同意の上、当サイト所定の方法により登録を申請し、当サイトは登録の可否を通知し、登録手続きを完了させるものとし"
+"ます。"
+
+#: bgben/templates/user_policy.html:47
+msgid "如果本网站认定申请人具有下列情况任何一项，本网站可以不批准用户注册申请，并且没有义务披露任何理由。"
+msgstr ""
+"申請者が以下のいずれかに該当すると当サイトが判断した場合、当サイトはユーザー登録申請を承認しないことがありますが、その理由については開示義務を負いませ"
+"ん。"
+
+#: bgben/templates/user_policy.html:49
+msgid "如果申请人注册时举报虚假信息"
+msgstr "登録時に虚偽の申告をした場合"
+
+#: bgben/templates/user_policy.html:50
+msgid "如果申请人已违反本条款"
+msgstr "申請者が本規約に違反した場合"
+
+#: bgben/templates/user_policy.html:51
+msgid "其他本网站认定为不适当本网站主旨的注册内容"
+msgstr "その他当サイトの目的にそぐわないと当サイトが判断した登録内容がある場合"
+
+#: bgben/templates/user_policy.html:57
+msgid "本网站仅允许18岁或以上的用户进行注册。若用户是未满18岁的，应获得父母亲其中一人或法定监护人的同意才可使用本网站。"
+msgstr ""
+"当サイトは18歳以上の方のみご登録可能です。ユーザーが18歳未満の場合、当サイトを使用する前に、両親または法的保護者のいずれかの同意を取得する必要がありま"
+"す。"
+
+#: bgben/templates/user_policy.html:62
+msgid "第三条 用户名及用户密码管理"
+msgstr "第3条 ユーザー名およびユーザーパスワードの管理"
+
+#: bgben/templates/user_policy.html:67
+msgid "用户应自行负责妥善管理其使用本服务的用户名及用户密码。"
+msgstr "ユーザーは、本サービスを利用する際のユーザー名およびユーザーパスワードを適切に管理する責任を負います。"
+
+#: bgben/templates/user_policy.html:71
+msgid ""
+"在任何情况下，用户不得将其用户名及用户密码转让、出借给第三方，或者与第三方共享。当用户使用与注册信息相符的用户名和用户密码组合登录时，网站认为该用户名"
+"正在被注册用户所使用。"
+msgstr ""
+"いかなる状況においても、ユーザーは自分のユーザー名とパスワードを第三者に譲渡、貸与、共有することはできません。当サイトは、ユーザーが登録情報と一致する"
+"ユーザー名とユーザーパスワードの組み合わせでログインした場合、そのユーザー名は登録ユーザーによって使用されているものとみなします。"
+
+#: bgben/templates/user_policy.html:76
+msgid "对于因第三方使用用户名和用户密码而造成的任何损害，本网站不承担任何责任。"
+msgstr "ユーザー名およびユーザーパスワードが第三者に使用されたことにより生じた損害について、当サイトは一切の責任を負いません。"
+
+#: bgben/templates/user_policy.html:82
+msgid "第四条 使用费及支付方式"
+msgstr "第4条 利用料金および支払方法"
+
+#: bgben/templates/user_policy.html:87
+msgid "如适用，作为本服务付费部分的对价，用户应按照本网站指定的方式支付由本网站另行确定并在本网站上显示的使用费用。"
+msgstr ""
+"該当する場合、ユーザーは、本サービスの有料部分の対価として、当サイトが別途定め、当サイト上に表示する利用料金を、当サイトの定める方法により支払うものと"
+"します。"
+
+#: bgben/templates/user_policy.html:92
+msgid "第五条 禁止行为事项"
+msgstr "第5条 禁止行為"
+
+#: bgben/templates/user_policy.html:95
+msgid "用户在使用本服务时不得有下列行为："
+msgstr "ユーザーは、本サービスの利用に際し、下記の行為をしてはならないものとします。"
+
+#: bgben/templates/user_policy.html:98
+msgid "违反法律或公共秩序和道德的行为"
+msgstr "法律または公序良俗に違反する行為"
+
+#: bgben/templates/user_policy.html:99
+msgid "与犯罪行为有关的行为"
+msgstr "犯罪行為に関連する行為"
+
+#: bgben/templates/user_policy.html:100
+msgid "破坏或干扰本网站、本服务的其他用户或第三方的服务器或网络功能的行为"
+msgstr "当サイトのサーバーやネットワーク、本サービスの他のユーザー、第三者の機能を妨害し、または妨害する行為"
+
+#: bgben/templates/user_policy.html:101
+msgid "可能干扰我们服务运行的行为"
+msgstr "当サイトサービスの運営を妨げるおそれのある行為"
+
+#: bgben/templates/user_policy.html:102
+msgid "收集或积累其他用户的个人信息等的行为"
+msgstr "他のユーザーの個人情報等を収集・蓄積する行為"
+
+#: bgben/templates/user_policy.html:103
+msgid "进行或尝试未经授权的访问的行为"
+msgstr "不正アクセスを実行または試みる行為"
+
+#: bgben/templates/user_policy.html:104
+msgid "冒充其他用户"
+msgstr "他のユーザーになりすます行為"
+
+#: bgben/templates/user_policy.html:105
+msgid "通过我们的服务直接或间接为反社会势力提供利益的行为"
+msgstr "当サイトのサービスを通じて反社会的勢力に対して直接的または間接的に利益を供与する行為"
+
+#: bgben/templates/user_policy.html:106
+msgid "侵犯本网站、本服务其他用户或第三方的知识产权、肖像权、隐私权、荣誉及其他权利或利益的行为"
+msgstr "当サイト、本サービスの他のユーザーまたは第三者の知的財産権、肖像権、プライバシー権、名誉その他の権利または利益を侵害する行為"
+
+#: bgben/templates/user_policy.html:107
+msgid "在本服务上发布或传输包含或由本网站确定包含以下表述内容的行为："
+msgstr "以下の記述を含む、または含むと当サイトが判断したコンテンツを本サービス上に投稿または送信する行為"
+
+#: bgben/templates/user_policy.html:109
+msgid "过度的暴力的表达"
+msgstr "過度の暴力表現"
+
+#: bgben/templates/user_policy.html:110
+msgid "露骨的性表达"
+msgstr "露骨な性的表現"
+
+#: bgben/templates/user_policy.html:111
+msgid "导致基于包括但不限于种族、国籍、信仰、性别、社会地位、家庭出身等歧视的言论"
+msgstr "人種、国籍、信仰、性別、社会的身分、出自等による差別につながる言論"
+
+#: bgben/templates/user_policy.html:112
+msgid "诱导或鼓励自杀、自残或药物滥用的言论"
+msgstr "自殺、自傷行為、薬物乱用を扇動または奨励するもの"
+
+#: bgben/templates/user_policy.html:113
+msgid "其他包含反社会内容并导致他人不适的表达方式"
+msgstr "その他反社会的な内容を含み、他人に不快感を与える表現"
+
+#: bgben/templates/user_policy.html:116
+msgid "被本网站认定为旨在以下内容的行为："
+msgstr "以下に該当すると当サイトが判断した行為："
+
+#: bgben/templates/user_policy.html:118
+msgid "销售、广告、广告、招揽及其他以营利为目的的行为（经本网站批准的除外）"
+msgstr "営業、広告、宣伝、勧誘、その他営利を目的とする行為（当サイトが認めた場合を除く）"
+
+#: bgben/templates/user_policy.html:119
+msgid "以性行为或淫秽行为为目的的行为"
+msgstr "性的またはわいせつな目的での行為"
+
+#: bgben/templates/user_policy.html:120
+msgid "旨在与陌生人会面或社交的行为"
+msgstr "見知らぬ人と会ったり交流したりすることを目的とした行為"
+
+#: bgben/templates/user_policy.html:121
+msgid "旨在骚扰或诽谤其他用户的行为"
+msgstr "他のユーザーまたは第三者への嫌がらせや名誉毀損を目的とした行為"
+
+#: bgben/templates/user_policy.html:122
+msgid "旨在给本网站、本服务的其他用户或第三方造成不利、损害或不适的行为"
+msgstr "当サイト、本サービスの他のユーザーまたは第三者に不利益、損害、不快感を与える行為"
+
+#: bgben/templates/user_policy.html:123
+msgid "其他与本服务使用目的具有抵触性质的的行为"
+msgstr "その他、本サービスの利用目的に反する行為"
+
+#: bgben/templates/user_policy.html:126
+msgid "宗教宣教活动、为宗教团体招揽信者"
+msgstr "宗教の布教活動、宗教団体の信者募集"
+
+#: bgben/templates/user_policy.html:127
+msgid "其他本网站认为不适当的行为"
+msgstr "その他当サイトが不適切と判断する行為"
+
+#: bgben/templates/user_policy.html:131
+msgid "第六条 本服务的暂停或终止"
+msgstr "第6条 本サービスの停止または終了"
+
+#: bgben/templates/user_policy.html:136
+msgid "若本网站认定存在下列任一原因，本网站可在不事先通知用户的情况下，暂停或中止提供全部或部分服务："
+msgstr ""
+"当サイトは、以下のいずれかの事由があると当サイトが判断した場合、利用者に事前に通知することなく、サービスの全部または一部の提供を中断または中止すること"
+"があります。"
+
+#: bgben/templates/user_policy.html:138
+msgid "进行与本服务相关的计算机系统的维护、检查或更新时"
+msgstr "本サービスに関連するコンピュータシステムの保守・点検・アップデートを行う場合"
+
+#: bgben/templates/user_policy.html:139
+msgid "因地震、雷击、火灾、停电、自然灾害等不可抗力而导致本服务难以提供时"
+msgstr "地震、落雷、火災、停電、自然災害、その他の不可抗力などの困難な状況においてサービスの提供が困難となった場合"
+
+#: bgben/templates/user_policy.html:140
+msgid "如果计算机或通讯线路等因事故而停止运行"
+msgstr "コンピュータや通信回線等が事故により停止した場合"
+
+#: bgben/templates/user_policy.html:141
+msgid "其他本网站认为难以提供此项服务的情况"
+msgstr "その他、当サイトが本サービスの提供が困難と判断した場合"
+
+#: bgben/templates/user_policy.html:147
+msgid "对于因暂停或中断提供本服务而给用户或第三方造成的任何不利或损害，本网站不承担任何责任。"
+msgstr "当サイトは、本サービスの提供の停止または中断により利用者または第三者に生じた不利益または損害について、一切の責任を負いません。"
+
+#: bgben/templates/user_policy.html:152
+msgid "第七条 版权"
+msgstr "第7条 著作権"
+
+#: bgben/templates/user_policy.html:158
+msgid ""
+"用户在笔记中可能会引用的新闻稿、社交平台评论、出版物、图片、视频等各类媒体的内容应遵守现行的各国法规，同时秉持自律原则，在使用过程中达到合理使用的标"
+"准。合理使用标准的依据样本为美国对于著作的合理使用（免责条款）原则之定义。"
+msgstr ""
+"ユーザーが記事内で引用するプレスリリース、ソーシャルプラットフォームのコメント、出版物、写真、ビデオ、その他のメディアの内容は、各国の現行法規制を遵守"
+"するとともに、自律の原則に則り、フェアユースの基準を満たしす必要があります。フェアユースの基準は、米国著作権法107条で認められているフェアユース (免責"
+"事項) の定義となります。"
+
+#: bgben/templates/user_policy.html:165
+msgid "美国版权法第107条规定:"
+msgstr "米国著作権法第107条："
+
+#: bgben/templates/user_policy.html:168
+msgid ""
+"“...为了批评、评论、新闻报道、教学(包括用于课堂的多件复制品)、学术或研究之目的而使用版权作品的，包括制作复制品、录音制品或以该条规定的其他方法使用作"
+"品，系“合理使用”，不视为侵犯版权的行为”。"
+msgstr ""
+"「…批判、コメント、ニュース報道、教育、奨学金、研究などの目的でフェアユースが行われる。フェアユースとは、著作権法により許可されている権利侵害のことで"
+"す。非営利的、教育的、個人的な使用はフェアユースにあたります。」"
+
+#: bgben/templates/user_policy.html:175
+msgid "除前款规定之外，用户只能利用本服务发布该用户拥有必要的版权等知识产权或已获得必要权利人的许可的文字、图像、视频等信息。"
+msgstr ""
+"前項に定める場合を除き、ユーザーは、ユーザーが必要な著作権その他の知的財産権を有し、または必要な権利者の許諾を得た文章、画像、動画その他の情報を掲載す"
+"る目的でのみ、本サービスを利用することができます。"
+
+#: bgben/templates/user_policy.html:179
+msgid "关于本网站用户发布的文章内容，除非得到相关版权所有人的同意，不应被用于任何与商业、盈利行为有关的活动中。"
+msgstr "当サイトのユーザーが投稿した記事の内容については、著作権者の承諾がない限り、営利目的、営利目的の活動に利用することはできません。"
+
+#: bgben/templates/user_policy.html:183
+msgid "用户使用本服务发布或上传的文字、图片、视频等的版权归用户及其他现有权利人所有。"
+msgstr "ユーザーが本サービスを利用して公開またはアップロードした文章、画像、動画等の著作権は、ユーザーおよびその他の既存の権利者に帰属します。"
+
+#: bgben/templates/user_policy.html:184
+msgid "但是，本网站可在必要的范围内使用通过本服务发布或上传的文字、图像、视频等，用于改善本服务、提高服务质量、纠正缺陷等以及宣传本服务。"
+msgstr ""
+"ただし、当サイトは、本サービスの改善、サービス品質の向上、不具合の修正等、および本サービスの宣伝に必要な範囲で、本サービスを通じて公開またはアップロー"
+"ドされたテキスト、画像、動画等を使用することがあります。"
+
+#: bgben/templates/user_policy.html:189
+msgid "除前款规定之外，本服务及与本服务相关的所有信息的所有版权和其他知识产权均属于本网站或授权本网站使用的权利人所有。"
+msgstr ""
+"前項に定める場合を除き、本サービスおよび本サービスに関する一切の情報における著作権その他の知的財産権は、当サイトまたは当サイトの利用を許諾した権利者に"
+"帰属します。"
+
+#: bgben/templates/user_policy.html:190
+msgid "用户未经书面许可不得复制、转让、出借、翻译、修改、转载、公开传播、传输、分发、出版或用于商业目的。"
+msgstr "ユーザーは、許可なく複製、譲渡、貸与、翻訳、改変、複製、公衆送信、送信、頒布、出版、商業目的で使用することはできません。"
+
+#: bgben/templates/user_policy.html:195
+msgid "第八条 服务使用限制或帐户注销"
+msgstr "第8条 サービスの利用制限または注意事項"
+
+#: bgben/templates/user_policy.html:200
+msgid "若用户有下列情形之一，本网站将在不事先通知的情况下删除其发布的数据、限制用户使用全部或部分本服务、或取消用户的注册"
+msgstr ""
+"当サイトは、ユーザーが次のいずれかに該当する場合には、事前に通知することなく、ユーザーの投稿データの削除、本サービスの全部もしくは一部の利用の制限、ま"
+"たはユーザー登録の取り消し等を行うものとします。"
+
+#: bgben/templates/user_policy.html:202
+msgid "如果用户违反本条款的任何规定"
+msgstr "ユーザーが本規約のいずれかの条項に違反した場合"
+
+#: bgben/templates/user_policy.html:203
+msgid "如发现注册信息存在虚假事实"
+msgstr "登録情報に虚偽の事実が含まれていることが判明した場合"
+
+#: bgben/templates/user_policy.html:204
+msgid "如果用户提交的付款方式失效或被拒绝使用"
+msgstr "ユーザーが送信した支払い方法が無効または拒否された場合"
+
+#: bgben/templates/user_policy.html:205
+msgid "如果存在拖欠付款义务（例如费用等）的情况"
+msgstr "支払い義務（手数料等）に不履行があった場合"
+
+#: bgben/templates/user_policy.html:206
+msgid "如果在一定时间内没有回复来自本网站的联系"
+msgstr "当サイトからの連絡に対して一定期間返信が無い場合"
+
+#: bgben/templates/user_policy.html:207
+msgid "如果自上一次使用后一段期间内未使用本服务"
+msgstr "前回の利用から一定期間本サービスの利用がなかった場合"
+
+#: bgben/templates/user_policy.html:208
+msgid "此外，如果本网站判定用户对本服务的使用存在不当行为"
+msgstr "その他、ユーザーによる本サービスの利用が不適切であると当サイトが判断した場合"
+
+#: bgben/templates/user_policy.html:214
+msgid "如有前款任何一项情形，用户必须立即一次性偿还当时所欠的全部债务。"
+msgstr "前項のいずれかに該当することが生じた場合、ユーザーは直ちにその時点で課せられた債務の全額（該当する場合）を一括で返済しなければなりません。"
+
+#: bgben/templates/user_policy.html:218
+msgid "对于因本网站根据本条采取的行动给用户造成的任何损害，本网站不承担任何责任。"
+msgstr "当サイトは、本条の内容に基づき当サイトが行った行為によりユーザーに生じたいかなる損害についても責任を負いません。"
+
+#: bgben/templates/user_policy.html:223
+msgid "第九条 注销"
+msgstr "第9条 アカウントの利用停止"
+
+#: bgben/templates/user_policy.html:225
+msgid "用户可以按照本网站规定的退出程序退出本服务。"
+msgstr "ユーザーは、当サイトに定める退会手続きに従って本サービスを退会することができます。"
+
+#: bgben/templates/user_policy.html:228
+msgid "第十条 保证和免责声明"
+msgstr "第10条 保証と免責事項"
+
+#: bgben/templates/user_policy.html:233
+msgid ""
+"本网站不对本服务中的任何事实或法律缺陷（与安全性、可靠性、准确性、完整性、有效性、特定用途的适用性、安全性等有关的缺陷、错误、缺陷、侵犯权利等）的不存"
+"在做出明确或暗示保证。"
+msgstr ""
+"当サイトは、本サービスにおける事実上または法律上の瑕疵（安全性、信頼性、正確性、完全性、有効性、特定目的への適合性、セキュリティ、欠陥、エラー、瑕疵、"
+"権利侵害など）に関しては、明示的または黙示的な保証を行わないものとします。"
+
+#: bgben/templates/user_policy.html:237
+msgid "对于因本服务给用户造成的任何损害，本网站不承担任何责任，除非该损害是因本网站故意或重大过失造成的。"
+msgstr "当サイトは、本サービスによりユーザーに生じた損害について、当サイトの故意または重過失による場合を除き、一切の責任を負いません。"
+
+#: bgben/templates/user_policy.html:241
+msgid "本网站对用户与其他用户或第三方之间就本服务发生的任何交易、通讯或争议不承担任何责任。"
+msgstr "当サイトは、本サービスに関して、ユーザーと他のユーザーまたは第三者との間で生じた取引、連絡、紛争については一切の責任を負いません。"
+
+#: bgben/templates/user_policy.html:246
+msgid "第十一条 服务内容的变更等"
+msgstr "第11条 サービス内容の変更等"
+
+#: bgben/templates/user_policy.html:248
+msgid "本网站可在事先通知用户的情况下变更、追加或废止本服务的内容，用户应同意。"
+msgstr ""
+"当サイトは、ユーザーに事前に通知することなく、本サービスの内容の無料部分を変更、追加または中止することがありますが、ユーザーはこれに同意するものとしま"
+"す。"
+
+#: bgben/templates/user_policy.html:251
+msgid "第十二条 使用条款的变更"
+msgstr "第12条 利用規約の変更"
+
+#: bgben/templates/user_policy.html:256
+msgid "在下列情况下，本网站可以更改本条款而无需征得用户个人同意。"
+msgstr "当サイトは、以下の場合には、ユーザーの同意を得ることなく、本規約を変更することがあります。"
+
+#: bgben/templates/user_policy.html:258
+msgid "当这些条款的更改符合用户的普遍利益时"
+msgstr "本規約の変更が全般的にユーザーの利益に沿う場合"
+
+#: bgben/templates/user_policy.html:259
+msgid "当这些条款的变更不与本条款的目的相矛盾，并且考虑到变更的必要性、变更内容的适当性以及与变更相关的其他情况而合理时"
+msgstr "当該条項の変更が本規約の目的に反せず、変更の必要性、変更内容の相当性その他変更に伴う事情を考慮して合理的な場合"
+
+#: bgben/templates/user_policy.html:265
+msgid "本网站将根据前款规定对本条款的变更以及修改后的条款的内容和生效日期提前通知用户。"
+msgstr "当サイトは、前項に基づく本規約の変更ならびに変更後の規約の内容および発効日を、事前にユーザーに通知します。"
+
+#: bgben/templates/user_policy.html:270
+msgid "第十三条 个人信息的处理"
+msgstr "第13条 個人情報の処理"
+
+#: bgben/templates/user_policy.html:272
+msgid "本网站将根据本网站的“隐私政策”妥善处理通过使用本服务获得的个人信息。"
+msgstr "当サイトは、本サービスのご利用により取得した個人情報を、当サイトの「プライバシーポリシー」に従い適切に取り扱います。"
+
+#: bgben/templates/user_policy.html:275
+msgid "第十四条 通知与通讯"
+msgstr "第14条 通知と連絡"
+
+#: bgben/templates/user_policy.html:277
+msgid ""
+"用户与本网站之间的通知或通信应按照本网站规定的方式进行。除非用户按照本网站另行确定的方法向本网站通知变更，\n"
+"        否则本网站将假定当前注册的联系方式有效，并将通知或联系该联系方式时，视为用户已收到联系信息内容。"
+msgstr ""
+"ユーザーと当サイトとの間の通知または連絡は、当サイトの定める方法により行われるものとします。ユーザーが当サイトで別途定める方法により通知方法の変更を"
+"行った場合を除き、\n"
+"        当サイトでは現在登録されている連絡先情報が有効であるものとみなし、その連絡先に通知または連絡を行った時点で、連絡先に情報が行き渡ったものとみな"
+"します。"
+
+#: bgben/templates/user_policy.html:281
+msgid "第十五条 禁止转让权利和义务"
+msgstr "第15条 権利義務の譲渡の禁止"
+
+#: bgben/templates/user_policy.html:283
+msgid "未经本网站事先书面同意，用户不得将其在使用条款下的状态或基于本条款的权利或义务转让给第三方或将其作为抵押品。"
+msgstr ""
+"ユーザーは、当サイトの書面による事前の承諾がない限り、本規約の地位や本規約に基づく権利義務を第三者に譲渡し、又は担保に供してはならないものとします。"
+
+#: bgben/templates/user_policy.html:286
+msgid " 第十六条 法律选择"
+msgstr "第 16 条 法の選択"
+
+#: bgben/templates/user_policy.html:288
+msgid ""
+"本网站旨在推广基于宇宙原则的自然回归意识觉醒。因此，本条款所有内容的适用法律为自然法。任何在执行本条款中产生的纠纷将首先以本着解决问题的原则，\n"
+"        通过协商解决。如果您不同意包括本条款的本条款中的任何内容，请不要使用本服务。"
+msgstr ""
+"当サイトは、宇宙原理に基づいた自然回帰意識の目覚めを促進することを目的としています。したがって、本規約のすべての内容に適用される法律は自然法です。本規"
+"約により生じた紛争は、まず問題解決に基づいて解決されることを目標とし、\n"
+"        話し合いにより解決するものとします。本条項を含む本規約の内容に同意できない場合は、サービスのご利用をお控えください。"
+
+#: bgben/templates/user_popup.html:21
+#, python-format
+msgid "%(count)d 粉丝"
+msgstr "%(count)d フォロワー"
+
+#: bgben/templates/user_popup.html:22
+#, python-format
+msgid "%(count)d 关注"
+msgstr "%(count)d フォロー中"
+
+#: bgben/templates/user_popup.html:24
+msgid "最近活跃时间："
+msgstr "最終ログイン："
+
+#: bgben/templates/user_posts.html:29
+msgid "总共自创"
+msgstr "記事数合計"
+
+#: bgben/templates/user_posts.html:29
+msgid "条笔记"
+msgstr "本"
+
+#: bgben/templates/user_posts.html:42
+msgid " "
+msgstr " さんより"
+
+#: bgben/templates/user_posts.html:74
+msgid "注册·登陆后可关注这位用户！"
+msgstr "登録・ログイン後にフォロー出来ます！"
+
+#: bgben/templates/email/contact_receipt.html:5 bgben/templates/email/registration.html:5
+#, python-format
+msgid "您好，%(username)s 女士/先生！"
+msgstr "こんにちは、%(username)s さん！"
+
+#: bgben/templates/email/contact_receipt.html:7
+msgid "以下是您的咨询内容："
+msgstr "お問い合わせ内容は下記となります。"
+
+#: bgben/templates/email/contact_receipt.html:10
+msgid "关于： "
+msgstr "カテゴリー："
+
+#: bgben/templates/email/contact_receipt.html:14
+msgid "内容： "
+msgstr "詳細内容："
+
+#: bgben/templates/email/contact_receipt.html:19
+msgid "我们将尽快进行回复，谢谢！"
+msgstr "早急にご対応させていただきます。ありがとうございます！"
+
+#: bgben/templates/email/contact_receipt.html:20 bgben/templates/email/newsletter_sub_confirm.html:13 bgben/templates/email/registration.html:13
+#: bgben/templates/email/reset_password.html:13 bgben/templates/email/send_message.html:20
+msgid "BGben管理人"
+msgstr "BGben管理人"
+
+#: bgben/templates/email/contact_receipt.html:23 bgben/templates/email/newsletter_sub_confirm.html:16 bgben/templates/email/registration.html:16
+#: bgben/templates/email/reset_password.html:16 bgben/templates/email/send_message.html:23
+msgid "此邮件由系统自动发出,请勿直接回复"
+msgstr "このメールは、配信専用のアドレスで配信されていますので、このアドレスへのご返信はお控え下さい。"
+
+#: bgben/templates/email/newsletter_sub_confirm.html:5
+msgid "您好!"
+msgstr "こんにちは！"
+
+#: bgben/templates/email/newsletter_sub_confirm.html:7
+msgid "您正在申请订阅BGben通讯。请在30分钟之内通过点击下面🔗确认并正式完成流程："
+msgstr "BGbenメルマガをお申し込みいただきありがとうございます！３０分以内に下記リンクより本登録を完了させて下さい。"
+
+#: bgben/templates/email/newsletter_sub_confirm.html:10
+msgid "温馨提示: 如果该申请不是由您本人操作的话，请忽略此邮件即可。"
+msgstr "なお、本件がご自身による操作でない場合は、このメールを直接無視してください。"
+
+#: bgben/templates/email/newsletter_sub_confirm.html:12 bgben/templates/email/registration.html:12 bgben/templates/email/reset_password.html:12
+#: bgben/templates/email/send_message.html:19
+msgid "祝您每天愉快🎈"
+msgstr "良い一日をお過ごし下さい🎈"
+
+#: bgben/templates/email/registration.html:7
+msgid "您正在申请BGben用户账号，请在30分钟之内通过点击下面链接确认并完成流程："
+msgstr "BGbenユーザー登録をお申し込みいただきありがとうございます！３０分以内に下のリンクをクリックして本登録を完了させて下さい。"
+
+#: bgben/templates/email/registration.html:10
+msgid "温馨提示: 如果该账号申请不是由您本人操作的话，请忽略此邮件即可。"
+msgstr "なお、本件がご自身による操作でない場合は、このメールを直接無視してください。"
+
+#: bgben/templates/email/reset_password.html:5
+#, python-format
+msgid "您好，%(username)s！"
+msgstr "こんにちは、%(username)sさん！"
+
+#: bgben/templates/email/reset_password.html:7
+msgid "您正在申请重置密码，请在30分钟之内通过点击下面链接进行密码重置："
+msgstr "パスワード再設定のご依頼を承りました。３０分以内に下のリンクよりリセット手続きを完了させて下さい。"
+
+#: bgben/templates/email/reset_password.html:10
+msgid "温馨提示: 如果密码重置不是由您本人申请的话，请忽略此邮件即可。"
+msgstr "なお、本件がご自身による操作でない場合は、このメールを直接無視してください。"
+
+#: bgben/templates/email/send_message.html:8
+#, python-format
+msgid "您好，%(recipient)s！"
+msgstr "こんにちは，%(recipient)sさん！"
+
+#: bgben/templates/email/send_message.html:11
+#, python-format
+msgid "%(sender)s 刚才发送了以下信息给您："
+msgstr "%(sender)s さんよりメッセージが届いています："
+
+#: bgben/templates/email/send_message.html:15
+msgid "查询 & 回信"
+msgstr "メッセージを確認＆返信する"
+
+#: bgben/templates/errors/400.html:6
+msgid "请求无效!"
+msgstr "無効なリクエストです！"
+
+#: bgben/templates/errors/400.html:8 bgben/templates/errors/403.html:8 bgben/templates/errors/404.html:8 bgben/templates/errors/500.html:8
+msgid "返 回"
+msgstr "戻る"
+
+#: bgben/templates/errors/403.html:6
+msgid "访问被婉拒了。。。"
+msgstr "やんわりと断られました…"
+
+#: bgben/templates/errors/404.html:6
+msgid "此文件不存在！"
+msgstr "このページは３D空間には存在しません！"
+
+#: bgben/templates/errors/500.html:6
+msgid "服务器错误！"
+msgstr "サーバーの不具合です！"
+
+#: bgben/users/forms.py:14
+msgid "欢 迎 注 册 👏"
+msgstr "ご登録へようこそ！"
+
+#: bgben/users/forms.py:17 bgben/users/forms.py:50
+msgid "BGben用户名"
+msgstr "BGbenユーザー名"
+
+#: bgben/users/forms.py:17
+msgid "BGben用户名(昵称 2~10字)"
+msgstr "BGbenハンドルネーム( 2~10文字)"
+
+#: bgben/users/forms.py:18 bgben/users/forms.py:51
+msgid "字数规定：2～10字"
+msgstr "文字数：2~10文字"
+
+#: bgben/users/forms.py:21 bgben/users/forms.py:44 bgben/users/forms.py:100
+msgid "密码"
+msgstr "パスワード"
+
+#: bgben/users/forms.py:21
+msgid "密码(6~30字)"
+msgstr "パスワード(6~30文字)"
+
+#: bgben/users/forms.py:23
+msgid "6～30字，含大、小字符、数字各至少1字，特殊字符—_#$%&*至少1字符"
+msgstr "アルファベット大・小文字、数字、特殊文字—_#$%&*それぞれ1文字を含む合計6～30字"
+
+#: bgben/users/forms.py:24 bgben/users/forms.py:103
+msgid "总共字数6～30个"
+msgstr "合計文字数6~30字"
+
+#: bgben/users/forms.py:25 bgben/users/forms.py:104
+msgid "密码确认"
+msgstr "パスワード確認"
+
+#: bgben/users/forms.py:27 bgben/users/forms.py:106
+msgid "请输入相同的密码"
+msgstr "同じパスワードを入力して下さい"
+
+#: bgben/users/forms.py:28
+msgid "同意"
+msgstr " "
+
+#: bgben/users/forms.py:29
+msgid "注 册"
+msgstr "登録する"
+
+#: bgben/users/forms.py:34 bgben/users/forms.py:77
+msgid "此用户名已被使用，请选用其他名字！"
+msgstr "このユーザー名はすでに使用されています！"
+
+#: bgben/users/forms.py:54
+msgid "头像"
+msgstr "プロフィール画像"
+
+#: bgben/users/forms.py:70
+msgid "关于我"
+msgstr "自己紹介"
+
+#: bgben/users/forms.py:70
+msgid "120字以内"
+msgstr "120文字以内"
+
+#: bgben/users/forms.py:89 bgben/users/routes.py:230
+msgid "我要重置密码"
+msgstr "リセット申請"
+
+#: bgben/users/forms.py:94
+msgid "此邮箱用户尚未注册！请注册"
+msgstr "このメールアドレスはまだ登録されていません！"
+
+#: bgben/users/forms.py:96
+msgid "此邮箱用户已停用！请重新注册"
+msgstr "このユーザーアカウントはすでに解除されています！"
+
+#: bgben/users/forms.py:102
+msgid "总共字数6～30个，含大、小字符、数字各至少1字，特殊字符 —_#$%&*至少1字符"
+msgstr "アルファベット大・小文字、数字、特殊文字—_#$%&*それぞれ1文字を含む6～30字"
+
+#: bgben/users/forms.py:103
+msgid "新的密码"
+msgstr "新しいパスワード"
+
+#: bgben/users/forms.py:106
+msgid "请在输入一遍新的密码"
+msgstr "もう一度パスワードを入力して下さい"
+
+#: bgben/users/forms.py:111
+msgid "关注TA"
+msgstr "フォローする"
+
+#: bgben/users/forms.py:115
+msgid "取消关注"
+msgstr "フォローを取消す"
+
+#: bgben/users/routes.py:68
+msgid "注册测试"
+msgstr "登録テスト"
+
+#: bgben/users/routes.py:95
+#, python-format
+msgid "我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并做出相应的反应。"
+msgstr "あなたのメールアドレス%(email)sへ仮登録メールを送りました。30分以内に本登録の操作を完了させて下さい。"
+
+#: bgben/users/routes.py:98
+#, python-format
+msgid "我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试！"
+msgstr "あなたのメールアドレス%(email)sへメール送信を試みましたが失敗しました。もう一度アドレスをご確認の上、リクエストをして下さい。"
+
+#: bgben/users/routes.py:114
+#, python-format
+msgid "恭喜%(username)s ！您成功注册啦🎈🎈🎈"
+msgstr "%(username)s さん、ようこそ！登録完了です🎈🎈🎈"
+
+#: bgben/users/routes.py:130
+#, python-format
+msgid "欢迎回来，%(user)s🎈🎈🎈"
+msgstr "おかえりなさい、%(user)sさん🎈🎈🎈"
+
+#: bgben/users/routes.py:135
+msgid "本账号已被停用，如有问题请联系管理人！"
+msgstr "このアカウントは使用停止となっています。お問い合わせは管理人までどうぞ！"
+
+#: bgben/users/routes.py:137
+msgid "登陆不成功，请再次确认注册邮箱及密码！"
+msgstr "ログインに失敗しました。再度ご確認の上、お試し下さい！"
+
+#: bgben/users/routes.py:145
+msgid "您已经退出了系统，再来玩哦！"
+msgstr "ログアウトが完了しました。また遊びに来てくださいね！"
+
+#: bgben/users/routes.py:166
+msgid "您的设置内容已被更新！"
+msgstr "アカウントの設定が更新されました！"
+
+#: bgben/users/routes.py:178
+msgid "账户设置"
+msgstr "アカウント設定"
+
+#: bgben/users/routes.py:216
+#, python-format
+msgid "%(user)s的动态"
+msgstr "%(user)sのフィード"
+
+#: bgben/users/routes.py:228
+msgid "我们向您的邮箱发送了关于密码重置方法的邮件，请在30分钟内查询并做出相应的反应。"
+msgstr "パスワードリセットに関する仮登録メールを送信しました。30分以内に本登録を完了させて下さい。"
+
+#: bgben/users/routes.py:245
+msgid "您的密码被重置了，现在可以登陆了啦🎈🎈🎈"
+msgstr "パスワードがリセットされました。ログインして下さいね🎈🎈🎈"
+
+#: bgben/users/routes.py:258 bgben/users/routes.py:279
+#, python-format
+msgid "%(username)s不是BGben用户哦！"
+msgstr "%(username)sさんはBGbenユーザーではありません！"
+
+#: bgben/users/routes.py:261
+msgid "自己无法关注自己哦！"
+msgstr "ご自分をフォローすることはできません！"
+
+#: bgben/users/routes.py:265
+#, python-format
+msgid "您正在关注%(username)s"
+msgstr "%(username)sさんをフォローしました！"
+
+#: bgben/users/routes.py:282
+msgid "自己无法取消关注自己哦！"
+msgstr "ご自分へのフォロー取り消しはできません！"
+
+#: bgben/users/routes.py:286
+#, python-format
+msgid "您已经取消对%(username)s的关注！"
+msgstr "%(username)sさんへのフォローを取り消しました！"
+
+#: bgben/users/utils.py:39
+msgid "欢迎申请[BGben]用户账号，请在30分钟之内打开本邮件中的链接并完成确认✅"
+msgstr "[BGben]ユーザーア登録をお申し込みいただきありがとうございます。30分以内にこのメールにあるリンクをクリックし、本登録を完了させて下さい✅"
+
+#: bgben/users/utils.py:63
+msgid "[BGben] 得知您想重置密码🔑，请在30分钟之内采取行动💪"
+msgstr "[BGben] パスワードリセットのご依頼を承りました🔑，30分以内にご対応願います💪"
+
+#~ msgid "Login"
+#~ msgstr "ログイン"
+
+#~ msgid ""
+#~ "取\n"
+#~ "              消"
+#~ msgstr "キャンセル"
+
+#~ msgid "记录 - 灵魂的每一个回忆"
+#~ msgstr "魂のメモ帳"
+
+#~ msgid "有关此用途的版权权利。"
+#~ msgstr "この使用に関する著作権。"
+
+#~ msgid "参考："
+#~ msgstr "ご参考まで："
+
+#~ msgid "我同意"
+#~ msgstr " "

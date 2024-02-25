@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+{% endblock head %}
+
+{% block content %}
+<!-- Main Theme -->
+<div class="main-theme-wrapper">
+  <h1>{{ _('BGben的笔记广场')}}</h1>
+  <h2>{{ _('此时此刻的BGben阿卡西记录') }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <div class="post-contents explore">
+    <aside class="post-left">
+      <!-- Latest Posts -->
+      <div class="aside-section">
+        <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="">
+        <p class="text-color-red side-title">{{ _('最新投稿') }}</p>
+      </div>
+      <ul class="aside-list">
+        {% if twenty_posts %}
+        {% for post in twenty_posts %}
+        <li class="aside-list-item">
+          <a href="{{ url_for('posts.post', post_id=post.id) }}" class="text-color-red aside-title-red">
+            <span>{{ post.title}}</span>
+            <img class="sidebar-post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
+              alt="post image">
+          </a>
+        </li>
+        {% endfor %}
+        {% endif %}
+      </ul>
+      <!-- Past Posts -->
+      <div class="aside-section">
+        <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="">
+        <p class="text-color-green side-title">{{ _('多产笔者') }}</p>
+      </div>
+      <ul class="aside-list">
+        {% for author in top_authors %}
+        <li class="aside-list-item">
+          <a href="{{ url_for('users.user_page', username=author.username) }}">
+            <div class="hot-user">
+              <img src="{{ url_for('static', filename='profile_pics/' + author.image_file) }}" alt="">
+              {{ author.username}} {{ author.posts_count()}} {{ _('篇') }}
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <!-- Hottest Topics -->
+      <div class="aside-section">
+        <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="">
+        <p class="text-color-orange side-title">{{ _('热议标签') }}</p>
+      </div>
+      <ul class="aside-list">
+        {% for tag in top_tags %}
+        <li class="aside-list-item">
+          <a href="{{ url_for('posts.tag', name=tag.name) }}" class="text-color-orange"><img class="tag-img"
+              src="{{url_for('static', filename='images/tag2.png')}}" alt="">{{ tag.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <!-- Ad -->
+      <div class="aside-ad-img">
+        <img src="{{ url_for('static', filename='images/ad_space.png') }}" alt="">
+        <a class="aside-adspace-button" href="{{ url_for('main.contact') }}">
+          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}" alt=""></a>
+      </div>
+      <!-- / Ad -->
+
+
+    </aside>
+    <div class="post-right">
+      <!-- Post Headings -->
+      <div class="post-headings-wrapper">
+        {% if posts %}
+        {% for post in posts.items %}
+        <a class="post-link " href="{{ url_for('posts.post', post_id=post.id) }}">
+          <div class="post-heading-explore">
+            <h2>
+              {{ post.title }}
+            </h2>
+            <h3>{{ post.subtitle }}</h3>
+            <div class="post-heading-imgbox">
+              <img class="post-heading-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
+                alt="">
+            </div>
+        </a>
+        <div class="post-author-explore">
+          <div class="post-author-explore-author">
+            <a class="post-author-link" href="{{ url_for('users.user_page', username=post.author.username) }}">
+              <img class="post-author-explore-img"
+                src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
+            </a>
+            <a class="post-author-link user_popup"
+              href="{{ url_for('users.user_page', username=post.author.username) }}">
+              {{ post.author.username }}
+            </a>
+          </div>
+          <small class="post-date"> {{ moment(post.date_posted).format('LLL') }}</small>
+        </div>
+      </div>
+
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="pagination-links explore">
+      {% if posts %}
+      {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %}
+      {% if page_num %}
+      {% if posts.page == page_num %}
+      <a class="pagination-link pagination-active text-color-red"
+        href="{{ url_for('posts.all_posts', page=page_num) }}">{{
+        page_num
+        }}
+      </a>
+      {% else %}
+      <a class="pagination-link pagination-inactive" href="{{ url_for('posts.all_posts', page=page_num) }}">{{
+        page_num }}
+      </a>
+      {% endif %}
+      {% else %}
+      ...
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script>
+    function initialize_popovers() {
+      const popups = document.querySelectorAll('.user_popup');
+      for (let i = 0; i < popups.length; i++) {
+        const popover = new bootstrap.Popover(popups[i], {
+          content: 'Loading...',
+          trigger: 'hover focus',
+          placement: 'right',
+          html: true,
+          sanitize: false,
+          delay: { show: 500, hide: 0 },
+          container: popups[i],
+          customClass: 'd-inline',
+        });
+        popups[i].addEventListener('show.bs.popover', async (ev) => {
+          // if (ev.target.popupLoaded) {
+          //   return
+          // }
+          const response = await fetch('/user/' + ev.target.innerText.trim() + '/popup');
+          const data = await response.text();
+          const popover = bootstrap.Popover.getInstance(ev.target);
+          if (popover && data) {
+            ev.target.popupLoaded = true;
+            popover.setContent({ '.popover-body': data })
+          }
+          flask_moment_render_all()
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initialize_popovers);
+  </script>
+  </div>
+</main>
+<!-- / Notebook Paper -->
+{% endblock content %}

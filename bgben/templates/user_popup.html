@@ -1,0 +1,26 @@
+<!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+<div class="popover1">
+  <!-- User Name & Picture -->
+  <div class="popover_l1">
+    <!-- <img src="../static/profile_pics/admin.png" alt=""> -->
+    <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" alt="">
+    <p><a href="{{ url_for('users.user_page', username=user.username) }}">
+        {{ user.username }}
+      </a></p>
+  </div>
+  <div class="popover_l2">
+    <!-- User About Me -->
+    <p><small>
+        {% if user.about_me %}
+        <p class="popover_about_me">{{ user.about_me }}</p>
+        {% endif %}
+      </small></p>
+
+    <!-- User's Following/Followers -->
+    <p><small class="text-color-red">
+        {{ _('%(count)d 粉丝', count=user.followers_count()) }},
+        {{ _('%(count)d 关注', count=user.following_count()) }}
+      </small></p>
+    <p><small>{{_('最近活跃时间：')}}{{ moment(user.last_seen).fromNow() }}</small></p>
+  </div>
+</div>

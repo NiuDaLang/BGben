@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper request-reset">
+  <h1 class="text-color-red">{{ _('申请密码重置！') }}</h1>
+  <h2 style="text-align: center;">{{ _('请输入您的用户邮箱地址，并点击‘我要重置密码’按钮。') }}<br>{{ _('我们将发送确认邮件给您！') }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+
+<!-- Notebook Paper -->
+<main>
+  <div class="edit-form-container request-reset">
+
+    <!-- Request-Reset Form -->
+    <form class="form-inputs" action="" method="post" novalidate>
+      {{ form.hidden_tag()}}
+      <!-- label 1 -->
+      <div class="form-item">
+        <label class="form-title">
+          <img src="static/images/feather_pen1.png" alt="">
+          <span>{{ form.email.label }}</span>
+        </label>
+        <!-- input line 1 -->
+        <div class="form-input single-line">
+          {% if form.email.errors %}
+          {{form.email(class="text-input is-invalid", type="email", placeholder="邮箱")}}
+          {% for error in form.email.errors %}
+          <small><span class="error-message">{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{form.email(class="text-input", type="email", placeholder="邮箱")}}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- label 3 -->
+      <div class="form-item button-div login-btn">
+        {{ form.submit_field(class="submit-btn") }}
+      </div>
+
+    </form>
+    <!-- / Request-Reset Form -->
+  </div>
+</main>
+<!-- / Notebook Paper -->
+
+{% endblock content %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper">
+  <h1 class="text-color-orange">{{ _('用户注册') }}</h1>
+  <h2 class="text-color-green">{{ _('欢迎一起来记录您所知道的秘密！') }}</h2>
+  <div id="lang" hidden>{{ lang }}</div>
+
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <div class="register-test-container" id="register-test-container">
+    <!-- Intro -->
+    <div class="intro-page">
+      <div id="modal-select" class="modal-confirm"
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h2>{{ _('请先选择测试主题！') }}</h2>
+        <button class="cancel-btn" id="modal-select-close">{{ _('关闭') }}</button>
+      </div>
+
+      <div class="form-inputs">
+        <!-- intro -->
+        <div class="intro">
+          <span>
+            {{ _('感谢您申请注册成为BGben用户（以下简称‘BGben记录者’）！') }}
+            <br><br>
+            {{ _('因本网站皆在分享及探索关于人类觉醒的话题内容，BGben记录者仅限于对相关话题领域已具有基本认识的小伙伴们。请回答以下任选话题相关的10道题目。') }}
+            <br>
+            <small class="text-color-red"><strong>{{ _('免责声明：本网站所有内容仅供娱乐参考，不能做为任何投资、医疗、信仰等行为的依据。') }}</strong></small>
+            <br><br>
+            <u>{{ _('答对8道题以上的小伙伴方可成为BGben记录者注册本网站并进行分享。') }}</u>
+          </span>
+        </div>
+        <!-- Topics Option -->
+        <form class="form-input-single" action="" method="" id="register-test">
+          <div class="form-item-flex">
+            <!-- label 1 -->
+            <label class="topic-select"><span>{{ _('主题选项') }}</span>
+              <select class="select-input" name="register-test-selection" id="selection" placeholder="邮箱"
+                value="{{ form.csrf_token }}">
+                <option value="0" sleceted>{{ _('请点击并选择') }}</option>
+                <option value="humanity">{{ _('人类起源') }}</option>
+                <option value="underground">{{ _('地下世界') }}</option>
+                <option value="ufo">{{ _('UFO不明飞行物') }}</option>
+                <option value="jab">{{ _('针相') }}</option>
+                <option value="ai">{{ _('AI人工智能') }}</option>
+                <option value="et">{{ _('非人类智能存在') }}</option>
+                <option value="spiritual">{{ _('灵性·前世今生') }}</option>
+                <option value="healing">{{ _('替代疗法') }}</option>
+                <option value="shanhaijing">{{ _('山海经') }}</option>
+                <option value="pyramid">{{ _('金字塔') }}</option>
+                <option value="timespace">{{ _('时空') }}</option>
+                <option value="moon">{{ _('月球') }}</option>
+              </select>
+            </label>
+          </div>
+          <!-- label 2 -->
+          <div class="form-item button-div">
+            <button class="submit-btn" type="submit" name="test-start" id="test-start">{{ _('开 始 测 试') }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Quiz Section -->
+    <div class="quiz-container">
+      <div id="question-numbers" class="question-numbers">
+        <span>Q</span>
+        <span id="quiz-number"></span>
+        <span>/10</span>
+      </div>
+      <div class="quiz-text text-color-darkgrey" id="quiz-question"></div>
+      <hr class="quiz-divider">
+      <div class="quiz-answers" id="quiz-answers">
+        <button class="quiz-answer"></button>
+        <button class="quiz-answer"></button>
+        <button class="quiz-answer"></button>
+        <button class="quiz-answer"></button>
+      </div>
+      <button class="next-button" id="next-button"></button>
+      <form action="" id="toRegister">
+        {{ form.csrf_token }}
+        {{form.test(class="text-input", type="hidden", value="pass", placeholder="BGben用户名")}}
+        {{form.submit_field(class="link-button", type="submit", id="link-button")}}
+      </form>
+    </div>
+  </div>
+</main>
+<script src="static/js/register.js"></script>
+<script>
+  let csrf_token = "{{ csrf_token() }}";
+</script>
+<!-- / Notebook Paper -->
+
+{% endblock content %}

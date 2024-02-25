@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper">
+  <h1 class="text-color-red">{{ _('用户登陆') }}</h1>
+  <h2>{{ _('欢迎回来记录新的一章！') }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <div class="edit-form-container">
+    <!-- Login Form -->
+    <form class="form-inputs" action="" method="post" novalidate>
+      {{ form.hidden_tag()}}
+      <!-- label 1 -->
+      <div class="form-item">
+        <label class="form-title">
+          <img src="static/images/feather_pen1.png" alt="">
+          <span>{{ form.email.label }}</span>
+        </label>
+        <!-- input line 1 -->
+        <div class="form-input single-line">
+          {% if form.email.errors %}
+          {{form.email(class="text-input is-invalid", type="email")}}
+          {% for error in form.email.errors %}
+          <small><span class="error-message">{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{form.email(class="text-input", type="email")}}
+          {% endif %}
+        </div>
+      </div>
+      <!-- label 2 -->
+      <div class="form-item">
+        <div class="form-title">
+          <img src="static/images/feather_pen2.png" alt="">
+          <span>{{ form.password.label }}</span>
+        </div>
+        <!-- input line 2 -->
+        <div class="form-input single-line">
+          {% if form.password.errors%}
+          {{form.password(class="text-input is-invalid", type="password",
+          autocomplete='false')}}
+          {% for error in form.password.errors %}
+          <small class="error-message"><span>{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{form.password(class="text-input", type="password", autocomplete='false')}}
+          {% endif %}
+        </div>
+        <div class="password-reset-links">
+          <small><a href="{{ url_for('users.reset_request') }}">{{ _('忘记密码了吗？') }}</a></small>
+        </div>
+      </div>
+
+      <!-- label 3 -->
+      <label class="form-input checkbox-container">
+        {{ _('记住我' )}}
+        <!-- input line 3 -->
+        {{ form.remember(class="checkbox-input") }}
+        <span class="checkbox-checkmark"></span>
+      </label>
+      <!-- label 3 -->
+      <div class="form-item button-div login-btn" style="margin-bottom: 10px !important">
+        {{ form.submit_field(class="submit-btn") }}
+      </div>
+      <div class="login-link"><small>{{ _('还不是BGben用户吗？来') }}<a href="{{url_for('users.register_test')}}"><strong>{{
+              _('注册') }}</strong></a>{{ _('吧！') }}</small></div>
+
+    </form>
+    <!-- / Login Form -->
+  </div>
+</main>
+<!-- / Notebook Paper -->
+
+{% endblock content %}

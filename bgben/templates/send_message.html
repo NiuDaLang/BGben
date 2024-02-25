@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Main Theme -->
+<div class="main-theme-wrapper">
+  <h1>BGben</h1>
+  <h2>{{ _("写私信给%(recipient)s", recipient=recipient) }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+<div class="edit-form-container">
+  <form class="form-inputs msg-form" action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="form-input send-msg">
+      {% if form.message.errors %}
+      {{form.message(class="text-input is-invalid")}}
+      {% for error in form.message.errors %}
+      <small><span class="error-message">{{ error }}</span></small>
+      {% endfor %}
+      {% else %}
+      {{form.message(class="text-input")}}
+      {% endif %}
+    </div>
+    <small style="font-size: 0.8rem;">{{ _('请注意保护好您的隐私！') }}<a class="text-color-red"
+        href="{{url_for('main.privacy_policy')}}">{{ _('隐私政策')}}</a></small>
+
+    <div class="form-item button-div login-btn" style="margin-bottom: 10px !important">
+      {{ form.submit_field(class="submit-btn") }}
+    </div>
+  </form>
+
+</div>
+{% endblock %}

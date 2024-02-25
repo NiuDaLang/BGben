@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+
+<body style="background-color: #ffffb0">
+  <p>{{ _('您好，%(username)s 女士/先生！', username=user.username) }}</p>
+  <br>
+  <p>{{ _('您正在申请BGben用户账号，请在30分钟之内通过点击下面链接确认并完成流程：') }}</p>
+  <p><a href="{{ link }}">{{ link }}</a></p>
+  <br>
+  <p><u>{{ _('温馨提示: 如果该账号申请不是由您本人操作的话，请忽略此邮件即可。') }}</u></p>
+  <br>
+  <p>{{ _('祝您每天愉快🎈') }}</p>
+  <p>{{ _('BGben管理人') }}</p>
+  <img src="cid:BgbenLogo" style="width: 190px; height: 64px" />
+  <br>
+  <p><small>{{ _('此邮件由系统自动发出,请勿直接回复') }}</small></p>
+</body>
+
+</html>

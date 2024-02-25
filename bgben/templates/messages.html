@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Main Theme -->
+<div class="main-theme-wrapper">
+  <h1>BGben</h1>
+  <h2>{{ _("%(username)s的私信邮箱📮", username=user.username) }}</h2>
+  <div id="tab" style="display: none;">{{tab}}</div>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main class="messages">
+  <div class="tabs messages-tabs">
+    <button id="tab_in" class="tab-post messages-tab-post tablink" onclick="openTab(event, 'in')">{{_('收件箱')}}</button>
+    <button id="tab_out" class="tab-user messages-tab-user tablink"
+      onclick="openTab(event, 'out')">{{_('发件箱')}}</button>
+  </div>
+
+  <!-- text-color-red front-tab -->
+
+  <!-- Inbox -->
+  <div id="in" class="message-list label">
+    {% if in_messages %}
+    {% for message in in_messages %}
+    <!-- Message-->
+    <div class="balloon" data-id="{{ message.id }}">
+      <div class="balloon-main">
+        <a class="message-profile-img" href="{{ url_for ('users.user_page', username=message.author.username) }}">
+          <img src="{{ url_for('static', filename='profile_pics/' + message.author.image_file) }}" alt="">
+        </a>
+        <div class="says">
+          {{ message.body }}
+        </div>
+      </div>
+      <div class="message-time">
+        <a class="message-time-name" href="{{ url_for ('users.user_page', username=message.author.username) }}">
+          From: {{ message.author.username }}
+        </a>
+        <div class="message-time-time-wrapper">
+          <img src="{{ url_for('static', filename='images/clock.png') }}" alt="">
+          <span><small class="message-time-time">{{ moment(message.timestamp).format('LLL') }}</small></span>
+          <!-- Reply Link -->
+          <a href="{{ url_for('main.send_message', recipient=message.author.username) }}">
+            <img class="message-reply" src="{{ url_for('static', filename='images/reply.png') }}" alt=""
+              title="{{ _('发送信息') }}">
+          </a>
+          <!-- Delete Message -->
+          <a class="modal-open-message delete_in_msg_btn" href="#">
+            <img data-id="{{ message.id }}" src="{{ url_for('static', filename='images/paper_crumpled_orange.png')}}"
+              alt="" title="{{ _('删除') }}" onclick="deleteInMsg(event, this)">
+          </a>
+        </div>
+
+        <!-- 笔记删除确认Modal -->
+        <div class="modal-confirm modal-delete-in-message-confirm" data-id="{{ message.id }}">
+          <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="alert">
+          <h2>{{ _('您确定要删除这条信息吗？') }}</h2>
+          <div class="button-area">
+            <button class="cancel-btn" data-id="{{ message.id }}">{{ _('取 消') }}</button>
+            <button class="confirm-btn" data-id="{{ message.id }}" value="确 定">{{
+              _('确 定')
+              }}</button>
+          </div>
+          <div class="delete-in-msg-failure-warning" data-id="{{ message.id }}"></div>
+        </div>
+
+      </div>
+    </div>
+    <!-- / Message -->
+    {% endfor %}
+    {% else %}
+    <span>No messages</span>
+    {% endif %}
+
+    {% if in_messages.items | length == 0 %}
+    <div class="no-message"><img src="{{ url_for('static', filename='images/empty_tray.png') }}" alt=""></div>
+    {% endif %}
+
+    <!-- Pagination -->
+    <div class="pagination messages-pagination">
+      {% if in_prev_url %}
+      <div class="prev-page">
+        <div class="pagination-text"><a href="{{ in_prev_url }}">{{ _('前一页') }}</a></div>
+        <div class="message-pagination-imgbox">
+          <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="">
+        </div>
+      </div>
+      {% endif %}
+
+      {% if in_next_url %}
+      <div class="next-page">
+        <div class="message-pagination-imgbox">
+          <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="">
+        </div>
+        <div class="pagination-text"><a href="{{ in_next_url }}">{{ _('下一页') }}</a></div>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+  <!-- /Inbox -->
+
+  <!-- Outbox -->
+  <div id="out" class="message-list label" style="display: none;">
+    {% if out_messages %}
+    {% for message in out_messages %}
+    <!-- Message-->
+    <div class="balloon" data-id="{{ message.id }}">
+      <div class="balloon-main">
+        <a class="message-profile-img" href="{{ url_for ('users.user_page', username=message.author.username) }}">
+          <img src="{{ url_for('static', filename='profile_pics/' + message.author.image_file) }}" alt="">
+        </a>
+        <div class="says2">
+          {{ message.body }}
+        </div>
+      </div>
+      <div class="message-time">
+        <a class="message-time-name" href="{{ url_for ('users.user_page', username=message.author.username) }}">
+          To: {{ message.author.username }}
+        </a>
+        <div class="message-time-time-wrapper">
+          <img src="{{ url_for('static', filename='images/clock.png') }}" alt="">
+          <span><small class="message-time-time">{{ moment(message.timestamp).format('LLL') }}</small></span>
+          <!-- Delete Message -->
+          <a class="modal-open-message delete_out_msg_btn" href="#">
+            <img data-id="{{ message.id }}" src="{{ url_for('static', filename='images/paper_crumpled_orange.png')}}"
+              alt="" title="{{ _('删除') }}" onclick="deleteOutMsg(event, this)">
+          </a>
+        </div>
+
+        <!-- 笔记删除确认Modal -->
+        <div class="modal-confirm modal-delete-out-message-confirm" data-id="{{ message.id }}">
+          <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="alert">
+          <h2>{{ _('您确定要删除这条信息吗？') }}</h2>
+          <div class="button-area">
+            <button class="cancel-btn" data-id="{{ message.id }}">{{ _('取 消') }}</button>
+            <button class="confirm-btn" data-id="{{ message.id }}">{{ _('确 定') }}</button>
+          </div>
+          <div class="delete-in-msg-failure-warning" data-id="{{ message.id }}"></div>
+        </div>
+      </div>
+    </div>
+    <!-- / Message -->
+    {% endfor %}
+    {% else %}
+    <span>No messages</span>
+    {% endif %}
+
+    {% if out_messages.items | length == 0 %}
+    <div class="no-message"><img src="{{ url_for('static', filename='images/empty_out_tray.png') }}" alt=""></div>
+    {% endif %}
+
+    <!-- Pagination -->
+    <div class="pagination messages-pagination">
+      {% if out_prev_url %}
+      <div class="prev-page">
+        <div class="pagination-text"><a href="{{ out_prev_url }}">{{ _('前一页') }}</a></div>
+        <div class="message-pagination-imgbox">
+          <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="">
+        </div>
+      </div>
+      {% endif %}
+
+      {% if out_next_url %}
+      <div class="next-page">
+        <div class="message-pagination-imgbox">
+          <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="">
+        </div>
+        <div class="pagination-text"><a href="{{ out_next_url }}">{{ _('下一页') }}</a></div>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+  <!-- / Outbox -->
+
+
+</main>
+
+<script>
+  let csrf_token = "{{ csrf_token() }}";
+
+  function deleteInMsg(e, msg_id) {
+    msg_id = msg_id.getAttribute("data-id")
+
+    // open modal
+    $(`.modal-confirm.modal-delete-in-message-confirm[data-id=${msg_id}]`).css('visibility', 'visible')
+    e = e || window.event;
+    e.preventDefault();
+
+    // fetch method
+    $(`.confirm-btn[data-id=${msg_id}]`).click(function () {
+      fetch(`${window.origin}/message/${msg_id}/delete_received_message`, {
+        method: 'POST',
+        headers: new Headers({
+          "content-type": "application/json",
+          "X-CSRF-TOKEN": csrf_token
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.received_msg_deleted == true) {
+            $(`.balloon[data-id=${msg_id}]`).remove()
+          } else {
+            $(`.delete-in-msg-failure-warning[data-id=${msg_id}]`).text('服务器错误，无法删除此条评论！')
+          }
+        })
+    })
+
+    // cancel/close modal
+    $(`.cancel-btn[data-id=${msg_id}]`).click(function () {
+      $(`.modal-delete-in-message-confirm[data-id=${msg_id}]`).css('visibility', 'hidden')
+    })
+
+  }
+
+  function deleteOutMsg(e, msg_id) {
+    msg_id = msg_id.getAttribute("data-id")
+
+    // open modal
+    $(`.modal-confirm.modal-delete-out-message-confirm[data-id=${msg_id}]`).css('visibility', 'visible')
+    e = e || window.event;
+    e.preventDefault();
+
+    // fetch method
+    $(`.confirm-btn[data-id=${msg_id}]`).click(function () {
+      fetch(`${window.origin}/message/${msg_id}/delete_sent_message`, {
+        method: 'POST',
+        headers: new Headers({
+          "content-type": "application/json",
+          "X-CSRF-TOKEN": csrf_token
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.sent_msg_deleted == true) {
+            $(`.balloon[data-id=${msg_id}]`).remove()
+
+          } else {
+            $(`.delete-out-msg-failure-warning[data-id=${msg_id}]`).text('服务器错误，无法删除此条评论！')
+          }
+        })
+    })
+
+    // cancel/close modal
+    $(`.cancel-btn[data-id=${msg_id}]`).click(function () {
+      $(`.modal-delete-out-message-confirm[data-id=${msg_id}]`).css('visibility', 'hidden')
+    })
+
+  }
+
+  $(document).ready(function () {
+    // Detect which mail box and open that tab
+    let mailbox_type = $('#tab').text()
+    console.log("mailboox_type: " + mailbox_type)
+
+    tab_name = "tab_" + mailbox_type
+    console.log("tab_name: " + tab_name)
+
+    document.getElementById(tab_name).click();
+
+  })
+
+  function openTab(evt, category) {
+    console.log("event" + evt)
+
+    let i, x, tablinks;
+    x = document.querySelectorAll(".label");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.querySelectorAll(".tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" text-color-red", "");
+      tablinks[i].className = tablinks[i].className.replace(" front-tab", "");
+    }
+    console.log("category: " + category)
+    document.getElementById(category).style.display = "block";
+    evt.currentTarget.className += " text-color-red";
+    evt.currentTarget.className += " front-tab";
+  }
+
+</script>
+
+{% endblock %}

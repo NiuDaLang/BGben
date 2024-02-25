@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main Theme -->
+<div class="sub-main-theme-wrapper">
+  <h1>{{ _('用户注册') }}</h1>
+  <h2>{{ _('欢迎一起来记录您所知道的秘密！') }}</h2>
+</div>
+<!-- / Main Theme -->
+
+<!-- Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert">
+  <span class=" alert-{{ category }}">{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Flash Message -->
+
+<!-- Notebook Paper -->
+<main>
+  <script src="static/js/register.js" defer></script>
+  <div class="register-form-container" id="register-form-container">
+    <!-- Register Section -->
+    <div class="register-form" id="register-form">
+      <!-- Register Form -->
+      <form class="form-inputs" action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <!-- label 1 -->
+        <div class="form-item">
+          <label class="form-title">
+            <img src="static/images/feather_pen1.png" alt="">
+            <span>{{form.username.label}}</span>
+          </label>
+          <!-- input line 1 -->
+          <div class="form-input single-line">
+            {% if form.username.errors %}
+            {{form.username(class="text-input is-invalid")}}
+            {% for error in form.username.errors %}
+            <small><span class="error-message">{{ error }}</span></small>
+            {% endfor %}
+            {% else %}
+            {{form.username(class="text-input")}}
+            {% endif %}
+          </div>
+        </div>
+        <!-- label 2 -->
+        <div class="form-item">
+          <label class="form-title">
+            <img src="static/images/feather_pen1.png" alt="">
+            <span>{{form.email.label}}</span>
+          </label>
+          <!-- input line 1 -->
+          <div class="form-input single-line">
+            {% if form.email.errors %}
+            {{form.email(class="text-input is-invalid", type="email")}}
+            {% for error in form.email.errors %}
+            <small><span class="error-message">{{ error }}</span></small>
+            {% endfor %}
+            {% else %}
+            {{form.email(class="text-input", type="email")}}
+            {% endif %}
+          </div>
+        </div>
+        <!-- label 3 -->
+        <div class=" form-item">
+          <div class="form-title">
+            <img src="static/images/feather_pen2.png" style="align-self: self-start;" alt="">
+            <span>{{form.password.label}}<small class="password-instruction"> ({{ _('含英大、小字母、数字、特殊字符')}}<span
+                  class="text-color-green password-instruction">—_#$%&*</span>{{
+                _('各至少1字') }})</small></span>
+          </div>
+          <!-- input line 2 -->
+          <div class="form-input single-line">
+            {% if form.password.errors%}
+            {{form.password(class="text-input is-invalid", autocomplete='false')}}
+            {% for error in form.password.errors %}
+            <small class="error-message"><span>{{ error }}</span></small>
+            {% endfor %}
+            {% else %}
+            {{form.password(class="text-input", type="password", autocomplete='false')}}
+            {% endif %}
+          </div>
+        </div>
+        <!-- label 3 -->
+        <div class=" form-item">
+          <div class="form-title">
+            <img src="static/images/feather_pen2.png" alt="">
+            <span>{{form.confirm_password.label}}</span>
+          </div>
+          <!-- input line 3 -->
+          <div class="form-input single-line">
+            {% if form.confirm_password.errors %}
+            {{form.confirm_password(class="text-input is-invalid", autocomplete='false')}}
+            {% for error in form.confirm_password.errors %}
+            <small><span class="error-message">{{ error }}</span></small>
+            {% endfor %}
+            {% else %}
+            {{form.confirm_password(class="text-input", autocomplete='false')}}
+            {% endif %}
+          </div>
+        </div>
+        <!-- label 4 -->
+        <label class="form-input checkbox-container">
+          {{ _('我同意各项BGben利用规则' )}}
+          <br>
+          <a class="rule-page-link" href="{{ url_for('main.user_policy') }}" target="_blank"><small>{{
+              _('BGben博客功能使用规则') }}</small></a>
+          <small>&</small>
+          <a class="rule-page-link" href="{{ url_for('main.privacy_policy') }}" target="_blank"><small>{{ _('隐私政策')
+              }}</small></a>
+          <!-- input line 4 -->
+          {% if form.agree.errors %}
+          {{ form.agree(class="checkbox-input") }}
+          <span class="checkbox-checkmark"></span>
+          {% for error in form.agree.errors %}
+          <small><span class="error-message">{{ error }}</span></small>
+          {% endfor %}
+          {% else %}
+          {{ form.agree(class="checkbox-input") }}
+          <span class="checkbox-checkmark"></span>
+          {% endif %}
+        </label>
+
+        <!-- label 5 -->
+        <div class="form-item button-div">
+          {{form.submit_field(class="submit-btn")}}
+        </div>
+        <div class="already-member">
+          <small>{{ _('已经是BGben笔记员了嘛？') }}<a href="{{ url_for('users.login') }}">{{ _('登陆!') }}</a></small>
+        </div>
+      </form>
+      <!-- / Register Form -->
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $(".is-invalid").on("focus", function () {
+        $(this).removeClass('is-invalid')
+      })
+    })
+  </script>
+</main>
+<!-- / Notebook Paper -->
+
+{% endblock content %}
