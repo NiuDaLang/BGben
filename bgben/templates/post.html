@@ -371,7 +371,6 @@
       function loadItems() {
         current_user_id = document.querySelector("#current_user_id").innerText
 
-        console.log('current user id: ' + current_user_id)
         fetch(`${window.origin}/load_comments?c=${counter}`).then((response) => {
           response.json().then((data) => {
             if (!data.length) {
@@ -460,7 +459,6 @@
               postLikeButton.className = "post-share rating-btns rating-star modal-open-sign-in"
             }
           }).catch((error) => {
-            console.log('login-required')
             modal_sign_in1.style.visibility = "visible"
           })
       }
@@ -525,7 +523,6 @@
         edit_input = document.querySelector("#edit_comment_content").value
 
         // Submit Error Handling 提示没有任何填写
-        console.log(edit_input)
         if (!edit_input) {
           $("#empty-input-warning").text('还没有任何内容哦！')
         }
@@ -549,7 +546,6 @@
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log('saved_edited_comment: ' + data.saved_edited_comment)
             document.querySelector('[data-id= "' + comment_id + '"]#comment_text').innerText = `${data.saved_edited_comment}`
           })
           .catch((error) => {

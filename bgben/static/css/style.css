@@ -4627,6 +4627,7 @@ input::file-selector-button {
 .edit-delete-img img {
   width: 24px;
   height: 24px;
+  margin-left: 5px;
 }
 .divider {
   width: 100%;

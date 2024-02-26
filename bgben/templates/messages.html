@@ -265,17 +265,14 @@
   $(document).ready(function () {
     // Detect which mail box and open that tab
     let mailbox_type = $('#tab').text()
-    console.log("mailboox_type: " + mailbox_type)
 
     tab_name = "tab_" + mailbox_type
-    console.log("tab_name: " + tab_name)
 
     document.getElementById(tab_name).click();
 
   })
 
   function openTab(evt, category) {
-    console.log("event" + evt)
 
     let i, x, tablinks;
     x = document.querySelectorAll(".label");
@@ -287,7 +284,6 @@
       tablinks[i].className = tablinks[i].className.replace(" text-color-red", "");
       tablinks[i].className = tablinks[i].className.replace(" front-tab", "");
     }
-    console.log("category: " + category)
     document.getElementById(category).style.display = "block";
     evt.currentTarget.className += " text-color-red";
     evt.currentTarget.className += " front-tab";

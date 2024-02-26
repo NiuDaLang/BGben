@@ -38,7 +38,7 @@ admin = Admin(name='BGben')
 # Admin
 from bgben.models import User, Post, Tag, Comment, LikePost, LikeComment, Message, Notification, Contact, Newsletter, Task
 
-admin_email = os.environ.get('ADMIN_EMAIL')
+admin_email = os.environ.get('ADMINS').strip('[]').split(',')[1]
 
 class UserView(ModelView):
   column_exclude_list = ('password_hashed')

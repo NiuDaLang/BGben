@@ -59,7 +59,6 @@
         // If form validation error
         let error_data = data['result']['email'];
         let error_text = ""
-        console.log(error_data)
         if (error_data) {
           for (let i = 0; i < error_data.length; i++) {
             error_text += error_data[i] + " "
@@ -69,8 +68,6 @@
           // If Form Validated
           let response_status = data['result']
           let response_msg = data['msg']
-          console.log(response_status)
-          console.log(response_msg)
 
           subscription_page.style.display = "none"
           result_page.style.display = "block"

@@ -155,7 +155,6 @@ $(document).ready(function () {
     const values = [...formData.entries()];
     selection = values[0][1];
 
-    console.log(selection)
     // fetch quiz questions from backend
     // start quiz
     if (selection != 0) {
