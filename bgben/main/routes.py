@@ -144,7 +144,7 @@ def search():
   page = request.args.get('page', 1, type=int)
 
   try:
-    # Serch Post
+    # Search Post
     posts, total = Post.search(g.search_form.q.data, page, per_page=5)
     post_next_url = url_for('main.search', q=g.search_form.q.data, page=page+1)\
     if total['value'] > page * 5 else None
