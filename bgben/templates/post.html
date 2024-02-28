@@ -260,25 +260,6 @@
 
       <!-- 收到的评论 -->
       <div class="comments-container">
-        <!-- 🫥提示 【修改评论】-->
-        <!-- <div id="modal_edit" class="modal-edit">
-          <input id="edit_comment_content" name="edit_comment_content" type="text" value="">
-          <div class="button-area">
-            <div id="cancel-edit-btn" class="cancel-btn" style="cursor: pointer;">{{ _('取消') }}</div>
-            <button class="confirm-btn" type="submit" id="edit-comment-submit" name="edit-comment-submit" value="更新">{{
-              _('更 新') }}</button>
-          </div>
-          <span id="empty-input-warning"></span>
-        </div> -->
-
-        <!-- 🫥提示 【删除评论确认】 -->
-        <!-- <div id="modal-delete-comment-confirm" class="modal-confirm">
-          <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="alert">
-          <h2>{{ _('您确定要删除这条评论吗？') }}</h2>
-          <button class="cancel-btn">{{ _('取消') }}</button>
-          <input class="confirm-btn" id="confirm-delete-comment" type="submit" value="{{ _('删除') }}">
-          <span id="delete-comment-failure-warning"></span>
-        </div> -->
 
         <!-- 请先注册/登陆 Modal -->
         <div id="modal-sign-in2" class="modal-sign-in">
@@ -303,7 +284,7 @@
               <div class="comment-text" id="comment_text"></div>
               <div class="commenter">
                 <div class="commenter-detail">
-                  <div class="commenter-imgbox" id="commenter_img"></div>
+                  <div class="commenter-imgbox"><img class="commenter_img" src="" alt=""></div>
                   <div id="commenter_name" class="commenter_name"></div>
                   <div id="comment_time" class="comment_time"></div>
                 </div>
@@ -379,42 +360,51 @@
 
             for (let i = 0; i < data.length; i++) {
               let template_clone = comment_template.content.cloneNode(true);
+
+              let commenter_id = data[i][0],
+                comment_body = data[i][1],
+                commenter_image_file = data[i][2],
+                commenter_name = data[i][3],
+                comment_timestamp = data[i][4],
+                comment_likes = data[i][5],
+                comment_liked = data[i][6],
+                comment_user_id = data[i][7]
+
               // comment div
               comment_div = template_clone.querySelector(".comment")
-              comment_div.setAttribute("data-id", data[i][0])
+              comment_div.setAttribute("data-id", commenter_id)
               // comment body
-              template_clone.querySelector("#comment_text").innerHTML = data[i][1]
+              template_clone.querySelector("#comment_text").innerHTML = comment_body
               // set comment.id in comment body
               comment_body = template_clone.querySelector("#comment_text")
-              comment_body.setAttribute("data-id", data[i][0])
+              comment_body.setAttribute("data-id", commenter_id)
               // commenter pic
-              template_clone.querySelector("#commenter_img").innerHTML = `
-              <img id="commenter_img" src="/static/profile_pics/${data[i][2]}" alt="commenter's photo">
-              `
+              commenter_img = template_clone.querySelector(".commenter_img")
+              commenter_img.src = "{{ url_for('static', filename='profile_pics/') }}" + commenter_image_file
               // commenter name
-              template_clone.querySelector("#commenter_name").innerHTML = data[i][3]
+              template_clone.querySelector("#commenter_name").innerHTML = commenter_name
               // comment posted date & time
-              let posted_time = data[i][4];
+              let posted_time = comment_timestamp;
               let local_posted_time = new Date(posted_time);
               template_clone.querySelector("#comment_time").innerHTML = formatDate(local_posted_time)
               // comment likes total number
-              template_clone.querySelector("#comment_likes").innerHTML = data[i][5]
+              template_clone.querySelector("#comment_likes").innerHTML = comment_likes
               // comment like button
               comment_like_button = template_clone.querySelector('.comment-like-button')
               // if current user already liked or not
-              if (!data[i][6]) {
+              if (!comment_liked) {
                 comment_like_button.className = "comment-like-button before-like"
               } else {
                 comment_like_button.className = "comment-like-button after-like"
               }
               // set comment id in comment like button
-              comment_like_button.setAttribute("data-id", data[i][0])
+              comment_like_button.setAttribute("data-id", commenter_id)
               // if current_user is commenter
-              if (current_user_id == data[i][7]) {
+              if (current_user_id == comment_user_id) {
                 template_clone.querySelector(".comment-edit").innerHTML = `
                 <div class="edit-delete-img">
-                  <span ><img data-id=${data[i][0]} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/edit.png')}}" alt="" title="编辑" onclick=EditComment(this)></span>
-                  <span class="modal-open-comment-delete"><img data-id=${data[i][0]} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/paper_crumpled.png')}}" alt="" title="删除" onclick=deleteComment(this)></span>
+                  <span ><img data-id=${commenter_id} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/edit.png')}}" alt="" title="编辑" onclick=EditComment(this)></span>
+                  <span class="modal-open-comment-delete"><img data-id=${commenter_id} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/paper_crumpled.png')}}" alt="" title="删除" onclick=deleteComment(this)></span>
                 </div>
                 `
               }

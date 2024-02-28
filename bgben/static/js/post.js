@@ -51,12 +51,9 @@ $(document).ready(function () {
     })
   }
 
-  // Prevent submit with Enter key
-  $(window).keydown(function (event) {
-    if (event.keyCode == 13) {
-      event.preventDefault();
-      return false;
-    }
+  $('#comment').on('keypress', function (e) {
+    console.log('enter pressed')
+    return e.which !== 13;
   });
 })
 

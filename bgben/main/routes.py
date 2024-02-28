@@ -137,7 +137,7 @@ def starseed_result():
 
 
 @main.route('/search')
-def search():
+def search(tab="post"):
   if not g.search_form.validate():
     return redirect(url_for('main.home'))
   
@@ -145,25 +145,32 @@ def search():
 
   try:
     # Search Post
-    posts, total = Post.search(g.search_form.q.data, page, per_page=5)
-    post_next_url = url_for('main.search', q=g.search_form.q.data, page=page+1)\
-    if total['value'] > page * 5 else None
-    post_prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1)\
-    if page > 1 else None
+    posts = []
+    posts_query, posts_total = Post.search(g.search_form.q.data, page, per_page=1)
+    if posts_total > 0:
+        posts = posts_query.all()
+    elif posts_total == 0:
+        posts = None
+    post_next_url = url_for('main.search', q=g.search_form.q.data, page=page+1) if posts_total > page * 1 else None
+    post_prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1) if page > 1 else None
     
     # Search User
-    users, total = User.search(g.search_form.q.data, page, per_page=5)
+    users = []
+    users_query, users_total = User.search(g.search_form.q.data, page, per_page=1)
+    if users_total > 0:
+        users = users_query.all()
+    elif users_total == 0:
+        users = None
     followform = EmptyForm()
     unfollowform = UnfollowForm()
-    user_next_url = url_for('main.search', q=g.search_form.q.data, page=page+1)\
-    if total['value'] > page * 5 else None
-    user_prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1)\
-    if page > 1 else None
+    user_next_url = url_for('main.search', q=g.search_form.q.data, page=page+1) if users_total > page * 1 else None
+    user_prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1) if page > 1 else None
       
     return render_template('search.html', title=_('搜索结果'), posts=posts, users=users,\
                            re=re, followform=followform, unfollowform=unfollowform,\
                            post_next_url=post_next_url, post_prev_url=post_prev_url,\
-                           user_next_url=user_next_url, user_prev_url=user_prev_url
+                           user_next_url=user_next_url, user_prev_url=user_prev_url,\
+                           tab=tab
                            )
     
   except:
@@ -242,37 +249,80 @@ def send_message(recipient):
   return render_template('send_message.html', title=_('发信息'), form=form, recipient=recipient, re=re)
 
 
+in_msgs_db = list()
+in_msgs_qty = 5
+out_msgs_db = list()
+out_msgs_qty = 5
+
+
 @main.route('/messages/<username>/<tab>')
 @login_required
-def messages(username, tab="in"):
+def messages(username, tab='in'):
   user = db.first_or_404(sa.select(User).where(User.username == username).where(User.active == True))
   if user == current_user:
     form=DeleteForm()
     current_user.last_message_read_time = datetime.now(timezone.utc)
     current_user.add_notification('unread_message_count', 0)
     db.session.commit()
-    page = request.args.get('page', 1, type=int)
-    in_message_query = current_user.messages_received.select().where(Message.recipient_active==True).order_by(Message.timestamp.desc())
-    out_message_query = current_user.messages_sent.select().where(Message.author_active==True).order_by(Message.timestamp.desc())
 
-    in_messages = db.paginate(in_message_query, page=page, per_page=5, error_out=False)
-    out_messages = db.paginate(out_message_query, page=page, per_page=5, error_out=False)
+    # Get in_msgs for populating in_msgs (Live Feed)
+    in_msgs_query = current_user.messages_received.select().where(Message.recipient_active==True).order_by(Message.timestamp.desc())
+    out_msgs_query = current_user.messages_sent.select().where(Message.author_active==True).order_by(Message.timestamp.desc())
+    in_msgs = db.session.scalars(in_msgs_query).all()
+    out_msgs = db.session.scalars(out_msgs_query).all()
 
-    in_next_url=url_for('main.messages', username=username, page=in_messages.next_num, tab="in") if in_messages.has_next else None
-    in_prev_url = url_for('main.messages', username=username, page=in_messages.prev_num, tab="in") if in_messages.has_prev else None
-    out_next_url=url_for('main.messages', username=username, page=out_messages.next_num, tab="out") if out_messages.has_next else None
-    out_prev_url = url_for('main.messages', username=username, page=out_messages.prev_num, tab="out") if out_messages.has_prev else None
+  # In Messages to Global DB variable
+    global in_msgs_db
+    in_msgs_db = list()
+    
+    if in_msgs is not None:
+      for in_msg in in_msgs:
+        in_msgs_db.append([in_msg.id, in_msg.author.username, in_msg.author.image_file, in_msg.body, in_msg.timestamp])
 
-    if tab == "out":
-      in_next_url=url_for('main.messages', username=username, page=in_messages.next_num, tab="in") if in_messages.has_next else None
-      in_prev_url = url_for('main.messages', username=username, page=in_messages.prev_num, tab="in") if in_messages.has_prev else None
-      out_next_url=url_for('main.messages', username=username, page=out_messages.next_num, tab="out") if out_messages.has_next else None
-      out_prev_url = url_for('main.messages', username=username, page=out_messages.prev_num, tab="out") if out_messages.has_prev else None
+  # Out Messages to Global DB variable
+    global out_msgs_db
+    out_msgs_db = list()
+    
+    if out_msgs is not None:
+      for out_msg in out_msgs:
+        out_msgs_db.append([out_msg.id, out_msg.recipient.username, out_msg.recipient.image_file, out_msg.body, out_msg.timestamp])
 
-    return render_template('messages.html', in_messages=in_messages, out_messages=out_messages, in_next_url=in_next_url, in_prev_url=in_prev_url, 
-                          out_next_url=out_next_url, out_prev_url=out_prev_url, re=re, form=form, user=user, title=_('私信邮箱'), tab=tab)
-  else:
-    return render_template("errors/403.html", re=re), 403
+  return render_template('messages.html', re=re, form=form, user=user, title=_('私信邮箱'), in_msgs=in_msgs, out_msgs=out_msgs, tab=tab)
+
+
+# Load in_msgs one by one
+@main.route('/load_in_msgs')
+def load_in_msgs():
+  global in_msgs_db
+  in_msg_no = len(in_msgs_db)
+
+  if request.args:
+    counter = int(request.args.get('i'))
+    if counter == 0:
+      res = make_response(jsonify(in_msgs_db[0:in_msgs_qty]), 200)
+    elif counter == in_msg_no:
+      res = make_response(jsonify({}), 200)
+    else:
+      res = make_response(jsonify(in_msgs_db[counter: counter + in_msgs_qty]), 200)
+  
+  return res
+
+
+@main.route('/load_out_msgs')
+def load_out_msgs():
+  global out_msgs_db
+  out_msg_no = len(out_msgs_db)
+
+  if request.args:
+    counter = int(request.args.get('o'))
+    if counter == 0:
+      res = make_response(jsonify(out_msgs_db[0:out_msgs_qty]), 200)
+    elif counter == out_msg_no:
+      res = make_response(jsonify({}), 200)
+    else:
+      res = make_response(jsonify(out_msgs_db[counter: counter + out_msgs_qty]), 200)
+  
+  return res
 
 
 @main.route('/notifications')

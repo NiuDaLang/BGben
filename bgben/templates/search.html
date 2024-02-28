@@ -5,6 +5,7 @@
 <div class="main-theme-wrapper">
   <h1>BGben</h1>
   <h2>{{ _('搜索结果🔍') }}</h2>
+  <div id="tab" style="display: none;">{{tab}}</div>
 </div>
 <!-- / Main Theme -->
 
@@ -23,10 +24,11 @@
 <!-- Notebook Paper -->
 <main class="search-result-wrapper">
   <div class="tabs">
-    <button class="tab-post search tablink  text-color-red front-tab"
+    <button id="tab_post" class="tab-post search tablink  text-color-red front-tab"
       onclick="openTab(event, 'post')">{{_('笔记')}}</button>
-    <button class="tab-user search tablink" onclick="openTab(event, 'user')">{{_('笔者')}}</button>
+    <button id="tab_user" class="tab-user search tablink" onclick="openTab(event, 'user')">{{_('笔者')}}</button>
   </div>
+
   <div class="search-results search">
     <!-- POST SEARCH -->
     <div id="post" class="label post-search-result-wrapper">
@@ -84,8 +86,6 @@
       <div class="search-no-result">{{ _('没有找到相关的内容！')}}</div>
       {% endif %}
     </div>
-
-
     <!-- USER SEARCH -->
     <div id="user" class="label" style="display: none;">
       {% if users %}
@@ -152,56 +152,65 @@
           {% endif %}
         </div>
 
-        {% endfor %}
+      </div>
+      {% endfor %}
 
-        <!-- Pagination -->
-        <div class="pagination">
-          {% if user_prev_url %}
-          <div class="prev-page">
-            <div class="pagination-text"><a href="{{ user_prev_url }}">{{ _('前一页') }}</a></div>
-            <div class="pagination-imgbox">
-              <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-left.png')}}"
-                alt="">
-            </div>
+      <!-- Pagination -->
+      <div class="pagination">
+        {% if user_prev_url %}
+        <div class="prev-page">
+          <div class="pagination-text"><a href="{{ user_prev_url }}">{{ _('前一页') }}</a></div>
+          <div class="pagination-imgbox">
+            <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-left.png')}}"
+              alt="">
           </div>
-          {% endif %}
-
-          {% if user_next_url %}
-          <div class="next-page">
-            <div class="pagination-imgbox">
-              <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-right.png')}}"
-                alt="">
-            </div>
-            <div class="pagination-text"><a href="{{ user_next_url }}">{{ _('下一页') }}</a></div>
-          </div>
-          {% endif %}
         </div>
+        {% endif %}
 
-        {% else %}
-        <div class="search-no-result">{{ _('没有找到相关的用户！')}}</div>
+        {% if user_next_url %}
+        <div class="next-page">
+          <div class="pagination-imgbox">
+            <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-right.png')}}"
+              alt="">
+          </div>
+          <div class="pagination-text"><a href="{{ user_next_url }}">{{ _('下一页') }}</a></div>
+        </div>
         {% endif %}
       </div>
 
+      {% else %}
+      <div class="search-no-result">{{ _('没有找到相关的用户！')}}</div>
+      {% endif %}
     </div>
+  </div>
 
+  <script>
+    $(document).ready(function () {
+      // Detect which search category and open that tab
+      let mailbox_type = $('#tab').text()
 
-    <script>
-      function openTab(evt, category) {
-        let i, x, tablinks;
-        x = document.querySelectorAll(".label");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        tablinks = document.querySelectorAll(".tablink");
-        for (i = 0; i < x.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" text-color-red", "");
-          tablinks[i].className = tablinks[i].className.replace(" front-tab", "");
-        }
-        document.getElementById(category).style.display = "block";
-        evt.currentTarget.className += " text-color-red";
-        evt.currentTarget.className += " front-tab";
+      let tab_name = "tab_" + mailbox_type
+
+      document.getElementById(tab_name).click();
+
+    })
+
+    function openTab(evt, category) {
+      let i, x, tablinks;
+      x = document.querySelectorAll(".label");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
       }
-    </script>
+      tablinks = document.querySelectorAll(".tablink");
+      for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" text-color-red", "");
+        tablinks[i].className = tablinks[i].className.replace(" front-tab", "");
+      }
+      document.getElementById(category).style.display = "block";
+      evt.currentTarget.className += " text-color-red";
+      evt.currentTarget.className += " front-tab";
+    }
+  </script>
 
 </main>
 {% endblock %}

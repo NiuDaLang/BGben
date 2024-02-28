@@ -6491,12 +6491,13 @@ legend {
   display: flex;
   align-items: center;
 }
-
-.no-message {
+#sentinel_in_msg,
+#sentinel_out_msg {
   text-align: center;
   margin: 20px;
 }
-.no-message img {
+#sentinel_in_msg img,
+#sentinel_out_msg img {
   width: 15%;
 }
 .message-reply {
