@@ -16,10 +16,14 @@ import rq
 
 class SearchableMixin(object):
   @classmethod
-  def search(cls, expression, page, per_page):
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+  def search(cls, expression):
+    ids, total = query_index(cls.__tablename__, expression)
+    
     if total == 0:
       return [], 0
+    elif total['value'] == 0 or total == 0:
+      return [], 0
+    
     when = []
     for i in range(len(ids)):
       when.append((ids[i], i))
@@ -220,9 +224,8 @@ tags_table = sa.Table('tags_association',
                       sa.Column('tag_id', sa.Integer, sa.ForeignKey('tag.id'), primary_key=True)
 )
 
-
 class Post(SearchableMixin, db.Model):
-  __searchable__=['content', 'title', 'subtitle']
+  __searchable__=['title', 'subtitle']
   id: so.Mapped[int] = so.mapped_column(primary_key=True, index=True)
   title: so.Mapped[str] = so.mapped_column(sa.String(30))
   subtitle: so.Mapped[str] = so.mapped_column(sa.String(100))
@@ -255,7 +258,8 @@ class Post(SearchableMixin, db.Model):
     return db.session.scalar(query)
 
 
-class Tag(db.Model):
+class Tag(SearchableMixin, db.Model):
+  __searchable__=['name']
   id: so.Mapped[int] = so.mapped_column(primary_key=True, index=True)
   name: so.Mapped[str] = so.mapped_column(sa.String(64), index=True)
   timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))

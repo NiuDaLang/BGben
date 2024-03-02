@@ -46,21 +46,6 @@ def home():
   twenty_posts = db.session.scalars(sa.select(Post).where(Post.active == True).order_by(Post.date_posted.desc()).limit(20)).all()
   
   # Top tags
-  # tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).where(Tag.active == True).order_by(Tag.timestamp.desc())).all()
-  # tags_sorted = sorted(tags, key=lambda x: x[1], reverse=True)
-
-  # tags_sorted = db.session.scalars(
-  #   sa.select(Tag.name, func.count(Tag.name))
-  #   .group_by(Tag.name)
-  #   # .order_by(Tag.timestamp.desc())
-  #   .where(Tag.active == True)
-  #   .order_by(Tag.name.desc())).all()
-
-  # tags = db.session.scalars(
-  #   sa.select(Tag.name, func.count(Tag.name))
-  #   .group_by(Tag.name)
-  #   .where(Tag.active == True)
-  #   .order_by(Tag.timestamp.desc())).all()
   count = func.count(Tag.name).label(None)
   query = (sa.select(Tag, count).group_by(Tag.name).where(Tag.active == True).order_by(count.desc()).order_by(Tag.timestamp.desc()))
   tags_sorted = db.session.scalars(query).all()
@@ -136,47 +121,161 @@ def starseed_result():
   return res
 
 
+post_search_db = list()
+post_search_qty = 10
+user_search_db = list()
+user_search_qty = 10
+tag_search_db = list()
+tag_search_qty = 20
+tags_count = 0
+
+
 @main.route('/search')
-def search(tab="post"):
+def search():
   if not g.search_form.validate():
     return redirect(url_for('main.home'))
   
-  page = request.args.get('page', 1, type=int)
+  followform = EmptyForm()
+  unfollowform = UnfollowForm()
 
   try:
     # Search Post
-    posts = []
-    posts_query, posts_total = Post.search(g.search_form.q.data, page, per_page=1)
-    if posts_total > 0:
-        posts = posts_query.all()
-    elif posts_total == 0:
-        posts = None
-    post_next_url = url_for('main.search', q=g.search_form.q.data, page=page+1) if posts_total > page * 1 else None
-    post_prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1) if page > 1 else None
-    
-    # Search User
-    users = []
-    users_query, users_total = User.search(g.search_form.q.data, page, per_page=1)
-    if users_total > 0:
-        users = users_query.all()
-    elif users_total == 0:
-        users = None
-    followform = EmptyForm()
-    unfollowform = UnfollowForm()
-    user_next_url = url_for('main.search', q=g.search_form.q.data, page=page+1) if users_total > page * 1 else None
-    user_prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1) if page > 1 else None
-      
-    return render_template('search.html', title=_('搜索结果'), posts=posts, users=users,\
-                           re=re, followform=followform, unfollowform=unfollowform,\
-                           post_next_url=post_next_url, post_prev_url=post_prev_url,\
-                           user_next_url=user_next_url, user_prev_url=user_prev_url,\
-                           tab=tab
-                           )
-    
-  except:
-    posts, users, total = None, None, 0
+    posts_list = []
+    posts_count = 0
 
-    return render_template('search.html', title=_('搜索结果'), posts=posts, users=users, re=re)
+    posts, posts_total = Post.search(g.search_form.q.data)
+
+    if posts_total != 0:
+      posts_list = posts.all()
+      posts_count = posts_total['value']
+    print(f'posts: {posts_list},\nposts_total: {posts_count}\n')
+
+    # Search User
+    users_list = []
+    users_count = 0
+
+    users, users_total = User.search(g.search_form.q.data)
+
+    if users_total != 0:
+      users_list = users.all()
+      users_count = users_total['value']
+    print(f'users: {users_list},\nusers_total: {users_count}\n')
+
+    # Search Tag
+    tags_list = []
+    global tags_count
+
+    tags, tags_total = Tag.search(g.search_form.q.data)
+
+    if tags_total != 0:
+      tags_list = tags.all()
+      tags_count = tags_total['value']
+    print(f'tags: {tags_list},\ntags_total: {tags_count}\n')
+
+  # Posts Results to Global DB variable
+    global post_search_db
+    post_search_db = list()
+    
+    if len(posts_list) != 0:
+      for post in posts_list:
+        post_search_db.append([post.id, post.title, post.image_file, post.subtitle, post.author.username, post.author.image_file, post.date_posted])
+
+  # Users Results to Global DB variable
+    global user_search_db
+    user_search_db = list()
+    
+    if len(users_list) != 0:
+      for user in users_list:
+        current_user_is_authenticated = False
+        user_following_current_user = False
+        user_is_current_user = False
+        current_user_following_user = False
+        if current_user.is_authenticated:
+          current_user_is_authenticated = True
+          user = db.first_or_404(sa.select(User).where(User.username == user.username).where(User.active == True))
+          if user.is_following(current_user):
+            user_following_current_user = True
+          if user == current_user:
+            user_is_current_user = True
+          if current_user.is_following(user):
+            current_user_following_user = True
+        user_search_db.append([user.username, user.image_file, user.account_created, current_user_is_authenticated, user_following_current_user, user_is_current_user, current_user_following_user])
+
+  # Tags Results to Global DB variable
+    global tag_search_db
+    tag_search_db = list()
+    
+    if len(tags_list) != 0:
+      for tag in tags_list:
+        tag_search_db.append(tag.name)
+      tag_search_db = list(set(tag_search_db))
+      tags_count = len(tag_search_db)
+
+    return render_template('search.html', title=_('搜索结果'),\
+                            re=re, followform=followform, unfollowform=unfollowform,\
+                            posts_count=posts_count, users_count=users_count, tags_count=tags_count)
+      
+  except:
+    posts_count = 0
+    users_count = 0
+    tags_count = 0
+
+    return render_template('search.html', title=_('搜索结果'), re=re, followform=followform, unfollowform=unfollowform, posts_count=posts_count, users_count=users_count, tags_count=tags_count)
+
+
+# Load post_search_result one by one
+@main.route('/load_post_search_result')
+def load_post_search_result():
+  global post_search_db
+  post_search_result_no = len(post_search_db)
+
+  if request.args:
+    counter = int(request.args.get('p'))
+    if counter == 0:
+      res = make_response(jsonify(post_search_db[0:post_search_qty]), 200)
+    elif counter == post_search_result_no:
+      res = make_response(jsonify({}), 200)
+    else:
+      res = make_response(jsonify(post_search_db[counter: counter + post_search_qty]), 200)
+  
+  return res
+
+
+# Load user_search_result one by one
+@main.route('/load_user_search_result')
+def load_user_search_result():
+  global user_search_db
+  user_search_result_no = len(user_search_db)
+
+  if request.args:
+    counter = int(request.args.get('u'))
+    if counter == 0:
+      res = make_response(jsonify(user_search_db[0:user_search_qty]), 200)
+    elif counter == user_search_result_no:
+      res = make_response(jsonify({}), 200)
+    else:
+      res = make_response(jsonify(user_search_db[counter: counter + user_search_qty]), 200)
+  
+  return res
+
+
+# Load tag_search_result one by one
+@main.route('/load_tag_search_result')
+def load_tag_search_result():
+  global tag_search_db
+  global tags_count
+  tag_search_result_no = tags_count
+
+  if request.args:
+    counter = int(request.args.get('t'))
+    if counter == 0:
+      res = make_response(jsonify(tag_search_db[0:tag_search_qty]), 200)
+    elif counter == tag_search_result_no:
+      res = make_response(jsonify({}), 200)
+    else:
+      res = make_response(jsonify(tag_search_db[counter: counter + tag_search_qty]), 200)
+  
+  return res
 
 
 @main.route("/starseed_test")
@@ -250,9 +349,9 @@ def send_message(recipient):
 
 
 in_msgs_db = list()
-in_msgs_qty = 5
+in_msgs_qty = 10
 out_msgs_db = list()
-out_msgs_qty = 5
+out_msgs_qty = 10
 
 
 @main.route('/messages/<username>/<tab>')

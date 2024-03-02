@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-24 17:15+1100\n"
-"PO-Revision-Date: 2024-02-24 17:22+1100\n"
+"POT-Creation-Date: 2024-03-02 17:48+1100\n"
+"PO-Revision-Date: 2024-03-02 17:56+1100\n"
 "Last-Translator: \n"
 "Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
@@ -103,8 +103,7 @@ msgstr "お問い合わせ内容をご記入ください"
 msgid "500字以内"
 msgstr "500文字以内"
 
-#: bgben/main/forms.py:41 bgben/templates/messages.html:63 bgben/templates/messages.html:140 bgben/templates/post.html:24 bgben/templates/post.html:219
-#: bgben/templates/post.html:279
+#: bgben/main/forms.py:41 bgben/templates/messages.html:61 bgben/templates/messages.html:112 bgben/templates/post.html:24 bgben/templates/post.html:219
 msgid "删除"
 msgstr "削除"
 
@@ -116,7 +115,7 @@ msgstr "メールアドレスをご記入ください！"
 msgid "邮箱地址字数最少6个字，最多120字。"
 msgstr "メールアドレスは6〜120文字以内となります。"
 
-#: bgben/main/forms.py:47 bgben/templates/home.html:2089
+#: bgben/main/forms.py:47 bgben/templates/home.html:2086
 msgid "订 阅"
 msgstr "登 録"
 
@@ -128,75 +127,75 @@ msgstr "このアドレスはすでに登録されています！"
 msgid "主页"
 msgstr "ホーム"
 
-#: bgben/main/routes.py:164 bgben/main/routes.py:173
+#: bgben/main/routes.py:230 bgben/main/routes.py:239
 msgid "搜索结果"
 msgstr "検索結果"
 
-#: bgben/main/routes.py:212
+#: bgben/main/routes.py:333
 #, python-format
 msgid "%(user)s的关注名单"
 msgstr "%(user)sのフォロー先一覧"
 
-#: bgben/main/routes.py:223
+#: bgben/main/routes.py:344
 #, python-format
 msgid "%(user)s的粉丝名单"
 msgstr "%(user)sのフォロワー一覧"
 
-#: bgben/main/routes.py:240
+#: bgben/main/routes.py:361
 msgid "您的信息已发出！"
 msgstr "メッセージが送信されました！"
 
-#: bgben/main/routes.py:243
+#: bgben/main/routes.py:364
 msgid "发信息"
 msgstr "メッセージを送る"
 
-#: bgben/main/routes.py:274
+#: bgben/main/routes.py:405
 msgid "私信邮箱"
 msgstr "メッセージボックス"
 
-#: bgben/main/routes.py:294 bgben/templates/about.html:7 bgben/templates/base.html:223 bgben/templates/base.html:225
+#: bgben/main/routes.py:458 bgben/templates/about.html:7 bgben/templates/base.html:223 bgben/templates/base.html:225
 msgid "关于BGben"
 msgstr "BGbenについて"
 
-#: bgben/main/routes.py:299 bgben/templates/base.html:229 bgben/templates/base.html:231
+#: bgben/main/routes.py:463 bgben/templates/base.html:229 bgben/templates/base.html:231
 msgid "利用规则"
 msgstr "利用規約"
 
-#: bgben/main/routes.py:304 bgben/templates/base.html:235 bgben/templates/base.html:237 bgben/templates/home.html:29 bgben/templates/register.html:113
+#: bgben/main/routes.py:468 bgben/templates/base.html:235 bgben/templates/base.html:237 bgben/templates/home.html:29 bgben/templates/register.html:113
 #: bgben/templates/send_message.html:35
 msgid "隐私政策"
 msgstr "プライバシーポリシー"
 
-#: bgben/main/routes.py:321
+#: bgben/main/routes.py:485
 msgid "谢谢您发出的信号，我们将尽快回复！"
 msgstr "お問い合わせありがとうございます！"
 
-#: bgben/main/routes.py:322
+#: bgben/main/routes.py:486
 msgid "BGben联系内容确认"
 msgstr "BGbenへのお問い合わせ内容"
 
-#: bgben/main/routes.py:324 bgben/templates/base.html:247 bgben/templates/base.html:249 bgben/templates/home.html:2073 bgben/templates/home.html:2100
+#: bgben/main/routes.py:488 bgben/templates/base.html:247 bgben/templates/base.html:249 bgben/templates/home.html:2070 bgben/templates/home.html:2097
 msgid "联系管理人"
 msgstr "お問い合わせ"
 
-#: bgben/main/routes.py:329 bgben/templates/base.html:241 bgben/templates/base.html:243 bgben/templates/faq.html:6
+#: bgben/main/routes.py:493 bgben/templates/base.html:241 bgben/templates/base.html:243 bgben/templates/faq.html:6
 msgid "常见问题"
 msgstr "よくあるご質問"
 
-#: bgben/main/routes.py:380 bgben/users/routes.py:109 bgben/users/routes.py:239
+#: bgben/main/routes.py:544 bgben/users/routes.py:109 bgben/users/routes.py:239
 msgid "此密码链接无效或已失效，请再次尝试！"
 msgstr "こちらのURLは無効または有効期限が過ぎました。お手数ですが、再度お申し込み下さい。"
 
-#: bgben/main/routes.py:385
+#: bgben/main/routes.py:549
 #, python-format
 msgid "恭喜！您成功订阅啦📧📧📧 📮：%(email)s"
 msgstr "メール配信にご登録いただきありがとうございます！📧📧📧 📮：%(email)s"
 
-#: bgben/main/routes.py:393
+#: bgben/main/routes.py:557
 msgid "有一项导出任务正在进行中。。。"
 msgstr "先行のダウンロードタスクを実行中です・・・"
 
-#: bgben/main/routes.py:395
+#: bgben/main/routes.py:559
 msgid "数据输出完成度..."
 msgstr "ダウンロード中…"
 
@@ -205,11 +204,11 @@ msgstr "ダウンロード中…"
 msgid "[BGben]用户%(sender)s 刚刚向您发送了一条信息！"
 msgstr "[BGben]ユーザーの户%(sender)s さんよりメッセージが届いています！"
 
-#: bgben/main/utils.py:43
+#: bgben/main/utils.py:44
 msgid "[BGben] 收到了您发出的信号✉️，会尽快回复的🫡"
 msgstr "[BGben] へのお問い合わせを承りました✉️早急に対応いたします🫡"
 
-#: bgben/main/utils.py:66
+#: bgben/main/utils.py:68
 msgid "欢迎申请[BGben]通讯，请在30分钟之内打开本邮件中的链接并完成确认✅"
 msgstr "[BGben]メールマガジンへお申し込みいただきありがとうございます。30分以内に下の確認リンクより本登録を完了させて下さい✅"
 
@@ -301,49 +300,49 @@ msgstr "投稿"
 msgid "新稿子"
 msgstr "新しい記事"
 
-#: bgben/posts/routes.py:98 bgben/templates/base.html:114 bgben/templates/base.html:116
+#: bgben/posts/routes.py:99 bgben/templates/base.html:114 bgben/templates/base.html:116
 msgid "广场"
 msgstr "広場"
 
-#: bgben/posts/routes.py:155
+#: bgben/posts/routes.py:156
 msgid "评论发布成功！"
 msgstr "コメントが送信されました！"
 
-#: bgben/posts/routes.py:212
+#: bgben/posts/routes.py:213
 #, python-format
 msgid "与%(name)s有关的笔记. "
 msgstr "%(name)sに関する記事"
 
-#: bgben/posts/routes.py:231
+#: bgben/posts/routes.py:232
 #, python-format
 msgid "%(username)s的月度笔记: %(month)s"
 msgstr "%(username)sの月度記事: %(month)s"
 
-#: bgben/posts/routes.py:241
+#: bgben/posts/routes.py:242
 msgid "这篇笔记不存在！"
 msgstr "この記事は存在しません！"
 
-#: bgben/posts/routes.py:270
+#: bgben/posts/routes.py:271
 msgid "这条评论不存在！"
 msgstr "このコメントは存在しません！"
 
-#: bgben/posts/routes.py:347
+#: bgben/posts/routes.py:348
 msgid "您的笔记已被更新!"
 msgstr "記事が更新されました！"
 
-#: bgben/posts/routes.py:371 bgben/templates/post.html:209 bgben/templates/post.html:269 bgben/users/forms.py:71
+#: bgben/posts/routes.py:372 bgben/templates/post.html:209 bgben/users/forms.py:71
 msgid "更 新"
 msgstr "更新する"
 
-#: bgben/posts/routes.py:372
+#: bgben/posts/routes.py:373
 msgid "编辑笔记"
 msgstr "記事の編集"
 
-#: bgben/posts/routes.py:374 bgben/templates/base.html:125 bgben/templates/post.html:22
+#: bgben/posts/routes.py:375 bgben/templates/base.html:125 bgben/templates/post.html:22
 msgid "编辑"
 msgstr "編集"
 
-#: bgben/posts/routes.py:400
+#: bgben/posts/routes.py:401
 msgid "您的笔记已被删除!"
 msgstr "この記事は削除されました！"
 
@@ -481,7 +480,7 @@ msgid "关注"
 msgstr "フォロー中"
 
 #: bgben/templates/account.html:47 bgben/templates/create_post.html:32 bgben/templates/followers.html:56 bgben/templates/following.html:56
-#: bgben/templates/search.html:118 bgben/templates/user_posts.html:42
+#: bgben/templates/user_posts.html:42
 msgid "加入"
 msgstr "に登録"
 
@@ -581,12 +580,12 @@ msgstr "管理"
 msgid "退出"
 msgstr "ログアウト"
 
-#: bgben/templates/base.html:151 bgben/templates/base.html:154 bgben/templates/login.html:82 bgben/templates/post.html:173 bgben/templates/post.html:294
-#: bgben/templates/post.html:328 bgben/users/routes.py:100
+#: bgben/templates/base.html:151 bgben/templates/base.html:154 bgben/templates/login.html:82 bgben/templates/post.html:173 bgben/templates/post.html:275
+#: bgben/templates/post.html:309 bgben/users/routes.py:100
 msgid "注册"
 msgstr "ユーザー登録"
 
-#: bgben/templates/base.html:159 bgben/templates/base.html:161 bgben/templates/post.html:326 bgben/users/routes.py:139
+#: bgben/templates/base.html:159 bgben/templates/base.html:161 bgben/templates/post.html:307 bgben/users/routes.py:139
 msgid "登陆"
 msgstr "ログイン"
 
@@ -626,7 +625,7 @@ msgstr "閉じる"
 msgid "非常神秘，还没有透露TA的故事呢！"
 msgstr "はとてもミステリアス！"
 
-#: bgben/templates/create_post.html:48 bgben/templates/followers.html:68 bgben/templates/following.html:68 bgben/templates/search.html:129
+#: bgben/templates/create_post.html:48 bgben/templates/followers.html:68 bgben/templates/following.html:68 bgben/templates/search.html:111
 #: bgben/templates/user_posts.html:60
 msgid "编辑简介"
 msgstr "プロフィールを編集する"
@@ -663,13 +662,11 @@ msgstr "タグ(6個まで)"
 msgid "添加"
 msgstr "追加"
 
-#: bgben/templates/create_post.html:1559 bgben/templates/messages.html:96 bgben/templates/messages.html:170 bgben/templates/monthly_posts.html:47
-#: bgben/templates/search.html:63 bgben/templates/search.html:161 bgben/templates/tags.html:62 bgben/templates/user_posts.html:1124
+#: bgben/templates/create_post.html:1559 bgben/templates/monthly_posts.html:47 bgben/templates/tags.html:62 bgben/templates/user_posts.html:1124
 msgid "前一页"
 msgstr "前へ"
 
-#: bgben/templates/create_post.html:1571 bgben/templates/messages.html:108 bgben/templates/messages.html:182 bgben/templates/monthly_posts.html:59
-#: bgben/templates/search.html:77 bgben/templates/search.html:175 bgben/templates/tags.html:74 bgben/templates/user_posts.html:1136
+#: bgben/templates/create_post.html:1571 bgben/templates/monthly_posts.html:59 bgben/templates/tags.html:74 bgben/templates/user_posts.html:1136
 msgid "下一页"
 msgstr "次へ"
 
@@ -769,11 +766,11 @@ msgstr "はい、本サイトでは管理人による有償サービスでウェ
 msgid "的粉丝"
 msgstr "のフォロワー"
 
-#: bgben/templates/followers.html:47 bgben/templates/following.html:47 bgben/templates/search.html:110 bgben/templates/user_posts.html:38
+#: bgben/templates/followers.html:47 bgben/templates/following.html:47 bgben/templates/search.html:95 bgben/templates/user_posts.html:38
 msgid "TA正在关注您!"
 msgstr "あなたをフォロー中"
 
-#: bgben/templates/followers.html:88 bgben/templates/following.html:88 bgben/templates/search.html:149
+#: bgben/templates/followers.html:88 bgben/templates/following.html:88 bgben/templates/search.html:128
 msgid "注册·登陆后<br>可关注这位用户！"
 msgstr "登録·ログインして<br>フォローする！"
 
@@ -819,83 +816,83 @@ msgstr ""
 msgid "。"
 msgstr "。"
 
-#: bgben/templates/home.html:94
+#: bgben/templates/home.html:91
 msgid "灵魂的笔记本"
 msgstr "魂のメモ帳"
 
-#: bgben/templates/home.html:96
+#: bgben/templates/home.html:93
 msgid "欢迎一起追溯...一切存在的根源✨"
 msgstr "全ての存在の源を求めて✨"
 
-#: bgben/templates/home.html:2003 bgben/templates/posts.html:36
+#: bgben/templates/home.html:2000 bgben/templates/posts.html:36
 msgid "最新投稿"
 msgstr "最新記事"
 
-#: bgben/templates/home.html:2023
+#: bgben/templates/home.html:2020
 msgid "最热主题"
 msgstr "トレンド"
 
-#: bgben/templates/home.html:2040
+#: bgben/templates/home.html:2037
 msgid "最鲜笔者"
 msgstr "ルーキーズ"
 
-#: bgben/templates/home.html:2061
+#: bgben/templates/home.html:2058
 msgid "请我喝杯咖啡"
 msgstr "Buy me a coffee"
 
-#: bgben/templates/home.html:2064
+#: bgben/templates/home.html:2061
 msgid "买杯☕️支持BGben运营"
 msgstr "BGbenに☕️を一杯奢る"
 
-#: bgben/templates/home.html:2082
+#: bgben/templates/home.html:2079
 msgid "BGben通讯"
 msgstr "BGbenメルマガ"
 
-#: bgben/templates/home.html:2084
+#: bgben/templates/home.html:2081
 msgid "不定期宇宙新闻"
 msgstr "不定期の宇宙ニュース"
 
-#: bgben/templates/home.html:2085
+#: bgben/templates/home.html:2082
 msgid "中文ONLY"
 msgstr "中国語限定"
 
-#: bgben/templates/home.html:2086
+#: bgben/templates/home.html:2083
 msgid "不需注册!"
 msgstr "登録不要！"
 
-#: bgben/templates/home.html:2206
+#: bgben/templates/home.html:2203
 msgid "星际种子测试"
 msgstr "スターシードテスト"
 
-#: bgben/templates/home.html:2587
+#: bgben/templates/home.html:2584
 msgid "您还尚未回答第"
 msgstr "まだ第"
 
-#: bgben/templates/home.html:2587
+#: bgben/templates/home.html:2584
 msgid "道题，答案将在全部答题完毕后揭晓！"
 msgstr "問目が未回答です。テスト結果は全問解答後に発表！"
 
-#: bgben/templates/home.html:2591
+#: bgben/templates/home.html:2588
 msgid "您的星际种子指数是..."
 msgstr "あなたのスターシード指数は…"
 
-#: bgben/templates/home.html:2593
+#: bgben/templates/home.html:2590
 msgid "您的星际种子指数"
 msgstr "あなたのスターシード指数"
 
-#: bgben/templates/home.html:2616
+#: bgben/templates/home.html:2613
 msgid "再测试一遍！"
 msgstr "もう一度トライ！"
 
-#: bgben/templates/home.html:2620
+#: bgben/templates/home.html:2617
 msgid "如果您的灵魂也想分享秘密的话，就一起来记录BGben吧！"
 msgstr "あなたにもBGbenでシェアできる秘密はありませんか？"
 
-#: bgben/templates/home.html:2621
+#: bgben/templates/home.html:2618
 msgid "注意事项：请遵守不伤害他人的原则，保护个人隐私，容纳不同观点，言论自由的同时遵守自然法。"
 msgstr "注意事項: 宇宙の自然法に則り、他人を尊重し、プライバシーを守った上での合法的な言論の自由を遵守してください。"
 
-#: bgben/templates/home.html:2623 bgben/templates/home.html:2626
+#: bgben/templates/home.html:2620 bgben/templates/home.html:2623
 msgid "开始记录"
 msgstr "メモ<br>スタート"
 
@@ -928,27 +925,27 @@ msgstr "を！"
 msgid "%(username)s的私信邮箱📮"
 msgstr "%(username)sのメッセージボックス📮"
 
-#: bgben/templates/messages.html:27
+#: bgben/templates/messages.html:28
 msgid "收件箱"
 msgstr "受信"
 
-#: bgben/templates/messages.html:29
+#: bgben/templates/messages.html:30
 msgid "发件箱"
 msgstr "送信"
 
-#: bgben/templates/messages.html:58
+#: bgben/templates/messages.html:56
 msgid "发送信息"
 msgstr "送信する"
 
-#: bgben/templates/messages.html:70 bgben/templates/messages.html:147
+#: bgben/templates/messages.html:68 bgben/templates/messages.html:120
 msgid "您确定要删除这条信息吗？"
 msgstr "このメッセージを削除してもよろしいですか？"
 
-#: bgben/templates/messages.html:72 bgben/templates/messages.html:149 bgben/templates/post.html:134
+#: bgben/templates/messages.html:70 bgben/templates/messages.html:122 bgben/templates/post.html:134
 msgid "取 消"
 msgstr "キャンセル"
 
-#: bgben/templates/messages.html:74 bgben/templates/messages.html:150
+#: bgben/templates/messages.html:72 bgben/templates/messages.html:123
 msgid "确 定"
 msgstr "O K"
 
@@ -977,15 +974,15 @@ msgstr "作者の最新タグ"
 msgid "您确定要删除这篇笔记吗？"
 msgstr "この記事を削除してもよろしいですか？"
 
-#: bgben/templates/post.html:168 bgben/templates/post.html:289
+#: bgben/templates/post.html:168 bgben/templates/post.html:270
 msgid "请先登陆后再点赞！"
 msgstr "いいねボタンを押すにはログインが必要です！"
 
-#: bgben/templates/post.html:170 bgben/templates/post.html:291 bgben/users/forms.py:47
+#: bgben/templates/post.html:170 bgben/templates/post.html:272 bgben/users/forms.py:47
 msgid "登 陆"
 msgstr "ログイン"
 
-#: bgben/templates/post.html:172 bgben/templates/post.html:293
+#: bgben/templates/post.html:172 bgben/templates/post.html:274
 msgid "还不是用户吗？请先"
 msgstr "ユーザー登録がまだの場合は、こちらから"
 
@@ -997,19 +994,19 @@ msgstr "いいね"
 msgid "分享"
 msgstr "シェア"
 
-#: bgben/templates/post.html:207 bgben/templates/post.html:218 bgben/templates/post.html:267 bgben/templates/post.html:278
+#: bgben/templates/post.html:207 bgben/templates/post.html:218
 msgid "取消"
 msgstr "キャンセル"
 
-#: bgben/templates/post.html:217 bgben/templates/post.html:277
+#: bgben/templates/post.html:217
 msgid "您确定要删除这条评论吗？"
 msgstr "このコメントを削除してもよろしいですか？"
 
-#: bgben/templates/post.html:327
+#: bgben/templates/post.html:308
 msgid "或"
 msgstr "又は"
 
-#: bgben/templates/post.html:329
+#: bgben/templates/post.html:310
 msgid "后可以写评论！"
 msgstr "してからコメントすることが出来ます！"
 
@@ -1310,21 +1307,25 @@ msgstr "パスワードは大切に保管して下さいね！"
 msgid "搜索结果🔍"
 msgstr "検索結果🔍"
 
-#: bgben/templates/search.html:27
+#: bgben/templates/search.html:28
 msgid "笔记"
 msgstr "記事"
 
-#: bgben/templates/search.html:28
+#: bgben/templates/search.html:29
 msgid "笔者"
 msgstr "筆者"
 
-#: bgben/templates/search.html:84
-msgid "没有找到相关的内容！"
-msgstr "一致する記事が見つかりません！"
+#: bgben/templates/search.html:30
+msgid "标签"
+msgstr "タグ"
 
-#: bgben/templates/search.html:181
-msgid "没有找到相关的用户！"
-msgstr "一致するユーザーが見つかりません！"
+#: bgben/templates/search.html:37 bgben/templates/search.html:74 bgben/templates/search.html:145
+msgid "搜索匹配结果总数："
+msgstr "検索ヒット件数"
+
+#: bgben/templates/search.html:101
+msgid "加入日期: "
+msgstr "登録日："
 
 #: bgben/templates/send_message.html:6
 #, python-format
@@ -2087,7 +2088,7 @@ msgstr "%(username)sさんへのフォローを取り消しました！"
 msgid "欢迎申请[BGben]用户账号，请在30分钟之内打开本邮件中的链接并完成确认✅"
 msgstr "[BGben]ユーザーア登録をお申し込みいただきありがとうございます。30分以内にこのメールにあるリンクをクリックし、本登録を完了させて下さい✅"
 
-#: bgben/users/utils.py:63
+#: bgben/users/utils.py:64
 msgid "[BGben] 得知您想重置密码🔑，请在30分钟之内采取行动💪"
 msgstr "[BGben] パスワードリセットのご依頼を承りました🔑，30分以内にご対応願います💪"
 
@@ -2110,3 +2111,9 @@ msgstr "[BGben] パスワードリセットのご依頼を承りました🔑，
 
 #~ msgid "我同意"
 #~ msgstr " "
+
+#~ msgid "没有找到相关的内容！"
+#~ msgstr "一致する記事が見つかりません！"
+
+#~ msgid "没有找到相关的用户！"
+#~ msgstr "一致するユーザーが見つかりません！"

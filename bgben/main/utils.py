@@ -28,7 +28,6 @@ def send_message_email(recipient, sender, content):
                html_body=render_template('email/send_message.html',
                                          recipient_username=recipient.username, sender_username=sender.username, link=link, content=content),
                pic_attachments = pic_attachments,
-               bcc=["admin@bgben.net"]
                )
 
 

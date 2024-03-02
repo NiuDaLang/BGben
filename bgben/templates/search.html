@@ -5,7 +5,7 @@
 <div class="main-theme-wrapper">
   <h1>BGben</h1>
   <h2>{{ _('搜索结果🔍') }}</h2>
-  <div id="tab" style="display: none;">{{tab}}</div>
+  <div id="current_user_id" style="display:none;">{{ current_user.id }}</div>
 </div>
 <!-- / Main Theme -->
 
@@ -24,193 +24,349 @@
 <!-- Notebook Paper -->
 <main class="search-result-wrapper">
   <div class="tabs">
-    <button id="tab_post" class="tab-post search tablink  text-color-red front-tab"
+    <button class="tab-post search tablink text-color-red front-tab"
       onclick="openTab(event, 'post')">{{_('笔记')}}</button>
-    <button id="tab_user" class="tab-user search tablink" onclick="openTab(event, 'user')">{{_('笔者')}}</button>
+    <button class="tab-user search tablink" onclick="openTab(event, 'user')">{{_('笔者')}}</button>
+    <button class="tab-tag search tablink" onclick="openTab(event, 'tag')">{{_('标签')}}</button>
   </div>
 
   <div class="search-results search">
+
     <!-- POST SEARCH -->
-    <div id="post" class="label post-search-result-wrapper">
-      {% if posts %}
-      {% for post in posts%}
-      <div class="post-card">
-        <!-- Description -->
-        <div class="post-heading">
-          <a class="post-link" href="{{ url_for('posts.post', post_id=post.id) }}">
-            <!-- Post Heading -->
-            <h2>
-              {{ post.title }}
-            </h2>
-            <!-- Image -->
-            <img class="post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}" alt="">
-            <!-- / Image -->
-            <h3>{{ post.subtitle }}</h3>
-          </a>
-          <div class="post-author">
-            <a class="post-author-link" href="{{ url_for('users.user_page', username=post.author.username) }}">
-              <img class="post-author-img"
-                src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}" alt="">
-              <h4>{{ post.author.username }}</h4>
-            </a>
-            <div class="post-time">{{ moment(post.date_posted).format('LLL') }}</div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-      <!-- Pagination -->
-      <div class="pagination">
-        {% if post_prev_url %}
-        <div class="prev-page">
-          <div class="pagination-text"><a href="{{ post_prev_url }}">{{ _('前一页') }}</a></div>
-          <div class="pagination-imgbox">
-            <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-left.png')}}"
-              alt="">
-          </div>
-        </div>
-        {% endif %}
+    <div id="post" class="label">
+      <div class="search-no-result">{{ _('搜索匹配结果总数：')}} {{ posts_count }}</div>
 
-        {% if post_next_url %}
-        <div class="next-page">
-          <div class="pagination-imgbox">
-            <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-right.png')}}"
-              alt="">
-          </div>
-          <div class="pagination-text"><a href="{{ post_next_url }}">{{ _('下一页') }}</a></div>
-        </div>
-        {% endif %}
-      </div>
-
-
-      {% else %}
-      <div class="search-no-result">{{ _('没有找到相关的内容！')}}</div>
-      {% endif %}
-    </div>
-    <!-- USER SEARCH -->
-    <div id="user" class="label" style="display: none;">
-      {% if users %}
-      {% for user in users %}
-      <div class="search-user-profile-wrapper">
-        <a href="{{ url_for('users.user_page', username=user.username) }}">
-          <!-- Profile Image -->
-          <div class="search-profile-img">
-            <img src="{{ url_for('static', filename='profile_pics/' + user.image_file ) }}" alt="">
-          </div>
-        </a>
-        <div class="name-and-dates search">
-          <!-- User Name -->
-          <div class="search-profile-data">
-            <a class="search-profile-user-link" href="{{ url_for('users.user_page', username=user.username) }}">
-              <div class="search-profile-name search">
-                <h3>{{ user.username }}</h3>
+      <div id="scroller-post" class="post-search-result-wrapper">
+        <template id="post-template">
+          <div class="post-card">
+            <!-- Description -->
+            <div class="post-heading">
+              <a class="post-link" href="">
+                <!-- Post Heading -->
+                <h2 class="post-title"></h2>
+                <!-- Image -->
+                <div class="post-heading-imgbox">
+                  <img class="post-image post-heading-img" src="" alt="">
+                </div>
+                <!-- / Image -->
+                <h3 class="post-subtitle"></h3>
+              </a>
+              <div class="post-author">
+                <a class="post-author-link" href="">
+                  <img class="post-author-image post-author-img" src="" alt="">
+                  <h4 class="post-author-username"></h4>
+                </a>
+                <div class="post-time"></div>
               </div>
-            </a>
-            {% if current_user.is_authenticated%}
-            {% if user.is_following(current_user) %}
-            <div><small><span style="background-color: #c515052a;">{{ _('TA正在关注您!') }}</span></small></div>
-            {% endif %}
-            {% endif %}
-          </div>
-
-          <!-- Dates -->
-          <div class="search-profile-dates">
-            <div class="profile-start-date search text-color-darkgrey">
-              <small>{{ moment(user.account_created).fromNow() }} {{ _('加入') }}</small>
             </div>
           </div>
-        </div>
-
-        <!-- Action Button -->
-        <div class="search-profile-action">
-          <!-- 编辑简介Button -->
-          {% if current_user.is_authenticated %}
-          {% if user == current_user %}
-          <div class="search-profile-button">
-            <a href="{{ url_for('users.account') }}" class="search-profile-edit search">{{ _('编辑简介') }}</a>
-          </div>
-          {% elif not current_user.is_following(user) %}
-          <!-- 关注Button -->
-          <form class="search-profile-button" action="{{ url_for('users.follow', username=user.username) }}"
-            method="POST" class="follow-unfollow-form">
-            {{ followform.hidden_tag() }}
-            {{ followform.submit(class="search-profile-follow-btn search")}}
-          </form>
-          {% else %}
-          <!-- 取消关注Button -->
-          <form class="search-profile-button" action="{{ url_for('users.unfollow', username=user.username) }}"
-            method="POST" class="follow-unfollow-form">
-            {{ unfollowform.hidden_tag() }}
-            {{ unfollowform.submit(class="search-profile-unfollow-btn search")}}
-          </form>
-          {% endif %}
-          {% elif not current_user.is_authenticated %}
-          <!-- 登陆关注吧Button -->
-          <div class="search-profile-button">
-            <a href="{{ url_for('users.login') }}" class="search-profile-follow-btn search">{{ _('注册·登陆后<br>可关注这位用户！')
-              }}</a>
-          </div>
-          {% endif %}
-        </div>
-
+        </template>
       </div>
-      {% endfor %}
-
-      <!-- Pagination -->
-      <div class="pagination">
-        {% if user_prev_url %}
-        <div class="prev-page">
-          <div class="pagination-text"><a href="{{ user_prev_url }}">{{ _('前一页') }}</a></div>
-          <div class="pagination-imgbox">
-            <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-left.png')}}"
-              alt="">
-          </div>
-        </div>
-        {% endif %}
-
-        {% if user_next_url %}
-        <div class="next-page">
-          <div class="pagination-imgbox">
-            <img class="search-page-pagination-img" src="{{ url_for('static', filename='images/arrow-right.png')}}"
-              alt="">
-          </div>
-          <div class="pagination-text"><a href="{{ user_next_url }}">{{ _('下一页') }}</a></div>
-        </div>
-        {% endif %}
+      <div id="sentinel-post">
+        <div role="status-post"></div>
+        <div id="post-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}" alt=""
+            width="80%"></div>
       </div>
-
-      {% else %}
-      <div class="search-no-result">{{ _('没有找到相关的用户！')}}</div>
-      {% endif %}
     </div>
+
+    <!-- USER SEARCH -->
+    <div id="user" class="label" style="display: none;">
+      <div class="search-no-result">{{ _('搜索匹配结果总数：')}} {{ users_count }}</div>
+
+      <div id="scroller-user">
+        <template id="user-template">
+          <div class="search-user-profile-wrapper">
+            <!-- Profile Image -->
+            <a class="user-link" href="">
+              <div class="search-profile-img">
+                <img class="user-image" src="" alt="">
+              </div>
+            </a>
+            <div class="name-and-dates search">
+              <!-- User Name -->
+              <div class="search-profile-data">
+                <a class="search-profile-user-link user-link" href="">
+                  <div class="search-profile-name search">
+                    <h3 class="user-username"></h3>
+                  </div>
+                </a>
+                <div class="user-following-current-user" style="display: none;"><small><span
+                      style="background-color: #c515052a;">{{
+                      _('TA正在关注您!') }}</span></small></div>
+              </div>
+
+              <!-- Dates -->
+              <div class="search-profile-dates">
+                <div class="profile-start-date search text-color-darkgrey">
+                  <small>{{ _('加入日期: ') }}<span class="user-account-created"></span></small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="search-profile-action">
+              <!-- 编辑简介Button -->
+              <div class="user-is-current-user search-profile-button" style="display: none;">
+                <a class="user-account-edit-link search-profile-edit search" href="{{ url_for('users.account') }}"
+                  class="search-profile-edit search">{{ _('编辑简介') }}</a>
+              </div>
+              <!-- 关注Button -->
+              <form class="follow-searched-user search-profile-button" action="" style="display: none;" method="POST"
+                class="follow-unfollow-form">
+                {{ followform.hidden_tag() }}
+                {{ followform.submit(class="search-profile-loggedin-follow-btn search")}}
+              </form>
+              <!-- 取消关注Button -->
+              <form class="unfollow-searched-user search-profile-button" style="display: none;" action="" method="POST"
+                class="follow-unfollow-form">
+                {{ unfollowform.hidden_tag() }}
+                {{ unfollowform.submit(class="search-profile-unfollow-btn search")}}
+              </form>
+              <!-- 登陆关注吧Button -->
+              <div class="login-and-follow search-profile-button" style="display: none;">
+                <a href="{{ url_for('users.login') }}" class="search-profile-follow-btn search">{{
+                  _('注册·登陆后<br>可关注这位用户！')
+                  }}</a>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div id="sentinel-user">
+        <div role="status-user"></div>
+        <div id="user-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}" alt=""
+            width="80%"></div>
+      </div>
+
+    </div>
+
+    <!-- TAG SEARCH -->
+    <div id="tag" class="label" style="display: none;">
+      <div class="search-no-result">{{ _('搜索匹配结果总数：')}} {{ tags_count }}</div>
+
+      <div id="scroller-tag" class="tag-search-result-wrapper">
+        <template id="tag-template">
+          <a class="tag-link tag_label" href="">
+            <strong class="tag-name"></strong>
+          </a>
+          <!-- <a class="tag-link" href="">
+            <h3 class="tag_label"><strong class="tag-name"></strong></h3>
+          </a> -->
+        </template>
+      </div>
+      <div id="sentinel-tag">
+        <div role="status-tag"></div>
+        <div id="tag-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}" alt=""
+            width="80%"></div>
+      </div>
+    </div>
+
   </div>
-
-  <script>
-    $(document).ready(function () {
-      // Detect which search category and open that tab
-      let mailbox_type = $('#tab').text()
-
-      let tab_name = "tab_" + mailbox_type
-
-      document.getElementById(tab_name).click();
-
-    })
-
-    function openTab(evt, category) {
-      let i, x, tablinks;
-      x = document.querySelectorAll(".label");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      tablinks = document.querySelectorAll(".tablink");
-      for (i = 0; i < x.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" text-color-red", "");
-        tablinks[i].className = tablinks[i].className.replace(" front-tab", "");
-      }
-      document.getElementById(category).style.display = "block";
-      evt.currentTarget.className += " text-color-red";
-      evt.currentTarget.className += " front-tab";
-    }
-  </script>
-
 </main>
+
+<script>
+  // Post
+  let scroller_posts = document.querySelector('#scroller-post')
+  let post_template = document.querySelector('#post-template')
+  let sentinel_posts = document.querySelector('#sentinel-post')
+  let post_last = document.querySelector('#post-last').innerHTML
+  let counter_posts = 0
+
+  // User
+  let scroller_users = document.querySelector('#scroller-user')
+  let user_template = document.querySelector('#user-template')
+  let sentinel_users = document.querySelector('#sentinel-user')
+  let user_last = document.querySelector('#user-last').innerHTML
+  let counter_users = 0
+
+  // Tag
+  let scroller_tags = document.querySelector('#scroller-tag')
+  let tag_template = document.querySelector('#tag-template')
+  let sentinel_tags = document.querySelector('#sentinel-tag')
+  let tag_last = document.querySelector('#tag-last').innerHTML
+  let counter_tags = 0
+
+
+  const SCRIPT_ROOT = {{ request.script_root | tojson }}
+
+  function loadPostsSearch() {
+    fetch(`${window.origin}/load_post_search_result?p=${counter_posts}`).then((response) => {
+      response.json().then((data) => {
+        if (!data.length) {
+          sentinel_posts.innerHTML = post_last;
+        }
+
+        for (let i = 0; i < data.length; i++) {
+          let template_clone = post_template.content.cloneNode(true);
+
+          let post_id = data[i][0],
+            post_title = data[i][1],
+            post_image_file = data[i][2],
+            post_subtitle = data[i][3],
+            post_author_username = data[i][4],
+            post_author_image_file = data[i][5],
+            post_date_posted = data[i][6];
+
+          // post link
+          let post_link_div = template_clone.querySelector(".post-link")
+          post_link_div.href = "{{ url_for ('posts.post', post_id='') }}" + post_id
+          // post title
+          let post_title_div = template_clone.querySelector(".post-title")
+          post_title_div.innerText = post_title
+          // post image
+          let post_image_div = template_clone.querySelector(".post-image")
+          post_image_div.src = "{{ url_for('static', filename='post_pics/') }}" + post_image_file
+          // post subtitle
+          let post_subtitle_div = template_clone.querySelector(".post-subtitle")
+          post_subtitle_div.innerText = post_subtitle
+          // post author link
+          let post_author_link_div = template_clone.querySelector(".post-author-link")
+          post_author_link_div.href = "{{ url_for('users.user_page', username='') }}" + post_author_username
+          // post author image
+          let post_author_image_div = template_clone.querySelector(".post-author-image")
+          post_author_image_div.src = "{{ url_for('static', filename='profile_pics/')}}" + post_author_image_file
+          // post author username
+          let post_author_username_div = template_clone.querySelector(".post-author-username")
+          post_author_username_div.innerText = post_author_username
+          // post time
+          let post_time_div = template_clone.querySelector('.post-time')
+          post_time_div.innerHTML = moment(post_date_posted).fromNow()
+
+          scroller_posts.appendChild(template_clone)
+          counter_posts += 1;
+
+        }
+      })
+    })
+  }
+
+  function loadUsersSearch() {
+    fetch(`${window.origin}/load_user_search_result?u=${counter_users}`).then((response) => {
+      response.json().then((data) => {
+        if (!data.length) {
+          sentinel_users.innerHTML = user_last;
+        }
+
+        for (let i = 0; i < data.length; i++) {
+          let template_clone = user_template.content.cloneNode(true);
+
+          let user_username = data[i][0],
+            user_image_file = data[i][1],
+            user_account_created = data[i][2],
+            current_user_is_authenticated = data[i][3],
+            user_following_current_user = data[i][4],
+            user_is_current_user = data[i][5],
+            current_user_is_following_user = data[i][6]
+
+          // user link
+          let user_link_div = template_clone.querySelector(".user-link")
+          user_link_div.href = "{{ url_for('users.user_page', username='') }}" + user_username
+          // user image
+          let user_image_div = template_clone.querySelector(".user-image")
+          user_image_div.src = "{{ url_for('static', filename='profile_pics/') }}" + user_image_file
+          // user username
+          let user_username_div = template_clone.querySelector(".user-username")
+          user_username_div.innerText = user_username
+          // user is following current user
+          if (user_following_current_user) {
+            let user_following_current_user_div = template_clone.querySelector(".user-following-current-user")
+            user_following_current_user_div.style.display = "block"
+          }
+
+          // account created date
+          user_account_created_div = template_clone.querySelector('.user-account-created')
+          user_account_created_div.innerHTML = moment(user_account_created).fromNow()
+
+          // Action Button Options
+          if (!current_user_is_authenticated) {
+            // LOGIN & FOLLOW button if current_user is not authenticated
+            let login_and_follow_div = template_clone.querySelector(".login-and-follow")
+            login_and_follow_div.style.display = "flex"
+          } else if (user_is_current_user) {
+            // EDIT button if current user is the search result
+            let user_is_current_user_div = template_clone.querySelector(".user-is-current-user")
+            user_is_current_user_div.style.display = "flex"
+          } else if (!current_user_is_following_user) {
+            // FOLLOW button if current_user is NOT following searched user
+            let follow_searched_user_div = template_clone.querySelector(".follow-searched-user")
+            follow_searched_user_div.style.display = "flex"
+            follow_searched_user_div.action = "{{ url_for('users.follow', username='') }}" + user_username
+          } else if (current_user_is_following_user) {
+            // UNFOLLOW button if current_user is following searched user
+            let unfollow_searched_user_div = template_clone.querySelector(".unfollow-searched-user")
+            unfollow_searched_user_div.style.display = "flex"
+            unfollow_searched_user_div.action = "{{ url_for('users.unfollow', username='') }}" + user_username
+          }
+
+          scroller_users.appendChild(template_clone)
+          counter_users += 1;
+        }
+      })
+    })
+  }
+
+  function loadTagsSearch() {
+    fetch(`${window.origin}/load_tag_search_result?t=${counter_tags}`).then((response) => {
+      response.json().then((data) => {
+        if (!data.length) {
+          sentinel_posts.innerHTML = tag_last;
+        }
+
+        for (let i = 0; i < data.length; i++) {
+          let template_clone = tag_template.content.cloneNode(true);
+
+          let tag_name = data[i]
+
+          // tag link
+          let tag_link_div = template_clone.querySelector(".tag-link")
+          tag_link_div.href = "{{ url_for ('posts.tag', name='') }}" + tag_name
+          // tag name
+          let tag_name_div = template_clone.querySelector(".tag-name")
+          tag_name_div.innerText = tag_name
+
+          scroller_tags.appendChild(template_clone)
+          counter_tags += 1;
+
+        }
+      })
+    })
+  }
+
+
+  // 监控上传情况
+  let intersectionObserver = new IntersectionObserver(entries => {
+    // if the intersectionRatio is 0, the sentinel is out of view 
+    // and we do not need to do anything
+    if (entries[0].intersectionRatio <= 0) {
+      return
+    }
+    loadPostsSearch()
+    loadUsersSearch()
+    loadTagsSearch()
+  })
+
+  let targets = [sentinel_posts, sentinel_users, sentinel_tags];
+  targets.forEach((i) => {
+    intersectionObserver.observe(i)
+  });
+
+  function openTab(evt, category) {
+    let i, x, tablinks;
+    x = document.querySelectorAll(".label");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.querySelectorAll(".tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" text-color-red", "");
+      tablinks[i].className = tablinks[i].className.replace(" front-tab", "");
+    }
+    // show category contents
+    document.getElementById(category).style.display = "block";
+    // make category tab front and bold
+    evt.currentTarget.className += " text-color-red";
+    evt.currentTarget.className += " front-tab";
+  }
+</script>
+
 {% endblock %}
