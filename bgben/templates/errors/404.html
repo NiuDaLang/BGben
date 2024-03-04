@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="error-block">
-  <img class="error-img" src="{{url_for('static', filename='images/404.png')}}" alt="">
+  <img class="error-img" src="{{url_for('static', filename='images/404.png')}}" alt="{{ _('404错误图像') }}">
   <h1 class="text-color-darkgrey">{{_('此文件不存在！')}}</h1>
   <a class="return-btn" href="{{ url_for('main.home') }}">
     {{ _('返 回') }}

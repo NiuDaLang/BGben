@@ -8,8 +8,6 @@ def add_to_index(index, model):
     payload = {}
     for field in model.__searchable__:
       payload[field] = getattr(model, field)
-      print(f'field: {field}' )
-    print(f'index: {index}, model: {model}, model.id: {model.id}')
     current_app.elasticsearch.index(index=index, id=model.id, document=payload)
   except:
     return

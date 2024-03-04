@@ -2,8 +2,7 @@
 <div class="popover1">
   <!-- User Name & Picture -->
   <div class="popover_l1">
-    <!-- <img src="../static/profile_pics/admin.png" alt=""> -->
-    <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" alt="">
+    <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" alt="{{ _('笔记作者头像') }}">
     <p><a href="{{ url_for('users.user_page', username=user.username) }}">
         {{ user.username }}
       </a></p>

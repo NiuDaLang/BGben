@@ -123,7 +123,7 @@ def upload():
     return upload_success(url, filename=picture_fn)  # return upload_success call
 
 
-@posts.route("/post/<int:post_id>", methods=['GET', 'POST'])
+@posts.route("/post/<post_id>", methods=['GET', 'POST'])
 def post(post_id):
   # No more message
   locale = get_locale()
@@ -233,7 +233,7 @@ def monthly_posts(user_id, month):
   return render_template('monthly_posts.html', user=user, month=month, count=monthly_posts_count, monthly_posts=monthly_posts, next_url=next_url, prev_url=prev_url, re=re, title=_('%(username)s的月度笔记: %(month)s', username=user.username, month=month))
 
 
-@posts.route("/like_post/<int:post_id>", methods=['POST'])
+@posts.route("/like_post/<post_id>", methods=['POST'])
 @login_required
 def like_post(post_id):
   post = db.session.scalar(sa.select(Post).where(Post.id == post_id).where(Post.active == True))

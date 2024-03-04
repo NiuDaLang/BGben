@@ -7,12 +7,16 @@
 <div id="modal-wrapper" class="modal-wrapper">
   <!-- Newsletter 订阅 Modal -->
   <div id="modal-nl-subscription" class="modal-nl-subscription">
-    <img class="modal-nl-subscription-img" src="{{url_for('static', filename='images/stars.png')}}" alt="">
+    <img class="modal-nl-subscription-img" src="{{url_for('static', filename='images/stars.png')}}" alt="{{ _('宇宙星球背景图像')
+  }}">
     <div class="modal-nl-subscription-contents">
       <img class="cancel-nl-subscription-btn" src="{{url_for('static', filename='images/close-btn1.png')}}">
       <!-- Subscription Page -->
       <div id="subscription_page" class="nl-subscription-application">
-        <h1>{{ _('不定期与您分享') }}<br>{{ _('宇宙传来的风信✉️') }}</h1>
+        <h1>{{ _('不定期与您分享') }}<br>{{ _('宇宙传来的风信') }}
+          <span><img class="nl-airmail-img" src="{{ url_for('static', filename='images/nl-airmail.png') }}"
+              alt="{{ _('航空信封图像') }}"></span>
+        </h1>
         <h2>{{ _('+BGben的随想')}}</h2>
         <h3>{{ _('哪怕言论自由遭迫害') }}<br><strong>{{ _('我们也不失联') }}</strong></h3>
         <form id="nl-subscription-form" onsubmit="return false" novalidate>
@@ -90,7 +94,7 @@
 <div class="main-theme-wrapper">
   <h1 data-theme="{{ theme }}">{{ _('灵魂的笔记本')}}</h1>
   <h1 hidden>灵魂的笔记本 魂のオンライン手帳 Memo Pad for the Souls</h1>
-  <h2>{{ _('欢迎一起追溯...一切存在的根源✨') }}</h2>
+  <h2>{{ _('欢迎一起追溯...一切存在的根源...') }}</h2>
 </div>
 <!-- / Main Theme -->
 
@@ -98,7 +102,7 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for category, message in messages %}
-<div class="alert">
+<div class="flash-alert alert">
   <span class=" alert-{{ category }}">{{ message }}</span>
 </div>
 {% endfor %}
@@ -1202,7 +1206,8 @@
         <div class="row-middle">
           <div class="row-middle-left"></div>
           <div class="row-middle-right">
-            <img class="footstep" src="{{url_for('static', filename='images/footstep0.png')}}" alt="">
+            <img class="footstep" src="{{url_for('static', filename='images/footstep0.png')}}"
+              alt="{{ _('淡黄色青蛙左脚印') }}">
           </div>
         </div>
         <div class="row-right"></div>
@@ -1212,7 +1217,8 @@
         <div class="row-middle">
           <div class="row-middle-left"></div>
           <div class="row-middle-right">
-            <img class="footstep" src="{{url_for('static', filename='images/footstep1.png')}}" alt="">
+            <img class="footstep" src="{{url_for('static', filename='images/footstep1.png')}}" alt="{{ _('红色青蛙右脚印')
+          }}">
           </div>
         </div>
         <div class="row-right"></div>
@@ -1222,7 +1228,7 @@
         <div class="row-middle">
           <div class="row-middle-left"></div>
           <div class="row-middle-right">
-            <img class="footstep" src="{{url_for('static', filename='images/footstep2.png')}}" alt="">
+            <img class="footstep" src="{{url_for('static', filename='images/footstep2.png')}}" alt="{{ _('红色青蛙左脚印') }}">
           </div>
         </div>
         <div class="row-right"></div>
@@ -1232,7 +1238,8 @@
         <div class="row-middle">
           <div class="row-middle-left"></div>
           <div class="row-middle-right">
-            <img class="footstep" src="{{url_for('static', filename='images/footstep3.png')}}" alt="">
+            <img class="footstep" src="{{url_for('static', filename='images/footstep3.png')}}"
+              alt="{{ _('淡绿色青蛙右脚印') }}">
           </div>
         </div>
         <div class="row-right"></div>
@@ -1242,7 +1249,8 @@
         <div class="row-middle">
           <div class="row-middle-left"></div>
           <div class="row-middle-right">
-            <img class="footstep" src="{{url_for('static', filename='images/footstep4.png')}}" alt="">
+            <img class="footstep" src="{{url_for('static', filename='images/footstep4.png')}}"
+              alt="{{ _('淡绿色青蛙左脚印') }}">
           </div>
         </div>
         <div class="row-right"></div>
@@ -1252,7 +1260,7 @@
         <div class="row-middle">
           <div class="row-middle-left"></div>
           <div class="row-middle-right">
-            <img class="footstep" src="{{url_for('static', filename='images/footstep5.png')}}" alt="">
+            <img class="footstep" src="{{url_for('static', filename='images/footstep5.png')}}" alt="{{ _('橙色青蛙右脚印') }}">
           </div>
         </div>
         <div class="row-right"></div>
@@ -1263,7 +1271,7 @@
         <div class="row-middle">
           <div class="row-middle-left"></div>
           <div class="row-middle-right">
-            <img class="footstep" src="{{url_for('static', filename='images/footstep6.png')}}" alt="">
+            <img class="footstep" src="{{url_for('static', filename='images/footstep6.png')}}" alt="{{ _('橙色青蛙左脚印') }}">
           </div>
         </div>
         <div class="row-right"></div>
@@ -1996,7 +2004,7 @@
     <aside class="sidebar">
       <!-- Latest Posts -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="{{ _('橙色蜡笔图标') }}">
         <p class="text-color-orange side-title">{{ _('最新投稿') }}</p>
       </div>
       <ul class="aside-list">
@@ -2006,7 +2014,7 @@
           <a href="{{ url_for('posts.post', post_id=post.id) }}" class="text-color-orange aside-title-orange">
             <span>{{ post.title}}</span>
             <img class="sidebar-post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
-              alt="post image">
+              alt="{{ _('笔记主图像') }}">
           </a>
         </li>
         {% endfor %}
@@ -2016,7 +2024,7 @@
 
       <!-- Hottest Topics -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="{{ _('红色蜡笔图标') }}">
         <p class="text-color-red side-title">{{ _('最热主题') }}</p>
       </div>
       <ul class="aside-list">
@@ -2024,7 +2032,7 @@
         {% for tag in top_tags %}
         <li class="aside-list-item">
           <a href="{{ url_for('posts.tag', name=tag.name) }}" class="text-color-red"><img class="tag-img"
-              src="{{ url_for('static', filename='images/tag1.png') }}" alt=""> {{ tag.name }}</a>
+              src="{{ url_for('static', filename='images/tag1.png') }}" alt="{{ _('白色标签图标') }}"> {{ tag.name }}</a>
         </li>
         {% endfor %}
         {% endif %}
@@ -2033,7 +2041,7 @@
 
       <!-- Newest Users -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="{{ _('淡绿色蜡笔图标') }}">
         <p class="text-color-green side-title">{{ _('最鲜笔者') }}</p>
       </div>
       <ul class="aside-list">
@@ -2042,7 +2050,7 @@
         <li class="aside-list-item">
           <a href="{{ url_for('users.user_page', username=user.username) }}">
             <div class="hot-user text-color-green">
-              <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" alt="">
+              <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" alt="{{ _('用户头像') }}">
               {{ user.username }}
             </div>
           </a>
@@ -2056,25 +2064,26 @@
       <div class="aside-ad-img bmc">
         <a href="https://www.buymeacoffee.com/bgben">
           <span class="sr-only">{{ _('请我喝杯咖啡') }}</span>
-          <img src="{{ url_for('static', filename='images/bmc-button.png') }}" alt="">
+          <img src="{{ url_for('static', filename='images/bmc-button.png') }}" alt="{{ _('Buy me a coffee 图像') }}">
         </a>
-        <div class="bmc-slogan">{{ _('买杯☕️支持BGben运营') }}</div>
+        <div class="bmc-slogan" style="font-size: 0.9rem;">{{ _('买杯饮料支持BGben运营') }}</div>
       </div>
       <!-- / Ad bmc -->
 
 
       <!-- Ad -->
       <div class="aside-ad-img">
-        <img src="{{ url_for('static', filename='images/ad1.png') }}" alt="">
+        <img src="{{ url_for('static', filename='images/ad1.png') }}" alt="{{ _('网站制作广告图像') }}">
         <a class="aside-ad-button" href="{{ url_for('main.contact') }}">
           <span class="sr-only">{{ _('联系管理人') }}</span>
-          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}" alt=""></a>
+          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}"
+            alt="{{ _('信封图像 - 联系管理人链接') }}"></a>
       </div>
       <!-- / Ad -->
 
       <!-- Newsleter Subscription -->
       <div class="aside-ad-img">
-        <img src="{{ url_for('static', filename='images/newsletter_banner.png') }}" alt="">
+        <img src="{{ url_for('static', filename='images/newsletter_banner.png') }}" alt="{{ _('通讯订阅广告图像') }}">
         <div class="aside-nl-contents">
           <p class="aside-nl-heading">{{ _('BGben通讯') }}</p>
           <ul class="aside-ad-nl-list text-color-darkgrey">
@@ -2092,10 +2101,11 @@
 
       <!-- Ad -->
       <div id="adspace-ad" class="aside-ad-img">
-        <img src="{{ url_for('static', filename='images/ad_space.png') }}" alt="">
+        <img src="{{ url_for('static', filename='images/ad_space.png') }}" alt="{{ _('刊登广告图像') }}">
         <a class="aside-adspace-button" href="{{ url_for('main.contact') }}">
           <span class="sr-only">{{ _('联系管理人') }}</span>
-          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}" alt=""></a>
+          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}"
+            alt="{{ _('信封图像 - 联系管理人链接') }}"></a>
       </div>
       <!-- / Ad -->
 
@@ -2177,18 +2187,19 @@
       <!-- Line 1 -->
       <div class="contents-row">
         <div class="content-post">
-          <img class="memo" src="{{ url_for('static', filename='images/Memo1.png') }}" alt="">
+          <img class="memo" src="{{ url_for('static', filename='images/Memo1.png') }}" alt="{{ _('红色标签图像') }}">
           <div class="memo-post1">
             {% if twenty_posts[0] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[0].id) }}">
               <div class="memo-heading">{{ twenty_posts[0].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[0].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[0].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[0].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[0].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author text-color-white">{{ twenty_posts[0].author.username }}</div>
                   <div class="memo-timestamp text-color-white">{{ moment(twenty_posts[0].date_posted).format('LLL') }}
@@ -2230,18 +2241,19 @@
           </div>
         </div>
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo2.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo2.png')}}" alt="{{ _('淡黄色标签图像') }}">
           <div class="memo-post2">
             {% if twenty_posts[1] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[1].id) }}">
               <div class="memo-heading text-color-red">{{ twenty_posts[1].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[1].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[1].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[1].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[1].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author">{{ twenty_posts[1].author.username }}</div>
                   <div class="memo-timestamp">{{ moment(twenty_posts[1].date_posted).format('LLL') }}
@@ -2256,18 +2268,19 @@
       <!-- Line 3 -->
       <div class="contents-row">
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo3.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo3.png')}}" alt="{{ _('橙色标签图像') }}">
           <div class="memo-post3">
             {% if twenty_posts[2] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[2].id) }}">
               <div class="memo-heading">{{ twenty_posts[2].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[2].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[2].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[2].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[2].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author text-color-white">{{ twenty_posts[2].author.username }}</div>
                   <div class="memo-timestamp text-color-white">{{ moment(twenty_posts[2].date_posted).format('LLL') }}
@@ -2309,18 +2322,19 @@
           </div>
         </div>
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo4.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo4.png')}}" alt="{{ _('淡绿色标签图像') }}">
           <div class="memo-post4">
             {% if twenty_posts[3] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[3].id) }}">
               <div class="memo-heading text-color-yellow">{{ twenty_posts[3].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[3].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[3].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[3].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[3].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author text-color-yellow">{{ twenty_posts[3].author.username }}</div>
                   <div class="memo-timestamp text-color-yellow">{{ moment(twenty_posts[3].date_posted).format('LLL')
@@ -2337,18 +2351,19 @@
       <!-- Line 5 -->
       <div class="contents-row">
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo1.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo1.png')}}" alt="{{ _('红色标签图像') }}">
           <div class="memo-post1">
             {% if twenty_posts[4] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[4].id) }}">
               <div class="memo-heading">{{ twenty_posts[4].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[4].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[4].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[4].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[4].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author text-color-white">{{ twenty_posts[4].author.username }}</div>
                   <div class="memo-timestamp text-color-white">{{ moment(twenty_posts[4].date_posted).format('LLL') }}
@@ -2391,18 +2406,19 @@
           </div>
         </div>
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo2.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo2.png')}}" alt="{{ _('淡黄色标签图像') }}">
           <div class="memo-post2">
             {% if twenty_posts[5] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[5].id) }}">
               <div class="memo-heading text-color-red">{{ twenty_posts[5].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[5].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[5].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[5].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[5].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author">{{ twenty_posts[5].author.username }}</div>
                   <div class="memo-timestamp">{{ moment(twenty_posts[5].date_posted).format('LLL') }}
@@ -2418,18 +2434,19 @@
       <!-- Line 7 -->
       <div class="contents-row">
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo3.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo3.png')}}" alt="{{ _('橙色标签图像') }}">
           <div class="memo-post3">
             {% if twenty_posts[6] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[6].id) }}">
               <div class="memo-heading">{{ twenty_posts[6].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[6].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[6].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[6].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[6].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author text-color-white">{{ twenty_posts[6].author.username }}</div>
                   <div class="memo-timestamp text-color-white">{{ moment(twenty_posts[6].date_posted).format('LLL') }}
@@ -2472,18 +2489,19 @@
           </div>
         </div>
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo4.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo4.png')}}" alt="{{ _('淡绿色标签图像') }}">
           <div class="memo-post4">
             {% if twenty_posts[7] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[7].id) }}">
               <div class="memo-heading text-color-yellow">{{ twenty_posts[7].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[7].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[7].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[7].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[7].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author text-color-yellow">{{ twenty_posts[7].author.username }}</div>
                   <div class="memo-timestamp text-color-yellow">{{ moment(twenty_posts[7].date_posted).format('LLL')
@@ -2500,18 +2518,19 @@
       <!-- Line 9 -->
       <div class="contents-row">
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo1.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo1.png')}}" alt="{{ _('红色标签图像') }}">
           <div class="memo-post1">
             {% if twenty_posts[8] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[8].id) }}">
               <div class="memo-heading">{{ twenty_posts[8].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[8].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[8].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[8].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[8].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author text-color-white">{{ twenty_posts[8].author.username }}</div>
                   <div class="memo-timestamp text-color-white">{{ moment(twenty_posts[8].date_posted).format('LLL') }}
@@ -2553,18 +2572,19 @@
           </div>
         </div>
         <div class="content-post">
-          <img class="memo" src="{{url_for('static', filename='images/Memo2.png')}}" alt="">
+          <img class="memo" src="{{url_for('static', filename='images/Memo2.png')}}" alt="{{ _('淡黄色标签图像') }}">
           <div class="memo-post2">
             {% if twenty_posts[9] %}
             <a href="{{ url_for('posts.post', post_id=twenty_posts[9].id) }}">
               <div class="memo-heading text-color-red">{{ twenty_posts[9].title }}</div>
               <img class="memo-img" src="{{ url_for('static', filename='post_pics/' + twenty_posts[9].image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </a>
             <a href="{{ url_for('users.user_page', username=twenty_posts[9].author.username) }}">
               <div class="memo-author-detail">
                 <img class="memo-author-img"
-                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[9].author.image_file )}}" alt="">
+                  src="{{ url_for('static', filename='profile_pics/' +  twenty_posts[9].author.image_file )}}"
+                  alt="{{ _('笔记作者头像') }}">
                 <div class="memo-author-wrapper">
                   <div class="memo-author">{{ twenty_posts[9].author.username }}</div>
                   <div class="memo-timestamp">{{ moment(twenty_posts[9].date_posted).format('LLL') }}
@@ -2610,7 +2630,8 @@
       </div>
       <!-- line 12 test retry link -->
       <div class="retry-wrapper">
-        <a class="retry" href="#test_start"><img src="static/images/eraser.png" alt="">{{ _('再测试一遍！') }}</a>
+        <a class="retry" href="#test_start"><img src="static/images/eraser.png" alt="{{ _('橡皮图像') }}">{{ _('再测试一遍！')
+          }}</a>
       </div>
       <!-- line 13 start writing button -->
       <div class="start-recording-wrapper">
@@ -2618,10 +2639,10 @@
         <div class="note text">{{ _('注意事项：请遵守不伤害他人的原则，保护个人隐私，容纳不同观点，言论自由的同时遵守自然法。') }}</div>
         {% if current_user.is_authenticated %}
         <a class="start-recording" href="{{ url_for('posts.new_post') }}">{{ _('开始记录') }} <img
-            src="static/images/pen_head.png" alt=""></a>
+            src="static/images/pen_head.png" alt="{{ _('钢笔头') }}"></a>
         {% else %}
         <a class="start-recording" href="{{ url_for('users.login') }}">{{ _('开始记录') }} <img
-            src="static/images/pen_head.png" alt=""></a>
+            src="static/images/pen_head.png" alt="{{ _('钢笔头') }}"></a>
         {% endif %}
       </div>
       <!-- </div> -->

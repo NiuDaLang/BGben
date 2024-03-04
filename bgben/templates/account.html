@@ -23,15 +23,15 @@
   <div class="user-profile-wrapper account-page">
     <div class="profile-img">
       {% if current_user.image_file == 'default.png' %}
-      <span class="profile-img-phrase"><small>{{ _('换上您自己的图像吧！') }}</small></span>
+      <span class="profile-img-phrase"><small>{{ _('换上您自己的头像吧！') }}</small></span>
       {% endif %}
-      <img src="{{ image_file }}" alt="">
+      <img src="{{ image_file }}" alt="{{ _('管理人头像') }}">
     </div>
     <div class="profile-data">
       <div class="profile-name">
         <h1>{{ current_user.username }}</h1>
         {% if current_user.zodiac_sign %}
-        <img src="{{ zodiac_file }}" alt="">
+        <img src="{{ zodiac_file }}" alt="{{ _('用户星座图标') }}">
         {% else %}
         {% endif %}
       </div>
@@ -87,7 +87,7 @@
       <div class="form-item">
         <!-- label 1 -->
         <label class="form-title">
-          <img src="static/images/feather_pen1.png" alt="">
+          <img src="static/images/feather_pen1.png" alt="{{ _('淡绿色羽毛图标') }}">
           <span>{{form.username.label}}</span>
         </label>
         <!-- input line 1 -->
@@ -105,7 +105,7 @@
       <div class="form-item">
         <!-- label 2 -->
         <label class="form-title">
-          <img src="static/images/feather_pen2.png" alt="">
+          <img src="static/images/feather_pen2.png" alt="{{ _('淡黄色羽毛图标') }}">
           <span>{{form.email.label}}</span>
         </label>
         <!-- input line 2 -->
@@ -123,7 +123,7 @@
       <!-- label 3 -->
       <div class=" form-item">
         <div class="form-title">
-          <img src="static/images/feather_pen3.png" alt="" style="align-self: start;">
+          <img src="static/images/feather_pen3.png" alt="{{ _('橙色羽毛图标') }}" style="align-self: start;">
           <span>{{form.picture.label()}}<small> ({{ _('格式：') }} jpg, jpeg, png, {{ _('请尽量将图像比例调整为1:1')
               }})</small></span>
         </div>
@@ -142,49 +142,62 @@
       <!-- label 4 -->
       <div class="form-item">
         <div class="form-title">
-          <img src="{{ url_for('static', filename='images/feather_pen2.png') }}" alt="">
+          <img src="{{ url_for('static', filename='images/feather_pen2.png') }}" alt="{{ _('淡黄色羽毛图标') }}">
           <span>{{ _('星座') }}</span>
         </div>
         <table class="zodiac-table">
           <tr>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/aries.png') }}" alt="" title="{{ _('白羊座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/aries.png') }}" alt="{{ _('白羊座图标') }}"
+                title="{{ _('白羊座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/taurus.png') }}" alt="" title="{{ _('金牛座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/taurus.png') }}" alt="{{ _('金牛色图标') }}"
+                title="{{ _('金牛座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/gemini.png') }}" alt="" title="{{ _('双子座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/gemini.png') }}" alt="{{ _('双子座图标') }}"
+                title="{{ _('双子座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/cancer.png') }}" alt="" title="{{ _('巨蟹座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/cancer.png') }}" alt="{{ _('巨蟹座图标') }}"
+                title="{{ _('巨蟹座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/leo.png') }}" alt="" title="{{ _('狮子座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/leo.png') }}" alt="{{ _('狮子座图标') }}"
+                title="{{ _('狮子座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/virgo.png') }}" alt="" title="{{ _('处女座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/virgo.png') }}" alt="{{ _('处女座图标') }}"
+                title="{{ _('处女座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/libra.png') }}" alt="" title="{{ _('天秤座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/libra.png') }}" alt="{{ _('天秤座图标') }}"
+                title="{{ _('天秤座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/scorpio.png') }}" alt="" title="{{ _('天蝎座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/scorpio.png') }}" alt="{{ _('天蝎座图标') }}"
+                title="{{ _('天蝎座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/sagittarius.png') }}" alt="" title="{{ _('射手座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/sagittarius.png') }}" alt="{{ _('射手座图标') }}"
+                title="{{ _('射手座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/capricorn.png') }}" alt="" title="{{ _('摩羯座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/capricorn.png') }}" alt="{{ _('摩羯座图标') }}"
+                title="{{ _('摩羯座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/aquarius.png') }}" alt="" title="{{ _('水瓶座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/aquarius.png') }}" alt="{{ _('水瓶座图标') }}"
+                title="{{ _('水瓶座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/pisces.png') }}" alt="" title="{{ _('双鱼座') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/pisces.png') }}" alt="{{ _('双鱼座图标') }}"
+                title="{{ _('双鱼座') }}">
             </td>
             <td>
-              <img src="{{ url_for('static', filename='zodiac_signs/unknown.png') }}" alt="" title="{{ _('未知') }}">
+              <img src="{{ url_for('static', filename='zodiac_signs/unknown.png') }}" alt="{{ _('星座未知默认星星图标') }}"
+                title="{{ _('未知') }}">
             </td>
           </tr>
           <tr>
@@ -215,7 +228,7 @@
       <!-- label 5 -->
       <div class="form-item">
         <div class="form-title">
-          <img src="{{ url_for('static', filename='images/feather_pen1.png')}}" alt="">
+          <img src="{{ url_for('static', filename='images/feather_pen1.png')}}" alt="{{ _('淡绿色羽毛图标') }}">
           <span>{{ form.about_me.label}}</span>
         </div>
         <!-- input line 5 -->

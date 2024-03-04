@@ -7,20 +7,21 @@
 <div class="account-status" style="padding: 50px 0;">
   <div class="user-profile-wrapper account-page">
     <div class="profile-img">
-      <img src="{{ url_for('static', filename='profile_pics/' + user.image_file ) }}" alt="">
+      <img src="{{ url_for('static', filename='profile_pics/' + user.image_file ) }}" alt="{{ _('用户头像') }}">
     </div>
     <div class="profile-data">
       <div class="profile-name">
         <h1>{{ user.username }}</h1>
         {% if user.zodiac_sign %}
-        <img src="{{ url_for('static', filename='zodiac_signs/' + user.zodiac_sign + '.png') }}" alt="">
+        <img src="{{ url_for('static', filename='zodiac_signs/' + user.zodiac_sign + '.png') }}"
+          alt="{{ _('用户星座图标') }}">
         {% else %}
         {% endif %}
         {% if current_user.is_authenticated %}
         {% if user != current_user %}
         {% if current_user.is_following(user) %}
         <a href="{{ url_for('main.send_message', recipient=user.username) }}"><img
-            src="{{url_for('static', filename='images/email_logo.png')}}" alt="">
+            src="{{url_for('static', filename='images/email_logo.png')}}" alt="{{ _('显示发信息给用户的信封图像') }}">
         </a>
         {% endif %}
         {% endif %}
@@ -1024,7 +1025,7 @@
       <aside class="post-left">
         <!-- Latest Posts -->
         <div class="aside-section">
-          <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="">
+          <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="{{ _('橙色蜡笔图标') }}">
           {% if user == current_user %}
           <p class="text-color-orange side-title">{{ _('我的最新投稿') }}</p>
           {% else %}
@@ -1037,7 +1038,7 @@
             <a href="{{ url_for('posts.post', post_id=post.id) }}" class="text-color-orange aside-title-orange">
               <span>{{ post.title}}</span>
               <img class="sidebar-post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
-                alt="post image">
+                alt="{{ _('笔记主图像') }}">
             </a>
           </li>
           {% endfor %}
@@ -1045,7 +1046,7 @@
 
         <!-- Past Posts -->
         <div class="aside-section">
-          <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="">
+          <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="{{ _('红色蜡笔图标') }}">
           {% if user == current_user %}
           <p class="text-color-red side-title">{{ _('我的过去投稿') }}</p>
           {% else %}
@@ -1067,7 +1068,7 @@
 
         <!-- Hottest Topics -->
         <div class="aside-section">
-          <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="">
+          <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="{{ _('淡绿色蜡笔图标') }}">
           {% if user == current_user %}
           <p class="text-color-green side-title">{{ _('我的最新论点') }}</p>
           {% else %}
@@ -1078,7 +1079,7 @@
           {% for tag in user_tags %}
           <li class="aside-list-item">
             <a href="{{ url_for('posts.tag', name=tag[0]) }}" class="text-color-green">
-              <img class="tag-img" src="{{url_for('static', filename='images/tag3.png')}}" alt="">
+              <img class="tag-img" src="{{url_for('static', filename='images/tag3.png')}}" alt="{{ _('淡绿色标签图标') }}">
               {{ tag[0] }}</a>
           </li>
           {% endfor %}
@@ -1100,14 +1101,16 @@
                   {{ post.title }}
                 </h2>
                 <!-- Image -->
-                <img class="post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}" alt="">
+                <img class="post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
+                  alt="{{ _('笔记主图像') }}">
                 <!-- / Image -->
                 <h3>{{ post.subtitle }}</h3>
               </a>
               <div class="post-author">
                 <a class="post-author-link" href="{{ url_for('users.user_page', username=post.author.username) }}">
                   <img class="post-author-img"
-                    src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}" alt="">
+                    src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}"
+                    alt="{{ _('笔记作者头像') }}">
                   <h4>{{ post.author.username }}</h4>
                 </a>
                 <div class="post-time">{{ moment(post.date_posted).format('LLL') }}</div>
@@ -1123,7 +1126,7 @@
           <div class="prev-page">
             <div class="pagination-text"><a href="{{ prev_url }}">{{ _('前一页') }}</a></div>
             <div class="pagination-imgbox">
-              <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="">
+              <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="{{ _('橙色向左箭头图标') }}">
             </div>
           </div>
           {% endif %}
@@ -1131,7 +1134,7 @@
           {% if next_url %}
           <div class="next-page">
             <div class="pagination-imgbox">
-              <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="">
+              <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="{{ _('橙色向右箭头图标') }}">
             </div>
             <div class="pagination-text"><a href="{{ next_url }}">{{ _('下一页') }}</a></div>
           </div>

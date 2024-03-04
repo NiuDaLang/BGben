@@ -96,6 +96,11 @@ main {
 .navbar #nav-bg {
   background-color: #ffe17b;
 }
+.search-icon {
+  width: 40px;
+  margin-right: -12px;
+  margin-left: 20px;
+}
 .menu-label-wrapper {
   width: 100%;
   height: 100%;
@@ -579,7 +584,7 @@ main {
 .main-theme-wrapper h1::after {
   content: attr(data-theme);
   position: absolute;
-  top: 23px;
+  top: 17px;
   left: 28px;
   font-weight: 100;
 }
@@ -998,7 +1003,7 @@ main {
     font-size: 2rem;
   }
   .test-heading {
-    font-size: 1.25rem !important;
+    font-size: 1.17rem !important;
   }
   .content-test {
     margin-left: 0 !important;
@@ -2663,6 +2668,8 @@ input::file-selector-button {
   height: 100%;
   display: flex;
   color: #4b433b;
+  overflow-wrap: break-word;
+
 }
 .post-left {
   width: 25%;
@@ -3359,6 +3366,9 @@ input::file-selector-button {
   display: none;
   text-align: left;
 }
+.nl-airmail-img {
+  width: 2.5rem;
+}
 
 @media screen and (min-width: 1759px) {
   #adspace-ad {
@@ -3375,6 +3385,9 @@ input::file-selector-button {
     font-size: 1.25rem !important;
     line-height: 1.25rem !important;
     margin-top: 40px !important;
+  }
+  .nl-airmail-img {
+    width: 1.25rem !important;
   }
   .modal-nl-subscription-contents h2 {
     font-size: 1rem !important;
@@ -3400,6 +3413,9 @@ input::file-selector-button {
   .modal-nl-subscription-contents h1 {
     font-size: 1.75rem !important;
     line-height: 1.85rem !important;
+  }
+  .nl-airmail-img {
+    width: 1.75rem !important;
   }
   .modal-nl-subscription-contents h2 {
     line-height: 1.5rem !important;
@@ -5170,9 +5186,24 @@ input::file-selector-button {
   width: 80%;
   margin: auto;
 }
-.alert-success {
+.alert-success,
+.alert-login-success {
   color: #cece5a;
   background: #cece5a55;
+  font-weight: 800;
+}
+.alert-login-success-wrapper {
+  font-weight: 300;
+  font-size: 1rem;
+  text-align: center;
+  width: 250px;
+  height: 250px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: auto;
+  background: url(../images/taichi.gif) no-repeat;
+  background-size: 260px 260px;
 }
 .alert-danger {
   color: #c51605;
@@ -6142,6 +6173,9 @@ legend {
 }
 
 /* Popover */
+.user_popup {
+  z-index: 100;
+}
 .popover1 {
   width: 300px;
   height: auto;

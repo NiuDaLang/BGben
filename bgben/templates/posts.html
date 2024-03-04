@@ -32,7 +32,7 @@
     <aside class="post-left">
       <!-- Latest Posts -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="{{ _('红色蜡笔图标') }}">
         <p class="text-color-red side-title">{{ _('最新投稿') }}</p>
       </div>
       <ul class="aside-list">
@@ -42,7 +42,7 @@
           <a href="{{ url_for('posts.post', post_id=post.id) }}" class="text-color-red aside-title-red">
             <span>{{ post.title}}</span>
             <img class="sidebar-post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
-              alt="post image">
+              alt="{{ _('笔记主图像') }}">
           </a>
         </li>
         {% endfor %}
@@ -50,7 +50,7 @@
       </ul>
       <!-- Past Posts -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="{{ _('淡绿色蜡笔图标') }}">
         <p class="text-color-green side-title">{{ _('多产笔者') }}</p>
       </div>
       <ul class="aside-list">
@@ -58,7 +58,7 @@
         <li class="aside-list-item">
           <a href="{{ url_for('users.user_page', username=author.username) }}">
             <div class="hot-user">
-              <img src="{{ url_for('static', filename='profile_pics/' + author.image_file) }}" alt="">
+              <img src="{{ url_for('static', filename='profile_pics/' + author.image_file) }}" alt="{{ _('笔记作者头像') }}">
               {{ author.username}} {{ author.posts_count()}} {{ _('篇') }}
             </div>
           </a>
@@ -68,23 +68,24 @@
 
       <!-- Hottest Topics -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="{{ _('橙色蜡笔图标') }}">
         <p class="text-color-orange side-title">{{ _('热议标签') }}</p>
       </div>
       <ul class="aside-list">
         {% for tag in top_tags %}
         <li class="aside-list-item">
           <a href="{{ url_for('posts.tag', name=tag.name) }}" class="text-color-orange"><img class="tag-img"
-              src="{{url_for('static', filename='images/tag2.png')}}" alt="">{{ tag.name }}</a>
+              src="{{url_for('static', filename='images/tag2.png')}}" alt="{{ _('橙色标签图标') }}">{{ tag.name }}</a>
         </li>
         {% endfor %}
       </ul>
 
       <!-- Ad -->
       <div class="aside-ad-img">
-        <img src="{{ url_for('static', filename='images/ad_space.png') }}" alt="">
+        <img src="{{ url_for('static', filename='images/ad_space.png') }}" alt="{{ _('刊登广告图像') }}">
         <a class="aside-adspace-button" href="{{ url_for('main.contact') }}">
-          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}" alt=""></a>
+          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}"
+            alt="{{ _('信封图像 - 联系管理人链接') }}"></a>
       </div>
       <!-- / Ad -->
 
@@ -103,16 +104,17 @@
             <h3>{{ post.subtitle }}</h3>
             <div class="post-heading-imgbox">
               <img class="post-heading-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
-                alt="">
+                alt="{{ _('笔记主图像') }}">
             </div>
         </a>
         <div class="post-author-explore">
           <div class="post-author-explore-author">
             <a class="post-author-link" href="{{ url_for('users.user_page', username=post.author.username) }}">
               <img class="post-author-explore-img"
-                src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
+                src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
+                alt="{{ _('笔记作者头像') }}">
             </a>
-            <a class="post-author-link user_popup"
+            <a class="post-author-link user_popup" data-container="body" data-toggle="tooltip"
               href="{{ url_for('users.user_page', username=post.author.username) }}">
               {{ post.author.username }}
             </a>
@@ -154,6 +156,7 @@
       const popups = document.querySelectorAll('.user_popup');
       for (let i = 0; i < popups.length; i++) {
         const popover = new bootstrap.Popover(popups[i], {
+          container: 'body',
           content: 'Loading...',
           trigger: 'hover focus',
           placement: 'right',
@@ -164,9 +167,6 @@
           customClass: 'd-inline',
         });
         popups[i].addEventListener('show.bs.popover', async (ev) => {
-          // if (ev.target.popupLoaded) {
-          //   return
-          // }
           const response = await fetch('/user/' + ev.target.innerText.trim() + '/popup');
           const data = await response.text();
           const popover = bootstrap.Popover.getInstance(ev.target);
@@ -179,6 +179,7 @@
       }
     }
     document.addEventListener('DOMContentLoaded', initialize_popovers);
+
   </script>
   </div>
 </main>

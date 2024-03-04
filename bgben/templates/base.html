@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh,ja,en">
 
 <head>
   <meta charset="UTF-8">
@@ -44,11 +44,13 @@
             <a class="nav-brand" href="{{ url_for( 'main.home' )}}" title="home">
               <span class="sr-only">{{ _('主页') }}</span>
               <img id="nav-brand-img1" class="nav-brand-img"
-                src="{{ url_for('static', filename='images/BGben_logo1.png') }}" alt="">
+                src="{{ url_for('static', filename='images/BGben_logo1.png') }}" alt="{{ _('网页主Logo(大)') }}">
               <img id="nav-brand-img2" class="nav-brand-img"
-                src="{{ url_for('static', filename='images/BGben_logo2.png') }}" alt="">
+                src="{{ url_for('static', filename='images/BGben_logo2.png') }}" alt="{{ _('网页主Logo(小)') }}">
             </a>
             <div class="menu-search">
+              <img class="search-icon" src="{{ url_for('static', filename='images/search_icon.png') }}"
+                alt="{{ _('搜索功能图标')}}">
               {% if g.search_form %}
               <form action="{{ url_for('main.search') }}" method="GET">
                 {{ g.search_form.q(size=20, class="text-input", placeholder=g.search_form.q.label.text) }}
@@ -64,14 +66,16 @@
               {% if request.path=="/user/" + current_user.username %}
               <div class="menu-item active username">
                 <a class="text-color-green" href="{{ url_for('users.user_page', username=current_user.username) }}">{{
-                  _('Hello') }}👋 <br>
+                  _('Hello') }} <img class="waving" src="{{ url_for('static', filename='images/waving_paw.png') }}"
+                    alt="{{ _('招手(兔爪)图标') }}" width="20px"><br>
                   <strong>{{current_user.username}}</strong>
                 </a>
               </div>
               {% else %}
               <div class="menu-item username">
                 <a class="text-color-green" href="{{ url_for('users.user_page', username=current_user.username) }}">{{
-                  _('Hello') }}👋 <br>
+                  _('Hello') }} <img class="waving" src="{{ url_for('static', filename='images/waving_paw.png') }}"
+                    alt="{{ _('招手(兔爪)图标') }}" width="20px"><br>
                   <strong>{{current_user.username}}</strong>
                 </a>
               </div>
@@ -85,20 +89,20 @@
                 {% if request.path=="/messages/" + current_user.username + "/in" %}
                 <a href="{{ url_for('main.messages', username=current_user.username, tab='in') }}">
                   <img class="message-logo" src="{{ url_for('static', filename='images/email_inbox_logo_shadow.png') }}"
-                    alt="">
+                    alt="{{ _('信件图标')}}">
                 </a>
                 {% elif request.path=="/messages/" + current_user.username + "/out" %}
                 <a href="{{ url_for('main.messages', username=current_user.username, tab='out') }}">
                   <img class="message-logo" src="{{ url_for('static', filename='images/email_inbox_logo_shadow.png') }}"
-                    alt="">
+                    alt="{{ _('信件图标')}}">
                 </a>
-
                 {% else %}
                 <a href="{{ url_for('main.messages', username=current_user.username, tab='in') }}">
                   <img class="message-logo" src="{{ url_for('static', filename='images/email_inbox_logo.png') }}"
-                    alt="">
+                    alt="{{ _('信件图标')}}">
                 </a>
                 {% endif %}
+
                 <!-- 私信数量 -->
                 {% set unread_message_count = current_user.unread_message_count() %}
                 <span id="message_count" class="message-count"
@@ -167,9 +171,9 @@
           <div id="mobile-btn" class="mobile-menu-button" aria-controls="navigation" aria-expanded="false">
             <span class="sr-only">{{ _('下拉菜单') }}</span>
             <img id="mobile-menu-button-open" data-open_btn_visible="true"
-              src="{{url_for('static', filename='images/mobile_open.png')}}" alt="">
+              src="{{url_for('static', filename='images/mobile_open.png')}}" alt="{{ _('打开手机菜单图标') }}">
             <img id="mobile-menu-button-close" data-close_btn_visible="false"
-              src="{{url_for('static', filename='images/mobile_close.png')}}" alt="">
+              src="{{url_for('static', filename='images/mobile_close.png')}}" alt="{{ _('关闭手机菜单图标') }}">
           </div>
         </div>
       </div>
@@ -212,10 +216,10 @@
     <div class="footer-wrapper">
       <div class="sns">
         <a href="https://twitter.com/Bgben_net"><img src="{{ url_for('static', filename='images/X_logo1.png')}}"
-            alt=""><span class="sr-only">{{
+            alt="{{ _('X社交账号图标') }}"><span class="sr-only">{{
             _('X社交账号') }}</span></a>
         <a href="https://t.me/bgbennet"><img src="{{ url_for('static', filename='images/Telegram_logo1.png')}}"
-            alt=""><span class="sr-only">{{ _('电报社交账号') }}</span></a>
+            alt="{{ _('Telegram电报账号图标') }}"><span class="sr-only">{{ _('电报社交账号') }}</span></a>
       </div>
       <ul class="footer-menu-wrapper">
         <!-- About -->

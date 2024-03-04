@@ -30,7 +30,7 @@
       <a href="{{ url_for('users.user_page', username=follower.username) }}">
         <!-- Profile Image -->
         <div class="search-profile-img followers">
-          <img src="{{ url_for('static', filename='profile_pics/' + follower.image_file ) }}" alt="">
+          <img src="{{ url_for('static', filename='profile_pics/' + follower.image_file ) }}" alt="{{ _('粉丝头像') }}">
         </div>
       </a>
 

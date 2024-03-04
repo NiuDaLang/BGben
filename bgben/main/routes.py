@@ -148,7 +148,6 @@ def search():
     if posts_total != 0:
       posts_list = posts.all()
       posts_count = posts_total['value']
-    print(f'posts: {posts_list},\nposts_total: {posts_count}\n')
 
     # Search User
     users_list = []
@@ -159,18 +158,17 @@ def search():
     if users_total != 0:
       users_list = users.all()
       users_count = users_total['value']
-    print(f'users: {users_list},\nusers_total: {users_count}\n')
 
     # Search Tag
     tags_list = []
     global tags_count
 
     tags, tags_total = Tag.search(g.search_form.q.data)
-
-    if tags_total != 0:
+    if tags_total == 0:
+      tags_count = 0
+    elif tags_total != 0:
       tags_list = tags.all()
       tags_count = tags_total['value']
-    print(f'tags: {tags_list},\ntags_total: {tags_count}\n')
 
   # Posts Results to Global DB variable
     global post_search_db

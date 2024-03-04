@@ -52,7 +52,6 @@ $(document).ready(function () {
   }
 
   $('#comment').on('keypress', function (e) {
-    console.log('enter pressed')
     return e.which !== 13;
   });
 })

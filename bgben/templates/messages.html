@@ -4,7 +4,7 @@
 <!-- Main Theme -->
 <div class="main-theme-wrapper">
   <h1>BGben</h1>
-  <h2>{{ _("%(username)s的私信邮箱📮", username=user.username) }}</h2>
+  <h2>{{ _("%(username)s的私信邮箱", username=user.username) }}</h2>
   <div id="tab" style="display: none;">{{tab}}</div>
   <div id="current_user_id" style="display:none;">{{ current_user.id }}</div>
 </div>
@@ -41,30 +41,30 @@
         <div class="balloon">
           <div class="balloon-main">
             <a class="in_msg_author_link message-profile-img" href="">
-              <img class="in_msg_author_pic" src="" alt="">
+              <img class="in_msg_author_pic" src="" alt="{{ _('信息发送方头像') }}">
             </a>
             <div class="says in_msg_text"></div>
           </div>
           <div class="message-time">
             <a class="message-time-name" href=""></a>
             <div class="message-time-time-wrapper">
-              <img src="{{ url_for('static', filename='images/clock.png') }}" alt="">
+              <img src="{{ url_for('static', filename='images/clock.png') }}" alt="{{ ('钟表(时间)图像') }}">
               <span><small class="in_msg_time message-time-time"></small></span>
               <!-- Reply Link -->
               <a class="in_msg_reply_link" href="">
-                <img class="message-reply" src="{{ url_for('static', filename='images/reply.png') }}" alt=""
-                  title="{{ _('发送信息') }}">
+                <img class="message-reply" src="{{ url_for('static', filename='images/reply.png') }}"
+                  alt="{{ _('回复信息链接图像') }}" title="{{ _('发送信息') }}">
               </a>
               <!-- Delete Message -->
               <a class="modal-open-message" href="">
                 <img class="delete_in_msg_btn" src="{{ url_for('static', filename='images/paper_crumpled_orange.png')}}"
-                  alt="" title="{{ _('删除') }}" onclick="deleteInMsg(event, this)">
+                  alt="{{ _('橙色皱巴巴的纸图像') }}" title="{{ _('删除') }}" onclick="deleteInMsg(event, this)">
               </a>
             </div>
 
             <!-- 笔记删除确认Modal -->
             <div class="modal-confirm modal-delete-in-message-confirm">
-              <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="alert">
+              <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="{{ _('警报器图像') }}">
               <h2>{{ _('您确定要删除这条信息吗？') }}</h2>
               <div class="button-area">
                 <button class="cancel-btn">{{ _('取 消') }}</button>
@@ -83,7 +83,8 @@
     </div>
     <div id="sentinel_in_msg">
       <div role="status_in_msg"></div>
-      <div id="in_msg_last" hidden><img src="{{ url_for('static', filename='images/empty_tray.png') }}" alt=""></div>
+      <div id="in_msg_last" hidden><img src="{{ url_for('static', filename='images/empty_tray.png') }}"
+          alt="{{ _('空的接受信息托盘') }}"></div>
     </div>
   </div>
   <!-- /Inbox -->
@@ -97,26 +98,26 @@
         <div class="balloon">
           <div class="balloon-main">
             <a class="out_msg_recipient_link message-profile-img" href="">
-              <img class="out_msg_recipient_pic" src="" alt="">
+              <img class="out_msg_recipient_pic" src="" alt="{{ _('信息接收用户头像') }}">
             </a>
             <div class="says2 out_msg_text"></div>
           </div>
           <div class="message-time">
             <a class="message-time-name" href=""></a>
             <div class="message-time-time-wrapper">
-              <img src="{{ url_for('static', filename='images/clock.png') }}" alt="">
+              <img src="{{ url_for('static', filename='images/clock.png') }}" alt="{{ ('钟表(时间)图像') }}">
               <span><small class="out_msg_time message-time-time"></small></span>
               <!-- Delete Message -->
               <a class="modal-open-message" href="">
                 <img class="delete_out_msg_btn"
-                  src="{{ url_for('static', filename='images/paper_crumpled_orange.png')}}" alt="" title="{{ _('删除') }}"
-                  onclick="deleteOutMsg(event, this)">
+                  src="{{ url_for('static', filename='images/paper_crumpled_orange.png')}}" alt="{{ _('橙色皱巴巴的纸图像') }}"
+                  title="{{ _('删除') }}" onclick="deleteOutMsg(event, this)">
               </a>
             </div>
 
             <!-- 笔记删除确认Modal -->
             <div class="modal-confirm modal-delete-out-message-confirm">
-              <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="alert">
+              <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="{{ _('警报器图像') }}">
               <h2>{{ _('您确定要删除这条信息吗？') }}</h2>
               <div class="button-area">
                 <button class="cancel-btn">{{ _('取 消') }}</button>
@@ -132,7 +133,8 @@
     </div>
     <div id="sentinel_out_msg">
       <div role="status_out_msg"></div>
-      <div id="out_msg_last" hidden><img src="{{ url_for('static', filename='images/empty_out_tray.png') }}" alt="">
+      <div id="out_msg_last" hidden><img src="{{ url_for('static', filename='images/empty_out_tray.png') }}"
+          alt="{{ _('空的发送信息托盘') }}">
       </div>
     </div>
 
@@ -300,7 +302,6 @@
   let intersectionObserver = new IntersectionObserver(entries => {
     // if the intersectionRatio is 0, the sentinel is out of view 
     // and we do not need to do anything
-    console.log(entries)
     if (entries[0].intersectionRatio <= 0) {
       return
     }
@@ -312,7 +313,6 @@
   targets.forEach((i) => {
     intersectionObserver.observe(i)
   });
-
 
 
   function deleteInMsg(e, msg_id) {

@@ -11,7 +11,7 @@
   <div class="post-author-explore post-page">
     <a class="post-author-link" href="{{ url_for('users.user_page', username=post.author.username) }}">
       <img class="post-author-explore-img"
-        src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
+        src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="{{ _('笔记作者头像') }}">
       <h4>{{ post.author.username }}</h4>
     </a>
     <small> {{ moment(post.date_posted).format('LLL') }}</small>
@@ -19,9 +19,9 @@
   {% if post.author == current_user %}
   <div class="edit-delete-img">
     <a href="{{ url_for('posts.update_post', post_id=post.id) }}"><img
-        src="{{ url_for('static', filename='images/edit.png')}}" alt="" title="{{ _('编辑') }}"></a>
-    <a class="modal-open-post" href="#"><img src="{{ url_for('static', filename='images/paper_crumpled.png')}}" alt=""
-        title="{{ _('删除') }}"></a>
+        src="{{ url_for('static', filename='images/edit.png')}}" alt="{{ _('编辑页面链接图像') }}" title="{{ _('编辑') }}"></a>
+    <a class="modal-open-post" href="#"><img src="{{ url_for('static', filename='images/paper_crumpled.png')}}"
+        alt="{{ _('皱巴巴的纸图像') }}" title="{{ _('删除') }}"></a>
   </div>
   {% endif %}
 
@@ -47,7 +47,7 @@
     <aside class="post-left post-page">
       <!-- Latest Posts -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo2.png')}}" alt="{{ _('橙色蜡笔图标') }}">
         {% if post.author == current_user %}
         <p class="text-color-orange side-title post-page">{{ _('我的最新投稿') }}</p>
         {% else %}
@@ -60,7 +60,7 @@
           <a href="{{ url_for('posts.post', post_id=post.id) }}" class="text-color-orange aside-title-orange">
             <span>{{ post.title}}</span>
             <img class="sidebar-post-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
-              alt="post image">
+              alt="{{ _('笔记主图像') }}">
           </a>
         </li>
         {% endfor %}
@@ -69,7 +69,7 @@
 
       <!-- Past Posts -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo3.png')}}" alt="{{ _('淡绿色蜡笔图标') }}">
         {% if post.author == current_user %}
         <p class="text-color-green side-title post-page">{{ _('我的过去投稿') }}</p>
         {% else %}
@@ -90,7 +90,7 @@
 
       <!-- Hottest Topics -->
       <div class="aside-section">
-        <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="">
+        <img src="{{ url_for('static', filename='images/crayon_logo1.png')}}" alt="{{ _('红色蜡笔图标') }}">
         {% if post.author == current_user %}
         <p class="text-color-red side-title post-page">{{ _('我的最新论点') }}</p>
         {% else %}
@@ -101,7 +101,7 @@
         {% for tag in tags %}
         <li class="aside-list-item post-page">
           <a href="{{ url_for('posts.tag', name=tag) }}" class="text-color-red">
-            <img class="tag-img" src="{{url_for('static', filename='images/tag4.png')}}" alt="">
+            <img class="tag-img" src="{{url_for('static', filename='images/tag4.png')}}" alt="{{ _('红色标签图标') }}">
             {{ tag }}</a>
         </li>
         {% endfor %}
@@ -109,16 +109,18 @@
 
       <!-- Ad -->
       <div class="aside-ad-img">
-        <img src="{{ url_for('static', filename='images/ad1.png') }}" alt="">
+        <img src="{{ url_for('static', filename='images/ad1.png') }}" alt="{{ _('网站制作广告图像') }}">
         <a class="aside-ad-button" href="{{ url_for('main.contact') }}">
-          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}" alt=""></a>
+          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}"
+            alt="{{ _('信封图像 - 联系管理人链接') }}"></a>
       </div>
       <!-- / Ad -->
       <!-- Ad -->
       <div id="adspace-ad" class="aside-ad-img">
-        <img src="{{ url_for('static', filename='images/ad_space.png') }}" alt="">
+        <img src="{{ url_for('static', filename='images/ad_space.png') }}" alt="{{ _('刊登广告图像') }}">
         <a class="aside-adspace-button" href="{{ url_for('main.contact') }}">
-          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}" alt=""></a>
+          <img src="{{ (url_for('static', filename='images/envelope_white.png')) }}"
+            alt="{{ _('信封图像 - 联系管理人链接') }}"></a>
       </div>
       <!-- / Ad -->
 
@@ -128,7 +130,7 @@
     <div class="post-right post-page">
       <!-- 笔记删除确认Modal -->
       <div id="modal-delete-post-confirm" class="modal-confirm">
-        <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="alert">
+        <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="{{ _('警报器图像') }}">
         <h2>{{ _('您确定要删除这篇笔记吗？') }}</h2>
         <div class="button-area">
           <button class="cancel-btn">{{ _('取 消') }}</button>
@@ -141,7 +143,7 @@
 
       <!-- 笔记图像 -->
       <img class="post-main-img" src="{{ url_for('static', filename='post_pics/' + post.image_file) }}"
-        alt="post them image">
+        alt="{{ _('笔记主图像') }}">
 
       <!-- 笔记文章 -->
       <div class="post-body">
@@ -149,7 +151,7 @@
         {% for tag in post_tags %}
         {% if tag.name %}
         <div>
-          <img class="post-tag-img" src="{{ url_for('static', filename='images/tag4.png') }}" alt="">
+          <img class="post-tag-img" src="{{ url_for('static', filename='images/tag4.png') }}" alt="{{ _('红色标签图标') }}">
           <a class="tag text-color-red" href="{{ url_for('posts.tag', name=tag.name) }}" target="_blank">{{ tag.name
             }} </a>
         </div>
@@ -164,7 +166,8 @@
           <img src="{{url_for('static', filename='images/close-btn1.png')}}" id="cancel-sign-in-btn1"
             class="cancel-sign-in-btn">
           <div class="modal-sign-in-message">
-            <img class="modal-sign-in-logo" src="{{ url_for('static', filename='images/BGben_logo1.png') }}" alt="">
+            <img class="modal-sign-in-logo" src="{{ url_for('static', filename='images/BGben_logo1.png') }}"
+              alt="{{ _('网页主Logo(大)') }}">
             <span class="pls-sign-in1 text-color-darkgrey">{{ _('请先登陆后再点赞！') }}</span>
           </div>
           <a class="login-btn-modal" href="{{ url_for('users.login') }}">{{ _('登 陆') }}</a>
@@ -196,7 +199,7 @@
             {{ _('分享') }}
           </button>
           <button id="X" class="post-share post-share-X rating-btns">
-            <img class="x-img" src="{{ url_for('static', filename='images/X_logo1.png')}}" alt="X分享链接" />
+            <img class="x-img" src="{{ url_for('static', filename='images/X_logo1.png')}}" alt="{{ _('X分享链接') }}" />
           </button>
         </div>
 
@@ -213,7 +216,7 @@
 
         <!-- 🫥提示 【删除评论确认】 -->
         <div id="modal-delete-comment-confirm" class="modal-confirm">
-          <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="alert">
+          <img class="modal-img" src="{{ url_for('static', filename='images/alert1.png') }}" alt="{{ _('警报器图像') }}">
           <h2>{{ _('您确定要删除这条评论吗？') }}</h2>
           <button class="cancel-btn">{{ _('取消') }}</button>
           <input class="confirm-btn" id="confirm-delete-comment" type="submit" value="{{ _('删除') }}">
@@ -230,7 +233,8 @@
         <!-- line1: label -->
         <div class="post-comment-title">
           <div class="post-comment-title-imgbox">
-            <img class="comment-title-img" src="{{ url_for('static', filename='images/feather_pen3.png') }}" alt="">
+            <img class="comment-title-img" src="{{ url_for('static', filename='images/feather_pen3.png') }}"
+              alt="{{ _('橙色羽毛图标') }}">
           </div>
           <span class="text-color-red">{{ form.comment.label }}</span>
         </div>
@@ -266,7 +270,8 @@
           <img src="{{url_for('static', filename='images/close-btn1.png')}}" id="cancel-sign-in-btn2"
             class="cancel-sign-in-btn">
           <div class="modal-sign-in-message">
-            <img class="modal-sign-in-logo" src="{{ url_for('static', filename='images/BGben_logo1.png') }}" alt="">
+            <img class="modal-sign-in-logo" src="{{ url_for('static', filename='images/BGben_logo1.png') }}"
+              alt="{{ _('网页主Logo(大)') }}">
             <span class="text-color-darkgrey">{{ _('请先登陆后再点赞！') }}</span>
           </div>
           <a class="login-btn-modal" href="{{ url_for('users.login') }}">{{ _('登 陆') }}</a>
@@ -284,7 +289,7 @@
               <div class="comment-text" id="comment_text"></div>
               <div class="commenter">
                 <div class="commenter-detail">
-                  <div class="commenter-imgbox"><img class="commenter_img" src="" alt=""></div>
+                  <div class="commenter-imgbox"><img class="commenter_img" src="" alt="{{ _('评论者用户头像') }}"></div>
                   <div id="commenter_name" class="commenter_name"></div>
                   <div id="comment_time" class="comment_time"></div>
                 </div>
@@ -403,8 +408,8 @@
               if (current_user_id == comment_user_id) {
                 template_clone.querySelector(".comment-edit").innerHTML = `
                 <div class="edit-delete-img">
-                  <span ><img data-id=${commenter_id} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/edit.png')}}" alt="" title="编辑" onclick=EditComment(this)></span>
-                  <span class="modal-open-comment-delete"><img data-id=${commenter_id} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/paper_crumpled.png')}}" alt="" title="删除" onclick=deleteComment(this)></span>
+                  <span ><img data-id=${commenter_id} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/edit.png')}}" alt="{{ _('编辑页面链接图像') }}" title="编辑" onclick=EditComment(this)></span>
+                  <span class="modal-open-comment-delete"><img data-id=${commenter_id} style="padding: 0 !important; cursor: pointer;" src="{{ url_for('static', filename='images/paper_crumpled.png')}}" alt="{{ _('皱巴巴的纸图像') }}" title="删除" onclick=deleteComment(this)></span>
                 </div>
                 `
               }

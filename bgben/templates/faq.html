@@ -25,7 +25,8 @@
         {{
         _('可上传的主题图片是1张，请用jpeg/jpg/png格式的文件。文中也可上传图片，虽然没有图片数量上限，但含图片信息的总文章文字数量有限。文中插入图片也可使用链接外部网络资源的方式，具体请看gif演示（若是使用其他网页资源，烦请尽量注明信息来源）👇')
         }}
-        <img class="a_img" src="{{ url_for('static', filename='images/faq_a1.gif') }}" alt="">
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a1.gif') }}"
+          alt="{{ _('常见问题第一题回答gif图像 - 说明撰写笔记的流程') }}">
       </span>
       <span class="qa">A</span>
     </div>
@@ -46,7 +47,7 @@
         <br><br>
         {{ _('科学的进步一直以来就是不断地质疑与推翻而演变过来。每一个人类个体都必须拥有探索真相的权利，并且拥有一个发声的平台。') }}
         <br><br>
-        {{ _('BGben的宗旨很简单，如果您渴望这样的言论自由的，它就会成为您的匿名网络笔记本，把您看到的，知道的，想到的，统统都记录进去，并与更多的灵魂进行分享。') }}
+        {{ _('BGben的宗旨很简单，如果您渴望这样的言论自由，它就会成为您的匿名网络笔记本，把您看到的，知道的，想到的，统统都记录进去，并与更多的灵魂进行分享。') }}
         <br><br>
         {{ _('每一位BGben笔记者/用户所记录的内容都是TA认为的事实。而每个人的「真相」都互相有着千丝万缕的联系。如果发言的前提是“绝对属实”，那么世界上就不可能再有新的声音了。') }}
         <br><br>
@@ -67,9 +68,11 @@
       <span class="a text-color-darkgrey">
         {{ _('请点击您的文章进入文章页面之后，点击主题右边的第一个图案按钮，如下👇') }}
         <br>
-        <img class="a_img" src="{{ url_for('static', filename='images/faq_a3a.png') }}" alt="">
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a3a.png') }}"
+          alt="{{ _('常见问题第三题回答图像1 - 说明进入编辑的链接按钮位置') }}">
         {{ _('🖱️点击后转移至下面页面👇请直接修改内容并按「更新」上传') }}
-        <img class="a_img" src="{{ url_for('static', filename='images/faq_a3b.png') }}" alt="">
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a3b.png') }}"
+          alt="{{ _('常见问题第三题回答图像2 - 说明编辑完成后的提交按钮位置') }}">
       </span>
       <span class="qa">A</span>
     </div>
@@ -87,7 +90,8 @@
         {{ _('请点击导航栏中的「账户」按钮，在编辑表格中上传。') }}
         <br>
         {{ _('请使用jpeg/jpg/png格式。👇') }}
-        <img class="a_img" src="{{ url_for('static', filename='images/faq_a4.png') }}" alt="">
+        <img class="a_img" src="{{ url_for('static', filename='images/faq_a4.png') }}"
+          alt="{{ _('常见问题第四题回答图像 - 说明如何从账户页面上传头像') }}">
       </span>
       <span class="qa">A</span>
     </div>

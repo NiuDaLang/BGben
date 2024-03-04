@@ -46,14 +46,14 @@
                 <h2 class="post-title"></h2>
                 <!-- Image -->
                 <div class="post-heading-imgbox">
-                  <img class="post-image post-heading-img" src="" alt="">
+                  <img class="post-image post-heading-img" src="" alt="{{ _('笔记主图像') }}">
                 </div>
                 <!-- / Image -->
                 <h3 class="post-subtitle"></h3>
               </a>
               <div class="post-author">
                 <a class="post-author-link" href="">
-                  <img class="post-author-image post-author-img" src="" alt="">
+                  <img class="post-author-image post-author-img" src="" alt="{{ _('笔记作者头像') }}">
                   <h4 class="post-author-username"></h4>
                 </a>
                 <div class="post-time"></div>
@@ -64,8 +64,8 @@
       </div>
       <div id="sentinel-post">
         <div role="status-post"></div>
-        <div id="post-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}" alt=""
-            width="80%"></div>
+        <div id="post-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}"
+            alt="{{ _('显示搜索内容尾巴的两块拼板') }}" width="80%"></div>
       </div>
     </div>
 
@@ -79,7 +79,7 @@
             <!-- Profile Image -->
             <a class="user-link" href="">
               <div class="search-profile-img">
-                <img class="user-image" src="" alt="">
+                <img class="user-image" src="" alt="{{ _('用户头像') }}">
               </div>
             </a>
             <div class="name-and-dates search">
@@ -134,8 +134,8 @@
       </div>
       <div id="sentinel-user">
         <div role="status-user"></div>
-        <div id="user-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}" alt=""
-            width="80%"></div>
+        <div id="user-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}"
+            alt="{{ _('显示搜索内容尾巴的两块拼板') }}" width="80%"></div>
       </div>
 
     </div>
@@ -149,15 +149,12 @@
           <a class="tag-link tag_label" href="">
             <strong class="tag-name"></strong>
           </a>
-          <!-- <a class="tag-link" href="">
-            <h3 class="tag_label"><strong class="tag-name"></strong></h3>
-          </a> -->
         </template>
       </div>
       <div id="sentinel-tag">
         <div role="status-tag"></div>
-        <div id="tag-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}" alt=""
-            width="80%"></div>
+        <div id="tag-last" hidden><img src="{{ url_for('static', filename='images/search_end.gif') }}"
+            alt="{{ _('显示搜索内容尾巴的两块拼板') }}" width="80%"></div>
       </div>
     </div>
 
@@ -185,7 +182,6 @@
   let sentinel_tags = document.querySelector('#sentinel-tag')
   let tag_last = document.querySelector('#tag-last').innerHTML
   let counter_tags = 0
-
 
   const SCRIPT_ROOT = {{ request.script_root | tojson }}
 
@@ -309,7 +305,7 @@
     fetch(`${window.origin}/load_tag_search_result?t=${counter_tags}`).then((response) => {
       response.json().then((data) => {
         if (!data.length) {
-          sentinel_posts.innerHTML = tag_last;
+          sentinel_tags.innerHTML = tag_last;
         }
 
         for (let i = 0; i < data.length; i++) {

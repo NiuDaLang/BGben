@@ -1,3 +1,10 @@
+// Flash message - after login
+let login_success_div = document.querySelector('.alert-login-success')
+if (login_success_div) {
+  let alert_wrapper_div = document.querySelector('.flash-alert')
+  alert_wrapper_div.classList.remove('alert')
+  alert_wrapper_div.classList.add('alert-login-success-wrapper')
+}
 
 // Line Animation
 let div1 = document.querySelector("#line-container1"),
