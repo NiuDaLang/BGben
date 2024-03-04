@@ -127,7 +127,7 @@ def login():
         login_user(user, remember=form.remember.data)
         # e.g. if accessing from /account directrly without logging in
         next_page = request.args.get('next')
-        flash(_('欢迎回来，%(user)s🎈🎈🎈', user=user.username), 'success')
+        flash(_('欢迎回来，%(user)s!', user=user.username), 'login-success')
         if not next_page or urlsplit(next_page).netloc != '':
           next_page = url_for('main.home')
         return redirect(next_page)
