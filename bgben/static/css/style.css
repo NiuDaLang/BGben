@@ -2977,6 +2977,10 @@ input::file-selector-button {
   .post-heading-explore {
     margin: 0 0 30px 10px !important;
   }
+  .post-heading-explore h2 {
+    font-size: 1.8rem !important;
+    line-height: 2.2rem !important;
+  }
   .aside-list-item,
   .hot-user {
     font-size: 0.9rem !important;
@@ -7103,4 +7107,11 @@ legend {
 }
 .progress .alert-success {
   background: transparent !important;
+}
+
+/* email template */
+.mail-link {
+  display: block;
+  text-decoration: none;
+  color: #cece5a;
 }
