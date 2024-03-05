@@ -243,7 +243,7 @@ def reset_token(token):
   if form.validate_on_submit():
     user.set_password(form.password.data)
     db.session.commit()
-    flash(_('您的密码被重置了，现在可以登陆了啦🎈🎈🎈'), 'success')
+    flash(_('您的密码被重置了，现在可以登陆了！'), 'success')
     return redirect(url_for('users.login'))
   return render_template('reset_token.html', title=_('重置密码'), form=form)
 

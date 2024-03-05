@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-04 14:50+1100\n"
-"PO-Revision-Date: 2024-03-04 14:51+1100\n"
+"POT-Creation-Date: 2024-03-05 21:06+1100\n"
+"PO-Revision-Date: 2024-03-05 21:11+1100\n"
 "Last-Translator: \n"
 "Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
@@ -75,7 +75,7 @@ msgstr "お名前をご記入ください"
 msgid "姓名（或昵称）"
 msgstr "お名前またはハンドルネーム"
 
-#: bgben/main/forms.py:31 bgben/main/forms.py:45 bgben/users/forms.py:19 bgben/users/forms.py:42 bgben/users/forms.py:52 bgben/users/forms.py:87
+#: bgben/main/forms.py:31 bgben/main/forms.py:45 bgben/users/forms.py:18 bgben/users/forms.py:41 bgben/users/forms.py:51 bgben/users/forms.py:86
 msgid "邮箱"
 msgstr "メールアドレス"
 
@@ -83,7 +83,7 @@ msgstr "メールアドレス"
 msgid "请输入邮箱地址"
 msgstr "メールアドレスをご記入ください"
 
-#: bgben/main/forms.py:32 bgben/main/forms.py:46 bgben/users/forms.py:20 bgben/users/forms.py:43 bgben/users/forms.py:53 bgben/users/forms.py:88
+#: bgben/main/forms.py:32 bgben/main/forms.py:46 bgben/users/forms.py:19 bgben/users/forms.py:42 bgben/users/forms.py:52 bgben/users/forms.py:87
 msgid "邮箱地址格式不正确，请确认再输入一遍"
 msgstr "メールアドレスのフォーマットをご確認ください"
 
@@ -119,7 +119,7 @@ msgstr "メールアドレスは6〜120文字以内となります。"
 msgid "订 阅"
 msgstr "登 録"
 
-#: bgben/main/forms.py:52 bgben/users/forms.py:39 bgben/users/forms.py:83
+#: bgben/main/forms.py:52 bgben/users/forms.py:38 bgben/users/forms.py:82
 msgid "此邮箱已被使用，请选用其他邮箱！"
 msgstr "このアドレスはすでに登録されています！"
 
@@ -182,14 +182,14 @@ msgstr "お問い合わせ"
 msgid "常见问题"
 msgstr "よくあるご質問"
 
-#: bgben/main/routes.py:526 bgben/users/routes.py:109 bgben/users/routes.py:239
+#: bgben/main/routes.py:526 bgben/users/routes.py:110 bgben/users/routes.py:240
 msgid "此密码链接无效或已失效，请再次尝试！"
 msgstr "こちらのURLは無効または有効期限が過ぎました。お手数ですが、再度お申し込み下さい。"
 
 #: bgben/main/routes.py:531
 #, python-format
-msgid "恭喜！您成功订阅啦📧📧📧 📮：%(email)s"
-msgstr "メール配信にご登録いただきありがとうございます！📧📧📧 📮：%(email)s"
+msgid "恭喜！您成功订阅啦! 您的邮箱：%(email)s"
+msgstr "メール配信にご登録いただきありがとうございます！ご登録Eメール： %(email)s"
 
 #: bgben/main/routes.py:539
 msgid "有一项导出任务正在进行中。。。"
@@ -330,7 +330,7 @@ msgstr "このコメントは存在しません！"
 msgid "您的笔记已被更新!"
 msgstr "記事が更新されました！"
 
-#: bgben/posts/routes.py:372 bgben/templates/post.html:212 bgben/users/forms.py:71
+#: bgben/posts/routes.py:372 bgben/templates/post.html:212 bgben/users/forms.py:70
 msgid "更 新"
 msgstr "更新する"
 
@@ -527,7 +527,7 @@ msgstr "ファイル形式:"
 msgid "请尽量将图像比例调整为1:1"
 msgstr "おすすめ縦横比率: 1:1"
 
-#: bgben/templates/account.html:146 bgben/users/forms.py:55
+#: bgben/templates/account.html:146 bgben/users/forms.py:54
 msgid "星座"
 msgstr "星座"
 
@@ -535,7 +535,7 @@ msgstr "星座"
 msgid "白羊座图标"
 msgstr "牡羊座サインの画像"
 
-#: bgben/templates/account.html:152 bgben/users/forms.py:56
+#: bgben/templates/account.html:152 bgben/users/forms.py:55
 msgid "白羊座"
 msgstr "牡羊座"
 
@@ -543,7 +543,7 @@ msgstr "牡羊座"
 msgid "金牛色图标"
 msgstr "牡牛座サインの画像"
 
-#: bgben/templates/account.html:156 bgben/users/forms.py:57
+#: bgben/templates/account.html:156 bgben/users/forms.py:56
 msgid "金牛座"
 msgstr "牡牛座"
 
@@ -551,7 +551,7 @@ msgstr "牡牛座"
 msgid "双子座图标"
 msgstr "双子座サインの画像"
 
-#: bgben/templates/account.html:160 bgben/users/forms.py:58
+#: bgben/templates/account.html:160 bgben/users/forms.py:57
 msgid "双子座"
 msgstr "双子座"
 
@@ -559,7 +559,7 @@ msgstr "双子座"
 msgid "巨蟹座图标"
 msgstr "蟹座サインの画像"
 
-#: bgben/templates/account.html:164 bgben/users/forms.py:59
+#: bgben/templates/account.html:164 bgben/users/forms.py:58
 msgid "巨蟹座"
 msgstr "蟹座"
 
@@ -567,7 +567,7 @@ msgstr "蟹座"
 msgid "狮子座图标"
 msgstr "獅子座サインの画像"
 
-#: bgben/templates/account.html:168 bgben/users/forms.py:60
+#: bgben/templates/account.html:168 bgben/users/forms.py:59
 msgid "狮子座"
 msgstr "獅子座"
 
@@ -575,7 +575,7 @@ msgstr "獅子座"
 msgid "处女座图标"
 msgstr "乙女座サインの画像"
 
-#: bgben/templates/account.html:172 bgben/users/forms.py:61
+#: bgben/templates/account.html:172 bgben/users/forms.py:60
 msgid "处女座"
 msgstr "乙女座"
 
@@ -583,7 +583,7 @@ msgstr "乙女座"
 msgid "天秤座图标"
 msgstr "天秤座サインの画像"
 
-#: bgben/templates/account.html:176 bgben/users/forms.py:62
+#: bgben/templates/account.html:176 bgben/users/forms.py:61
 msgid "天秤座"
 msgstr "天秤座"
 
@@ -591,7 +591,7 @@ msgstr "天秤座"
 msgid "天蝎座图标"
 msgstr "蠍座サインの画像"
 
-#: bgben/templates/account.html:180 bgben/users/forms.py:63
+#: bgben/templates/account.html:180 bgben/users/forms.py:62
 msgid "天蝎座"
 msgstr "蠍座"
 
@@ -599,7 +599,7 @@ msgstr "蠍座"
 msgid "射手座图标"
 msgstr "射手座サインの画像"
 
-#: bgben/templates/account.html:184 bgben/users/forms.py:64
+#: bgben/templates/account.html:184 bgben/users/forms.py:63
 msgid "射手座"
 msgstr "射手座"
 
@@ -607,7 +607,7 @@ msgstr "射手座"
 msgid "摩羯座图标"
 msgstr "山羊座サインの画像"
 
-#: bgben/templates/account.html:188 bgben/users/forms.py:65
+#: bgben/templates/account.html:188 bgben/users/forms.py:64
 msgid "摩羯座"
 msgstr "山羊座"
 
@@ -615,7 +615,7 @@ msgstr "山羊座"
 msgid "水瓶座图标"
 msgstr "水瓶座サインの画像"
 
-#: bgben/templates/account.html:192 bgben/users/forms.py:66
+#: bgben/templates/account.html:192 bgben/users/forms.py:65
 msgid "水瓶座"
 msgstr "水瓶座"
 
@@ -623,7 +623,7 @@ msgstr "水瓶座"
 msgid "双鱼座图标"
 msgstr "魚座サインの画像"
 
-#: bgben/templates/account.html:196 bgben/users/forms.py:67
+#: bgben/templates/account.html:196 bgben/users/forms.py:66
 msgid "双鱼座"
 msgstr "魚座"
 
@@ -631,7 +631,7 @@ msgstr "魚座"
 msgid "星座未知默认星星图标"
 msgstr "星座サインのデフォルト画像"
 
-#: bgben/templates/account.html:200 bgben/users/forms.py:68
+#: bgben/templates/account.html:200 bgben/users/forms.py:67
 msgid "未知"
 msgstr "不明"
 
@@ -672,11 +672,11 @@ msgid "退出"
 msgstr "ログアウト"
 
 #: bgben/templates/base.html:155 bgben/templates/base.html:158 bgben/templates/login.html:82 bgben/templates/post.html:176 bgben/templates/post.html:280
-#: bgben/templates/post.html:314 bgben/users/routes.py:100
+#: bgben/templates/post.html:314 bgben/users/routes.py:101
 msgid "注册"
 msgstr "ユーザー登録"
 
-#: bgben/templates/base.html:163 bgben/templates/base.html:165 bgben/templates/post.html:312 bgben/users/routes.py:139
+#: bgben/templates/base.html:163 bgben/templates/base.html:165 bgben/templates/post.html:312 bgben/users/routes.py:140
 msgid "登陆"
 msgstr "ログイン"
 
@@ -1180,7 +1180,7 @@ msgstr "おかえりなさい、新たな一章が楽しみです！"
 msgid "忘记密码了吗？"
 msgstr "パスワードをお忘れですか？"
 
-#: bgben/templates/login.html:72 bgben/users/forms.py:46
+#: bgben/templates/login.html:72 bgben/users/forms.py:45
 msgid "记住我"
 msgstr "ログイン状態を保存"
 
@@ -1294,7 +1294,7 @@ msgstr "この記事を削除してもよろしいですか？"
 msgid "请先登陆后再点赞！"
 msgstr "いいねボタンを押すにはログインが必要です！"
 
-#: bgben/templates/post.html:173 bgben/templates/post.html:277 bgben/users/forms.py:47
+#: bgben/templates/post.html:173 bgben/templates/post.html:277 bgben/users/forms.py:46
 msgid "登 陆"
 msgstr "ログイン"
 
@@ -1622,7 +1622,7 @@ msgstr "メールアドレスをご記入の上、「リセット申請」を押
 msgid "我们将发送确认邮件给您！"
 msgstr "確認メールを送ります！"
 
-#: bgben/templates/reset_token.html:6 bgben/users/forms.py:107 bgben/users/routes.py:247
+#: bgben/templates/reset_token.html:6 bgben/users/forms.py:106 bgben/users/routes.py:248
 msgid "重置密码"
 msgstr "パスワード変更"
 
@@ -1650,7 +1650,7 @@ msgstr "タグ"
 msgid "搜索匹配结果总数："
 msgstr "検索ヒット件数"
 
-#: bgben/templates/search.html:68 bgben/templates/search.html:138 bgben/templates/search.html:160
+#: bgben/templates/search.html:68 bgben/templates/search.html:138 bgben/templates/search.html:157
 msgid "显示搜索内容尾巴的两块拼板"
 msgstr "検索結果の最後尾を示すジグソーパズルの画像"
 
@@ -2161,8 +2161,8 @@ msgstr "早急にご対応させていただきます。ありがとうござい
 msgid "BGben管理人"
 msgstr "BGben管理人"
 
-#: bgben/templates/email/contact_receipt.html:23 bgben/templates/email/newsletter_sub_confirm.html:16 bgben/templates/email/registration.html:16
-#: bgben/templates/email/reset_password.html:16 bgben/templates/email/send_message.html:23
+#: bgben/templates/email/contact_receipt.html:25 bgben/templates/email/newsletter_sub_confirm.html:18 bgben/templates/email/registration.html:18
+#: bgben/templates/email/reset_password.html:18 bgben/templates/email/send_message.html:25
 msgid "此邮件由系统自动发出,请勿直接回复"
 msgstr "このメールは、配信専用のアドレスで配信されていますので、このアドレスへのご返信はお控え下さい。"
 
@@ -2254,178 +2254,178 @@ msgstr "500エラー画像"
 msgid "服务器错误！"
 msgstr "サーバーの不具合です！"
 
-#: bgben/users/forms.py:14
-msgid "欢 迎 注 册 👏"
+#: bgben/users/forms.py:13
+msgid "欢 迎 注 册 !"
 msgstr "ご登録へようこそ！"
 
-#: bgben/users/forms.py:17 bgben/users/forms.py:50
+#: bgben/users/forms.py:16 bgben/users/forms.py:49
 msgid "BGben用户名"
 msgstr "BGbenユーザー名"
 
-#: bgben/users/forms.py:17
+#: bgben/users/forms.py:16
 msgid "BGben用户名(昵称 2~10字)"
 msgstr "BGbenハンドルネーム( 2~10文字)"
 
-#: bgben/users/forms.py:18 bgben/users/forms.py:51
+#: bgben/users/forms.py:17 bgben/users/forms.py:50
 msgid "字数规定：2～10字"
 msgstr "文字数：2~10文字"
 
-#: bgben/users/forms.py:21 bgben/users/forms.py:44 bgben/users/forms.py:100
+#: bgben/users/forms.py:20 bgben/users/forms.py:43 bgben/users/forms.py:99
 msgid "密码"
 msgstr "パスワード"
 
-#: bgben/users/forms.py:21
+#: bgben/users/forms.py:20
 msgid "密码(6~30字)"
 msgstr "パスワード(6~30文字)"
 
-#: bgben/users/forms.py:23
+#: bgben/users/forms.py:22
 msgid "6～30字，含大、小字符、数字各至少1字，特殊字符—_#$%&*至少1字符"
 msgstr "アルファベット大・小文字、数字、特殊文字—_#$%&*それぞれ1文字を含む合計6～30字"
 
-#: bgben/users/forms.py:24 bgben/users/forms.py:103
+#: bgben/users/forms.py:23 bgben/users/forms.py:102
 msgid "总共字数6～30个"
 msgstr "合計文字数6~30字"
 
-#: bgben/users/forms.py:25 bgben/users/forms.py:104
+#: bgben/users/forms.py:24 bgben/users/forms.py:103
 msgid "密码确认"
 msgstr "パスワード確認"
 
-#: bgben/users/forms.py:27 bgben/users/forms.py:106
+#: bgben/users/forms.py:26 bgben/users/forms.py:105
 msgid "请输入相同的密码"
 msgstr "同じパスワードを入力して下さい"
 
-#: bgben/users/forms.py:28
+#: bgben/users/forms.py:27
 msgid "同意"
 msgstr " "
 
-#: bgben/users/forms.py:29
+#: bgben/users/forms.py:28
 msgid "注 册"
 msgstr "登録する"
 
-#: bgben/users/forms.py:34 bgben/users/forms.py:77
+#: bgben/users/forms.py:33 bgben/users/forms.py:76
 msgid "此用户名已被使用，请选用其他名字！"
 msgstr "このユーザー名はすでに使用されています！"
 
-#: bgben/users/forms.py:54
+#: bgben/users/forms.py:53
 msgid "头像"
 msgstr "プロフィール画像"
 
-#: bgben/users/forms.py:70
+#: bgben/users/forms.py:69
 msgid "关于我"
 msgstr "自己紹介"
 
-#: bgben/users/forms.py:70
+#: bgben/users/forms.py:69
 msgid "120字以内"
 msgstr "120文字以内"
 
-#: bgben/users/forms.py:89 bgben/users/routes.py:230
+#: bgben/users/forms.py:88 bgben/users/routes.py:231
 msgid "我要重置密码"
 msgstr "リセット申請"
 
-#: bgben/users/forms.py:94
+#: bgben/users/forms.py:93
 msgid "此邮箱用户尚未注册！请注册"
 msgstr "このメールアドレスはまだ登録されていません！"
 
-#: bgben/users/forms.py:96
+#: bgben/users/forms.py:95
 msgid "此邮箱用户已停用！请重新注册"
 msgstr "このユーザーアカウントはすでに解除されています！"
 
-#: bgben/users/forms.py:102
+#: bgben/users/forms.py:101
 msgid "总共字数6～30个，含大、小字符、数字各至少1字，特殊字符 —_#$%&*至少1字符"
 msgstr "アルファベット大・小文字、数字、特殊文字—_#$%&*それぞれ1文字を含む6～30字"
 
-#: bgben/users/forms.py:103
+#: bgben/users/forms.py:102
 msgid "新的密码"
 msgstr "新しいパスワード"
 
-#: bgben/users/forms.py:106
+#: bgben/users/forms.py:105
 msgid "请在输入一遍新的密码"
 msgstr "もう一度パスワードを入力して下さい"
 
-#: bgben/users/forms.py:111
+#: bgben/users/forms.py:110
 msgid "关注TA"
 msgstr "フォローする"
 
-#: bgben/users/forms.py:115
+#: bgben/users/forms.py:114
 msgid "取消关注"
 msgstr "フォローを取消す"
 
-#: bgben/users/routes.py:68
+#: bgben/users/routes.py:57
 msgid "注册测试"
 msgstr "登録テスト"
 
-#: bgben/users/routes.py:95
+#: bgben/users/routes.py:96
 #, python-format
 msgid "我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并做出相应的反应。"
 msgstr "あなたのメールアドレス%(email)sへ仮登録メールを送りました。30分以内に本登録の操作を完了させて下さい。"
 
-#: bgben/users/routes.py:98
+#: bgben/users/routes.py:99
 #, python-format
 msgid "我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试！"
 msgstr "あなたのメールアドレス%(email)sへメール送信を試みましたが失敗しました。もう一度アドレスをご確認の上、リクエストをして下さい。"
 
-#: bgben/users/routes.py:114
+#: bgben/users/routes.py:115
 #, python-format
-msgid "恭喜%(username)s ！您成功注册啦🎈🎈🎈"
-msgstr "%(username)s さん、ようこそ！登録完了です🎈🎈🎈"
+msgid "恭喜%(username)s, 您成功注册啦！"
+msgstr "%(username)s さん、ようこそBGbenへ！登録完了です！"
 
-#: bgben/users/routes.py:130
+#: bgben/users/routes.py:131
 #, python-format
 msgid "欢迎回来，%(user)s!"
 msgstr "おかえりなさい、%(user)sさん！"
 
-#: bgben/users/routes.py:135
+#: bgben/users/routes.py:136
 msgid "本账号已被停用，如有问题请联系管理人！"
 msgstr "このアカウントは使用停止となっています。お問い合わせは管理人までどうぞ！"
 
-#: bgben/users/routes.py:137
+#: bgben/users/routes.py:138
 msgid "登陆不成功，请再次确认注册邮箱及密码！"
 msgstr "ログインに失敗しました。再度ご確認の上、お試し下さい！"
 
-#: bgben/users/routes.py:145
+#: bgben/users/routes.py:146
 msgid "您已经退出了系统，再来玩哦！"
 msgstr "ログアウトが完了しました。また遊びに来てくださいね！"
 
-#: bgben/users/routes.py:166
+#: bgben/users/routes.py:167
 msgid "您的设置内容已被更新！"
 msgstr "アカウントの設定が更新されました！"
 
-#: bgben/users/routes.py:178
+#: bgben/users/routes.py:179
 msgid "账户设置"
 msgstr "アカウント設定"
 
-#: bgben/users/routes.py:216
+#: bgben/users/routes.py:217
 #, python-format
 msgid "%(user)s的动态"
 msgstr "%(user)sのフィード"
 
-#: bgben/users/routes.py:228
+#: bgben/users/routes.py:229
 msgid "我们向您的邮箱发送了关于密码重置方法的邮件，请在30分钟内查询并做出相应的反应。"
 msgstr "パスワードリセットに関する仮登録メールを送信しました。30分以内に本登録を完了させて下さい。"
 
-#: bgben/users/routes.py:245
-msgid "您的密码被重置了，现在可以登陆了啦🎈🎈🎈"
-msgstr "パスワードがリセットされました。ログインして下さいね🎈🎈🎈"
+#: bgben/users/routes.py:246
+msgid "您的密码被重置了，现在可以登陆了！"
+msgstr "パスワードがリセットされました。ログインして下さいね！"
 
-#: bgben/users/routes.py:258 bgben/users/routes.py:279
+#: bgben/users/routes.py:259 bgben/users/routes.py:280
 #, python-format
 msgid "%(username)s不是BGben用户哦！"
 msgstr "%(username)sさんはBGbenユーザーではありません！"
 
-#: bgben/users/routes.py:261
+#: bgben/users/routes.py:262
 msgid "自己无法关注自己哦！"
 msgstr "ご自分をフォローすることはできません！"
 
-#: bgben/users/routes.py:265
+#: bgben/users/routes.py:266
 #, python-format
 msgid "您正在关注%(username)s"
 msgstr "%(username)sさんをフォローしました！"
 
-#: bgben/users/routes.py:282
+#: bgben/users/routes.py:283
 msgid "自己无法取消关注自己哦！"
 msgstr "ご自分へのフォロー取り消しはできません！"
 
-#: bgben/users/routes.py:286
+#: bgben/users/routes.py:287
 #, python-format
 msgid "您已经取消对%(username)s的关注！"
 msgstr "%(username)sさんへのフォローを取り消しました！"

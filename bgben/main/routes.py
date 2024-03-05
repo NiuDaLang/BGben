@@ -528,7 +528,7 @@ def nl_sub_confirm(token):
   else:
     new_subscriber.activated = True
     db.session.commit()
-    flash(_('恭喜！您成功订阅啦📧📧📧 📮：%(email)s', email=new_subscriber.email), 'success' )
+    flash(_('恭喜！您成功订阅啦! 您的邮箱：%(email)s', email=new_subscriber.email), 'success' )
     return redirect(url_for('main.home'))
   
 
