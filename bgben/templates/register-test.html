@@ -92,10 +92,10 @@
         <button class="quiz-answer"></button>
       </div>
       <button class="next-button" id="next-button"></button>
-      <form action="" id="toRegister">
-        {{ form.csrf_token }}
-        {{form.test(class="text-input", type="hidden", value="pass", placeholder="BGben用户名")}}
-        {{form.submit_field(class="link-button", type="submit", id="link-button")}}
+      <form action="{{ url_for('users.register_test_pass') }}" id="toRegister" method="POST"
+        class="follow-unfollow-form">
+        {{ form.hidden_tag() }}
+        {{ form.submit_field(class="link-button", id="link-button") }}
       </form>
     </div>
   </div>

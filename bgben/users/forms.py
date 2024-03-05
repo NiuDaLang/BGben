@@ -10,8 +10,7 @@ import sqlalchemy as sa
 
 
 class TestPassForm (FlaskForm):
-    test = StringField("test")
-    submit_field = SubmitField(_l("欢 迎 注 册 👏"))
+    submit_field = SubmitField(_l("欢 迎 注 册 !"))
 
 class RegistrationForm (FlaskForm):
     username = StringField(_l("BGben用户名"), render_kw={"placeholder": _l('BGben用户名(昵称 2~10字)')},

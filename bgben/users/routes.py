@@ -18,14 +18,14 @@ test_pass = False
 
 
 def test_passed(function):
-    @wraps(function)
-    def wrapper():
-        global test_pass
-        if test_pass == True:
-          return function()
-        elif test_pass == False:
-          return redirect(url_for('main.home'))
-    return wrapper
+  @wraps(function)
+  def wrapper():
+    global test_pass
+    if test_pass == True:
+      return function()
+    elif test_pass == False:
+      return redirect(url_for('main.home'))
+  return wrapper
 
 
 @users.route("/register_test_quiz", methods=['GET', 'POST'])
@@ -44,11 +44,6 @@ def register_test_quiz():
     with open(os.path.join(current_app.static_folder, 'data/register_quiz.json'), 'r') as file:
       selected_questions = json.load(file)['en'][selection]
 
-  # with open(os.path.join(current_app.static_folder, 'data/register_quiz.json'), 'r') as file:
-  #   questions = json.load(file)
-  
-  # selected_questions = questions[selection]
-
   return make_response(jsonify({"selected_questions": selected_questions}), 200)
 
 
@@ -58,26 +53,32 @@ def register_test():
   if current_user.is_authenticated:
     return redirect(url_for('main.home'))
   
-  global test_pass
   form = TestPassForm()
-  data = request.args.get('test')
-
-  if data:
-    test_pass = True
-    return redirect(url_for('users.register'))
   return render_template("register-test.html", form=form, re=re, title=_("注册测试"), lang=lang)
 
+
+@users.route("/register_test_pass", methods=['POST'])
+def register_test_pass():
+  global test_pass
+  form = TestPassForm()
+  if form.validate_on_submit():
+    test_pass = True
+    return redirect(url_for('users.register'))
+  else:
+    return redirect(url_for('main.home'))
 
 @users.route("/register", methods=['GET', 'POST'])
 @test_passed
 def register():
+
   if current_user.is_authenticated:
     return redirect(url_for('main.home'))
   
   global test_pass
+  test_pass = False
+
   form = RegistrationForm()
   if form.validate_on_submit():
-    test_pass = False
     user = User(username=form.username.data, email=form.email.data.strip())
     user_email = form.email.data.strip()
     user.set_password(form.password.data)
@@ -111,7 +112,7 @@ def first_loin(token):
   else:
     user.active = True
     db.session.commit() 
-    flash(_('恭喜%(username)s ！您成功注册啦🎈🎈🎈', username=user.username), 'success' )
+    flash(_('恭喜%(username)s, 您成功注册啦！', username=user.username), 'success' )
   return redirect(url_for('users.login'))
 
 
@@ -251,7 +252,7 @@ def reset_token(token):
 @login_required
 def follow(username):
   form = EmptyForm()
-  if form.validate_on_submit:
+  if form.validate_on_submit():
     user = db.session.scalar(sa.select(User).where(User.username == username).where(User.active == True))
 
     if user is None:
@@ -272,7 +273,7 @@ def follow(username):
 @login_required
 def unfollow(username):
   form = EmptyForm()
-  if form.validate_on_submit:
+  if form.validate_on_submit():
     user = db.session.scalar(sa.select(User).where(User.username == username).where(User.active == True))
 
     if user is None:
