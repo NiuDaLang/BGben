@@ -13,9 +13,6 @@ from flask_ckeditor import upload_success, upload_fail
 
 posts = Blueprint('posts', __name__)
 
-comments_db = list()
-comments_qty = 3
-
 
 @posts.route("/post/new", methods=['GET', 'POST'])
 @login_required
@@ -59,9 +56,10 @@ def new_post():
   ten_posts = db.session.scalars(ten_posts_query)
 
   # (2) Monthly Posts
-  month = sa.func.strftime("%Y-%m", Post.date_posted).label(None)
+  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.strftime("%Y-%m", Post.date_posted)).where(Post.user_id==current_user.id).where(Post.active == True)
+  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==current_user.id).where(Post.active == True)
+
   monthly_posts_count = db.session.execute(q).all()
 
   # (3) Top tags
@@ -160,8 +158,7 @@ def post(post_id):
   # Get data for populating comments (Live Feed)
   comments = db.session.scalars(sa.select(Comment).where(Comment.post_id== post.id).where(Comment.active == True)).all()
 
-  global comments_db
-  comments_db=list()
+  session['comments_db'] = []
   
   if comments is not None:
     for comment in comments:
@@ -177,7 +174,7 @@ def post(post_id):
         else:
           comment_liked = False
         
-      comments_db.append([comment.id, comment.comment, comment.commenter.image_file, comment.commenter.username, 
+      session['comments_db'].append([comment.id, comment.comment, comment.commenter.image_file, comment.commenter.username, 
                           comment.date_posted, comment_likes, comment_liked, comment.user_id])
   
   # Post Tags
@@ -191,9 +188,10 @@ def post(post_id):
   ten_posts = db.session.scalars(ten_posts_query)
 
   # (2) Monthly Posts
-  month = sa.func.strftime("%Y-%m", Post.date_posted).label(None)
+  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.strftime("%Y-%m", Post.date_posted)).where(Post.user_id==post.author.id).where(Post.active == True)
+  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==current_user.id).where(Post.active == True)
+
   monthly_posts_count = db.session.execute(q).all()
 
   # (3) Top tags
@@ -217,14 +215,15 @@ def tag(name):
 @posts.route('/monthly_posts/<user_id>/<month>')
 def monthly_posts(user_id, month):
   page = request.args.get('page', 1, type=int)
-  monthly_posts_query = sa.select(Post).where(func.strftime('%Y-%m', Post.date_posted) == month, Post.user_id == user_id).where(Post.active == True)
+  monthly_posts_query = sa.select(Post).where(func.date_format(Post.date_posted, "%Y-%m") == month, Post.user_id == user_id).where(Post.active == True)
   monthly_posts = db.paginate(monthly_posts_query, page=page, per_page=6, error_out=False)
 
   user = db.session.scalar(sa.select(User).where(User.id == user_id).where(User.active == True))
 
-  query_month = sa.func.strftime("%Y-%m", Post.date_posted).label(None)
+  query_month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(query_month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.strftime("%Y-%m", Post.date_posted)).where(Post.user_id==user.id).where(Post.active == True)
+  q = sa.select(query_month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==user.id).where(Post.active == True)
+
   monthly_posts_count = db.session.execute(q).all()
   
   next_url = url_for('posts.monthly_posts', user_id=user_id, month=month, page=monthly_posts.next_num) if monthly_posts.has_next else None
@@ -362,9 +361,10 @@ def update_post(post_id):
   ten_posts = db.session.scalars(sa.select(Post).where(Post.author == current_user).where(Post.active == True).order_by(Post.date_posted.desc()).limit(15))
 
   # (2) Monthly Posts
-  month = sa.func.strftime("%Y-%m", Post.date_posted).label(None)
+  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.strftime("%Y-%m", Post.date_posted)).where(Post.user_id==current_user.id).where(Post.active == True)
+  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==current_user.id).where(Post.active == True)
+
   monthly_posts_count = db.session.execute(q).all()
 
   # (3) Top tags

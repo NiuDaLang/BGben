@@ -189,9 +189,10 @@ def user_page(username):
   unfollowform = UnfollowForm()
 
   # Monthly Posts
-  month = sa.func.strftime("%Y-%m", Post.date_posted).label(None)
+  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.strftime("%Y-%m", Post.date_posted)).where(Post.user_id==user.id).where(Post.active == True)
+  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==user.id).where(Post.active == True)
+
   monthly_posts_count = db.session.execute(q).all()
 
   # User Posts Count

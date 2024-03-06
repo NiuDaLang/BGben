@@ -3,8 +3,8 @@ import os
 import json
 import random
 import sqlalchemy as sa
-from flask import render_template, Blueprint, request, current_app, make_response, jsonify, g, url_for, redirect, flash, abort
-from bgben import db, get_locale, admin
+from flask import render_template, Blueprint, request, current_app, make_response, jsonify, g, url_for, redirect, flash, abort, session
+from bgben import db, get_locale
 from bgben.models import Post, Tag, User, Message, Notification, Contact, Newsletter
 from bgben.users.forms import (EmptyForm, UnfollowForm)
 from bgben.main.forms import SearchForm, MessageForm, ContactForm, CONTACT_CATEGORIES, DeleteForm, NewsletterForm
@@ -121,13 +121,9 @@ def starseed_result():
   return res
 
 
-post_search_db = list()
-post_search_qty = 10
-user_search_db = list()
-user_search_qty = 10
-tag_search_db = list()
-tag_search_qty = 20
-tags_count = 0
+POST_SEARCH_QTY = 10
+USER_SEARCH_QTY = 10
+TAG_SEARCH_QTY = 20
 
 
 @main.route('/search')
@@ -142,47 +138,26 @@ def search():
     # Search Post
     posts_list = []
     posts_count = 0
+    session['post_search_db'] = []
 
     posts, posts_total = Post.search(g.search_form.q.data)
 
     if posts_total != 0:
       posts_list = posts.all()
       posts_count = posts_total['value']
+      for post in posts_list:
+        session['post_search_db'].append([post.id, post.title, post.image_file, post.subtitle, post.author.username, post.author.image_file, post.date_posted])
 
     # Search User
     users_list = []
     users_count = 0
+    session['user_search_db'] = []
 
     users, users_total = User.search(g.search_form.q.data)
 
     if users_total != 0:
       users_list = users.all()
       users_count = users_total['value']
-
-    # Search Tag
-    tags_list = []
-    global tags_count
-
-    tags, tags_total = Tag.search(g.search_form.q.data)
-    if tags_total == 0:
-      tags_count = 0
-    elif tags_total != 0:
-      tags_list = tags.all()
-      tags_count = tags_total['value']
-
-  # Posts Results to Global DB variable
-    global post_search_db
-    post_search_db = list()
-    
-    if len(posts_list) != 0:
-      for post in posts_list:
-        post_search_db.append([post.id, post.title, post.image_file, post.subtitle, post.author.username, post.author.image_file, post.date_posted])
-
-  # Users Results to Global DB variable
-    global user_search_db
-    user_search_db = list()
-    
-    if len(users_list) != 0:
       for user in users_list:
         current_user_is_authenticated = False
         user_following_current_user = False
@@ -197,17 +172,22 @@ def search():
             user_is_current_user = True
           if current_user.is_following(user):
             current_user_following_user = True
-        user_search_db.append([user.username, user.image_file, user.account_created, current_user_is_authenticated, user_following_current_user, user_is_current_user, current_user_following_user])
+        session['user_search_db'].append([user.username, user.image_file, user.account_created, current_user_is_authenticated, user_following_current_user, user_is_current_user, current_user_following_user])
 
-  # Tags Results to Global DB variable
-    global tag_search_db
-    tag_search_db = list()
-    
-    if len(tags_list) != 0:
+    # Search Tag
+    tags_list = []
+    tags_count = 0
+    session['tag_search_db'] = []
+
+    tags, tags_total = Tag.search(g.search_form.q.data)
+
+    if tags_total != 0:
+      tags_list = tags.all()
       for tag in tags_list:
-        tag_search_db.append(tag.name)
-      tag_search_db = list(set(tag_search_db))
-      tags_count = len(tag_search_db)
+        session['tag_search_db'].append(tag.name)
+      session['tag_search_db'] = list(set(session['tag_search_db']))
+      session['tags_count'] = len(session['tag_search_db'])
+      tags_count = session['tags_count']
 
     return render_template('search.html', title=_('搜索结果'),\
                             re=re, followform=followform, unfollowform=unfollowform,\
@@ -224,17 +204,16 @@ def search():
 # Load post_search_result one by one
 @main.route('/load_post_search_result')
 def load_post_search_result():
-  global post_search_db
-  post_search_result_no = len(post_search_db)
+  post_search_result_no = len(session['post_search_db'])
 
   if request.args:
     counter = int(request.args.get('p'))
     if counter == 0:
-      res = make_response(jsonify(post_search_db[0:post_search_qty]), 200)
+      res = make_response(jsonify(session['post_search_db'][0:POST_SEARCH_QTY]), 200)
     elif counter == post_search_result_no:
       res = make_response(jsonify({}), 200)
     else:
-      res = make_response(jsonify(post_search_db[counter: counter + post_search_qty]), 200)
+      res = make_response(jsonify(session['post_search_db'][counter: counter + POST_SEARCH_QTY]), 200)
   
   return res
 
@@ -242,17 +221,16 @@ def load_post_search_result():
 # Load user_search_result one by one
 @main.route('/load_user_search_result')
 def load_user_search_result():
-  global user_search_db
-  user_search_result_no = len(user_search_db)
+  user_search_result_no = len(session['user_search_db'])
 
   if request.args:
     counter = int(request.args.get('u'))
     if counter == 0:
-      res = make_response(jsonify(user_search_db[0:user_search_qty]), 200)
+      res = make_response(jsonify(session['user_search_db'][0:USER_SEARCH_QTY]), 200)
     elif counter == user_search_result_no:
       res = make_response(jsonify({}), 200)
     else:
-      res = make_response(jsonify(user_search_db[counter: counter + user_search_qty]), 200)
+      res = make_response(jsonify(session['user_search_db'][counter: counter + USER_SEARCH_QTY]), 200)
   
   return res
 
@@ -260,18 +238,16 @@ def load_user_search_result():
 # Load tag_search_result one by one
 @main.route('/load_tag_search_result')
 def load_tag_search_result():
-  global tag_search_db
-  global tags_count
-  tag_search_result_no = tags_count
+  tag_search_result_no = session['tags_count']
 
   if request.args:
     counter = int(request.args.get('t'))
     if counter == 0:
-      res = make_response(jsonify(tag_search_db[0:tag_search_qty]), 200)
+      res = make_response(jsonify(session['tag_search_db'][0:TAG_SEARCH_QTY]), 200)
     elif counter == tag_search_result_no:
       res = make_response(jsonify({}), 200)
     else:
-      res = make_response(jsonify(tag_search_db[counter: counter + tag_search_qty]), 200)
+      res = make_response(jsonify(session['tag_search_db'][counter: counter + TAG_SEARCH_QTY]), 200)
   
   return res
 
@@ -346,10 +322,8 @@ def send_message(recipient):
   return render_template('send_message.html', title=_('发信息'), form=form, recipient=recipient, re=re)
 
 
-in_msgs_db = list()
-in_msgs_qty = 10
-out_msgs_db = list()
-out_msgs_qty = 10
+IN_MSGS_QTY = 10
+OUT_MSGS_QTY = 10
 
 
 @main.route('/messages/<username>/<tab>')
@@ -368,21 +342,17 @@ def messages(username, tab='in'):
     in_msgs = db.session.scalars(in_msgs_query).all()
     out_msgs = db.session.scalars(out_msgs_query).all()
 
-  # In Messages to Global DB variable
-    global in_msgs_db
-    in_msgs_db = list()
+    session['in_msgs_db'] = []
     
     if in_msgs is not None:
       for in_msg in in_msgs:
-        in_msgs_db.append([in_msg.id, in_msg.author.username, in_msg.author.image_file, in_msg.body, in_msg.timestamp])
+        session['in_msgs_db'].append([in_msg.id, in_msg.author.username, in_msg.author.image_file, in_msg.body, in_msg.timestamp])
 
-  # Out Messages to Global DB variable
-    global out_msgs_db
-    out_msgs_db = list()
+    session['out_msgs_db'] = []
     
     if out_msgs is not None:
       for out_msg in out_msgs:
-        out_msgs_db.append([out_msg.id, out_msg.recipient.username, out_msg.recipient.image_file, out_msg.body, out_msg.timestamp])
+        session['out_msgs_db'].append([out_msg.id, out_msg.recipient.username, out_msg.recipient.image_file, out_msg.body, out_msg.timestamp])
 
   return render_template('messages.html', re=re, form=form, user=user, title=_('私信邮箱'), in_msgs=in_msgs, out_msgs=out_msgs, tab=tab)
 
@@ -390,34 +360,32 @@ def messages(username, tab='in'):
 # Load in_msgs one by one
 @main.route('/load_in_msgs')
 def load_in_msgs():
-  global in_msgs_db
-  in_msg_no = len(in_msgs_db)
+  in_msg_no = len(session['in_msgs_db'])
 
   if request.args:
     counter = int(request.args.get('i'))
     if counter == 0:
-      res = make_response(jsonify(in_msgs_db[0:in_msgs_qty]), 200)
+      res = make_response(jsonify(session['in_msgs_db'][0:IN_MSGS_QTY]), 200)
     elif counter == in_msg_no:
       res = make_response(jsonify({}), 200)
     else:
-      res = make_response(jsonify(in_msgs_db[counter: counter + in_msgs_qty]), 200)
+      res = make_response(jsonify(session['in_msgs_db'][counter: counter + IN_MSGS_QTY]), 200)
   
   return res
 
 
 @main.route('/load_out_msgs')
 def load_out_msgs():
-  global out_msgs_db
-  out_msg_no = len(out_msgs_db)
+  out_msg_no = len(session['out_msgs_db'])
 
   if request.args:
     counter = int(request.args.get('o'))
     if counter == 0:
-      res = make_response(jsonify(out_msgs_db[0:out_msgs_qty]), 200)
+      res = make_response(jsonify(session['out_msgs_db'][0:OUT_MSGS_QTY]), 200)
     elif counter == out_msg_no:
       res = make_response(jsonify({}), 200)
     else:
-      res = make_response(jsonify(out_msgs_db[counter: counter + out_msgs_qty]), 200)
+      res = make_response(jsonify(session['out_msgs_db'][counter: counter + OUT_MSGS_QTY]), 200)
   
   return res
 
