@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-05 21:06+1100\n"
-"PO-Revision-Date: 2024-03-05 21:11+1100\n"
+"POT-Creation-Date: 2024-03-06 16:34+1100\n"
+"PO-Revision-Date: 2024-03-06 16:58+1100\n"
 "Last-Translator: \n"
 "Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Generated-By: Babel 2.14.0\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: bgben/__init__.py:30
+#: bgben/__init__.py:31
 msgid "请先进行登陆，再阅览您所要求的网页！"
 msgstr "ログインしてから閲覧可能となります！"
 
@@ -123,79 +123,79 @@ msgstr "登 録"
 msgid "此邮箱已被使用，请选用其他邮箱！"
 msgstr "このアドレスはすでに登録されています！"
 
-#: bgben/main/routes.py:92 bgben/templates/base.html:45
+#: bgben/main/routes.py:91 bgben/templates/base.html:45
 msgid "主页"
 msgstr "ホーム"
 
-#: bgben/main/routes.py:212 bgben/main/routes.py:221
+#: bgben/main/routes.py:211 bgben/main/routes.py:220
 msgid "搜索结果"
 msgstr "検索結果"
 
-#: bgben/main/routes.py:315
+#: bgben/main/routes.py:314
 #, python-format
 msgid "%(user)s的关注名单"
 msgstr "%(user)sのフォロー先一覧"
 
-#: bgben/main/routes.py:326
+#: bgben/main/routes.py:325
 #, python-format
 msgid "%(user)s的粉丝名单"
 msgstr "%(user)sのフォロワー一覧"
 
-#: bgben/main/routes.py:343
+#: bgben/main/routes.py:342
 msgid "您的信息已发出！"
 msgstr "メッセージが送信されました！"
 
-#: bgben/main/routes.py:346
+#: bgben/main/routes.py:345
 msgid "发信息"
 msgstr "メッセージを送る"
 
-#: bgben/main/routes.py:387
+#: bgben/main/routes.py:386
 msgid "私信邮箱"
 msgstr "メッセージボックス"
 
-#: bgben/main/routes.py:440 bgben/templates/about.html:7 bgben/templates/base.html:227 bgben/templates/base.html:229
+#: bgben/main/routes.py:439 bgben/templates/about.html:7 bgben/templates/base.html:227 bgben/templates/base.html:229
 msgid "关于BGben"
 msgstr "BGbenについて"
 
-#: bgben/main/routes.py:445 bgben/templates/base.html:233 bgben/templates/base.html:235
+#: bgben/main/routes.py:444 bgben/templates/base.html:233 bgben/templates/base.html:235
 msgid "利用规则"
 msgstr "利用規約"
 
-#: bgben/main/routes.py:450 bgben/templates/base.html:239 bgben/templates/base.html:241 bgben/templates/home.html:33 bgben/templates/register.html:113
+#: bgben/main/routes.py:449 bgben/templates/base.html:239 bgben/templates/base.html:241 bgben/templates/home.html:33 bgben/templates/register.html:113
 #: bgben/templates/send_message.html:35
 msgid "隐私政策"
 msgstr "プライバシーポリシー"
 
-#: bgben/main/routes.py:467
+#: bgben/main/routes.py:466
 msgid "谢谢您发出的信号，我们将尽快回复！"
 msgstr "お問い合わせありがとうございます！"
 
-#: bgben/main/routes.py:468
+#: bgben/main/routes.py:467
 msgid "BGben联系内容确认"
 msgstr "BGbenへのお問い合わせ内容"
 
-#: bgben/main/routes.py:470 bgben/templates/base.html:251 bgben/templates/base.html:253 bgben/templates/home.html:2078 bgben/templates/home.html:2106
+#: bgben/main/routes.py:469 bgben/templates/base.html:251 bgben/templates/base.html:253 bgben/templates/home.html:2078 bgben/templates/home.html:2106
 msgid "联系管理人"
 msgstr "お問い合わせ"
 
-#: bgben/main/routes.py:475 bgben/templates/base.html:245 bgben/templates/base.html:247 bgben/templates/faq.html:6
+#: bgben/main/routes.py:474 bgben/templates/base.html:245 bgben/templates/base.html:247 bgben/templates/faq.html:6
 msgid "常见问题"
 msgstr "よくあるご質問"
 
-#: bgben/main/routes.py:526 bgben/users/routes.py:110 bgben/users/routes.py:240
+#: bgben/main/routes.py:525 bgben/users/routes.py:96 bgben/users/routes.py:226
 msgid "此密码链接无效或已失效，请再次尝试！"
 msgstr "こちらのURLは無効または有効期限が過ぎました。お手数ですが、再度お申し込み下さい。"
 
-#: bgben/main/routes.py:531
+#: bgben/main/routes.py:530
 #, python-format
 msgid "恭喜！您成功订阅啦! 您的邮箱：%(email)s"
 msgstr "メール配信にご登録いただきありがとうございます！ご登録Eメール： %(email)s"
 
-#: bgben/main/routes.py:539
+#: bgben/main/routes.py:538
 msgid "有一项导出任务正在进行中。。。"
 msgstr "先行のダウンロードタスクを実行中です・・・"
 
-#: bgben/main/routes.py:541
+#: bgben/main/routes.py:540
 msgid "数据输出完成度..."
 msgstr "ダウンロード中…"
 
@@ -672,11 +672,11 @@ msgid "退出"
 msgstr "ログアウト"
 
 #: bgben/templates/base.html:155 bgben/templates/base.html:158 bgben/templates/login.html:82 bgben/templates/post.html:176 bgben/templates/post.html:280
-#: bgben/templates/post.html:314 bgben/users/routes.py:101
+#: bgben/templates/post.html:314 bgben/users/routes.py:87
 msgid "注册"
 msgstr "ユーザー登録"
 
-#: bgben/templates/base.html:163 bgben/templates/base.html:165 bgben/templates/post.html:312 bgben/users/routes.py:140
+#: bgben/templates/base.html:163 bgben/templates/base.html:165 bgben/templates/post.html:312 bgben/users/routes.py:126
 msgid "登陆"
 msgstr "ログイン"
 
@@ -1622,7 +1622,7 @@ msgstr "メールアドレスをご記入の上、「リセット申請」を押
 msgid "我们将发送确认邮件给您！"
 msgstr "確認メールを送ります！"
 
-#: bgben/templates/reset_token.html:6 bgben/users/forms.py:106 bgben/users/routes.py:248
+#: bgben/templates/reset_token.html:6 bgben/users/forms.py:106 bgben/users/routes.py:234
 msgid "重置密码"
 msgstr "パスワード変更"
 
@@ -2318,7 +2318,7 @@ msgstr "自己紹介"
 msgid "120字以内"
 msgstr "120文字以内"
 
-#: bgben/users/forms.py:88 bgben/users/routes.py:231
+#: bgben/users/forms.py:88 bgben/users/routes.py:217
 msgid "我要重置密码"
 msgstr "リセット申請"
 
@@ -2350,91 +2350,95 @@ msgstr "フォローする"
 msgid "取消关注"
 msgstr "フォローを取消す"
 
-#: bgben/users/routes.py:57
+#: bgben/users/routes.py:44
 msgid "注册测试"
 msgstr "登録テスト"
 
-#: bgben/users/routes.py:96
+#: bgben/users/routes.py:78
 #, python-format
-msgid "我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并做出相应的反应。"
-msgstr "あなたのメールアドレス%(email)sへ仮登録メールを送りました。30分以内に本登録の操作を完了させて下さい。"
+msgid ""
+"我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并激活您的账户。如果您找不到邮件的话，请查看您的垃圾邮箱，或直接通过本网站页脚的\"联系"
+"管理人\"链接联系我们。"
+msgstr ""
+"あなたのメールアドレス%(email)sへ仮登録メールを送りました。30分以内に本登録の操作を完了させて下さい。メールが届かない場合は、迷惑メール（スパム）フォルダを"
+"ご確認いただくか、本サイトの「お問い合わせ」ページより直接ご連絡ください。"
 
-#: bgben/users/routes.py:99
+#: bgben/users/routes.py:83
 #, python-format
-msgid "我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试！"
-msgstr "あなたのメールアドレス%(email)sへメール送信を試みましたが失敗しました。もう一度アドレスをご確認の上、リクエストをして下さい。"
+msgid "我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试注册！"
+msgstr "あなたのメールアドレス%(email)sへメール送信を試みましたが失敗しました。もう一度アドレスをご確認の上、リクエストをして下さい。 "
 
-#: bgben/users/routes.py:115
+#: bgben/users/routes.py:101
 #, python-format
 msgid "恭喜%(username)s, 您成功注册啦！"
 msgstr "%(username)s さん、ようこそBGbenへ！登録完了です！"
 
-#: bgben/users/routes.py:131
+#: bgben/users/routes.py:117
 #, python-format
 msgid "欢迎回来，%(user)s!"
 msgstr "おかえりなさい、%(user)sさん！"
 
-#: bgben/users/routes.py:136
+#: bgben/users/routes.py:122
 msgid "本账号已被停用，如有问题请联系管理人！"
 msgstr "このアカウントは使用停止となっています。お問い合わせは管理人までどうぞ！"
 
-#: bgben/users/routes.py:138
+#: bgben/users/routes.py:124
 msgid "登陆不成功，请再次确认注册邮箱及密码！"
 msgstr "ログインに失敗しました。再度ご確認の上、お試し下さい！"
 
-#: bgben/users/routes.py:146
+#: bgben/users/routes.py:132
 msgid "您已经退出了系统，再来玩哦！"
 msgstr "ログアウトが完了しました。また遊びに来てくださいね！"
 
-#: bgben/users/routes.py:167
+#: bgben/users/routes.py:153
 msgid "您的设置内容已被更新！"
 msgstr "アカウントの設定が更新されました！"
 
-#: bgben/users/routes.py:179
+#: bgben/users/routes.py:165
 msgid "账户设置"
 msgstr "アカウント設定"
 
-#: bgben/users/routes.py:217
+#: bgben/users/routes.py:203
 #, python-format
 msgid "%(user)s的动态"
 msgstr "%(user)sのフィード"
 
-#: bgben/users/routes.py:229
-msgid "我们向您的邮箱发送了关于密码重置方法的邮件，请在30分钟内查询并做出相应的反应。"
-msgstr "パスワードリセットに関する仮登録メールを送信しました。30分以内に本登録を完了させて下さい。"
+#: bgben/users/routes.py:215
+msgid "我们向您的邮箱发送了关于密码重置方法的邮件，请在30分钟内查询并进行操作。"
+msgstr "パスワードリセットに関する仮登録メールを送信しました。30分以内に本登録をお済ませ下さい。"
 
-#: bgben/users/routes.py:246
+#: bgben/users/routes.py:232
 msgid "您的密码被重置了，现在可以登陆了！"
 msgstr "パスワードがリセットされました。ログインして下さいね！"
 
-#: bgben/users/routes.py:259 bgben/users/routes.py:280
+#: bgben/users/routes.py:245 bgben/users/routes.py:266
 #, python-format
 msgid "%(username)s不是BGben用户哦！"
 msgstr "%(username)sさんはBGbenユーザーではありません！"
 
-#: bgben/users/routes.py:262
+#: bgben/users/routes.py:248
 msgid "自己无法关注自己哦！"
 msgstr "ご自分をフォローすることはできません！"
 
-#: bgben/users/routes.py:266
+#: bgben/users/routes.py:252
 #, python-format
 msgid "您正在关注%(username)s"
 msgstr "%(username)sさんをフォローしました！"
 
-#: bgben/users/routes.py:283
+#: bgben/users/routes.py:269
 msgid "自己无法取消关注自己哦！"
 msgstr "ご自分へのフォロー取り消しはできません！"
 
-#: bgben/users/routes.py:287
+#: bgben/users/routes.py:273
 #, python-format
 msgid "您已经取消对%(username)s的关注！"
 msgstr "%(username)sさんへのフォローを取り消しました！"
 
-#: bgben/users/utils.py:39
+#: bgben/users/utils.py:47
 msgid "欢迎申请[BGben]用户账号，请在30分钟之内打开本邮件中的链接并完成确认✅"
 msgstr "[BGben]ユーザーア登録をお申し込みいただきありがとうございます。30分以内にこのメールにあるリンクをクリックし、本登録を完了させて下さい✅"
 
-#: bgben/users/utils.py:64
+#: bgben/users/utils.py:71
 msgid "[BGben] 得知您想重置密码🔑，请在30分钟之内采取行动💪"
 msgstr "[BGben] パスワードリセットのご依頼を承りました🔑，30分以内にご対応願います💪"
 

@@ -61,8 +61,6 @@ def register():
   if "test_pass" in session and session['test_pass'] == True:
     form = RegistrationForm()
     if form.validate_on_submit():
-      pop_test_pass_session()
-
       user = User(username=form.username.data, email=form.email.data.strip())
       user_email = form.email.data.strip()
       user.set_password(form.password.data)
@@ -77,10 +75,11 @@ def register():
       user = db.session.scalar(sa.select(User).where(User.email == user_email))
 
       if send_registration_email(user):
-        flash(_('我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并做出相应的反应。', email=user_email), 'success' )
+        flash(_('我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并激活您的账户。如果您找不到邮件的话，请查看您的垃圾邮箱，或直接通过本网站页脚的"联系管理人"链接联系我们。', email=user_email), 'success' )
+        pop_test_pass_session()
         return redirect(url_for('main.home'))
       else:
-        flash(_('我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试！', email=user_email), 'success' )
+        flash(_('我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试注册！', email=user_email), 'success' )
   else:
     return redirect(url_for('users.register_test'))
 
@@ -212,7 +211,7 @@ def reset_request():
     user=db.session.scalar(sa.select(User).where(User.email == form.email.data.strip()).where(User.active == True))
     if user:
       send_reset_email(user)
-      flash(_('我们向您的邮箱发送了关于密码重置方法的邮件，请在30分钟内查询并做出相应的反应。'), 'success')
+      flash(_('我们向您的邮箱发送了关于密码重置方法的邮件，请在30分钟内查询并进行操作。'), 'success')
       return redirect(url_for('users.login'))
   return render_template('request_reset.html', title=_('我要重置密码'), form=form)
 
