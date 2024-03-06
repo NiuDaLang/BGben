@@ -1,31 +1,18 @@
 import re, os, json
 import sqlalchemy as sa
-from flask import render_template, url_for, flash, redirect, request, Blueprint, current_app, make_response, jsonify
+from flask import render_template, url_for, flash, redirect, request, Blueprint, current_app, make_response, jsonify, session
 from bgben import db, get_locale
 from bgben.users.forms import (RegistrationForm, LoginForm, TestPassForm, UpdateAccountForm, 
                          RequestResetForm, ResetPasswordForm, EmptyForm, UnfollowForm)
 from bgben.models import User, Post, Tag
 from flask_login import login_user, current_user, logout_user, login_required
-from bgben.users.utils import save_picture, delete_picture, send_reset_email, send_registration_email
-from functools import wraps
+from bgben.users.utils import save_picture, delete_picture, send_reset_email, send_registration_email, set_test_pass_session, pop_test_pass_session
 from sqlalchemy import func
 from flask_babel import _
 from urllib.parse import urlsplit
 
 
 users = Blueprint('users', __name__)
-test_pass = False
-
-
-def test_passed(function):
-  @wraps(function)
-  def wrapper():
-    global test_pass
-    if test_pass == True:
-      return function()
-    elif test_pass == False:
-      return redirect(url_for('main.home'))
-  return wrapper
 
 
 @users.route("/register_test_quiz", methods=['GET', 'POST'])
@@ -59,44 +46,43 @@ def register_test():
 
 @users.route("/register_test_pass", methods=['POST'])
 def register_test_pass():
-  global test_pass
   form = TestPassForm()
   if form.validate_on_submit():
-    test_pass = True
+    set_test_pass_session()
     return redirect(url_for('users.register'))
   else:
     return redirect(url_for('main.home'))
 
 @users.route("/register", methods=['GET', 'POST'])
-@test_passed
 def register():
-
   if current_user.is_authenticated:
     return redirect(url_for('main.home'))
-  
-  global test_pass
-  test_pass = False
 
-  form = RegistrationForm()
-  if form.validate_on_submit():
-    user = User(username=form.username.data, email=form.email.data.strip())
-    user_email = form.email.data.strip()
-    user.set_password(form.password.data)
-    db.session.add(user)
-    db.session.commit()
+  if "test_pass" in session and session['test_pass'] == True:
+    form = RegistrationForm()
+    if form.validate_on_submit():
+      pop_test_pass_session()
 
-    # clean form fields
-    form.username.data = ""
-    form.email.data = ""
-    form.agree.data = False
-    # get provisionally-registered user
-    user = db.session.scalar(sa.select(User).where(User.email == user_email))
+      user = User(username=form.username.data, email=form.email.data.strip())
+      user_email = form.email.data.strip()
+      user.set_password(form.password.data)
+      db.session.add(user)
+      db.session.commit()
 
-    if send_registration_email(user):
-      flash(_('我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并做出相应的反应。', email=user_email), 'success' )
-      return redirect(url_for('main.home'))
-    else:
-      flash(_('我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试！', email=user_email), 'success' )
+      # clean form fields
+      form.username.data = ""
+      form.email.data = ""
+      form.agree.data = False
+      # get provisionally-registered user
+      user = db.session.scalar(sa.select(User).where(User.email == user_email))
+
+      if send_registration_email(user):
+        flash(_('我们向您的邮箱%(email)s发送了关于确认账户注册的邮件，请在30分钟内查询并做出相应的反应。', email=user_email), 'success' )
+        return redirect(url_for('main.home'))
+      else:
+        flash(_('我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试！', email=user_email), 'success' )
+  else:
+    return redirect(url_for('users.register_test'))
 
   return render_template("register.html", title=_("注册"), form=form, re=re)
 

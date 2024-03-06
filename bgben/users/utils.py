@@ -1,9 +1,17 @@
 import os
 import secrets
 from PIL import Image
-from flask import url_for, current_app, render_template
+from flask import url_for, current_app, render_template, session
 from flask_babel import _
 from bgben.email import send_email
+
+
+def set_test_pass_session():
+  session['test_pass'] = True
+
+
+def pop_test_pass_session():
+  session.pop('test_pass', None)
 
 
 def save_picture(form_picture, pic_folder, width, height):
@@ -46,7 +54,6 @@ def send_registration_email(user):
           pic_attachments = pic_attachments,
           bcc=["admin@bgben.net"]
           )    
-
     return True
 
 
