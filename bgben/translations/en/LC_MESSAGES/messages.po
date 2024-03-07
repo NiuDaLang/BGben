@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-07 14:01+1100\n"
-"PO-Revision-Date: 2024-03-07 14:05+1100\n"
+"POT-Creation-Date: 2024-03-07 19:42+1100\n"
+"PO-Revision-Date: 2024-03-07 19:47+1100\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -294,62 +294,62 @@ msgstr "<= 200 characters"
 msgid "提 交"
 msgstr "Submit"
 
-#: bgben/posts/routes.py:41
+#: bgben/posts/routes.py:42
 msgid "投稿发布成功！"
 msgstr "Your post has been posted!"
 
-#: bgben/posts/routes.py:73 bgben/posts/routes.py:74 bgben/templates/base.html:126 bgben/templates/base.html:128
+#: bgben/posts/routes.py:74 bgben/posts/routes.py:75 bgben/templates/base.html:126 bgben/templates/base.html:128
 #: bgben/templates/base.html:131
 msgid "投稿"
 msgstr "Post"
 
-#: bgben/posts/routes.py:74
+#: bgben/posts/routes.py:75
 msgid "新稿子"
 msgstr "New Post"
 
-#: bgben/posts/routes.py:102 bgben/templates/base.html:118 bgben/templates/base.html:120
+#: bgben/posts/routes.py:103 bgben/templates/base.html:118 bgben/templates/base.html:120
 msgid "广场"
 msgstr "Explore"
 
-#: bgben/posts/routes.py:159
+#: bgben/posts/routes.py:166
 msgid "评论发布成功！"
 msgstr "Your comment has been posted!"
 
-#: bgben/posts/routes.py:221
+#: bgben/posts/routes.py:228
 #, python-format
 msgid "与%(name)s有关的笔记. "
 msgstr "Posts related to tag%(name)s"
 
-#: bgben/posts/routes.py:253
+#: bgben/posts/routes.py:260
 #, python-format
 msgid "%(username)s的月度笔记: %(month)s"
 msgstr "%(username)s’s monthly posts for %(month)s"
 
-#: bgben/posts/routes.py:263
+#: bgben/posts/routes.py:270
 msgid "这篇笔记不存在！"
 msgstr "This post doesn’t exist!"
 
-#: bgben/posts/routes.py:292
+#: bgben/posts/routes.py:299
 msgid "这条评论不存在！"
 msgstr "This comment doesn’t exist!"
 
-#: bgben/posts/routes.py:372
+#: bgben/posts/routes.py:379
 msgid "您的笔记已被更新!"
 msgstr "Your post has been updated!"
 
-#: bgben/posts/routes.py:403 bgben/templates/post.html:212 bgben/users/forms.py:70
+#: bgben/posts/routes.py:410 bgben/templates/post.html:212 bgben/users/forms.py:70
 msgid "更 新"
 msgstr "Update"
 
-#: bgben/posts/routes.py:404
+#: bgben/posts/routes.py:411
 msgid "编辑笔记"
 msgstr "Edit Post"
 
-#: bgben/posts/routes.py:406 bgben/templates/base.html:129 bgben/templates/post.html:22
+#: bgben/posts/routes.py:413 bgben/templates/base.html:129 bgben/templates/post.html:22
 msgid "编辑"
 msgstr "Edit Post"
 
-#: bgben/posts/routes.py:432
+#: bgben/posts/routes.py:439
 msgid "您的笔记已被删除!"
 msgstr "Your post has been deleted!"
 
@@ -522,7 +522,7 @@ msgid "主题+副主题+内容(含html标签)，不含图像"
 msgstr "Title + Subtitle + Content(in html), no images"
 
 #: bgben/templates/account.html:90 bgben/templates/account.html:231 bgben/templates/create_post.html:1370
-#: bgben/templates/create_post.html:1431 bgben/templates/login.html:32 bgben/templates/register.html:35
+#: bgben/templates/create_post.html:1433 bgben/templates/login.html:32 bgben/templates/register.html:35
 #: bgben/templates/register.html:53 bgben/templates/request_reset.html:34
 msgid "淡绿色羽毛图标"
 msgstr "Pale green feather image"
@@ -537,9 +537,9 @@ msgstr "Pale yellow feather image"
 msgid "橙色羽毛图标"
 msgstr "Orange feather image"
 
-#: bgben/templates/account.html:127
-msgid "格式："
-msgstr "Format:"
+#: bgben/templates/account.html:127 bgben/templates/create_post.html:1392
+msgid "≤5MB, 格式："
+msgstr "≤5MB, Format:"
 
 #: bgben/templates/account.html:127
 msgid "请尽量将图像比例调整为1:1"
@@ -772,7 +772,7 @@ msgstr "Orange crayon image"
 msgid "我的最新投稿"
 msgstr "My Latest"
 
-#: bgben/templates/create_post.html:1298 bgben/templates/create_post.html:1548 bgben/templates/home.html:2017
+#: bgben/templates/create_post.html:1298 bgben/templates/create_post.html:1562 bgben/templates/home.html:2017
 #: bgben/templates/home.html:2196 bgben/templates/home.html:2250 bgben/templates/home.html:2277 bgben/templates/home.html:2331
 #: bgben/templates/home.html:2360 bgben/templates/home.html:2415 bgben/templates/home.html:2443 bgben/templates/home.html:2498
 #: bgben/templates/home.html:2527 bgben/templates/home.html:2581 bgben/templates/monthly_posts.html:31 bgben/templates/post.html:63
@@ -816,38 +816,42 @@ msgstr "My Tags"
 msgid "淡绿色标签图标"
 msgstr "Pale green tag image"
 
-#: bgben/templates/create_post.html:1411
+#: bgben/templates/create_post.html:1412
 msgid "红色羽毛图标"
 msgstr "Red feather image"
 
-#: bgben/templates/create_post.html:1433
+#: bgben/templates/create_post.html:1414
+msgid "图像文件≤5MB, 格式："
+msgstr "File Size ≤5MB, Format:"
+
+#: bgben/templates/create_post.html:1435
 msgid "标签(最多6个)"
 msgstr "Tags (max: 6)"
 
-#: bgben/templates/create_post.html:1434
+#: bgben/templates/create_post.html:1436
 msgid "添加"
 msgstr "Add"
 
-#: bgben/templates/create_post.html:1554
+#: bgben/templates/create_post.html:1568
 msgid "淡绿色分割曲线"
 msgstr "Pale green divider line image"
 
-#: bgben/templates/create_post.html:1565 bgben/templates/monthly_posts.html:47 bgben/templates/tags.html:63
+#: bgben/templates/create_post.html:1579 bgben/templates/monthly_posts.html:47 bgben/templates/tags.html:63
 #: bgben/templates/user_posts.html:1127
 msgid "前一页"
 msgstr "Prev"
 
-#: bgben/templates/create_post.html:1567 bgben/templates/monthly_posts.html:49 bgben/templates/tags.html:65
+#: bgben/templates/create_post.html:1581 bgben/templates/monthly_posts.html:49 bgben/templates/tags.html:65
 #: bgben/templates/user_posts.html:1129
 msgid "橙色向左箭头图标"
 msgstr "Orange left arrow"
 
-#: bgben/templates/create_post.html:1575 bgben/templates/monthly_posts.html:57 bgben/templates/tags.html:73
+#: bgben/templates/create_post.html:1589 bgben/templates/monthly_posts.html:57 bgben/templates/tags.html:73
 #: bgben/templates/user_posts.html:1137
 msgid "橙色向右箭头图标"
 msgstr "Orange right arrow"
 
-#: bgben/templates/create_post.html:1577 bgben/templates/monthly_posts.html:59 bgben/templates/tags.html:75
+#: bgben/templates/create_post.html:1591 bgben/templates/monthly_posts.html:59 bgben/templates/tags.html:75
 #: bgben/templates/user_posts.html:1139
 msgid "下一页"
 msgstr "Next"
@@ -2610,3 +2614,6 @@ msgstr "You just requested to reset your password with [BGben]🔑 Please take a
 
 #~ msgid "我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试！"
 #~ msgstr "We attempted to send an email to your email %(email)s but failed. Please check your email and try again!"
+
+#~ msgid "格式："
+#~ msgstr "Format:"

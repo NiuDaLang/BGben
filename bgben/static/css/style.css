@@ -3681,6 +3681,10 @@ input::file-selector-button {
   width: 90%;
   margin: 0 5%;
 }
+.post-body img {
+  max-width: 100%;
+  height: auto;
+}
 @media screen and (max-width: 576px) {
   .post-body img {
     width: 90% !important;

@@ -9,6 +9,7 @@ from bgben.posts.utils import save_picture, delete_picture
 from sqlalchemy import func
 from flask_babel import _
 from flask_ckeditor import upload_success, upload_fail
+from PIL import Image
 
 
 posts = Blueprint('posts', __name__)
@@ -100,25 +101,31 @@ def all_posts():
 
 @posts.route('/files/<path:filename>')
 def uploaded_files(filename):
-    # path = '/the/uploaded/directory'
-    path = os.path.join(current_app.root_path, 'static/post_add_pics')
-    return send_from_directory(path, filename)
+  # path = '/the/uploaded/directory'
+  path = os.path.join(current_app.root_path, 'static/post_add_pics')
+  return send_from_directory(path, filename)
 
 
 @posts.route('/upload', methods=['POST'])
 def upload():
-    f = request.files.get('upload')
-    # Add more validations here
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(f.filename)
-    picture_fn = random_hex + f_ext
+  f = request.files.get('upload')
 
-    # extension = f.filename.split('.')[-1].lower()
-    if f_ext not in ['.jpg', '.gif', '.png', '.jpeg']:
-        return upload_fail(message='Image only!')
-    f.save(os.path.join(current_app.root_path, 'static/post_add_pics', picture_fn))
-    url = url_for('posts.uploaded_files', filename=picture_fn)
-    return upload_success(url, filename=picture_fn)  # return upload_success call
+  # Add more validations here
+  random_hex = secrets.token_hex(8)
+  _, f_ext = os.path.splitext(f.filename)
+  picture_fn = random_hex + f_ext
+
+  # extension = f.filename.split('.')[-1].lower()
+  if f_ext not in ['.jpg', '.gif', '.png', '.jpeg']:
+    return upload_fail(message='Image only!')
+  
+  output_size = (1600, 900)
+  i = Image.open(f)
+  i.thumbnail(output_size)
+  i.save(os.path.join(current_app.root_path, 'static/post_add_pics', picture_fn))
+  
+  url = url_for('posts.uploaded_files', filename=picture_fn)
+  return upload_success(url, filename=picture_fn)  # return upload_success call
 
 
 @posts.route("/post/<post_id>", methods=['GET', 'POST'])
