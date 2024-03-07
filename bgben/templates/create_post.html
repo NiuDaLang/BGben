@@ -1389,7 +1389,8 @@
                 <img class="comment-title-img" src="{{ url_for('static', filename='images/feather_pen3.png')}}"
                   alt="{{ _('橙色羽毛图标') }}">
               </div>
-              <span class="text-color-red">{{ form.main_picture.label }}</span>
+              <span class="text-color-red">{{ form.main_picture.label }}<small> ({{ _('≤5MB, 格式：') }} jpg, jpeg,
+                  png)</small></span>
             </div>
             <div class="form-input form-input-post single-line">
               {% if form.main_picture.errors %}
@@ -1410,7 +1411,8 @@
                 <img class="comment-title-img" src="{{ url_for('static', filename='images/feather_pen4.png') }}"
                   alt="{{ _('红色羽毛图标') }}">
               </div>
-              <span class="text-color-red">{{ form.body.label}}</span>
+              <span class="text-color-red">{{ form.body.label}}<small> ({{ _('图像文件≤5MB, 格式：') }} jpg, jpeg,
+                  png, gif)</small></span>
             </div>
             {% if form.body.errors %}
             {{ form.body }}
