@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-06 16:34+1100\n"
-"PO-Revision-Date: 2024-03-06 16:56+1100\n"
+"POT-Creation-Date: 2024-03-07 14:01+1100\n"
+"PO-Revision-Date: 2024-03-07 14:05+1100\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -130,76 +130,76 @@ msgstr "This email address has been registered, please use another one!"
 msgid "主页"
 msgstr "Home"
 
-#: bgben/main/routes.py:211 bgben/main/routes.py:220
+#: bgben/main/routes.py:191 bgben/main/routes.py:200
 msgid "搜索结果"
 msgstr "Search Results"
 
-#: bgben/main/routes.py:314
+#: bgben/main/routes.py:290
 #, python-format
 msgid "%(user)s的关注名单"
 msgstr "%(user)s is following"
 
-#: bgben/main/routes.py:325
+#: bgben/main/routes.py:301
 #, python-format
 msgid "%(user)s的粉丝名单"
 msgstr "%(user)sis followed by"
 
-#: bgben/main/routes.py:342
+#: bgben/main/routes.py:318
 msgid "您的信息已发出！"
 msgstr "Your message has been sent!"
 
-#: bgben/main/routes.py:345
+#: bgben/main/routes.py:321
 msgid "发信息"
 msgstr "Send a message"
 
-#: bgben/main/routes.py:386
+#: bgben/main/routes.py:356
 msgid "私信邮箱"
 msgstr "Message Box"
 
-#: bgben/main/routes.py:439 bgben/templates/about.html:7 bgben/templates/base.html:227 bgben/templates/base.html:229
+#: bgben/main/routes.py:407 bgben/templates/about.html:7 bgben/templates/base.html:227 bgben/templates/base.html:229
 msgid "关于BGben"
 msgstr "About BGben"
 
-#: bgben/main/routes.py:444 bgben/templates/base.html:233 bgben/templates/base.html:235
+#: bgben/main/routes.py:412 bgben/templates/base.html:233 bgben/templates/base.html:235
 msgid "利用规则"
 msgstr "Terms and Conditions"
 
-#: bgben/main/routes.py:449 bgben/templates/base.html:239 bgben/templates/base.html:241 bgben/templates/home.html:33
+#: bgben/main/routes.py:417 bgben/templates/base.html:239 bgben/templates/base.html:241 bgben/templates/home.html:33
 #: bgben/templates/register.html:113 bgben/templates/send_message.html:35
 msgid "隐私政策"
 msgstr "Privacy Policy"
 
-#: bgben/main/routes.py:466
+#: bgben/main/routes.py:434
 msgid "谢谢您发出的信号，我们将尽快回复！"
 msgstr "Thank you for your inquiry. We will respond ASAP!"
 
-#: bgben/main/routes.py:467
+#: bgben/main/routes.py:435
 msgid "BGben联系内容确认"
 msgstr "Contact Details Confirmation by BGben"
 
-#: bgben/main/routes.py:469 bgben/templates/base.html:251 bgben/templates/base.html:253 bgben/templates/home.html:2078
+#: bgben/main/routes.py:437 bgben/templates/base.html:251 bgben/templates/base.html:253 bgben/templates/home.html:2078
 #: bgben/templates/home.html:2106
 msgid "联系管理人"
 msgstr "Contact Admin"
 
-#: bgben/main/routes.py:474 bgben/templates/base.html:245 bgben/templates/base.html:247 bgben/templates/faq.html:6
+#: bgben/main/routes.py:442 bgben/templates/base.html:245 bgben/templates/base.html:247 bgben/templates/faq.html:6
 msgid "常见问题"
 msgstr "FAQ"
 
-#: bgben/main/routes.py:525 bgben/users/routes.py:96 bgben/users/routes.py:226
+#: bgben/main/routes.py:493 bgben/users/routes.py:95 bgben/users/routes.py:232
 msgid "此密码链接无效或已失效，请再次尝试！"
 msgstr "This link has expired. Please try again!"
 
-#: bgben/main/routes.py:530
+#: bgben/main/routes.py:498
 #, python-format
 msgid "恭喜！您成功订阅啦! 您的邮箱：%(email)s"
 msgstr "Congratulations! You have successfully subscribed to BGben Newsletter! Your Email: %(email)s"
 
-#: bgben/main/routes.py:538
+#: bgben/main/routes.py:506
 msgid "有一项导出任务正在进行中。。。"
 msgstr "An export task is taking place right now…"
 
-#: bgben/main/routes.py:540
+#: bgben/main/routes.py:508
 msgid "数据输出完成度..."
 msgstr "Data export in progress…."
 
@@ -294,62 +294,62 @@ msgstr "<= 200 characters"
 msgid "提 交"
 msgstr "Submit"
 
-#: bgben/posts/routes.py:44
+#: bgben/posts/routes.py:41
 msgid "投稿发布成功！"
 msgstr "Your post has been posted!"
 
-#: bgben/posts/routes.py:70 bgben/posts/routes.py:71 bgben/templates/base.html:126 bgben/templates/base.html:128
+#: bgben/posts/routes.py:73 bgben/posts/routes.py:74 bgben/templates/base.html:126 bgben/templates/base.html:128
 #: bgben/templates/base.html:131
 msgid "投稿"
 msgstr "Post"
 
-#: bgben/posts/routes.py:71
+#: bgben/posts/routes.py:74
 msgid "新稿子"
 msgstr "New Post"
 
-#: bgben/posts/routes.py:99 bgben/templates/base.html:118 bgben/templates/base.html:120
+#: bgben/posts/routes.py:102 bgben/templates/base.html:118 bgben/templates/base.html:120
 msgid "广场"
 msgstr "Explore"
 
-#: bgben/posts/routes.py:156
+#: bgben/posts/routes.py:159
 msgid "评论发布成功！"
 msgstr "Your comment has been posted!"
 
-#: bgben/posts/routes.py:213
+#: bgben/posts/routes.py:221
 #, python-format
 msgid "与%(name)s有关的笔记. "
 msgstr "Posts related to tag%(name)s"
 
-#: bgben/posts/routes.py:232
+#: bgben/posts/routes.py:253
 #, python-format
 msgid "%(username)s的月度笔记: %(month)s"
 msgstr "%(username)s’s monthly posts for %(month)s"
 
-#: bgben/posts/routes.py:242
+#: bgben/posts/routes.py:263
 msgid "这篇笔记不存在！"
 msgstr "This post doesn’t exist!"
 
-#: bgben/posts/routes.py:271
+#: bgben/posts/routes.py:292
 msgid "这条评论不存在！"
 msgstr "This comment doesn’t exist!"
 
-#: bgben/posts/routes.py:348
+#: bgben/posts/routes.py:372
 msgid "您的笔记已被更新!"
 msgstr "Your post has been updated!"
 
-#: bgben/posts/routes.py:372 bgben/templates/post.html:212 bgben/users/forms.py:70
+#: bgben/posts/routes.py:403 bgben/templates/post.html:212 bgben/users/forms.py:70
 msgid "更 新"
 msgstr "Update"
 
-#: bgben/posts/routes.py:373
+#: bgben/posts/routes.py:404
 msgid "编辑笔记"
 msgstr "Edit Post"
 
-#: bgben/posts/routes.py:375 bgben/templates/base.html:129 bgben/templates/post.html:22
+#: bgben/posts/routes.py:406 bgben/templates/base.html:129 bgben/templates/post.html:22
 msgid "编辑"
 msgstr "Edit Post"
 
-#: bgben/posts/routes.py:401
+#: bgben/posts/routes.py:432
 msgid "您的笔记已被删除!"
 msgstr "Your post has been deleted!"
 
@@ -690,11 +690,11 @@ msgid "退出"
 msgstr "Logout"
 
 #: bgben/templates/base.html:155 bgben/templates/base.html:158 bgben/templates/login.html:82 bgben/templates/post.html:176
-#: bgben/templates/post.html:280 bgben/templates/post.html:314 bgben/users/routes.py:87
+#: bgben/templates/post.html:280 bgben/templates/post.html:314 bgben/users/routes.py:86
 msgid "注册"
 msgstr "Register"
 
-#: bgben/templates/base.html:163 bgben/templates/base.html:165 bgben/templates/post.html:312 bgben/users/routes.py:126
+#: bgben/templates/base.html:163 bgben/templates/base.html:165 bgben/templates/post.html:312 bgben/users/routes.py:125
 msgid "登陆"
 msgstr "Login"
 
@@ -1678,7 +1678,7 @@ msgstr "Please enter your email address and click the ‘Reset Password’ butto
 msgid "我们将发送确认邮件给您！"
 msgstr "We will send you an email!"
 
-#: bgben/templates/reset_token.html:6 bgben/users/forms.py:106 bgben/users/routes.py:234
+#: bgben/templates/reset_token.html:6 bgben/users/forms.py:106 bgben/users/routes.py:240
 msgid "重置密码"
 msgstr "Password Reset"
 
@@ -2343,7 +2343,7 @@ msgid "请求无效!"
 msgstr "Bad Request!"
 
 #: bgben/templates/errors/400.html:8 bgben/templates/errors/403.html:8 bgben/templates/errors/404.html:8
-#: bgben/templates/errors/500.html:8
+#: bgben/templates/errors/413.html:8 bgben/templates/errors/500.html:8
 msgid "返 回"
 msgstr "Return"
 
@@ -2362,6 +2362,18 @@ msgstr "404 Error image"
 #: bgben/templates/errors/404.html:6
 msgid "此文件不存在！"
 msgstr "No document found!"
+
+#: bgben/templates/errors/413.html:5
+msgid "413错误图像"
+msgstr "403 Error image"
+
+#: bgben/templates/errors/413.html:6
+msgid "上传文件过大！"
+msgstr "Upload file too large!"
+
+#: bgben/templates/errors/413.html:6
+msgid "(≤2MB/文件)"
+msgstr "(≤2MB/file)"
 
 #: bgben/templates/errors/500.html:5
 msgid "500错误图像"
@@ -2435,7 +2447,7 @@ msgstr "About Me"
 msgid "120字以内"
 msgstr "<= 120 characters"
 
-#: bgben/users/forms.py:88 bgben/users/routes.py:217
+#: bgben/users/forms.py:88 bgben/users/routes.py:223
 msgid "我要重置密码"
 msgstr "Reset Password"
 
@@ -2481,75 +2493,75 @@ msgstr ""
 "Please also check your spam or junk email folder just in case, or contact us via Contact Admin link located in the footer section "
 "if you still cannot find it."
 
-#: bgben/users/routes.py:83
+#: bgben/users/routes.py:82
 #, python-format
 msgid "我们试图向您的邮箱%(email)s发送邮件，但是失败了。请确认邮箱地址是否正确并再次尝试注册！"
 msgstr ""
 "We tried to send an email to your email address %(email)s, but failed. Please confirm whether your email address is correct and "
 "try to register again!"
 
-#: bgben/users/routes.py:101
+#: bgben/users/routes.py:100
 #, python-format
 msgid "恭喜%(username)s, 您成功注册啦！"
 msgstr "Congratulations, %(username)s! Your registration is complete!"
 
-#: bgben/users/routes.py:117
+#: bgben/users/routes.py:116
 #, python-format
 msgid "欢迎回来，%(user)s!"
 msgstr "Welcome back, %(user)s!"
 
-#: bgben/users/routes.py:122
+#: bgben/users/routes.py:121
 msgid "本账号已被停用，如有问题请联系管理人！"
 msgstr "This account has been suspended. Please contact admin for more details."
 
-#: bgben/users/routes.py:124
+#: bgben/users/routes.py:123
 msgid "登陆不成功，请再次确认注册邮箱及密码！"
 msgstr "Login failed. Please check your email and password!"
 
-#: bgben/users/routes.py:132
+#: bgben/users/routes.py:131
 msgid "您已经退出了系统，再来玩哦！"
 msgstr "You have logged out. Come back soon!"
 
-#: bgben/users/routes.py:153
+#: bgben/users/routes.py:152
 msgid "您的设置内容已被更新！"
 msgstr "Your account details have been updated!"
 
-#: bgben/users/routes.py:165
+#: bgben/users/routes.py:164
 msgid "账户设置"
 msgstr "Account"
 
-#: bgben/users/routes.py:203
+#: bgben/users/routes.py:209
 #, python-format
 msgid "%(user)s的动态"
 msgstr "%(user)s’s feed"
 
-#: bgben/users/routes.py:215
+#: bgben/users/routes.py:221
 msgid "我们向您的邮箱发送了关于密码重置方法的邮件，请在30分钟内查询并进行操作。"
 msgstr "We’ve sent password reset instruction to your email account. Please check and respond within the next 30 minutes."
 
-#: bgben/users/routes.py:232
+#: bgben/users/routes.py:238
 msgid "您的密码被重置了，现在可以登陆了！"
 msgstr "You password has been reset, please log in!"
 
-#: bgben/users/routes.py:245 bgben/users/routes.py:266
+#: bgben/users/routes.py:251 bgben/users/routes.py:272
 #, python-format
 msgid "%(username)s不是BGben用户哦！"
 msgstr "%(username)s is not a BGben user!"
 
-#: bgben/users/routes.py:248
+#: bgben/users/routes.py:254
 msgid "自己无法关注自己哦！"
 msgstr "You can’t follow yourself!"
 
-#: bgben/users/routes.py:252
+#: bgben/users/routes.py:258
 #, python-format
 msgid "您正在关注%(username)s"
 msgstr "You are following %(username)s"
 
-#: bgben/users/routes.py:269
+#: bgben/users/routes.py:275
 msgid "自己无法取消关注自己哦！"
 msgstr "You can’t unfollow yourself!"
 
-#: bgben/users/routes.py:273
+#: bgben/users/routes.py:279
 #, python-format
 msgid "您已经取消对%(username)s的关注！"
 msgstr "You have unfollowed %(username)s!"

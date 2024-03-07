@@ -1,6 +1,6 @@
 import re, os, secrets
 import sqlalchemy as sa
-from flask import render_template, url_for, flash, redirect, request, abort, Blueprint, make_response, jsonify, current_app, send_from_directory
+from flask import render_template, url_for, flash, redirect, request, abort, Blueprint, make_response, jsonify, current_app, send_from_directory, session
 from bgben import db, get_locale
 from bgben.posts.forms import (CreatePostForm, CommentForm)
 from bgben.models import Post, Comment, LikePost, LikeComment, Tag, User
@@ -291,20 +291,23 @@ def like_comment(comment_id):
     return jsonify({"comment_likes": comment_like_count, "comment_liked": False})
 
 
+COMMENTS_QTY = 3
+
 # Load comments one by one
 @posts.route('/load_comments')
 def load_comments():
-  global comments_db
-  comments_no = len(comments_db)
+  comments_no = len(session['comments_db'])
 
   if request.args:
     counter = int(request.args.get('c'))
     if counter == 0:
-      res = make_response(jsonify(comments_db[0:comments_qty]), 200)
+      # res = make_response(jsonify(comments_db[0:comments_qty]), 200)
+      res = make_response(jsonify(session['comments_db'][0:COMMENTS_QTY]), 200)
     elif counter == comments_no:
       res = make_response(jsonify({}), 200)
     else:
-      res = make_response(jsonify(comments_db[counter: counter + comments_qty]), 200)
+      # res = make_response(jsonify(comments_db[counter: counter + comments_qty]), 200)
+      res = make_response(jsonify(session['comments_db'][counter: counter + COMMENTS_QTY]), 200)
   
   return res
 

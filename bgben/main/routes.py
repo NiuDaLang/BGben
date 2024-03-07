@@ -238,7 +238,7 @@ def load_user_search_result():
 # Load tag_search_result one by one
 @main.route('/load_tag_search_result')
 def load_tag_search_result():
-  tag_search_result_no = session['tags_count']
+  tag_search_result_no = len(session['tag_search_db'])
 
   if request.args:
     counter = int(request.args.get('t'))
