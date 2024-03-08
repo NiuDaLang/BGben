@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-07 19:42+1100\n"
-"PO-Revision-Date: 2024-03-07 19:47+1100\n"
+"POT-Creation-Date: 2024-03-08 14:04+1100\n"
+"PO-Revision-Date: 2024-03-08 14:06+1100\n"
 "Last-Translator: \n"
 "Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
@@ -170,10 +170,6 @@ msgstr "プライバシーポリシー"
 msgid "谢谢您发出的信号，我们将尽快回复！"
 msgstr "お問い合わせありがとうございます！"
 
-#: bgben/main/routes.py:435
-msgid "BGben联系内容确认"
-msgstr "BGbenへのお問い合わせ内容"
-
 #: bgben/main/routes.py:437 bgben/templates/base.html:251 bgben/templates/base.html:253 bgben/templates/home.html:2078 bgben/templates/home.html:2106
 msgid "联系管理人"
 msgstr "お問い合わせ"
@@ -300,49 +296,49 @@ msgstr "投稿"
 msgid "新稿子"
 msgstr "新しい記事"
 
-#: bgben/posts/routes.py:103 bgben/templates/base.html:118 bgben/templates/base.html:120
+#: bgben/posts/routes.py:102 bgben/templates/base.html:118 bgben/templates/base.html:120
 msgid "广场"
 msgstr "広場"
 
-#: bgben/posts/routes.py:166
+#: bgben/posts/routes.py:169
 msgid "评论发布成功！"
 msgstr "コメントが送信されました！"
 
-#: bgben/posts/routes.py:228
+#: bgben/posts/routes.py:231
 #, python-format
 msgid "与%(name)s有关的笔记. "
 msgstr "%(name)sに関する記事"
 
-#: bgben/posts/routes.py:260
+#: bgben/posts/routes.py:263
 #, python-format
 msgid "%(username)s的月度笔记: %(month)s"
 msgstr "%(username)sの月度記事: %(month)s"
 
-#: bgben/posts/routes.py:270
+#: bgben/posts/routes.py:273
 msgid "这篇笔记不存在！"
 msgstr "この記事は存在しません！"
 
-#: bgben/posts/routes.py:299
+#: bgben/posts/routes.py:302
 msgid "这条评论不存在！"
 msgstr "このコメントは存在しません！"
 
-#: bgben/posts/routes.py:379
+#: bgben/posts/routes.py:382
 msgid "您的笔记已被更新!"
 msgstr "記事が更新されました！"
 
-#: bgben/posts/routes.py:410 bgben/templates/post.html:212 bgben/users/forms.py:70
+#: bgben/posts/routes.py:413 bgben/templates/post.html:212 bgben/users/forms.py:70
 msgid "更 新"
 msgstr "更新する"
 
-#: bgben/posts/routes.py:411
+#: bgben/posts/routes.py:414
 msgid "编辑笔记"
 msgstr "記事の編集"
 
-#: bgben/posts/routes.py:413 bgben/templates/base.html:129 bgben/templates/post.html:22
+#: bgben/posts/routes.py:416 bgben/templates/base.html:129 bgben/templates/post.html:22
 msgid "编辑"
 msgstr "編集"
 
-#: bgben/posts/routes.py:439
+#: bgben/posts/routes.py:442
 msgid "您的笔记已被删除!"
 msgstr "この記事は削除されました！"
 
@@ -900,15 +896,15 @@ msgid "我想在不删除已发布文章的前提下修改内容，不知道该�
 msgstr "記事を削除せずに内容を編集するにはどうすれば良いのでしょう？"
 
 #: bgben/templates/faq.html:69
-msgid "请点击您的文章进入文章页面之后，点击主题右边的第一个图案按钮，如下👇"
-msgstr "ご自分の記事ページにはタイトル下方に編集ボタンがあります👇"
+msgid "请点击您的文章进入文章页面之后，点击主题右边的第一个图案按钮，如下:"
+msgstr "ご自分の記事ページにはタイトル下方に編集ボタンがあります。"
 
 #: bgben/templates/faq.html:72
 msgid "常见问题第三题回答图像1 - 说明进入编辑的链接按钮位置"
 msgstr "FAQ 第三問の答え画像1 - 編集ページへのリンクボタンの位置説明"
 
 #: bgben/templates/faq.html:73
-msgid "🖱️点击后转移至下面页面👇请直接修改内容并按「更新」上传"
+msgid "点击后转移至下面页面请直接修改内容并按「更新」上传"
 msgstr "クリックし、編集ページで操作を終えたら「更新」ボタンを押して完了させて下さい。"
 
 #: bgben/templates/faq.html:75
@@ -924,7 +920,7 @@ msgid "请点击导航栏中的「账户」按钮，在编辑表格中上传。"
 msgstr "トップメニューの「アカウント」からプロフィール編集ページに入り、アップロードを行ってください。"
 
 #: bgben/templates/faq.html:92
-msgid "请使用jpeg/jpg/png格式。👇"
+msgid "请使用jpeg/jpg/png格式。"
 msgstr "ファイル形式はjpeg/jpg/pngです。"
 
 #: bgben/templates/faq.html:94
@@ -936,8 +932,8 @@ msgid "我想设置自己专用的VIP定制页面或独立网站，有没有相�
 msgstr "自分用のカスタムページまたはウェブサイトを作ってくれるサービスはありますか？"
 
 #: bgben/templates/faq.html:109
-msgid "可以的，本网站管理人提供有偿网站制作服务。请点击网页页脚处的「联系管理人」👇"
-msgstr "はい、本サイトでは管理人による有償サービスでウェブ制作業務を承っております。お問い合わせページ👇よりお気軽にご連絡ください。"
+msgid "可以的，本网站管理人提供有偿网站制作服务。请点击网页页脚处的「联系管理人」"
+msgstr "はい、本サイトでは管理人による有償サービスでウェブ制作業務を承っております。お問い合わせページよりお気軽にご連絡ください。"
 
 #: bgben/templates/followers.html:7
 msgid "的粉丝"
@@ -2139,10 +2135,10 @@ msgstr " さんより"
 msgid "注册·登陆后可关注这位用户！"
 msgstr "登録・ログイン後にフォロー出来ます！"
 
-#: bgben/templates/email/contact_receipt.html:5 bgben/templates/email/registration.html:5
+#: bgben/templates/email/contact_receipt.html:5
 #, python-format
-msgid "您好，%(username)s 女士/先生！"
-msgstr "こんにちは、%(username)s さん！"
+msgid "您好，%(name)s 女士/先生！"
+msgstr "こんにちは、%(name)s さん！"
 
 #: bgben/templates/email/contact_receipt.html:7
 msgid "以下是您的咨询内容："
@@ -2186,6 +2182,11 @@ msgstr "なお、本件がご自身による操作でない場合は、このメ
 #: bgben/templates/email/send_message.html:19
 msgid "祝您每天愉快🎈"
 msgstr "良い一日をお過ごし下さい🎈"
+
+#: bgben/templates/email/registration.html:5
+#, python-format
+msgid "您好，%(username)s 女士/先生！"
+msgstr "こんにちは、%(username)s さん！"
 
 #: bgben/templates/email/registration.html:7
 msgid "您正在申请BGben用户账号，请在30分钟之内通过点击下面链接确认并完成流程："
@@ -2490,3 +2491,6 @@ msgstr "[BGben] パスワードリセットのご依頼を承りました🔑，
 
 #~ msgid "格式："
 #~ msgstr "ファイル形式:"
+
+#~ msgid "BGben联系内容确认"
+#~ msgstr "BGbenへのお問い合わせ内容"

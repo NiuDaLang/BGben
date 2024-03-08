@@ -121,6 +121,10 @@ def upload():
   
   output_size = (1600, 900)
   i = Image.open(f)
+
+  if i.mode in ("RGBA", "P"):
+    i = i.convert("RGB")
+
   i.thumbnail(output_size)
   i.save(os.path.join(current_app.root_path, 'static/post_add_pics', picture_fn))
   
@@ -197,7 +201,7 @@ def post(post_id):
   # (2) Monthly Posts
   month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==current_user.id).where(Post.active == True)
+  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==post.author.id).where(Post.active == True)
 
   monthly_posts_count = db.session.execute(q).all()
 
@@ -303,9 +307,9 @@ COMMENTS_QTY = 3
 # Load comments one by one
 @posts.route('/load_comments')
 def load_comments():
-  comments_no = len(session['comments_db'])
+  if session['comments_db'] is not None and request.args:
+    comments_no = len(session['comments_db'])
 
-  if request.args:
     counter = int(request.args.get('c'))
     if counter == 0:
       # res = make_response(jsonify(comments_db[0:comments_qty]), 200)
@@ -314,8 +318,8 @@ def load_comments():
       res = make_response(jsonify({}), 200)
     else:
       # res = make_response(jsonify(comments_db[counter: counter + comments_qty]), 200)
-      res = make_response(jsonify(session['comments_db'][counter: counter + COMMENTS_QTY]), 200)
-  
+      res = make_response(jsonify(session['comments_db'][counter: counter + COMMENTS_QTY]), 200)    
+
   return res
 
 

@@ -433,7 +433,7 @@ def contact():
       db.session.commit()
       category = dict(CONTACT_CATEGORIES).get(form.category.data)
       flash(_('谢谢您发出的信号，我们将尽快回复！'))
-      send_contact_confirm_email(_('BGben联系内容确认'), form.email.data.strip(), category, form.content.data)
+      send_contact_confirm_email(form.name.data, form.email.data.strip(), category, form.content.data)
       return redirect(url_for('main.contact'))
   return render_template('contact.html', title=_('联系管理人'), form=form, re=re)
 

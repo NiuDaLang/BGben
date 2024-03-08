@@ -31,7 +31,7 @@ def send_message_email(recipient, sender, content):
                )
 
 
-def send_contact_confirm_email(user, user_email, category, content):
+def send_contact_confirm_email(name, user_email, category, content):
   pic_attachments = [{
     'folder_path': 'bgben/static/images',
     'filename': 'BGben_logo1.png',
@@ -43,10 +43,10 @@ def send_contact_confirm_email(user, user_email, category, content):
   send_email(_('[BGben] 收到了您发出的信号✉️，会尽快回复的🫡'),
               sender=current_app.config['ADMINS'][0],
               recipients=[user_email],
-              text_body=render_template('email/contact_receipt.txt',
-                                        user=user, category=category, content=content),
-              html_body=render_template('email/contact_receipt.html',
-                                        user=user, category=category, content=content),
+              text_body=render_template('email/contact_receipt.txt', name=name,
+                                        category=category, content=content),
+              html_body=render_template('email/contact_receipt.html', name=name,
+                                        category=category, content=content),
               pic_attachments = pic_attachments,
               bcc=["admin@bgben.net"]
               )
