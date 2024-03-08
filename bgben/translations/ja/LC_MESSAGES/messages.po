@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-08 14:04+1100\n"
-"PO-Revision-Date: 2024-03-08 14:06+1100\n"
+"POT-Creation-Date: 2024-03-08 22:26+1100\n"
+"PO-Revision-Date: 2024-03-08 22:27+1100\n"
 "Last-Translator: \n"
 "Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
@@ -198,7 +198,7 @@ msgstr "ダウンロード中…"
 #: bgben/main/utils.py:23
 #, python-format
 msgid "[BGben]用户%(sender)s 刚刚向您发送了一条信息！"
-msgstr "[BGben]ユーザーの户%(sender)s さんよりメッセージが届いています！"
+msgstr "[BGben]ユーザーの%(sender)s さんよりメッセージが届いています！"
 
 #: bgben/main/utils.py:44
 msgid "[BGben] 收到了您发出的信号✉️，会尽快回复的🫡"
@@ -2208,6 +2208,10 @@ msgstr "パスワード再設定のご依頼を承りました。３０分以内
 #: bgben/templates/email/reset_password.html:10
 msgid "温馨提示: 如果密码重置不是由您本人申请的话，请忽略此邮件即可。"
 msgstr "なお、本件がご自身による操作でない場合は、このメールを直接無視してください。"
+
+#: bgben/templates/email/send_message.html:7
+msgid "BGben 信息提示🔔"
+msgstr "BGben メッセージアラート🔔"
 
 #: bgben/templates/email/send_message.html:8
 #, python-format

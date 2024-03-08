@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-08 14:04+1100\n"
-"PO-Revision-Date: 2024-03-08 14:08+1100\n"
+"POT-Creation-Date: 2024-03-08 22:26+1100\n"
+"PO-Revision-Date: 2024-03-08 22:28+1100\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -2324,6 +2324,10 @@ msgstr "You have requested to reset your password. Please complete the process b
 #: bgben/templates/email/reset_password.html:10
 msgid "温馨提示: 如果密码重置不是由您本人申请的话，请忽略此邮件即可。"
 msgstr "Friendly reminder: if this password reset request was not initiated by you, please ignore this email."
+
+#: bgben/templates/email/send_message.html:7
+msgid "BGben 信息提示🔔"
+msgstr "BGben Message Notification"
 
 #: bgben/templates/email/send_message.html:8
 #, python-format
