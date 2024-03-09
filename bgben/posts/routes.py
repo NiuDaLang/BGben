@@ -23,7 +23,7 @@ def new_post():
   if form.validate_on_submit():
     picture_file = 'post_default.jpg'
     if form.main_picture.data:
-      picture_file = save_picture(form.main_picture.data, 'static/post_pics', 800, 450)
+      picture_file = save_picture(form.main_picture.data, 'static/post_pics', 1024, 1024)
     post = Post(
                 title=form.title.data,
                 subtitle=form.subtitle.data,
@@ -307,7 +307,7 @@ COMMENTS_QTY = 3
 # Load comments one by one
 @posts.route('/load_comments')
 def load_comments():
-  if session['comments_db'] is not None and request.args:
+  if session['comments_db'] != [] and request.args:
     comments_no = len(session['comments_db'])
 
     counter = int(request.args.get('c'))
@@ -319,7 +319,8 @@ def load_comments():
     else:
       # res = make_response(jsonify(comments_db[counter: counter + comments_qty]), 200)
       res = make_response(jsonify(session['comments_db'][counter: counter + COMMENTS_QTY]), 200)    
-
+  else:
+    res = make_response(jsonify({}), 200)
   return res
 
 
@@ -345,7 +346,7 @@ def update_post(post_id):
         if post.image_file != 'post_default.jpg':
           old_pic_file = post.image_file
           delete_picture('static/post_pics', old_pic_file)
-        picture_file = save_picture(form.main_picture.data, 'static/post_pics', 800, 450)
+        picture_file = save_picture(form.main_picture.data, 'static/post_pics', 1024, 1024)
         post.image_file = picture_file
 
       post.title = form.title.data

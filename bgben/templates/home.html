@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+
+{% block url %}{{ url_for('main.home') }}{% endblock %}
+{% block title %}{{ _('BGben 灵魂的在线笔记本') }}{% endblock %}
+{% block description %}{{
+_('BGben.net是追求宇宙真相的随笔平台，一本为寻求宇宙真相的灵魂们而设立的免费在线笔记本。你可以偶尔来瞄一眼，也可以来细读其他灵魂的喃喃自语，更欢迎来成为BGben用户并分享你的笔记，为人类升级做准备。赶紧在真相公开之前提前写一点剧透吧！重要的是，现在绝非是世界末日，而是崭新地球的萌芽期！')
+}}{% endblock %}
+{% block image %}{{ url_for('static', filename='images/BGben-logo(L)-Xsize.png') }}{% endblock %}
+
 {% block content %}
 
 <script src="static/js/main.js" defer></script>

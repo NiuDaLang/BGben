@@ -141,9 +141,13 @@ def account():
     if form.picture.data:
       if current_user.image_file != 'default.png':
         old_pic_file = current_user.image_file
-        delete_picture('static/profile_pics', old_pic_file)
-      picture_file = save_picture(form.picture.data, 'static/profile_pics', 300, 300)
+        try:
+          delete_picture('static/profile_pics', old_pic_file)
+        except:
+          pass        
+      picture_file = save_picture(form.picture.data, 'static/profile_pics', 1024, 1024)
       current_user.image_file = picture_file
+
     current_user.username = form.username.data
     current_user.email = form.email.data.strip()
     current_user.zodiac_sign = form.zodiac_sign.data
@@ -201,7 +205,7 @@ def user_page(username):
 
   return render_template('user_posts.html', user=user, posts=posts, re=re, next_url=next_url, prev_url=prev_url, \
                          title=(_("%(user)s的动态", user=user.username)), followform=followform, unfollowform=unfollowform, posts_count=posts_count,\
-                         monthly_posts_count=monthly_posts_count, ten_posts=ten_posts, user_tags=user_tags)
+                         monthly_posts_count=monthly_posts_count, ten_posts=ten_posts, user_tags=user_tags, sns=True)
 
 @users.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():

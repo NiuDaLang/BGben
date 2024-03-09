@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block url %}{{ url_for('posts.post', post_id=post.id) }}{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block description %}{{ post.subtitle }}{% endblock %}
+{% block image %}{{ url_for('static', filename='post_pics/' + post.image_file) }}{% endblock %}
+
 {% block content %}
 
 <!-- Main Theme -->

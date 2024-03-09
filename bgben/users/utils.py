@@ -1,6 +1,6 @@
 import os
 import secrets
-from PIL import Image
+from PIL import Image, ImageOps
 from flask import url_for, current_app, render_template, session
 from flask_babel import _
 from bgben.email import send_email
@@ -22,7 +22,7 @@ def save_picture(form_picture, pic_folder, width, height):
 
   output_size = (width, height)
   i = Image.open(form_picture)
-  i.thumbnail(output_size)
+  i = ImageOps.contain(i, output_size)
   i.save(picture_path)
 
   return picture_fn

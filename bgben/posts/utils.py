@@ -1,6 +1,6 @@
 import os
 import secrets
-from PIL import Image
+from PIL import Image, ImageOps
 from flask import current_app
 
 def save_picture(form_picture, pic_folder, width, height):
@@ -11,7 +11,7 @@ def save_picture(form_picture, pic_folder, width, height):
 
   output_size = (width, height)
   i = Image.open(form_picture)
-  i.thumbnail(output_size)
+  i = ImageOps.contain(i, output_size)
   i.save(picture_path)
 
   return picture_fn
