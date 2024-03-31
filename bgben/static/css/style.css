@@ -3,6 +3,23 @@
 *:after {
   box-sizing: border-box;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fd8d14 #ffffb0;
+}
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #ffffb0;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #fd8d14;
+  border-radius: 20px;
+  border: 3px solid #ffffb0;
+}
+
 body {
   margin: 0;
   background-color: #ffffb0;
@@ -2682,6 +2699,7 @@ input::file-selector-button {
   overflow: scroll;
   background-color: #ffffb0;
   box-shadow: #f7f7d1 3px 3px 6px 0px inset, #fcfcae -3px -3px 6px 1px inset;
+  overflow-x: hidden;
 }
 .aside-list-item {
   margin: 15px auto;

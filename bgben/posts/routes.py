@@ -209,7 +209,7 @@ def post(post_id):
   tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=author.id).order_by(Tag.timestamp.desc()).where(Tag.active == True))
   return render_template('post.html', re=re, post=post, post_like=post_like, form=form, author=author, \
                          ten_posts=ten_posts, monthly_posts_count=monthly_posts_count, tags=tags, \
-                         comment_message=comment_message, post_tags=post_tags, title=post.title)
+                         comment_message=comment_message, post_tags=post_tags, title=post.title, sns="l")
 
 
 @posts.route('/tag: <name>')
@@ -345,7 +345,10 @@ def update_post(post_id):
       if form.main_picture.data:
         if post.image_file != 'post_default.jpg':
           old_pic_file = post.image_file
-          delete_picture('static/post_pics', old_pic_file)
+          try:
+            delete_picture('static/post_pics', old_pic_file)
+          except:
+            pass
         picture_file = save_picture(form.main_picture.data, 'static/post_pics', 1024, 1024)
         post.image_file = picture_file
 

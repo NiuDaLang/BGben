@@ -90,7 +90,7 @@ def home():
     else:
       return jsonify({"result":form.errors})
   return render_template("home.html", title=(_("主页")), re=re, twenty_posts=twenty_posts, top_tags=top_tags, 
-                         starseed_test_memo=starseed_test_memo, users=users, form=form, theme=theme, sns=True)
+                         starseed_test_memo=starseed_test_memo, users=users, form=form, theme=theme, sns="s")
 
 @main.route('/starseed_result')
 def starseed_result():

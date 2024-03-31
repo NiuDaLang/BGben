@@ -205,7 +205,7 @@ def user_page(username):
 
   return render_template('user_posts.html', user=user, posts=posts, re=re, next_url=next_url, prev_url=prev_url, \
                          title=(_("%(user)s的动态", user=user.username)), followform=followform, unfollowform=unfollowform, posts_count=posts_count,\
-                         monthly_posts_count=monthly_posts_count, ten_posts=ten_posts, user_tags=user_tags, sns=True)
+                         monthly_posts_count=monthly_posts_count, ten_posts=ten_posts, user_tags=user_tags, sns="s")
 
 @users.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():

@@ -3,7 +3,7 @@
 {% block url %}{{ url_for('users.user_page', username=user.username) }}{% endblock %}
 {% block title %}BGben - {{user.username}}{{ _('的笔记本') }}{% endblock %}
 {% block description %}{{ user.about_me }}{% endblock %}
-{% block image %}{{ url_for('static', filename='profile_pics/' + user.image_file ) }}{% endblock %}
+{% block image %}https://www.bgben.net{{ url_for('static', filename='profile_pics/' + user.image_file ) }}{% endblock %}
 
 {% block content %}
 
