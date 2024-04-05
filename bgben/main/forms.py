@@ -30,11 +30,14 @@ class ContactForm(FlaskForm):
   name = StringField(_l("名字"), validators=[DataRequired(_l("请输入名字"))], render_kw={"placeholder": _l('姓名（或昵称）')})
   email = StringField(_l("邮箱"), render_kw={"placeholder": _l('邮箱')},
                       validators=[DataRequired(_l("请输入邮箱地址")), Email(message=_l("邮箱地址格式不正确，请确认再输入一遍"))])
-  
   category = SelectField(_l("关于"), choices=CONTACT_CATEGORIES)
-
   content = TextAreaField(_l('内容'), validators=[DataRequired(_l("请输入联系内容")), Length(min=2, max=500)], render_kw=({"placeholder_": _l('500字以内')}))
   submit_field = SubmitField(_l("发 送"))
+
+  def validate_email(self, email):
+  junk_email = db.session.scalar(sa.select(Contact).where(Contact.email == email.data).where(Contact.junk == True))
+  if junk_email is not None:
+    raise ValidationError('ERROR!')
 
 
 class DeleteForm(FlaskForm):
@@ -50,5 +53,3 @@ class NewsletterForm(FlaskForm):
     email = db.session.scalar(sa.select(Newsletter).where(Newsletter.email == email.data))
     if email is not None:
         raise ValidationError(_l('此邮箱已被使用，请选用其他邮箱！'))
-
-

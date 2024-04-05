@@ -352,6 +352,7 @@ class Contact(db.Model):
   category: so.Mapped[str] = so.mapped_column(sa.String(100), default='unknown')
   content: so.Mapped[str] = so.mapped_column(sa.String(500))
   timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=datetime.now(timezone.utc))
+  junk: so.Mapped[bool] = so.mapped_column(sa.Boolean(), default=False, nullable=False)
 
   def __repr__(self):
     return f'<Contact from>: {self.name} on <Category>: {self.category}'

@@ -162,7 +162,7 @@ class ContactView(ModelView):
   can_create = False
   column_display_pk = True # optional, but I like to see the IDs in the list
   column_hide_backrefs = False
-  column_list = ('id', 'name', 'email', 'category', 'content', 'timestamp')
+  column_list = ('id', 'name', 'email', 'category', 'content', 'timestamp', 'junk')
 
   def is_accessible(self):
     if current_user == db.session.scalar(sa.select(User).where(User.email==admin_email)):
