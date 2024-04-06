@@ -13,6 +13,7 @@ from sqlalchemy import func
 from flask_login import current_user, login_required
 from datetime import datetime, timezone
 from flask_babel import _
+from bgben import recaptcha
 
 
 main = Blueprint('main', __name__)
@@ -422,7 +423,10 @@ def privacy_policy():
 def contact():
   form = ContactForm(category='default')
   if request.method == 'POST':
-    if form.validate_on_submit():
+    if not recaptcha.verify():
+      flash('Error ReCaptcha')
+      return redirect(url_for('main.contact'))
+    elif form.validate_on_submit():
       contact = Contact(
         name = form.name.data,
         email = form.email.data.strip(),

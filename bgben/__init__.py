@@ -18,6 +18,7 @@ from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from redis import Redis
 import rq
+from flask_recaptcha import ReCaptcha
 
 
 # config stuff
@@ -34,6 +35,7 @@ bootstrap = Bootstrap()
 csrf = CSRFProtect()
 babel = Babel()
 admin = Admin(name='BGben')
+recaptcha = ReCaptcha()
 
 # Admin
 from bgben.models import User, Post, Tag, Comment, LikePost, LikeComment, Message, Notification, Contact, Newsletter, Task
@@ -235,6 +237,7 @@ def create_app(config_class=Config):
   csrf.init_app(app)
   babel.init_app(app, locale_selector=get_locale)
   admin.init_app(app, index_view=MyAdminIndexView())
+  recaptcha.init_app(app=app)
 
   from bgben.users.routes import users
   from bgben.posts.routes import posts

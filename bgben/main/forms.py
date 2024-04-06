@@ -4,7 +4,7 @@ from wtforms import StringField, TextAreaField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, Email, ValidationError
 from flask_babel import _, lazy_gettext as _l
 from bgben import db
-from bgben.models import Newsletter
+from bgben.models import Newsletter, Contact
 import sqlalchemy as sa
 
 
@@ -35,9 +35,9 @@ class ContactForm(FlaskForm):
   submit_field = SubmitField(_l("发 送"))
 
   def validate_email(self, email):
-  junk_email = db.session.scalar(sa.select(Contact).where(Contact.email == email.data).where(Contact.junk == True))
-  if junk_email is not None:
-    raise ValidationError('ERROR!')
+    junk_email = db.session.scalar(sa.select(Contact).where(Contact.email == email.data).where(Contact.junk == True))
+    if junk_email is not None:
+      raise ValidationError('ERROR!')
 
 
 class DeleteForm(FlaskForm):

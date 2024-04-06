@@ -7137,3 +7137,12 @@ legend {
   text-decoration: none;
   color: #cece5a;
 }
+
+/* reCaptcha */
+.g-recaptcha {
+  margin-top: 15px;
+}
+.g-recaptcha > div {
+  margin: 0 auto;
+}
+

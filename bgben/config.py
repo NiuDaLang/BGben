@@ -31,3 +31,8 @@ class Config:
 
   CKEDITOR_FILE_UPLOADER = 'posts.upload'
   CKEDITOR_ENABLE_CSRF = True
+  
+  RECAPTCHA_ENABLED = True
+  RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY')
+  RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY')
+
