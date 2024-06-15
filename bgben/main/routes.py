@@ -48,7 +48,7 @@ def home():
   
   # Top tags
   count = func.count(Tag.name).label(None)
-  query = (sa.select(Tag, count).group_by(Tag.name).where(Tag.active == True).order_by(count.desc()).order_by(Tag.timestamp.desc()))
+  query = (sa.select(Tag.name, count).group_by(Tag.name).where(Tag.active == True).order_by(count.desc()))
   tags_sorted = db.session.scalars(query).all()
 
   if len(tags_sorted) < 11:

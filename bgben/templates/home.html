@@ -2039,8 +2039,8 @@ _('BGben.net是追求宇宙真相的随笔平台，一本为寻求宇宙真相�
         {% if top_tags | length != 0 %}
         {% for tag in top_tags %}
         <li class="aside-list-item">
-          <a href="{{ url_for('posts.tag', name=tag.name) }}" class="text-color-red"><img class="tag-img"
-              src="{{ url_for('static', filename='images/tag1.png') }}" alt="{{ _('白色标签图标') }}"> {{ tag.name }}</a>
+          <a href="{{ url_for('posts.tag', name=tag) }}" class="text-color-red"><img class="tag-img"
+              src="{{ url_for('static', filename='images/tag1.png') }}" alt="{{ _('白色标签图标') }}"> {{ tag }}</a>
         </li>
         {% endfor %}
         {% endif %}

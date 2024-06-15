@@ -74,8 +74,8 @@
       <ul class="aside-list">
         {% for tag in top_tags %}
         <li class="aside-list-item">
-          <a href="{{ url_for('posts.tag', name=tag.name) }}" class="text-color-orange"><img class="tag-img"
-              src="{{url_for('static', filename='images/tag2.png')}}" alt="{{ _('橙色标签图标') }}">{{ tag.name }}</a>
+          <a href="{{ url_for('posts.tag', name=tag) }}" class="text-color-orange"><img class="tag-img"
+              src="{{url_for('static', filename='images/tag2.png')}}" alt="{{ _('橙色标签图标') }}">{{ tag }}</a>
         </li>
         {% endfor %}
       </ul>

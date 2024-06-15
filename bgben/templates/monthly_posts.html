@@ -4,8 +4,7 @@
 <!-- Main Theme -->
 <div class="sub-main-theme-wrapper">
   <h1>BGben</h1>
-  <h2>{{ _('%(username)s的月度笔记： %(month)s (共 %(total)s 篇)', username=user.username, month=month, total=count[0][1]) }}
-  </h2>
+  <h2>{{title}}</h2>
 </div>
 <!-- / Main Theme -->
 
@@ -40,27 +39,6 @@
     {% endfor %}
   </div>
 
-  <!-- Pagination -->
-  <div class="pagination monthly-posts">
-    {% if prev_url %}
-    <div class="prev-page monthly-posts">
-      <div class="pagination-text"><a href="{{ prev_url }}">{{ _('前一页') }}</a></div>
-      <div class="pagination-imgbox">
-        <img src="{{ url_for('static', filename='images/arrow-left.png')}}" alt="{{ _('橙色向左箭头图标') }}">
-      </div>
-    </div>
-    {% endif %}
-
-    {% if next_url %}
-    <div class="next-page monthly-posts">
-      <div class="pagination-imgbox">
-        <img src="{{ url_for('static', filename='images/arrow-right.png')}}" alt="{{ _('橙色向右箭头图标') }}">
-      </div>
-      <div class="pagination-text"><a href="{{ next_url }}">{{ _('下一页') }}</a></div>
-    </div>
-    {% endif %}
-
-  </div>
 </main>
 <!-- / Notebook Paper -->
 {% endblock %}

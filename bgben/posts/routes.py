@@ -57,20 +57,19 @@ def new_post():
   ten_posts = db.session.scalars(ten_posts_query)
 
   # (2) Monthly Posts
-  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==current_user.id).where(Post.active == True)
+  year = sa.func.year(Post.date_posted)
+  month = sa.func.month(Post.date_posted)
+  q = sa.select(year, month, post_count).group_by(year, month).where(Post.user_id==current_user.id).where(Post.active == True)
 
-  monthly_posts_count = db.session.execute(q).all()
+  monthly_posts_count = db.session.execute(q).all()[::-1]
 
   # (3) Top tags
-  user_tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=current_user.id).order_by(Tag.timestamp.desc()).where(Tag.active == True))
-
+  user_tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=current_user.id).where(Tag.active == True))
   submit_value = _('投稿')
   return render_template('create_post.html', title=_('投稿'), form=form, legend=_('新稿子'), posts=posts, re=re, \
                          submit_value=submit_value, ten_posts=ten_posts, monthly_posts_count=monthly_posts_count, \
                           next_url=next_url, prev_url=prev_url, mode=mode, user_tags=user_tags)
-
 
 @posts.route("/posts", methods=['GET'])
 def all_posts():
@@ -84,17 +83,14 @@ def all_posts():
   top_authors = db.session.scalars(sa.select(User).where(User.active == True).join(User.posts).group_by(User.id).order_by(func.count().desc()).limit(15))
 
   # Top tags
-  tags = db.session.scalars(sa.select(Tag).where(Tag.active == True)).all()
-  top_tags = []
-  if len(tags) > 0:
-    tag_count = sa.func.count(Tag.name).desc()
-    q = (sa.select(Tag).group_by(Tag.name).where(Tag.active == True).order_by(tag_count))
-    tags_sorted = db.session.scalars(q).all()
-    if len(tags_sorted) < 11:
-      top_tags = tags_sorted
-    elif len(tags_sorted) >= 11:
-      top_tags = tags_sorted[0:10]
-
+  count = func.count(Tag.name).label(None)
+  query = (sa.select(Tag.name, count).group_by(Tag.name).where(Tag.active == True).order_by(count.desc()))
+  tags_sorted = db.session.scalars(query).all()
+  
+  if len(tags_sorted) < 11:
+    top_tags = tags_sorted
+  elif len(tags_sorted) >= 11:
+    top_tags = tags_sorted[0:10]
 
   return render_template('posts.html', title=_('广场'), posts=posts, re=re, twenty_posts=twenty_posts, top_authors=top_authors, top_tags=top_tags)
 
@@ -199,14 +195,15 @@ def post(post_id):
   ten_posts = db.session.scalars(ten_posts_query)
 
   # (2) Monthly Posts
-  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==post.author.id).where(Post.active == True)
+  year = sa.func.year(Post.date_posted)
+  month = sa.func.month(Post.date_posted)
+  q = sa.select(year, month, post_count).group_by(year, month).where(Post.user_id==post.author.id).where(Post.active == True)
 
-  monthly_posts_count = db.session.execute(q).all()
+  monthly_posts_count = db.session.execute(q).all()[::-1]
 
   # (3) Top tags
-  tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=author.id).order_by(Tag.timestamp.desc()).where(Tag.active == True))
+  tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=author.id).where(Tag.active == True))
   return render_template('post.html', re=re, post=post, post_like=post_like, form=form, author=author, \
                          ten_posts=ten_posts, monthly_posts_count=monthly_posts_count, tags=tags, \
                          comment_message=comment_message, post_tags=post_tags, title=post.title, sns="l")
@@ -223,24 +220,24 @@ def tag(name):
   return render_template('tags.html', title=_('与%(name)s有关的笔记. ', name=name), tags=tags.items, next_url=next_url, prev_url=prev_url, re=re, name=name)
 
 
-@posts.route('/monthly_posts/<user_id>/<month>')
-def monthly_posts(user_id, month):
-  page = request.args.get('page', 1, type=int)
-  monthly_posts_query = sa.select(Post).where(func.date_format(Post.date_posted, "%Y-%m") == month, Post.user_id == user_id).where(Post.active == True)
-  monthly_posts = db.paginate(monthly_posts_query, page=page, per_page=6, error_out=False)
+@posts.route('/monthly_posts/<user_id>/<year>/<month>')
+def monthly_posts(user_id, year, month):
+  post_year = sa.func.year(Post.date_posted)
+  post_month = sa.func.month(Post.date_posted)
+  monthly_posts_query = sa.select(Post, post_year, post_month).where(Post.user_id==user_id).where(post_year == year).where(post_month == month)
+  monthly_posts = db.session.scalars(monthly_posts_query).all()
 
   user = db.session.scalar(sa.select(User).where(User.id == user_id).where(User.active == True))
 
-  query_month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(query_month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==user.id).where(Post.active == True)
+  count_year = sa.func.year(Post.date_posted)
+  count_month = sa.func.month(Post.date_posted)
+  q = sa.select(count_year, count_month, post_count).group_by(count_year, count_month).where(Post.user_id==user.id).where(Post.active == True)
+  monthly_posts_count = db.session.execute(q).all()[::-1]
 
-  monthly_posts_count = db.session.execute(q).all()
-  
-  next_url = url_for('posts.monthly_posts', user_id=user_id, month=month, page=monthly_posts.next_num) if monthly_posts.has_next else None
-  prev_url = url_for('posts.monthly_posts', user_id=user_id, month=month, page=monthly_posts.prev_num) if monthly_posts.has_prev else None
+  month = f"{year} - {month}"
 
-  return render_template('monthly_posts.html', user=user, month=month, count=monthly_posts_count, monthly_posts=monthly_posts, next_url=next_url, prev_url=prev_url, re=re, title=_('%(username)s的月度笔记: %(month)s', username=user.username, month=month))
+  return render_template('monthly_posts.html', user=user, month=month, count=monthly_posts_count, monthly_posts=monthly_posts, re=re, title=_('%(username)s的月度笔记: %(month)s', username=user.username, month=month))
 
 
 @posts.route("/like_post/<post_id>", methods=['POST'])
@@ -379,15 +376,15 @@ def update_post(post_id):
   ten_posts = db.session.scalars(sa.select(Post).where(Post.author == current_user).where(Post.active == True).order_by(Post.date_posted.desc()).limit(15))
 
   # (2) Monthly Posts
-  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==current_user.id).where(Post.active == True)
+  year = sa.func.year(Post.date_posted)
+  month = sa.func.month(Post.date_posted)
+  q = sa.select(year, month, post_count).group_by(year, month).where(Post.user_id==current_user.id).where(Post.active == True)
 
-  monthly_posts_count = db.session.execute(q).all()
+  monthly_posts_count = db.session.execute(q).all()[::-1]
 
   # (3) Top tags
-  user_tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=current_user.id).order_by(Tag.timestamp.desc()).where(Tag.active == True))
-
+  user_tags = db.session.scalars(sa.select(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=current_user.id).where(Tag.active == True))
   submit_value = _('更 新')
   return render_template('create_post.html', title=_('编辑笔记'), post=post, form=form, mode=mode, user_tags=user_tags,
                          tags_count=tags_count, tags=tags, ten_posts=ten_posts, monthly_posts_count=monthly_posts_count,

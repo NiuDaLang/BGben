@@ -183,7 +183,7 @@ def user_page(username):
     posts = db.paginate(sa.select(Post).where(Post.author == user).where(Post.active == True).order_by(Post.date_posted.desc()),
                         page=page, per_page=6, error_out=False)
   
-  user_tags = db.session.query(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=user.id).where(Tag.active == True).order_by(Tag.timestamp.desc())
+  user_tags = db.session.query(Tag.name, func.count(Tag.name)).group_by(Tag.name).filter_by(user_id=user.id).where(Tag.active == True)
 
   ten_posts = db.session.scalars(user.posts.select().where(Post.active == True).order_by(Post.date_posted.desc()).limit(10)).all()
 
@@ -193,11 +193,12 @@ def user_page(username):
   unfollowform = UnfollowForm()
 
   # Monthly Posts
-  month = sa.func.date_format(Post.date_posted, "%Y-%m").label(None)
   post_count = sa.func.count(Post.id).label(None)
-  q = sa.select(month, post_count).order_by(Post.date_posted.desc()).group_by(sa.func.date_format(Post.date_posted, "%Y-%m")).where(Post.user_id==user.id).where(Post.active == True)
+  year = sa.func.year(Post.date_posted)
+  month = sa.func.month(Post.date_posted)
+  q = sa.select(year, month, post_count).group_by(year, month).where(Post.user_id==user.id).where(Post.active == True)
 
-  monthly_posts_count = db.session.execute(q).all()
+  monthly_posts_count = db.session.execute(q).all()[::-1]
 
   # User Posts Count
   posts_count_query = sa.select(sa.func.count()).select_from(user.posts.select().where(Post.active == True).subquery())

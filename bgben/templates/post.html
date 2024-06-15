@@ -84,9 +84,8 @@
       <ul class="aside-list">
         {% for count in monthly_posts_count %}
         <li class="aside-list-item post-page">
-          <a
-            href="{{ url_for('posts.monthly_posts', user_id=post.author.id, month='-'.join([count[0].split('-')[0], count[0].split('-')[1]])) }}">
-            {{ count[0].split('-')[0] }}{{ _('年') }}{{ count[0].split('-')[1] }}{{ _('月') }} {{ count[1] }}{{ _('篇')}}
+          <a href="{{ url_for('posts.monthly_posts', user_id=post.author.id, year = count[0] , month = count[1]) }}">
+            {{ count[0] }}{{ _('年') }}{{ count[1] }}{{ _('月') }} {{ count[2] }}{{ _('篇')}}
           </a>
         </li>
         {% endfor %}
